@@ -6,7 +6,7 @@ class Face extends TencentAIController
 {
     // 人脸检测
 
-    private $baseUrl='https://api.ai.qq.com/fcgi-bin/face/';
+    private $baseUrl = 'https://api.ai.qq.com/fcgi-bin/face/';
 
     public function detect(string $image = './image/ai/tencent/face/wxc.jpg')
     {
@@ -16,25 +16,25 @@ class Face extends TencentAIController
           'mode' => 0,
         ];
 
-        $url =$this->baseUrl. 'face_detectface';
+        $url = $this->baseUrl.'face_detectface';
 
         return $this->exec($url, $data);
     }
 
     // 人脸对比
 
-    public function compare(array $images =[ './image/ai/tencent/face/wxc.jpg', './image/ai/tencent/face/verify.jpg'])
+    public function compare(array $images = ['./image/ai/tencent/face/wxc.jpg', './image/ai/tencent/face/verify.jpg'])
     {
         // code...
-        if (count($images) != 2) {
-            die("数组长度小于 2");
+        if (count($images) !== 2) {
+            die('数组长度小于 2');
         }
         $data = [
           'image_a' => base64_encode(file_get_contents($images[0])),
           'image_b' => base64_encode(file_get_contents($images[1])),
         ];
 
-        $url =$this->baseUrl .'face_facecompare';
+        $url = $this->baseUrl.'face_facecompare';
 
         return $this->exec($url, $data);
     }
@@ -49,7 +49,7 @@ class Face extends TencentAIController
           'mode' => 0,
         ];
 
-        $url=$this->baseUrl . 'face_detectface';
+        $url = $this->baseUrl.'face_detectface';
 
         return $this->exec($url, $data);
     }
@@ -65,7 +65,7 @@ class Face extends TencentAIController
           'topn' => $topon,
         ];
 
-        $url=$this->baseUrl . 'face_faceidentify';
+        $url = $this->baseUrl.'face_faceidentify';
 
         return $this->exec($url, $data);
     }
@@ -81,7 +81,7 @@ class Face extends TencentAIController
               'image' => base64_encode(file_get_contents($image)),
         ];
 
-        $url=$this->baseUrl .'face_faceverify';
+        $url = $this->baseUrl.'face_faceverify';
 
         return $this->exec($url, $data);
     }
@@ -97,7 +97,7 @@ class Face extends TencentAIController
           'tag' => $tag,
         ];
 
-        $url=$this->baseUrl .'face_addface';
+        $url = $this->baseUrl.'face_addface';
 
         return $this->exec($url, $data);
     }
@@ -112,7 +112,7 @@ class Face extends TencentAIController
           'face_ids' => $face_ids,
         ];
 
-        $url=$this->baseUrl .'face_delface';
+        $url = $this->baseUrl.'face_delface';
 
         return $this->exec($url, $data);
     }
@@ -126,7 +126,7 @@ class Face extends TencentAIController
           'person_id' => $person_id,
         ];
 
-        $url=$this->baseUrl.'face_getfaceids';
+        $url = $this->baseUrl.'face_getfaceids';
 
         return $this->exec($url, $data);
     }
@@ -140,7 +140,7 @@ class Face extends TencentAIController
           'face_id' => $face_id,
         ];
 
-        $url=$this->baseUrl .'face_getfaceinfo';
+        $url = $this->baseUrl.'face_getfaceinfo';
 
         return $this->exec($url, $data);
     }
