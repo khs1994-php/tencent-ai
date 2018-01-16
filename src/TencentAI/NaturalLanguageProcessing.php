@@ -4,30 +4,36 @@ namespace TencentAI;
 
 class NaturalLanguageProcessing extends TencentAIController
 {
-    public function wordseg($value='')
+    public function wordseg($value = '')
     {
-        # code...
+        // code...
     }
-    public function wordpos($value='')
+
+    public function wordpos($value = '')
     {
-        # code...
+        // code...
     }
-    public function wordner($value='')
+
+    public function wordner($value = '')
     {
-        # code...
+        // code...
     }
-    public function wordsyn($value='')
+
+    public function wordsyn($value = '')
     {
-        # code...
+        // code...
     }
-    public function wordcom($value='')
+
+    public function wordcom($value = '')
     {
-        # code...
+        // code...
     }
-    public function textPolar($value='')
+
+    public function textPolar($value = '')
     {
-        # code...
+        // code...
     }
+
     public function textChat(string $question = '你好', string $session = '10000')
     {
         // code...

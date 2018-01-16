@@ -2,9 +2,9 @@
 
 namespace TencentAI;
 
-class PersonController extends TencentAIController
+class Person extends TencentAIController
 {
-    private $baseUrl='https://api.ai.qq.com/fcgi-bin/face';
+    private $baseUrl = 'https://api.ai.qq.com/fcgi-bin/face';
     // 人体创建
 
     public function create(string $group_ids = 'idol', string $person_id = 'wangxiaochen', string $person_name = 'wangxiaochen', string $image = './image/ai/tencent/face/wxc.jpg', string $tag = 'wangxiaochen')
@@ -17,7 +17,7 @@ class PersonController extends TencentAIController
           'tag' => $tag,
         ];
 
-        $url=$this->baseUrl . 'face_newperson';
+        $url = $this->baseUrl.'face_newperson';
 
         return $this->exec($url, $data);
     }
@@ -32,7 +32,7 @@ class PersonController extends TencentAIController
           'person_id' => $person_id,
         ];
 
-        $url=$this->baseUrl = 'face_delperson';
+        $url = $this->baseUrl = 'face_delperson';
 
         return $this->exec($url, $data);
     }
@@ -49,7 +49,7 @@ class PersonController extends TencentAIController
           'tag' => $tag,
         ];
 
-        $url=$this->baseUrl = 'face_setinfo';
+        $url = $this->baseUrl = 'face_setinfo';
 
         return $this->exec($url, $data);
     }
@@ -64,7 +64,7 @@ class PersonController extends TencentAIController
           'person_id' => $person_id,
         ];
 
-        $url=$this->baseUrl = 'face_getinfo';
+        $url = $this->baseUrl = 'face_getinfo';
 
         return $this->exec($url, $data);
     }
@@ -76,7 +76,7 @@ class PersonController extends TencentAIController
         // code...
         $data = [];
 
-        $url=$this->baseUrl = 'face_getgroupids';
+        $url = $this->baseUrl = 'face_getgroupids';
 
         return $this->exec($data, $baseurl);
     }
@@ -90,7 +90,7 @@ class PersonController extends TencentAIController
           'group_id' => $group_id,
         ];
 
-        $url=$this->baseUrl = 'face_getpersonids';
+        $url = $this->baseUrl = 'face_getpersonids';
 
         return $this->exec($data, $baseurl);
     }
