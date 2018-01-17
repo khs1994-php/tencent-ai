@@ -4,13 +4,13 @@ namespace TencentAI;
 
 class Image extends TencentAI
 {
-    private $baseUrl='https://api.ai.qq.com/fcgi-bin/';
+    private $baseUrl = 'https://api.ai.qq.com/fcgi-bin/';
 
     public function common($url, $image)
     {
-        # code...
-        $data=[
-        'image'=>base64_encode(file_get_contents($image))
+        // code...
+        $data = [
+        'image' => base64_encode(file_get_contents($image)),
         ];
 
         return $this->exec($url, $data);
@@ -18,48 +18,52 @@ class Image extends TencentAI
 
     // 智能鉴黄
 
-    public function porn(string $image='./image/ai/tencent/face/wxc.jpg')
+    public function porn(string $image = './image/ai/tencent/face/wxc.jpg')
     {
         // code...
-        $url=$this->baseUrl.'vision/vision_porn';
+        $url = $this->baseUrl.'vision/vision_porn';
+
         return $this->common($url, $image);
     }
 
     // 暴恐识别
 
-    public function terrorism(string $image='./image/ai/tencent/face/wxc.jpg')
+    public function terrorism(string $image = './image/ai/tencent/face/wxc.jpg')
     {
         // code...
 
-        $url=$this->baseUrl.'image/image_terrorism';
+        $url = $this->baseUrl.'image/image_terrorism';
+
         return $this->common($url, $image);
     }
 
     // 物体场景识别=》场景识别
 
-    public function scener(string $image='./image/ai/tencent/vision/dog.jpg', int $format=1, int $topk=5)
+    public function scener(string $image = './image/ai/tencent/vision/dog.jpg', int $format = 1, int $topk = 5)
     {
         // code...
-        $data=[
-          'image'=>base64_encode(file_get_contents($image)),
-          'format'=>$format,
-          'topk'=>$topk
+        $data = [
+          'image' => base64_encode(file_get_contents($image)),
+          'format' => $format,
+          'topk' => $topk,
         ];
-        $url=$this->baseUrl.'vision/vision_scener';
+        $url = $this->baseUrl.'vision/vision_scener';
+
         return $this->exec($url, $data);
     }
 
     // 物体场景识别=》物体识别
 
-    public function objectr(string $image='./image/ai/tencent/vision/dog.jpg', int $format=1, int $topk=5)
+    public function objectr(string $image = './image/ai/tencent/vision/dog.jpg', int $format = 1, int $topk = 5)
     {
         // code...
-        $data=[
-          'image'=>base64_encode(file_get_contents($image)),
-          'format'=>$format,
-          'topk'=>$topk
+        $data = [
+          'image' => base64_encode(file_get_contents($image)),
+          'format' => $format,
+          'topk' => $topk,
         ];
-        $url=$this->baseUrl.'vision/vision_objectr';
+        $url = $this->baseUrl.'vision/vision_objectr';
+
         return $this->exec($url, $data);
     }
 
@@ -68,34 +72,37 @@ class Image extends TencentAI
     public function tag($image = './image/ai/tencent/vision/dog.jpg')
     {
         // code...
-        $url=$this->baseUrl.'image/image_tag';
+        $url = $this->baseUrl.'image/image_tag';
+
         return $this->common($url, $image);
     }
 
     // 花草/车辆识别
 
-    public function identify(string $image='./image/ai/tencent/vision/flower.jpg', int $scene=2)
+    public function identify(string $image = './image/ai/tencent/vision/flower.jpg', int $scene = 2)
     {
         // code...
-        $data=[
-          'image'=>base64_encode(file_get_contents($image)),
-          'scene'=>$scene
+        $data = [
+          'image' => base64_encode(file_get_contents($image)),
+          'scene' => $scene,
         ];
-        $url=$this->baseUrl.'vision/vision_imgidentify';
+        $url = $this->baseUrl.'vision/vision_imgidentify';
+
         return $this->exec($url, $data);
     }
 
     // 看图说话
 
-    public function imageToText(string $image='./image/ai/tencent/vision/flower.jpg', string $session_id='1509333186')
+    public function imageToText(string $image = './image/ai/tencent/vision/flower.jpg', string $session_id = '1509333186')
     {
         // code...
-        $data=[
-          'image'=>base64_encode(file_get_contents($image)),
-          'session_id'=>$session_id
+        $data = [
+          'image' => base64_encode(file_get_contents($image)),
+          'session_id' => $session_id,
         ];
 
-        $url=$this->baseUrl.'vision/vision_imgtotext';
+        $url = $this->baseUrl.'vision/vision_imgtotext';
+
         return $this->exec($url, $data);
     }
 
@@ -104,7 +111,8 @@ class Image extends TencentAI
     public function fuzzy(string $image = './image/ai/tencent/vision/flower.jpg')
     {
         // code...
-        $url=$this->baseUrl.'image/image_fuzzy';
+        $url = $this->baseUrl.'image/image_fuzzy';
+
         return $this->common($url, $image);
     }
 
@@ -113,7 +121,8 @@ class Image extends TencentAI
     public function food($image = './image/ai/tencent/vision/flower.jpg')
     {
         // code...
-        $url=$this->baseUrl.'image/image_food';
+        $url = $this->baseUrl.'image/image_food';
+
         return $this->common($url, $image);
     }
 }

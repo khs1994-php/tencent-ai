@@ -11,7 +11,7 @@ use TencentAI\Image;
 
 $ai = new Image();
 
-$array=$ai->food();
+$array = $ai->food();
 
 var_dump($array);
 
