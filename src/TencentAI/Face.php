@@ -2,7 +2,7 @@
 
 namespace TencentAI;
 
-class Face extends TencentAIController
+class Face extends TencentAI
 {
     // 人脸检测
 

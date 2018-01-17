@@ -2,7 +2,7 @@
 
 namespace TencentAI;
 
-class Person extends TencentAIController
+class Person extends TencentAI
 {
     private $baseUrl = 'https://api.ai.qq.com/fcgi-bin/face';
     // 人体创建

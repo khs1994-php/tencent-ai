@@ -7,8 +7,12 @@ spl_autoload_register(function ($class) {
     require_once BASEDIR.str_replace('\\', '/', $class).'.php';
 });
 
-use TencentAI\Face;
+use TencentAI\Image;
 
-$ai = new Face();
+$ai = new Image();
 
-var_dump($ai->compare());
+$array=$ai->food();
+
+var_dump($array);
+
+echo json_encode($array);

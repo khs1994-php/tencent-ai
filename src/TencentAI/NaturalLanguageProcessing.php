@@ -2,7 +2,7 @@
 
 namespace TencentAI;
 
-class NaturalLanguageProcessing extends TencentAIController
+class NaturalLanguageProcessing extends TencentAI
 {
     public function wordseg($value = '')
     {
