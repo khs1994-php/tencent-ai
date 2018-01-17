@@ -47,6 +47,7 @@ class TencentAI
         $sign = $this->sign($body);
         $data = $body."&sign=$sign";
         $data = $this->UrlUtility->curl($url, 'post', $data);
+
         return $array = json_decode($data, true);
     }
 }
