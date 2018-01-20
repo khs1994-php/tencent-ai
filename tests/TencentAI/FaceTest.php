@@ -1,6 +1,7 @@
 <?php
 
 use PHPUnit\Framework\TestCase;
+use TencentAI\TencentAI;
 
 class FaceTest extends TestCase
 {
@@ -12,8 +13,18 @@ class FaceTest extends TestCase
             'app_key' => 'ZbRY9cf72TbDO0xb',
         ];
 
-        $face = new TencentAI\Face($config);
-        $array = $face->detect(getcwd().'/tests/image/ai/tencent/face/wxc.jpg');
+        $ai = new TencentAI($config);
+
+        $array = $ai->face->detect(getcwd().'/tests/image/ai/tencent/face/wxc.jpg');
         $this->assertContains('ok', $array['msg']);
+
+        $array = $ai->face->compare([
+          getcwd().'/tests/image/ai/tencent/face/wxc.jpg',
+          getcwd().'/tests/image/ai/tencent/face/verify.jpg'
+        ]);
+        $this->assertEquals(0, $array['ret']);
+
+        $array = $ai->face->shape(getcwd().'/tests/image/ai/tencent/face/wxc.jpg');
+        $this->assertJsonStringEqualsJsonString('0', json_encode($array['ret']));
     }
 }

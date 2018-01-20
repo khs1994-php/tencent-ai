@@ -2,7 +2,7 @@
 
 namespace TencentAI;
 
-class Face extends TencentAI
+class Face extends AIBase
 {
     // 人脸分析
 

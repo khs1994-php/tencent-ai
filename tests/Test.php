@@ -7,12 +7,17 @@ spl_autoload_register(function ($class) {
     require_once BASEDIR.str_replace('\\', '/', $class).'.php';
 });
 
-use TencentAI\Image;
+$config = [
+    'app_id' => 1106560031,
+    'app_key' => 'ZbRY9cf72TbDO0xb',
+];
 
-$ai = new Image();
+use TencentAI\TencentAI;
 
-$array = $ai->food();
+$ai = new TencentAI($config);
 
-var_dump($array);
+$output = $ai->image->food('image/ai/tencent/vision/dog.jpg');
 
-echo json_encode($array);
+var_dump($output);
+
+echo json_encode($output);

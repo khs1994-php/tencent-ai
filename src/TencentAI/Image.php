@@ -2,7 +2,7 @@
 
 namespace TencentAI;
 
-class Image extends TencentAI
+class Image extends AIBase
 {
     private $baseUrl = 'https://api.ai.qq.com/fcgi-bin/';
 

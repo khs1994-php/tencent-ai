@@ -2,7 +2,7 @@
 
 namespace TencentAI;
 
-class NaturalLanguageProcessing extends TencentAI
+class NaturalLanguageProcessing extends AIBase
 {
     public function wordseg($value = '')
     {

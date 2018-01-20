@@ -2,7 +2,7 @@
 
 namespace TencentAI;
 
-class OCR extends TencentAI
+class OCR extends AIBase
 {
     private $baseUrl = 'https://api.ai.qq.com/fcgi-bin/ocr/';
 
