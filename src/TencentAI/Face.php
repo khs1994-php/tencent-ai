@@ -56,7 +56,7 @@ class Face extends TencentAI
 
     // 人脸识别
 
-    public function identify(string $group_id = 'idol', string $image, int $topon = 9)
+    public function identify(string $group_id, string $image, int $topon = 9)
     {
         // code...
         $data = [
