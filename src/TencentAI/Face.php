@@ -4,11 +4,11 @@ namespace TencentAI;
 
 class Face extends TencentAI
 {
-    // 人脸检测
+    // 人脸分析
 
     private $baseUrl = 'https://api.ai.qq.com/fcgi-bin/face/';
 
-    public function detect(string $image = './image/ai/tencent/face/wxc.jpg')
+    public function detect(string $image)
     {
         // code...
         $data = [
@@ -23,7 +23,7 @@ class Face extends TencentAI
 
     // 人脸对比
 
-    public function compare(array $images = ['./image/ai/tencent/face/wxc.jpg', './image/ai/tencent/face/verify.jpg'])
+    public function compare(array $images)
     {
         // code...
         if (count($images) !== 2) {
@@ -41,7 +41,7 @@ class Face extends TencentAI
 
     // 五官检测
 
-    public function shape(string $image = './image/ai/tencent/face/wxc.jpg')
+    public function shape(string $image)
     {
         // code...
         $data = [
@@ -56,7 +56,7 @@ class Face extends TencentAI
 
     // 人脸识别
 
-    public function identify(string $group_id = 'idol', string $image = './image/ai/tencent/face/wxc.jpg', int $topon = 9)
+    public function identify(string $group_id = 'idol', string $image, int $topon = 9)
     {
         // code...
         $data = [
@@ -72,7 +72,7 @@ class Face extends TencentAI
 
     // 人脸验证
 
-    public function verify(string $person_id = 'wangxiaochen', string $image = './image/ai/tencent/face/verify.jpg')
+    public function verify(string $person_id, string $image)
     {
         // code...
 
@@ -88,7 +88,7 @@ class Face extends TencentAI
 
     // 个体管理 -》增加人脸
 
-    public function add(string $person_id = 'wangxiaochen', string $image = './image/ai/tencent/face/wxc.jpg', string $tag = 'wangxiaochen')
+    public function add(string $person_id, string $image, string $tag)
     {
         // code...
         $data = [
@@ -104,7 +104,7 @@ class Face extends TencentAI
 
     // 个体管理 -》删除人脸
 
-    public function delete(string $person_id = 'wangxiaochen', string $face_ids = 'wangxiaochen')
+    public function delete(string $person_id, string $face_ids)
     {
         // code...
         $data = [
@@ -119,7 +119,7 @@ class Face extends TencentAI
 
     // 获取人脸列表
 
-    public function getList(string $person_id = 'wangxiaochen')
+    public function getList(string $person_id)
     {
         // code...
         $data = [
@@ -133,7 +133,7 @@ class Face extends TencentAI
 
     // 获取人脸信息
 
-    public function getInfo(string $face_id = '2376480510367017825')
+    public function getInfo(string $face_id)
     {
         // code...
         $data = [

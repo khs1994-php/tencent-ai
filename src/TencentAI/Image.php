@@ -18,7 +18,7 @@ class Image extends TencentAI
 
     // 智能鉴黄
 
-    public function porn(string $image = './image/ai/tencent/face/wxc.jpg')
+    public function porn(string $image)
     {
         // code...
         $url = $this->baseUrl.'vision/vision_porn';
@@ -28,7 +28,7 @@ class Image extends TencentAI
 
     // 暴恐识别
 
-    public function terrorism(string $image = './image/ai/tencent/face/wxc.jpg')
+    public function terrorism(string $image)
     {
         // code...
 
@@ -39,7 +39,7 @@ class Image extends TencentAI
 
     // 物体场景识别=》场景识别
 
-    public function scener(string $image = './image/ai/tencent/vision/dog.jpg', int $format = 1, int $topk = 5)
+    public function scener(string $image, int $format = 1, int $topk = 5)
     {
         // code...
         $data = [
@@ -54,7 +54,7 @@ class Image extends TencentAI
 
     // 物体场景识别=》物体识别
 
-    public function objectr(string $image = './image/ai/tencent/vision/dog.jpg', int $format = 1, int $topk = 5)
+    public function objectr(string $image, int $format = 1, int $topk = 5)
     {
         // code...
         $data = [
@@ -69,7 +69,7 @@ class Image extends TencentAI
 
     // 标签识别
 
-    public function tag($image = './image/ai/tencent/vision/dog.jpg')
+    public function tag($image)
     {
         // code...
         $url = $this->baseUrl.'image/image_tag';
@@ -79,7 +79,7 @@ class Image extends TencentAI
 
     // 花草/车辆识别
 
-    public function identify(string $image = './image/ai/tencent/vision/flower.jpg', int $scene = 2)
+    public function identify(string $image, int $scene = 2)
     {
         // code...
         $data = [
@@ -93,7 +93,7 @@ class Image extends TencentAI
 
     // 看图说话
 
-    public function imageToText(string $image = './image/ai/tencent/vision/flower.jpg', string $session_id = '1509333186')
+    public function imageToText(string $image, string $session_id)
     {
         // code...
         $data = [
@@ -108,7 +108,7 @@ class Image extends TencentAI
 
     // 模糊图片检测
 
-    public function fuzzy(string $image = './image/ai/tencent/vision/flower.jpg')
+    public function fuzzy(string $image)
     {
         // code...
         $url = $this->baseUrl.'image/image_fuzzy';
@@ -118,7 +118,7 @@ class Image extends TencentAI
 
     // 美食图片识别
 
-    public function food($image = './image/ai/tencent/vision/flower.jpg')
+    public function food($image)
     {
         // code...
         $url = $this->baseUrl.'image/image_food';

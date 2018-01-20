@@ -34,7 +34,7 @@ class NaturalLanguageProcessing extends TencentAI
         // code...
     }
 
-    public function textChat(string $question = '你好', string $session = '10000')
+    public function textChat(string $question, string $session)
     {
         // code...
         $data = [

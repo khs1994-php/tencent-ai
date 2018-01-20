@@ -8,7 +8,7 @@ class OCR extends TencentAI
 
     // 身份证识别
 
-    public function idCard(string $file_path = './image/ai/tencent/ocr/idcard/f.png', int $card_type = 0)
+    public function idCard(string $file_path , int $card_type = 0)
     {
         // code...
         $data = [

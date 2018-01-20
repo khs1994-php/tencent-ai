@@ -7,10 +7,10 @@ class TencentAI
     private $app_id;
     private $app_key;
 
-    public function __construct()
+    public function __construct(array $config)
     {
         // code...
-        $config = json_decode(file_get_contents('./config.json'));
+        $config=(object) $config;
         $this->app_id = $config->app_id;
         $this->app_key = $config->app_key;
         $this->UrlUtility = new UrlUtility();
