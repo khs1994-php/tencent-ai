@@ -29,19 +29,20 @@ class OCR extends AIBase
     {
         // code...
         $url = $this->baseUrl.'ocr_bcocr';
+
         return $this->image($url, $image);
     }
 
     // 行驶证驾驶证识别
 
-    public function driverLicense(string $image, int $type=0)
+    public function driverLicense(string $image, int $type = 0)
     {
         // code...
-        $data=[
-          'image'=>base64_encode(file_get_contents($image)),
-          'type'=>$type
+        $data = [
+          'image' => base64_encode(file_get_contents($image)),
+          'type' => $type,
         ];
-        $url=$this->baseUrl.'ocr_driverlicenseocr';
+        $url = $this->baseUrl.'ocr_driverlicenseocr';
 
         return $this->exec($url, $data);
     }
@@ -51,7 +52,8 @@ class OCR extends AIBase
     public function bizLicense(string $image)
     {
         // code...
-        $url=$this->baseUrl.'ocr_bizlicenseocr';
+        $url = $this->baseUrl.'ocr_bizlicenseocr';
+
         return $this->image($url, $image);
     }
 
@@ -60,7 +62,8 @@ class OCR extends AIBase
     public function creditCard(string $image)
     {
         // code...
-        $url=$this->baseUrl.'ocr_creditcardocr';
+        $url = $this->baseUrl.'ocr_creditcardocr';
+
         return $this->image($url, $image);
     }
 
@@ -69,7 +72,8 @@ class OCR extends AIBase
     public function general(string $image)
     {
         // code...
-        $url=$this->baseUrl.'ocr_generalocr';
+        $url = $this->baseUrl.'ocr_generalocr';
+
         return $this->image($url, $image);
     }
 }

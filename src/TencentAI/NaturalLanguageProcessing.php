@@ -4,13 +4,13 @@ namespace TencentAI;
 
 class NaturalLanguageProcessing extends AIBase
 {
-    private $baseUrl='https://api.ai.qq.com/fcgi-bin/nlp/';
+    private $baseUrl = 'https://api.ai.qq.com/fcgi-bin/nlp/';
 
-    public function common($url, $text, bool $type=true)
+    public function common($url, $text, bool $type = true)
     {
-        # code...
-        $data=[
-          'text'=>$text
+        // code...
+        $data = [
+          'text' => $text,
         ];
 
         if ($type) {
@@ -27,7 +27,8 @@ class NaturalLanguageProcessing extends AIBase
     public function wordseg(string $text)
     {
         // code...
-        $url=$this->baseUrl.'nlp_wordseg';
+        $url = $this->baseUrl.'nlp_wordseg';
+
         return $this->common($url, $text);
     }
 
@@ -36,7 +37,8 @@ class NaturalLanguageProcessing extends AIBase
     public function wordpos(string $text)
     {
         // code...
-        $url=$this->baseUrl.'nlp_wordpos';
+        $url = $this->baseUrl.'nlp_wordpos';
+
         return $this->common($url, $text);
     }
 
@@ -45,7 +47,8 @@ class NaturalLanguageProcessing extends AIBase
     public function wordner(string $text)
     {
         // code...
-        $url=$this->baseUrl.'nlp_wordner';
+        $url = $this->baseUrl.'nlp_wordner';
+
         return $this->common($url, $text);
     }
 
@@ -54,18 +57,19 @@ class NaturalLanguageProcessing extends AIBase
     public function wordsyn(string $text)
     {
         // code...
-        $url=$this->baseUrl.'nlp_wordsyn';
+        $url = $this->baseUrl.'nlp_wordsyn';
+
         return $this->common($url, $text);
     }
 
     // GBK END
 
-
     // 语义解析 => 意图成分识别
 
     public function wordcom($text)
     {
-        $url=$this->baseUrl.'nlp_wordcom';
+        $url = $this->baseUrl.'nlp_wordcom';
+
         return $this->common($url, $text, false);
     }
 
@@ -74,7 +78,8 @@ class NaturalLanguageProcessing extends AIBase
     public function textPolar($text)
     {
         // code...
-        $url=$this->baseUrl.'nlp_textpolar';
+        $url = $this->baseUrl.'nlp_textpolar';
+
         return $this->common($url, $text, false);
     }
 

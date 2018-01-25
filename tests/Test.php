@@ -16,7 +16,7 @@ use TencentAI\TencentAI;
 
 $ai = new TencentAI($config);
 
-$output = $ai->nlp->textPolar("腾讯是中国互联网企业");
+$output = $ai->nlp->textPolar('腾讯是中国互联网企业');
 
 var_dump($output);
 

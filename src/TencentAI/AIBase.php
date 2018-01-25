@@ -17,11 +17,12 @@ class AIBase
 
     public function gbkToUtf($data)
     {
-        # code...
-        $data=explode('[', $data);
-        $data=iconv('gbk', 'utf-8//IGNORE', $data[1]);
+        // code...
+        $data = explode('[', $data);
+        $data = iconv('gbk', 'utf-8//IGNORE', $data[1]);
         var_dump($data);
         exit();
+
         return $data;
     }
 
@@ -59,7 +60,7 @@ class AIBase
         $data = $body."&sign=$sign";
         $data = $this->UrlUtility->curl($url, 'post', $data);
 
-        if ($type == 'gbk') {
+        if ($type === 'gbk') {
             return $this->gbkToUtf($data);
         }
 
