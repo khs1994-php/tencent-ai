@@ -17,11 +17,12 @@ class ImageTest extends TestCase
         ];
 
         $this->ai = new TencentAI($config);
+        $this->basedir=__DIR__;
     }
 
     public function testPorn()
     {
-        $array=$this->ai->image->porn(getcwd().'/tests/image/ai/tencent/face/wxc.jpg');
+        $array=$this->ai->image->porn($this->basedir.'/../image/ai/tencent/face/wxc.jpg');
         $this->assertJsonStringEqualsJsonString('0', json_encode($array['ret']));
     }
 }

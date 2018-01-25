@@ -7,6 +7,7 @@ use TencentAI\TencentAI;
 
 class FaceTest extends TestCase
 {
+    public $basedir;
     public $ai;
 
     // 初始化
@@ -22,6 +23,7 @@ class FaceTest extends TestCase
     ];
 
         $this->ai = new TencentAI($config);
+        $this->basedir=__DIR__;
     }
 
     // test + 函数名
@@ -29,21 +31,21 @@ class FaceTest extends TestCase
     public function testDetect()
     {
         // code...
-        $array = $this->ai->face->detect(getcwd().'/tests/image/ai/tencent/face/wxc.jpg');
+        $array = $this->ai->face->detect($this->basedir.'/../image/ai/tencent/face/wxc.jpg');
         $this->assertContains('ok', $array['msg']);
     }
 
     public function testMultiDetect()
     {
         # code...
-        $array = $this->ai->face->multiDetect(getcwd().'/tests/image/ai/tencent/face/wxc.jpg');
+        $array = $this->ai->face->multiDetect($this->basedir.'/../image/ai/tencent/face/wxc.jpg');
         $this->assertContains('ok', $array['msg']);
     }
 
     public function testShape()
     {
         # code...
-        $array = $this->ai->face->shape(getcwd().'/tests/image/ai/tencent/face/wxc.jpg');
+        $array = $this->ai->face->shape($this->basedir.'/../image/ai/tencent/face/wxc.jpg');
         $this->assertJsonStringEqualsJsonString('0', json_encode($array['ret']));
     }
 
@@ -56,8 +58,8 @@ class FaceTest extends TestCase
     public function compare()
     {
         $array = $this->ai->face->compare([
-        getcwd().'/tests/image/ai/tencent/face/wxc.jpg',
-        getcwd().'/tests/image/ai/tencent/face/verify.jpg'
+            $this->basedir.'/../image/ai/tencent/face/wxc.jpg',
+            $this->basedir.'/../image/ai/tencent/face/verify.jpg'
       ]);
 
         $this->assertEquals(0, $array['ret']);

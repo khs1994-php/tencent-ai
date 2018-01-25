@@ -1,4 +1,6 @@
 language: php
+cache:
+ - vendor
 php:
   - 7.2.1
 script:
