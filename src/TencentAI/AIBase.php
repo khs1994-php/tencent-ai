@@ -6,12 +6,13 @@ class AIBase
 {
     public function __construct(array $config)
     {
-        # code...
+        // code...
         $config = (object) $config;
         $this->app_id = $config->app_id;
         $this->app_key = $config->app_key;
         $this->UrlUtility = new UrlUtility();
     }
+
     // 生成签名
 
     public function sign($body)
