@@ -27,10 +27,10 @@ class Face extends AIBase
 
     public function multiDetect($image)
     {
-      # code...
-      $url=$this->baseUrl.'face_detectmultiface';
+        // code...
+        $url = $this->baseUrl.'face_detectmultiface';
 
-      return $this->image($url,$image);
+        return $this->image($url, $image);
     }
 
     // 人脸对比

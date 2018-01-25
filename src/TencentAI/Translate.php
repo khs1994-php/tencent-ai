@@ -2,6 +2,6 @@
 
 namespace TencentAI;
 
-class Translate extends TencentAI{
-
+class Translate extends TencentAI
+{
 }

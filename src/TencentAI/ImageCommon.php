@@ -4,12 +4,12 @@ namespace TencentAI;
 
 trait ImageCommon
 {
-    public function image($url,$image)
+    public function image($url, $image)
     {
-      $data = [
+        $data = [
       'image' => base64_encode(file_get_contents($image)),
       ];
 
-      return $this->exec($url, $data);
+        return $this->exec($url, $data);
     }
 }

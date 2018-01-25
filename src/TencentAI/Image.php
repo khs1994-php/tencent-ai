@@ -14,6 +14,7 @@ class Image extends AIBase
     {
         // code...
         $url = $this->baseUrl.'vision/vision_porn';
+
         return $this->image($url, $image);
     }
 
