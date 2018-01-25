@@ -20,9 +20,11 @@ $config = [
 
 $ai=new TencentAI($config);
 
-$image='';
+$image='/image/path';
 
 $output=$ai->face->detect($image);
+
+// 返回结果是一个数组
 
 var_dump($output);
 ```

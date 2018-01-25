@@ -13,19 +13,6 @@ class AIBase
         $this->UrlUtility = new UrlUtility();
     }
 
-    // gbk 转 utf-8
-
-    public function gbkToUtf($data)
-    {
-        // code...
-        $data = explode('[', $data);
-        $data = iconv('gbk', 'utf-8//IGNORE', $data[1]);
-        var_dump($data);
-        exit();
-
-        return $data;
-    }
-
     // 生成签名
 
     public function sign($body)
@@ -39,7 +26,7 @@ class AIBase
 
     // 逻辑处理
 
-    public function exec(string $url, array $arg, string $type = 'utf-8')
+    public function exec(string $url, array $arg, string $type = 'utf8')
     {
         // code...
         $app_id = $this->app_id;
@@ -58,12 +45,14 @@ class AIBase
 
         $sign = $this->sign($body);
         $data = $body."&sign=$sign";
-        $data = $this->UrlUtility->curl($url, 'post', $data);
+        $json = $this->UrlUtility->curl($url, 'post', $data);
 
         if ($type === 'gbk') {
-            return $this->gbkToUtf($data);
+            $json=mb_convert_encoding($json, 'utf8', 'gbk');
+
+            return $array=json_decode($json, true);
         }
 
-        return $array = json_decode($data, true);
+        return $array = json_decode($json, true);
     }
 }

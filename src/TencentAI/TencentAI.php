@@ -14,7 +14,7 @@ class TencentAI
         $config = $this->config;
         switch ($name) {
         case 'audio':
-          return new AudioIdentification($config);
+          return new Audio($config);
           break;
 
         case 'face':
@@ -31,10 +31,6 @@ class TencentAI
 
         case 'ocr':
           return new OCR($config);
-          break;
-
-        case 'person':
-          return new Person($config);
           break;
 
         case 'photo':

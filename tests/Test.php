@@ -16,8 +16,8 @@ use TencentAI\TencentAI;
 
 $ai = new TencentAI($config);
 
-$output = $ai->nlp->textPolar('腾讯是中国互联网企业');
+$output = $ai->nlp->wordseg('中国女演员王晓晨');
 
 var_dump($output);
 
-echo json_encode($output);
+echo json_encode($output,JSON_UNESCAPED_UNICODE);

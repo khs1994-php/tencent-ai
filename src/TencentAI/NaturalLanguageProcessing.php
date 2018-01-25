@@ -8,14 +8,17 @@ class NaturalLanguageProcessing extends AIBase
 
     public function common($url, $text, bool $type = true)
     {
-        // code...
-        $data = [
-          'text' => $text,
-        ];
-
         if ($type) {
+            $data = [
+              'text' => mb_convert_encoding($text, 'gbk', 'utf8'),
+            ];
+
             return $this->exec($url, $data, 'gbk');
         }
+
+        $data = [
+          'text' => $text
+        ];
 
         return $this->exec($url, $data);
     }

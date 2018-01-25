@@ -2,7 +2,7 @@
 
 namespace TencentAI;
 
-class AudioIdentification extends TencentAI
+class Audio extends TencentAI
 {
     private $baseUrl = 'https://api.ai.qq.com/fcgi-bin/aai/';
 
