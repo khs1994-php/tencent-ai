@@ -11,17 +11,43 @@ class TencentAI
 
     public function __get(string $name)
     {
+        $config=$this->config;
         switch ($name) {
-        case 'image':
-          return $image = new Image($this->config);
+        case 'audio':
+          return new AudioIdentification($config);
           break;
 
         case 'face':
-          return $face = new Face($this->config);
+          return new Face($config);
+          break;
+
+        case 'image':
+          return new Image($config);
+          break;
+
+        case 'nlp':
+          return new NaturalLanguageProcessing($config);
+          break;
+
+        case 'ocr':
+          return new OCR($config);
+          break;
+
+        case 'person':
+          return new Person($config);
+          break;
+
+        case 'photo':
+          return new Photo($config);
+          break;
+
+        case 'translate':
+          return new Translate($config);
           break;
 
         default:
           // code...
+          exit();
           break;
       }
     }

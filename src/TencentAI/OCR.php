@@ -4,6 +4,8 @@ namespace TencentAI;
 
 class OCR extends AIBase
 {
+    use ImageCommon;
+
     private $baseUrl = 'https://api.ai.qq.com/fcgi-bin/ocr/';
 
     // 身份证识别
@@ -21,28 +23,53 @@ class OCR extends AIBase
         return $this->exec($url, $data);
     }
 
-    public function bc($value = '')
+    // 名片识别
+
+    public function bc(string $image)
     {
         // code...
+        $url = $this->baseUrl.'ocr_bcocr';
+        return $this->image($url, $image);
     }
 
-    public function driverLicense($value = '')
+    // 行驶证驾驶证识别
+
+    public function driverLicense(string $image, int $type=0)
     {
         // code...
+        $data=[
+          'image'=>base64_encode(file_get_contents($image)),
+          'type'=>$type
+        ];
+        $url=$this->baseUrl.'ocr_driverlicenseocr';
+
+        return $this->exec($url, $data);
     }
 
-    public function bizLicense($value = '')
+    // 营业执照识别
+
+    public function bizLicense(string $image)
     {
         // code...
+        $url=$this->baseUrl.'ocr_bizlicenseocr';
+        return $this->image($url, $image);
     }
 
-    public function creditCard($value = '')
+    // 银行卡识别
+
+    public function creditCard(string $image)
     {
         // code...
+        $url=$this->baseUrl.'ocr_creditcardocr';
+        return $this->image($url, $image);
     }
 
-    public function general($value = '')
+    // 通用识别
+
+    public function general(string $image)
     {
         // code...
+        $url=$this->baseUrl.'ocr_generalocr';
+        return $this->image($url, $image);
     }
 }

@@ -16,7 +16,7 @@ use TencentAI\TencentAI;
 
 $ai = new TencentAI($config);
 
-$output = $ai->face->multiDetect('image/ai/tencent/vision/dog.jpg');
+$output = $ai->nlp->textPolar("腾讯是中国互联网企业");
 
 var_dump($output);
 
