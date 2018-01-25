@@ -11,7 +11,7 @@ class TencentAI
 
     public function __get(string $name)
     {
-        $config=$this->config;
+        $config = $this->config;
         switch ($name) {
         case 'audio':
           return new AudioIdentification($config);
