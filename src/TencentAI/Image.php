@@ -4,17 +4,9 @@ namespace TencentAI;
 
 class Image extends AIBase
 {
+    use ImageCommon;
+
     private $baseUrl = 'https://api.ai.qq.com/fcgi-bin/';
-
-    public function common($url, $image)
-    {
-        // code...
-        $data = [
-        'image' => base64_encode(file_get_contents($image)),
-        ];
-
-        return $this->exec($url, $data);
-    }
 
     // 智能鉴黄
 
@@ -22,8 +14,7 @@ class Image extends AIBase
     {
         // code...
         $url = $this->baseUrl.'vision/vision_porn';
-
-        return $this->common($url, $image);
+        return $this->image($url, $image);
     }
 
     // 暴恐识别
@@ -34,7 +25,7 @@ class Image extends AIBase
 
         $url = $this->baseUrl.'image/image_terrorism';
 
-        return $this->common($url, $image);
+        return $this->image($url, $image);
     }
 
     // 物体场景识别=》场景识别

@@ -31,7 +31,18 @@ class FaceTest extends TestCase
         // code...
         $array = $this->ai->face->detect(getcwd().'/tests/image/ai/tencent/face/wxc.jpg');
         $this->assertContains('ok', $array['msg']);
+    }
 
+    public function testMultiDetect()
+    {
+        # code...
+        $array = $this->ai->face->multiDetect(getcwd().'/tests/image/ai/tencent/face/wxc.jpg');
+        $this->assertContains('ok', $array['msg']);
+    }
+
+    public function testShape()
+    {
+        # code...
         $array = $this->ai->face->shape(getcwd().'/tests/image/ai/tencent/face/wxc.jpg');
         $this->assertJsonStringEqualsJsonString('0', json_encode($array['ret']));
     }

@@ -4,6 +4,8 @@ namespace TencentAI;
 
 class Face extends AIBase
 {
+    use ImageCommon;
+
     // 人脸分析
 
     private $baseUrl = 'https://api.ai.qq.com/fcgi-bin/face/';
@@ -19,6 +21,16 @@ class Face extends AIBase
         $url = $this->baseUrl.'face_detectface';
 
         return $this->exec($url, $data);
+    }
+
+    // 多人脸检测
+
+    public function multiDetect($image)
+    {
+      # code...
+      $url=$this->baseUrl.'face_detectmultiface';
+
+      return $this->image($url,$image);
     }
 
     // 人脸对比

@@ -3,7 +3,7 @@ php:
   - 7.2.1
 script:
 - composer self-update
-- composer install
+- composer install -q
 - vendor/bin/phpunit
 branches:
   only:

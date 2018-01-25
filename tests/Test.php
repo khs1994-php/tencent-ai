@@ -16,7 +16,7 @@ use TencentAI\TencentAI;
 
 $ai = new TencentAI($config);
 
-$output = $ai->image->food('image/ai/tencent/vision/dog.jpg');
+$output = $ai->face->multiDetect('image/ai/tencent/vision/dog.jpg');
 
 var_dump($output);
 

@@ -8,7 +8,7 @@ pipeline:
     image: ccr.ccs.tencentyun.com/khs1994/php-fpm:7.2.1-alpine3.7
     commands:
       - pwd
-      - composer install > /dev/null 2>&1
+      - composer install -q
       - vendor/bin/phpunit
     volumes:
       # - /Users/khs1994/khs1994/khs1994-lnmp/tmp/cache:/tmp/cache
