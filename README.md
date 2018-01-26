@@ -4,7 +4,9 @@
 
 - [Tencent AI](https://ai.qq.com)
 
-- [Documents](https://ai.qq.com/doc/index.shtml)
+- [Official Documents](https://ai.qq.com/doc/index.shtml)
+
+- [SDK Documents](https://github.com/khs1994-php/tencent-ai/tree/master/docs)
 
 # Usage
 

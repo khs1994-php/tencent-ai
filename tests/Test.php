@@ -16,7 +16,7 @@ use TencentAI\TencentAI;
 
 $ai = new TencentAI($config);
 
-$output = $ai->nlp->wordseg('中国女演员王晓晨');
+$output = $ai->nlp->textChat('中国女演员王晓晨');
 
 var_dump($output);
 

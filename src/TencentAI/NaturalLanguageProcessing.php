@@ -96,8 +96,8 @@ class NaturalLanguageProcessing extends AIBase
                 'session' => $session,
         ];
 
-        $baseurl = 'https://api.ai.qq.com/fcgi-bin/nlp/nlp_textchat';
+        $url=$this->baseUrl . '/nlp_textchat';
 
-        return $this->exec($data, $baseurl);
+        return $this->exec($url, $data);
     }
 }
