@@ -2,6 +2,8 @@
 
 namespace TencentAI;
 
+use Curl\Curl;
+
 class AIBase
 {
     public function __construct(array $config)
@@ -10,7 +12,7 @@ class AIBase
         $config = (object) $config;
         $this->app_id = $config->app_id;
         $this->app_key = $config->app_key;
-        $this->UrlUtility = new UrlUtility();
+        $this->curl = new Curl();
     }
 
     // 生成签名
@@ -45,7 +47,7 @@ class AIBase
 
         $sign = $this->sign($body);
         $data = $body."&sign=$sign";
-        $json = $this->UrlUtility->curl($url, 'post', $data);
+        $json = $this->curl->curl($url, 'post', $data);
 
         if ($type === 'gbk') {
             $json=mb_convert_encoding($json, 'utf8', 'gbk');

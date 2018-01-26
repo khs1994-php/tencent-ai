@@ -8,9 +8,16 @@ class Audio extends TencentAI
 
     // 语音识别 echo 版
 
-    public function asr($value = '')
+    public function asr(int $format=3, string $speech,int $rate=16000)
     {
         // code...
+        $data=[
+          'format'=>$format,
+          'speech'=>base64_encode(file_get_contents($speech)),
+          'rate'=>$rate
+        ];
+        $url=$this->baseUrl.'aai_asr';
+        $this->exec($url, $data);
     }
 
     // 语音识别 流式版 AILab

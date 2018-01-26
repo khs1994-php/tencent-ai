@@ -51,7 +51,13 @@ class Translate extends TencentAI
     {
         // code...
         $data = [
-
+          'format'=>$format,
+          'seq'=>$seq,
+          'end'=>$end,
+          'session_id'=>$session_id,
+          'speech_chunk'=>$speech_chunk,
+          'source'=>$source,
+          'target'=>$target
         ];
         $url = $this->baseUrl.'nlp_speechtranslate';
 
@@ -63,7 +69,9 @@ class Translate extends TencentAI
         // code...
 
         $data = [
-
+          'text'=>$text,
+          'candidate_langs'=>$candidate_langs,
+          'force'=>$force
         ];
         $url = $this->baseUrl.'nlp_textdetect';
 

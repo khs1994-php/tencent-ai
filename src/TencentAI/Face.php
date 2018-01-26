@@ -159,7 +159,7 @@ class Face extends AIBase
 
     // 人体创建
 
-    public function create(string $group_ids, string $person_id, string $person_name, string $image, string $tag)
+    public function createPerson(string $group_ids, string $person_id, string $person_name, string $image, string $tag)
     {
         $data = [
           'group_ids' => $group_ids,
@@ -191,7 +191,7 @@ class Face extends AIBase
 
     // 设置信息
 
-    public function setInfo(string $person_id, string $person_name, string $tag)
+    public function setPersonInfo(string $person_id, string $person_name, string $tag)
     {
         // code...
 
