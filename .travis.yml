@@ -1,6 +1,7 @@
 language: php
 cache:
- - vendor
+  directories:
+  - vendor
 php:
   - 7.2.1
 script:

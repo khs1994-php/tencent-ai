@@ -8,9 +8,7 @@
 
 - [SDK Documents](https://github.com/khs1994-php/tencent-ai/tree/master/docs)
 
-# Usage
-
-## Composer
+# Installation
 
 Exec `composer` command
 
@@ -28,9 +26,9 @@ Or edit `composer.json`
 }
 ```
 
-Then exec `$ composer install`
+Then exec `$ composer update`
 
-## Example
+# Usage
 
 ```php
 <?php
