@@ -15,7 +15,7 @@
   }],
   "require": {
     "php": ">=7.0",
-    "khs1994/curl": "dev-master"
+    "khs1994/curl": "@dev"
   },
   "require-dev": {
     "phpunit/phpunit": "~5.0|~6.0"

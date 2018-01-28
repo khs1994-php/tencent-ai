@@ -13,7 +13,12 @@
 Exec `composer` command
 
 ```bash
-$ composer require khs1994/tencent-ai:dev-master
+# For latest commit version:
+$ composer require khs1994/tencent-ai @dev
+
+# TODO Don't exec this command
+
+# $ composer require khs1994/tencent-ai
 ```
 
 Or edit `composer.json`
@@ -21,7 +26,7 @@ Or edit `composer.json`
 ```json
 {
     "require": {
-        "khs1994/tencent-ai": "dev-master"
+        "khs1994/tencent-ai": "@dev"
     }
 }
 ```

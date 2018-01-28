@@ -47,7 +47,7 @@ class AIBase
 
         $sign = $this->sign($body);
         $data = $body."&sign=$sign";
-        $json = $this->curl->curl($url, 'post', $data);
+        $json = $this->curl->post($url, $data);
 
         if ($type === 'gbk') {
             $json=mb_convert_encoding($json, 'utf8', 'gbk');
