@@ -18,8 +18,4 @@ $config = [
 
 $ai = TencentAI::tencentAI($config);
 
-$output = $ai->nlp()->textChat('中国女演员王晓晨', 1);
-
-var_dump($output);
-
-echo json_encode($output, JSON_UNESCAPED_UNICODE);
+var_dump($ai->face()->deletePerson('testPersonId'));

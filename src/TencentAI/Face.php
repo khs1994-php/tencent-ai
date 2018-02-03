@@ -2,6 +2,8 @@
 
 namespace TencentAI;
 
+use TencentAI\Error\FaceError;
+
 class Face
 {
     use Module\Image;
@@ -12,12 +14,10 @@ class Face
 
     public function detect(string $image)
     {
-
         $data = [
             'image' => base64_encode(file_get_contents($image)),
             'mode' => 0,
         ];
-
         $url = self::BASE_URL.'face_detectface';
 
         return TencentAI::exec($url, $data);
@@ -28,22 +28,25 @@ class Face
     public function multiDetect($image)
     {
         $url = self::BASE_URL.'face_detectmultiface';
-
         return $this->image($url, $image);
     }
 
-    // 人脸对比
-
+    /**
+     * 人脸对比
+     *
+     * @param array $images
+     * @return mixed
+     * @throws FaceError
+     */
     public function compare(array $images)
     {
         if (count($images) !== 2) {
-            die('数组长度小于 2');
+            throw new FaceError(20001);
         }
         $data = [
             'image_a' => base64_encode(file_get_contents($images[0])),
             'image_b' => base64_encode(file_get_contents($images[1])),
         ];
-
         $url = self::BASE_URL.'face_facecompare';
 
         return TencentAI::exec($url, $data);
@@ -51,13 +54,21 @@ class Face
 
     // 五官检测
 
-    public function shape(string $image)
+    /**
+     * @param string $image
+     * @param int $mode
+     * @return mixed
+     * @throws FaceError
+     */
+    public function shape(string $image, int $mode)
     {
+        if ($mode !== 0 && $mode !== 1) {
+            throw new FaceError('20002');
+        }
         $data = [
             'image' => base64_encode(file_get_contents($image)),
-            'mode' => 0,
+            'mode' => $mode,
         ];
-
         $url = self::BASE_URL.'face_detectface';
 
         return TencentAI::exec($url, $data);
@@ -72,7 +83,6 @@ class Face
             'group_id' => $group_id,
             'topn' => $topon,
         ];
-
         $url = self::BASE_URL.'face_faceidentify';
 
         return TencentAI::exec($url, $data);
@@ -86,7 +96,6 @@ class Face
             'person_id' => $person_id,
             'image' => base64_encode(file_get_contents($image)),
         ];
-
         $url = self::BASE_URL.'face_faceverify';
 
         return TencentAI::exec($url, $data);
@@ -101,7 +110,6 @@ class Face
             'images' => base64_encode(file_get_contents($image)),
             'tag' => $tag,
         ];
-
         $url = self::BASE_URL.'face_addface';
 
         return TencentAI::exec($url, $data);
@@ -115,7 +123,6 @@ class Face
             'person_id' => $person_id,
             'face_ids' => $face_ids,
         ];
-
         $url = self::BASE_URL.'face_delface';
 
         return TencentAI::exec($url, $data);
@@ -128,7 +135,6 @@ class Face
         $data = [
             'person_id' => $person_id,
         ];
-
         $url = self::BASE_URL.'face_getfaceids';
 
         return TencentAI::exec($url, $data);
@@ -141,7 +147,6 @@ class Face
         $data = [
             'face_id' => $face_id,
         ];
-
         $url = self::BASE_URL.'face_getfaceinfo';
 
         return TencentAI::exec($url, $data);
@@ -149,7 +154,11 @@ class Face
 
     // 人体创建
 
-    public function createPerson(string $group_ids, string $person_id, string $person_name, string $image, string $tag)
+    public function createPerson(string $group_ids,
+                                 string $person_id,
+                                 string $person_name,
+                                 string $image,
+                                 string $tag)
     {
         $data = [
             'group_ids' => $group_ids,
@@ -158,7 +167,6 @@ class Face
             'person_name' => $person_name,
             'tag' => $tag,
         ];
-
         $url = self::BASE_URL.'face_newperson';
 
         return TencentAI::exec($url, $data);
@@ -171,13 +179,12 @@ class Face
         $data = [
             'person_id' => $person_id,
         ];
-
         $url = self::BASE_URL.'face_delperson';
 
         return TencentAI::exec($url, $data);
     }
 
-    // 设置信息
+    // 设置个体信息
 
     public function setPersonInfo(string $person_id, string $person_name, string $tag)
     {
@@ -186,20 +193,18 @@ class Face
             'person_name' => $person_name,
             'tag' => $tag,
         ];
-
         $url = self::BASE_URL.'face_setinfo';
 
         return TencentAI::exec($url, $data);
     }
 
-    // 获取信息
+    // 获取个体信息
 
     public function getPersonInfo(string $person_id)
     {
         $data = [
             'person_id' => $person_id,
         ];
-
         $url = self::BASE_URL.'face_getinfo';
 
         return TencentAI::exec($url, $data);
@@ -207,13 +212,10 @@ class Face
 
     // 获取组列表
 
-    public function getGroup()
+    public function getGroupList()
     {
-        $data = [];
-
         $url = self::BASE_URL.'face_getgroupids';
-
-        return TencentAI::exec($url, $data);
+        return TencentAI::exec($url, []);
     }
 
     // 获取人体列表
@@ -223,7 +225,6 @@ class Face
         $data = [
             'group_id' => $group_id,
         ];
-
         $url = self::BASE_URL.'face_getpersonids';
 
         return TencentAI::exec($url, $data);
