@@ -2,33 +2,31 @@
 
 namespace TencentAI;
 
-class OCR extends AIBase
+class OCR
 {
-    use ImageCommon;
+    use Module\Image;
 
-    private $baseUrl = 'https://api.ai.qq.com/fcgi-bin/ocr/';
+    const  BASE_URL = 'https://api.ai.qq.com/fcgi-bin/ocr/';
 
     // 身份证识别
 
     public function idCard(string $file_path, int $card_type = 0)
     {
-        // code...
         $data = [
-          'image' => base64_encode(file_get_contents($file_path)),
-          'card_type' => 0,
+            'image' => base64_encode(file_get_contents($file_path)),
+            'card_type' => $card_type,
         ];
 
-        $url = $this->baseUrl.'ocr_idcardocr';
+        $url = self::BASE_URL.'ocr_idcardocr';
 
-        return $this->exec($url, $data);
+        return TencentAI::exec($url, $data);
     }
 
     // 名片识别
 
     public function bc(string $image)
     {
-        // code...
-        $url = $this->baseUrl.'ocr_bcocr';
+        $url = self::BASE_URL.'ocr_bcocr';
 
         return $this->image($url, $image);
     }
@@ -37,22 +35,20 @@ class OCR extends AIBase
 
     public function driverLicense(string $image, int $type = 0)
     {
-        // code...
         $data = [
-          'image' => base64_encode(file_get_contents($image)),
-          'type' => $type,
+            'image' => base64_encode(file_get_contents($image)),
+            'type' => $type,
         ];
-        $url = $this->baseUrl.'ocr_driverlicenseocr';
+        $url = self::BASE_URL.'ocr_driverlicenseocr';
 
-        return $this->exec($url, $data);
+        return TencentAI::exec($url, $data);
     }
 
     // 营业执照识别
 
     public function bizLicense(string $image)
     {
-        // code...
-        $url = $this->baseUrl.'ocr_bizlicenseocr';
+        $url = self::BASE_URL.'ocr_bizlicenseocr';
 
         return $this->image($url, $image);
     }
@@ -61,8 +57,7 @@ class OCR extends AIBase
 
     public function creditCard(string $image)
     {
-        // code...
-        $url = $this->baseUrl.'ocr_creditcardocr';
+        $url = self::BASE_URL.'ocr_creditcardocr';
 
         return $this->image($url, $image);
     }
@@ -71,8 +66,7 @@ class OCR extends AIBase
 
     public function general(string $image)
     {
-        // code...
-        $url = $this->baseUrl.'ocr_generalocr';
+        $url = self::BASE_URL.'ocr_generalocr';
 
         return $this->image($url, $image);
     }

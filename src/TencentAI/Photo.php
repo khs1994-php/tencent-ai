@@ -2,6 +2,6 @@
 
 namespace TencentAI;
 
-class Photo extends AIBase
+class Photo
 {
 }

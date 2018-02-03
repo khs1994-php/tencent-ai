@@ -2,7 +2,7 @@
 
 use TencentAI\TencentAI;
 
-require '../vendor/autoload.php';
+require __DIR__.'/../vendor/autoload.php';
 
 // define('BASEDIR', __DIR__.'/../src/');
 //
@@ -16,10 +16,10 @@ $config = [
     'app_key' => 'ZbRY9cf72TbDO0xb',
 ];
 
-$ai = new TencentAI($config);
+$ai = TencentAI::tencentAI($config);
 
-$output = $ai->nlp->textChat('中国女演员王晓晨',1);
+$output = $ai->nlp()->textChat('中国女演员王晓晨', 1);
 
 var_dump($output);
 
-echo json_encode($output,JSON_UNESCAPED_UNICODE);
+echo json_encode($output, JSON_UNESCAPED_UNICODE);

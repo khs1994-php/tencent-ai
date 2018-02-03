@@ -2,49 +2,89 @@
 
 namespace TencentAI;
 
+use Curl\Curl;
+
 class TencentAI
 {
-    public function __construct(array $config)
+    private static $tencentAI;
+
+    private static $app_id;
+
+    private static $app_key;
+
+    private static $curl;
+
+    private function __construct(array $config)
     {
-        $this->config = $config;
+        self::$app_id = $config['app_id'];
+        self::$app_key = $config['app_key'];
+        self::$curl = new Curl();
     }
 
-    public function __get(string $name)
+    public static function tencentAI(array $config)
     {
-        $config = $this->config;
-        switch ($name) {
-        case 'audio':
-          return new Audio($config);
-          break;
+        if (!self::$tencentAI instanceof TencentAI) {
+            self::$tencentAI = new self($config);
+        }
+        return self::$tencentAI;
+    }
 
-        case 'face':
-          return new Face($config);
-          break;
+    // 生成签名
 
-        case 'image':
-          return new Image($config);
-          break;
+    public static function sign($request_body)
+    {
+        $app_key = self::$app_key;
+        $sign = strtoupper(md5($request_body.'&app_key='.$app_key));
 
-        case 'nlp':
-          return new NaturalLanguageProcessing($config);
-          break;
+        return $sign;
+    }
 
-        case 'ocr':
-          return new OCR($config);
-          break;
+    // 逻辑处理
 
-        case 'photo':
-          return new Photo($config);
-          break;
+    public static function exec(string $url, array $arg, bool $charSetUTF8 = true)
+    {
+        $app_id = self::$app_id;
+        $nonce_str = 'fa577ce340859f95b';
 
-        case 'translate':
-          return new Translate($config);
-          break;
+        $data = [
+            'app_id' => $app_id,
+            'time_stamp' => time(),
+            'nonce_str' => $nonce_str,
+        ];
 
-        default:
-          // code...
-          exit();
-          break;
-      }
+        $array = array_merge($data, $arg);
+
+        ksort($array);
+
+        $request_body = http_build_query($array);
+
+        $sign = self::sign($request_body);
+
+        $data = $request_body."&sign=$sign";
+
+        $json = self::$curl->post($url, $data);
+
+        if (!$charSetUTF8) {
+            $json = mb_convert_encoding($json, 'utf8', 'gbk');
+
+            return $array = json_decode($json, true);
+        }
+
+        return $array = json_decode($json, true);
+    }
+
+    public function nlp()
+    {
+        return new NaturalLanguageProcessing();
+    }
+
+    public function face()
+    {
+        return new Face();
+    }
+
+    public function image()
+    {
+        return new Image();
     }
 }

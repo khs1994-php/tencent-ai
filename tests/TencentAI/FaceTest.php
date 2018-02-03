@@ -16,36 +16,33 @@ class FaceTest extends TestCase
 
     public function setup()
     {
-        // code...
         $config = [
-        'app_id' => 1106560031,
-        'app_key' => 'ZbRY9cf72TbDO0xb',
-    ];
+            'app_id' => 1106560031,
+            'app_key' => 'ZbRY9cf72TbDO0xb',
+        ];
 
-        $this->ai = new TencentAI($config);
-        $this->basedir = __DIR__;
+        $this->ai = TencentAI::tencentAI($config);
     }
 
     // test + 函数名
 
     public function testDetect()
     {
-        // code...
-        $array = $this->ai->face->detect($this->basedir.'/../image/ai/tencent/face/wxc.jpg');
+        $array = $this->ai->face()->detect(__DIR__.'/../image/ai/tencent/face/wxc.jpg');
         $this->assertContains('ok', $array['msg']);
     }
 
     public function testMultiDetect()
     {
         // code...
-        $array = $this->ai->face->multiDetect($this->basedir.'/../image/ai/tencent/face/wxc.jpg');
+        $array = $this->ai->face()->multiDetect(__DIR__.'/../image/ai/tencent/face/wxc.jpg');
         $this->assertContains('ok', $array['msg']);
     }
 
     public function testShape()
     {
         // code...
-        $array = $this->ai->face->shape($this->basedir.'/../image/ai/tencent/face/wxc.jpg');
+        $array = $this->ai->face()->shape(__DIR__.'/../image/ai/tencent/face/wxc.jpg');
         $this->assertJsonStringEqualsJsonString('0', json_encode($array['ret']));
     }
 
@@ -56,10 +53,10 @@ class FaceTest extends TestCase
      */
     public function compare()
     {
-        $array = $this->ai->face->compare([
-            $this->basedir.'/../image/ai/tencent/face/wxc.jpg',
-            $this->basedir.'/../image/ai/tencent/face/verify.jpg',
-      ]);
+        $array = $this->ai->face()->compare([
+            __DIR__.'/../image/ai/tencent/face/wxc.jpg',
+            __DIR__.'/../image/ai/tencent/face/verify.jpg',
+        ]);
 
         $this->assertEquals(0, $array['ret']);
     }

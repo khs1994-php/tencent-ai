@@ -38,7 +38,7 @@ Then exec `$ composer update`
 ```php
 <?php
 
-require_once 'vendor/autoload.php';
+require_once __DIR__.'vendor/autoload.php';
 
 use TencentAI\TencentAI;
 
@@ -47,11 +47,11 @@ $config = [
   'app_key' => 'ZbRY9cf72TbDO0aa',
 ];
 
-$ai = new TencentAI($config);
+$ai = TencentAI::tencentAI($config);
 
 $image = '/path/image/name.jpg';
 
-$output = $ai->face->detect($image);
+$output = $ai->face()->detect($image);
 
 // return Array
 

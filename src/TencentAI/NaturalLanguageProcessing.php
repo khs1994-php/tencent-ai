@@ -2,25 +2,25 @@
 
 namespace TencentAI;
 
-class NaturalLanguageProcessing extends AIBase
+class NaturalLanguageProcessing
 {
-    private $baseUrl = 'https://api.ai.qq.com/fcgi-bin/nlp/';
+    const BASE_URL = 'https://api.ai.qq.com/fcgi-bin/nlp/';
 
-    public function common($url, $text, bool $type = true)
+    public function common($url, $text, bool $charSetGBK = true)
     {
-        if ($type) {
+        if ($charSetGBK) {
             $data = [
-              'text' => mb_convert_encoding($text, 'gbk', 'utf8'),
+                'text' => mb_convert_encoding($text, 'gbk', 'utf8'),
             ];
 
-            return $this->exec($url, $data, 'gbk');
+            return TencentAI::exec($url, $data, false);
         }
 
         $data = [
-          'text' => $text
+            'text' => $text
         ];
 
-        return $this->exec($url, $data);
+        return TencentAI::exec($url, $data);
     }
 
     // GBK START
@@ -29,8 +29,7 @@ class NaturalLanguageProcessing extends AIBase
 
     public function wordseg(string $text)
     {
-        // code...
-        $url = $this->baseUrl.'nlp_wordseg';
+        $url = self::BASE_URL.'nlp_wordseg';
 
         return $this->common($url, $text);
     }
@@ -39,8 +38,7 @@ class NaturalLanguageProcessing extends AIBase
 
     public function wordpos(string $text)
     {
-        // code...
-        $url = $this->baseUrl.'nlp_wordpos';
+        $url = self::BASE_URL.'nlp_wordpos';
 
         return $this->common($url, $text);
     }
@@ -49,8 +47,7 @@ class NaturalLanguageProcessing extends AIBase
 
     public function wordner(string $text)
     {
-        // code...
-        $url = $this->baseUrl.'nlp_wordner';
+        $url = self::BASE_URL.'nlp_wordner';
 
         return $this->common($url, $text);
     }
@@ -59,8 +56,7 @@ class NaturalLanguageProcessing extends AIBase
 
     public function wordsyn(string $text)
     {
-        // code...
-        $url = $this->baseUrl.'nlp_wordsyn';
+        $url = self::BASE_URL.'nlp_wordsyn';
 
         return $this->common($url, $text);
     }
@@ -71,7 +67,7 @@ class NaturalLanguageProcessing extends AIBase
 
     public function wordcom($text)
     {
-        $url = $this->baseUrl.'nlp_wordcom';
+        $url = self::BASE_URL.'nlp_wordcom';
 
         return $this->common($url, $text, false);
     }
@@ -80,8 +76,7 @@ class NaturalLanguageProcessing extends AIBase
 
     public function textPolar($text)
     {
-        // code...
-        $url = $this->baseUrl.'nlp_textpolar';
+        $url = self::BASE_URL.'nlp_textpolar';
 
         return $this->common($url, $text, false);
     }
@@ -90,14 +85,13 @@ class NaturalLanguageProcessing extends AIBase
 
     public function textChat(string $question, string $session)
     {
-        // code...
         $data = [
-                'question' => $question,
-                'session' => $session,
+            'question' => $question,
+            'session' => $session,
         ];
 
-        $url=$this->baseUrl . '/nlp_textchat';
+        $url = self::BASE_URL.'/nlp_textchat';
 
-        return $this->exec($url, $data);
+        return TencentAI::exec($url, $data);
     }
 }
