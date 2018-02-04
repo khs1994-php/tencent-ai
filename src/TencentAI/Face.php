@@ -14,7 +14,7 @@ class Face
      * 人脸分析
      *
      * @param string $image
-     * @param int $mode 检测模式，0-正常，1-大脸模式
+     * @param int    $mode 检测模式，0-正常，1-大脸模式
      * @return mixed
      */
     public function detect(string $image, $mode = 1)
@@ -31,10 +31,10 @@ class Face
     /**
      * 多人脸检测
      *
-     * @param $image
+     * @param string $image
      * @return mixed
      */
-    public function multiDetect($image)
+    public function multiDetect(string $image)
     {
         $url = self::BASE_URL.'face_detectmultiface';
         return $this->image($url, $image);
@@ -65,7 +65,7 @@ class Face
      * 五官检测
      *
      * @param string $image
-     * @param int $mode 检测模式，0-正常，1-大脸模式
+     * @param int    $mode 检测模式，0-正常，1-大脸模式
      * @return mixed
      * @throws FaceError
      */
@@ -88,7 +88,7 @@ class Face
      *
      * @param string $group_id
      * @param string $image
-     * @param int $topon 返回的候选人个数
+     * @param int    $topon 返回的候选人个数
      * @return mixed
      */
     public function identify(string $group_id, string $image, int $topon = 9)
@@ -124,9 +124,9 @@ class Face
     /**
      * 个体管理 => 增加人脸(一个或一组人脸)
      *
-     * @param string $person_id
+     * @param string       $person_id
      * @param string|array $image
-     * @param string $tag
+     * @param string       $tag
      * @return mixed
      */
     public function add(string $person_id, $image, string $tag)
@@ -144,7 +144,7 @@ class Face
     /**
      * 个体管理 => 删除人脸(一个或一组人脸)
      *
-     * @param string $person_id
+     * @param string       $person_id
      * @param string|array $face_ids
      * @return mixed
      */
@@ -195,10 +195,10 @@ class Face
      * 人体创建(属于一个组，或多个组)
      *
      * @param string|array $group_ids
-     * @param string $person_id
-     * @param string $person_name
-     * @param string $image
-     * @param string $tag
+     * @param string       $person_id
+     * @param string       $person_name
+     * @param string       $image
+     * @param string       $tag
      * @return mixed
      */
     public function createPerson($group_ids,
