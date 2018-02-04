@@ -245,6 +245,7 @@ class Face
      *
      * @param string $person_id
      * @return mixed
+     * @throws TencentAIError
      */
     public function deletePerson(string $person_id)
     {

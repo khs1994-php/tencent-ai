@@ -15,11 +15,32 @@ class TencentAI
 
     private static $curl;
 
+    public $audio;
+
+    public $face;
+
+    public $image;
+
+    public $nlp;
+
+    public $ocr;
+
+    public $photo;
+
+    public $translate;
+
     private function __construct(array $config)
     {
         self::$app_id = $config['app_id'];
         self::$app_key = $config['app_key'];
         self::$curl = new Curl();
+        $this->audio = new Audio();
+        $this->face = new Face();
+        $this->image = new Image();
+        $this->nlp = new NaturalLanguageProcessing();
+        $this->ocr = new OCR();
+        $this->photo = new Photo();
+        $this->translate = new Translate();
     }
 
     public static function tencentAI(array $config)
@@ -47,7 +68,7 @@ class TencentAI
      * @param string $url
      * @param array  $arg
      * @param bool   $charSetUTF8
-     * @return array|mixed
+     * @return array
      * @throws TencentAIError
      */
     public static function exec(string $url, array $arg, bool $charSetUTF8 = true)
@@ -91,5 +112,25 @@ class TencentAI
     public function image()
     {
         return new Image();
+    }
+
+    public function audio()
+    {
+        return new audio();
+    }
+
+    public function ocr()
+    {
+        return new OCR();
+    }
+
+    public function photo()
+    {
+        return new Photo();
+    }
+
+    public function translate()
+    {
+        return new translate();
     }
 }

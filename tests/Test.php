@@ -15,7 +15,7 @@ $ai = TencentAI::tencentAI($config);
 $image = __DIR__.'/image/ai/tencent/face/wxc.jpg';
 
 try {
-    $output = $ai->face()->detect($image);
+    $output = $ai->image->imageToText($image, 1);
 } catch (TencentAIError $e) {
     $output = $e->getArray();
 }
