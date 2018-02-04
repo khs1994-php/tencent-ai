@@ -50,8 +50,10 @@ $config = [
 
 $ai = TencentAI::tencentAI($config);
 
+$image = __DIR__.'/image/ai/tencent/face/wxc.jpg';
+
 try {
-    $output = $ai->face()->detect(__DIR__.'/image/ai/tencent/face/wxc.jpg');
+    $output = $ai->face()->detect($image);
 } catch (TencentAIError $e) {
     $output = $e->getArray();
 }

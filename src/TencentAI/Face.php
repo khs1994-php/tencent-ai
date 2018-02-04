@@ -129,16 +129,25 @@ class Face
      * 个体管理 => 增加人脸(一个或一组人脸)
      *
      * @param string       $person_id
-     * @param string|array $image
+     * @param string|array $images
      * @param string       $tag
      * @return mixed
      * @throws TencentAIError
      */
-    public function add(string $person_id, $image, string $tag)
+    public function add(string $person_id, $images, string $tag)
     {
+        $images_array = [];
+        if (is_array($images)) {
+            foreach ($images as $k) {
+                $images_array[] = self::encode($k);
+            }
+            $images = implode('|', $images_array);
+        } else {
+            $images = self::encode($images);
+        }
         $data = [
             'person_id' => $person_id,
-            'images' => self::encode($image),
+            'images' => $images,
             'tag' => $tag,
         ];
         $url = self::BASE_URL.'face_addface';
@@ -152,9 +161,12 @@ class Face
      * @param string       $person_id
      * @param string|array $face_ids
      * @return mixed
+     * @throws TencentAIError
      */
     public function delete(string $person_id, $face_ids)
     {
+        $face_ids = is_array($face_ids) ? implode('|', $face_ids) : $face_ids;
+
         $data = [
             'person_id' => $person_id,
             'face_ids' => $face_ids,
@@ -169,6 +181,7 @@ class Face
      *
      * @param string $person_id
      * @return mixed
+     * @throws TencentAIError
      */
     public function getList(string $person_id)
     {
@@ -185,6 +198,7 @@ class Face
      *
      * @param string $face_id
      * @return mixed
+     * @throws TencentAIError
      */
     public function getInfo(string $face_id)
     {
@@ -213,6 +227,7 @@ class Face
                                  string $image,
                                  string $tag)
     {
+        $group_ids = is_array($group_ids) ? implode('|', $group_ids) : $group_ids;
         $data = [
             'group_ids' => $group_ids,
             'person_id' => $person_id,
@@ -248,6 +263,7 @@ class Face
      * @param string $person_name
      * @param string $tag
      * @return mixed
+     * @throws TencentAIError
      */
     public function setPersonInfo(string $person_id, string $person_name, string $tag)
     {
@@ -266,6 +282,7 @@ class Face
      *
      * @param string $person_id
      * @return mixed
+     * @throws TencentAIError
      */
     public function getPersonInfo(string $person_id)
     {
@@ -281,6 +298,7 @@ class Face
      * 获取组列表
      *
      * @return mixed
+     * @throws TencentAIError
      */
     public function getGroupList()
     {
@@ -293,6 +311,7 @@ class Face
      *
      * @param string $group_id
      * @return mixed
+     * @throws TencentAIError
      */
     public function getPersonList(string $group_id)
     {

@@ -39,7 +39,7 @@ class Image
     }
 
     /**
-     * 物体场景识别=》场景识别
+     * 物体场景识别 => 场景识别
      *
      * @param string $image
      * @param int    $format
@@ -60,7 +60,7 @@ class Image
     }
 
     /**
-     * 物体场景识别=》物体识别
+     * 物体场景识别 => 物体识别
      *
      * @param string $image
      * @param int    $format
@@ -98,11 +98,11 @@ class Image
      * 花草/车辆识别
      *
      * @param string $image
-     * @param int    $scene
+     * @param int    $scene 识别场景，1-车辆识别，2-花草识别
      * @return mixed
      * @throws TencentAIError
      */
-    public function identify(string $image, int $scene = 2)
+    private function identify(string $image, int $scene)
     {
         $data = [
             'image' => self::encode($image),
@@ -111,6 +111,30 @@ class Image
         $url = self::BASE_URL.'vision/vision_imgidentify';
 
         return TencentAI::exec($url, $data);
+    }
+
+    /**
+     * 花草识别
+     *
+     * @param string $image
+     * @return mixed
+     * @throws TencentAIError
+     */
+    public function identifyFlower(string $image)
+    {
+        return $this->identify($image, 2);
+    }
+
+    /**
+     * 车辆识别
+     *
+     * @param string $image
+     * @return mixed
+     * @throws TencentAIError
+     */
+    public function identifyVehicle(string $image)
+    {
+        return $this->identify($image, 1);
     }
 
     /**

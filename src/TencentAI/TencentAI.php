@@ -3,6 +3,7 @@
 namespace TencentAI;
 
 use Curl\Curl;
+use TencentAI\Error\TencentAIError;
 
 class TencentAI
 {
@@ -26,6 +27,7 @@ class TencentAI
         if (!self::$tencentAI instanceof TencentAI) {
             self::$tencentAI = new self($config);
         }
+
         return self::$tencentAI;
     }
 
@@ -39,38 +41,41 @@ class TencentAI
         return $sign;
     }
 
-    // 逻辑处理
-
+    /**
+     * 逻辑处理
+     *
+     * @param string $url
+     * @param array  $arg
+     * @param bool   $charSetUTF8
+     * @return array|mixed
+     * @throws TencentAIError
+     */
     public static function exec(string $url, array $arg, bool $charSetUTF8 = true)
     {
         $app_id = self::$app_id;
         $nonce_str = 'fa577ce340859f95b';
-
         $data = [
             'app_id' => $app_id,
             'time_stamp' => time(),
             'nonce_str' => $nonce_str,
         ];
-
         $array = array_merge($data, $arg);
-
         ksort($array);
-
         $request_body = http_build_query($array);
-
         $sign = self::sign($request_body);
-
         $data = $request_body."&sign=$sign";
-
         $json = self::$curl->post($url, $data);
-
-        if (!$charSetUTF8) {
+        if ($charSetUTF8) {
+            $array = json_decode($json, true);
+        } else {
             $json = mb_convert_encoding($json, 'utf8', 'gbk');
-
-            return $array = json_decode($json, true);
+            $array = json_decode($json, true);
         }
-
-        return $array = json_decode($json, true);
+        $ret = $array['ret'];
+        if ($ret !== 0) {
+            throw new TencentAIError($ret);
+        }
+        return $array;
     }
 
     public function nlp()

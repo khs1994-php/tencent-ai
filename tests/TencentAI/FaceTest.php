@@ -7,8 +7,6 @@ use PHPUnit\Framework\TestCase;
 
 class FaceTest extends TestCase
 {
-    public $basedir;
-
     public $aiFace;
 
     public $image;
@@ -16,6 +14,8 @@ class FaceTest extends TestCase
     public $image2;
 
     public $image3;
+
+    public $image5;
 
     public $groupId;
 
@@ -37,6 +37,7 @@ class FaceTest extends TestCase
         $this->image = __DIR__.'/../image/ai/tencent/face/wxc.jpg';
         $this->image2 = __DIR__.'/../image/ai/tencent/face/wxc2.jpg';
         $this->image3 = __DIR__.'/../image/ai/tencent/face/wxc3.jpg';
+        $this->image5 = __DIR__.'/../image/ai/tencent/face/wxc5.jpg';
         $this->groupId = 'testGroupId1|testGroupId2';
         $this->personId = 'testPersonId';
         $this->personName = 'testPersonName';
@@ -44,12 +45,16 @@ class FaceTest extends TestCase
     }
 
     // 人体创建
+
     public function testCreatePerson()
     {
+        // 组ID为字符串
         $array = $this->aiFace->createPerson($this->groupId, $this->personId, $this->personName, $this->image, $this->personTag);
         $this->assertEquals(0, $array['ret']);
-        $this->assertContains('ok', $array['msg']);
-
+        $this->aiFace->deletePerson($this->personId);
+        // 组ID为数组
+        $array = $this->aiFace->createPerson(['test1', 'test2'], $this->personId, $this->personName, $this->image, $this->personTag);
+        $this->assertEquals(0, $array['ret']);
         return $faceId = $array['data']['face_id'];
     }
 
@@ -63,7 +68,6 @@ class FaceTest extends TestCase
         $array = $this->aiFace->getPersonList($this->groupId);
         $this->assertContains('ok', $array['msg']);
     }
-
 
     /**
      * 获取组列表
@@ -85,7 +89,9 @@ class FaceTest extends TestCase
     {
         $array = $this->aiFace->add($this->personId, $this->image2, $this->personTag);
         $this->assertEquals(0, $array['ret']);
-        return $faceId = $array['data']['face_ids'][0];
+        $array = $this->aiFace->add($this->personId, [$this->image3, $this->image5], $this->personTag);
+        $this->assertEquals(0, $array['ret']);
+        return $faceIds = $array['data']['face_ids'];
     }
 
     /**
@@ -116,13 +122,13 @@ class FaceTest extends TestCase
     /**
      * 个体 => 删除人脸
      *
-     * @param string $faceId
+     * @param string|array $faceIds
      *
      * @depends testAdd
      */
-    public function testDelete(string $faceId)
+    public function testDelete($faceIds)
     {
-        $array = $this->aiFace->delete('testPersonId', $faceId);
+        $array = $this->aiFace->delete('testPersonId', $faceIds);
         $this->assertContains('ok', $array['msg']);
     }
 
@@ -226,5 +232,4 @@ class FaceTest extends TestCase
     {
 
     }
-
 }
