@@ -1,15 +1,9 @@
 <?php
+require __DIR__.'/../vendor/autoload.php';
 
 use TencentAI\TencentAI;
 
-require __DIR__.'/../vendor/autoload.php';
-
-// define('BASEDIR', __DIR__.'/../src/');
-//
-// spl_autoload_register(function ($class) {
-//     // code...
-//     require_once BASEDIR.str_replace('\\', '/', $class).'.php';
-// });
+use TencentAI\Error\TencentAIError;
 
 $config = [
     'app_id' => 1106560031,
@@ -18,4 +12,12 @@ $config = [
 
 $ai = TencentAI::tencentAI($config);
 
-var_dump($ai->face()->deletePerson('testPersonId'));
+try {
+    $output = $ai->face()->detect(__DIR__.'/image/ai/tencent/face/wxc.jpg');
+} catch (TencentAIError $e) {
+    $output = $e->getArray();
+}
+
+// return array
+
+var_dump($output);

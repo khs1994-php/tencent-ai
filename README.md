@@ -37,23 +37,26 @@ Then exec `$ composer update`
 
 ```php
 <?php
-
-require_once __DIR__.'vendor/autoload.php';
+require __DIR__.'/vendor/autoload.php';
 
 use TencentAI\TencentAI;
 
+use TencentAI\Error\TencentAIError;
+
 $config = [
-  'app_id' => 1106560000,
-  'app_key' => 'ZbRY9cf72TbDO0aa',
+    'app_id' => 1106560031,
+    'app_key' => 'ZbRY9cf72TbDO0xb',
 ];
 
 $ai = TencentAI::tencentAI($config);
 
-$image = '/path/image/name.jpg';
+try {
+    $output = $ai->face()->detect(__DIR__.'/image/ai/tencent/face/wxc.jpg');
+} catch (TencentAIError $e) {
+    $output = $e->getArray();
+}
 
-$output = $ai->face()->detect($image);
-
-// return Array
+// return array
 
 var_dump($output);
 ```

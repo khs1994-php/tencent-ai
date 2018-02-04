@@ -2,23 +2,35 @@
 
 namespace TencentAI;
 
+use TencentAI\Error\TencentAIError;
+
 class Image
 {
     use Module\Image;
 
     const BASE_URL = 'https://api.ai.qq.com/fcgi-bin/';
 
-    // 智能鉴黄
-
+    /**
+     * 智能鉴黄
+     *
+     * @param string $image
+     * @return mixed
+     * @throws TencentAIError
+     */
     public function porn(string $image)
     {
         $url = self::BASE_URL.'vision/vision_porn';
 
-        return $this->image($url, $image);
+        return self::image($url, $image);
     }
 
-    // 暴恐识别
-
+    /**
+     * 暴恐识别
+     *
+     * @param string $image
+     * @return mixed
+     * @throws TencentAIError
+     */
     public function terrorism(string $image)
     {
         $url = self::BASE_URL.'image/image_terrorism';
@@ -26,12 +38,19 @@ class Image
         return $this->image($url, $image);
     }
 
-    // 物体场景识别=》场景识别
-
+    /**
+     * 物体场景识别=》场景识别
+     *
+     * @param string $image
+     * @param int    $format
+     * @param int    $topk
+     * @return mixed
+     * @throws TencentAIError
+     */
     public function scener(string $image, int $format = 1, int $topk = 5)
     {
         $data = [
-            'image' => base64_encode(file_get_contents($image)),
+            'image' => self::encode($image),
             'format' => $format,
             'topk' => $topk,
         ];
@@ -40,12 +59,19 @@ class Image
         return TencentAI::exec($url, $data);
     }
 
-    // 物体场景识别=》物体识别
-
-    public function objectr(string $image, int $format = 1, int $topk = 5)
+    /**
+     * 物体场景识别=》物体识别
+     *
+     * @param string $image
+     * @param int    $format
+     * @param int    $topk
+     * @return mixed
+     * @throws TencentAIError
+     */
+    public function object(string $image, int $format = 1, int $topk = 5)
     {
         $data = [
-            'image' => base64_encode(file_get_contents($image)),
+            'image' => self::encode($image),
             'format' => $format,
             'topk' => $topk,
         ];
@@ -54,21 +80,32 @@ class Image
         return TencentAI::exec($url, $data);
     }
 
-    // 标签识别
-
-    public function tag($image)
+    /**
+     * 标签识别
+     *
+     * @param string $image
+     * @return mixed
+     * @throws TencentAIError
+     */
+    public function tag(string $image)
     {
         $url = self::BASE_URL.'image/image_tag';
 
-        return TencentAI::exec($url, $image);
+        return self::image($url, $image);
     }
 
-    // 花草/车辆识别
-
+    /**
+     * 花草/车辆识别
+     *
+     * @param string $image
+     * @param int    $scene
+     * @return mixed
+     * @throws TencentAIError
+     */
     public function identify(string $image, int $scene = 2)
     {
         $data = [
-            'image' => base64_encode(file_get_contents($image)),
+            'image' => self::encode($image),
             'scene' => $scene,
         ];
         $url = self::BASE_URL.'vision/vision_imgidentify';
@@ -76,12 +113,18 @@ class Image
         return TencentAI::exec($url, $data);
     }
 
-    // 看图说话
-
+    /**
+     * 看图说话
+     *
+     * @param string $image
+     * @param string $session_id
+     * @return mixed
+     * @throws TencentAIError
+     */
     public function imageToText(string $image, string $session_id)
     {
         $data = [
-            'image' => base64_encode(file_get_contents($image)),
+            'image' => self::encode($image),
             'session_id' => $session_id,
         ];
 
@@ -90,8 +133,13 @@ class Image
         return TencentAI::exec($url, $data);
     }
 
-    // 模糊图片检测
-
+    /**
+     * 模糊图片检测
+     *
+     * @param string $image
+     * @return mixed
+     * @throws TencentAIError
+     */
     public function fuzzy(string $image)
     {
         $url = self::BASE_URL.'image/image_fuzzy';
@@ -99,9 +147,14 @@ class Image
         return $this->image($url, $image);
     }
 
-    // 美食图片识别
-
-    public function food($image)
+    /**
+     * 美食图片识别
+     *
+     * @param string $image
+     * @return mixed
+     * @throws TencentAIError
+     */
+    public function food(string $image)
     {
         $url = self::BASE_URL.'image/image_food';
 

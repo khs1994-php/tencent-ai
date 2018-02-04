@@ -2,7 +2,7 @@
 
 namespace TencentAI;
 
-use TencentAI\Error\FaceError;
+use TencentAI\Error\TencentAIError;
 
 class Face
 {
@@ -16,11 +16,12 @@ class Face
      * @param string $image
      * @param int    $mode 检测模式，0-正常，1-大脸模式
      * @return mixed
+     * @throws TencentAIError
      */
     public function detect(string $image, $mode = 1)
     {
         $data = [
-            'image' => base64_encode(file_get_contents($image)),
+            'image' => self::encode($image),
             'mode' => $mode,
         ];
         $url = self::BASE_URL.'face_detectface';
@@ -33,6 +34,7 @@ class Face
      *
      * @param string $image
      * @return mixed
+     * @throws TencentAIError
      */
     public function multiDetect(string $image)
     {
@@ -45,16 +47,16 @@ class Face
      *
      * @param array $images
      * @return mixed
-     * @throws FaceError
+     * @throws TencentAIError
      */
     public function compare(array $images)
     {
         if (count($images) !== 2) {
-            throw new FaceError(20001);
+            throw new TencentAIError(90001);
         }
         $data = [
-            'image_a' => base64_encode(file_get_contents($images[0])),
-            'image_b' => base64_encode(file_get_contents($images[1])),
+            'image_a' => self::encode($images[0]),
+            'image_b' => self::encode($images[1]),
         ];
         $url = self::BASE_URL.'face_facecompare';
 
@@ -67,15 +69,15 @@ class Face
      * @param string $image
      * @param int    $mode 检测模式，0-正常，1-大脸模式
      * @return mixed
-     * @throws FaceError
+     * @throws TencentAIError
      */
     public function shape(string $image, int $mode)
     {
         if ($mode !== 0 && $mode !== 1) {
-            throw new FaceError('20002');
+            throw new TencentAIError('20002');
         }
         $data = [
-            'image' => base64_encode(file_get_contents($image)),
+            'image' => self::encode($image),
             'mode' => $mode,
         ];
         $url = self::BASE_URL.'face_detectface';
@@ -90,11 +92,12 @@ class Face
      * @param string $image
      * @param int    $topon 返回的候选人个数
      * @return mixed
+     * @throws TencentAIError
      */
     public function identify(string $group_id, string $image, int $topon = 9)
     {
         $data = [
-            'image' => base64_encode(file_get_contents($image)),
+            'image' => self::encode($image),
             'group_id' => $group_id,
             'topn' => $topon,
         ];
@@ -109,12 +112,13 @@ class Face
      * @param string $person_id
      * @param string $image
      * @return mixed
+     * @throws TencentAIError
      */
     public function verify(string $person_id, string $image)
     {
         $data = [
             'person_id' => $person_id,
-            'image' => base64_encode(file_get_contents($image)),
+            'image' => self::encode($image),
         ];
         $url = self::BASE_URL.'face_faceverify';
 
@@ -128,12 +132,13 @@ class Face
      * @param string|array $image
      * @param string       $tag
      * @return mixed
+     * @throws TencentAIError
      */
     public function add(string $person_id, $image, string $tag)
     {
         $data = [
             'person_id' => $person_id,
-            'images' => base64_encode(file_get_contents($image)),
+            'images' => self::encode($image),
             'tag' => $tag,
         ];
         $url = self::BASE_URL.'face_addface';
@@ -200,6 +205,7 @@ class Face
      * @param string       $image
      * @param string       $tag
      * @return mixed
+     * @throws TencentAIError
      */
     public function createPerson($group_ids,
                                  string $person_id,
@@ -210,7 +216,7 @@ class Face
         $data = [
             'group_ids' => $group_ids,
             'person_id' => $person_id,
-            'image' => base64_encode(file_get_contents($image)),
+            'image' => self::encode($image),
             'person_name' => $person_name,
             'tag' => $tag,
         ];
