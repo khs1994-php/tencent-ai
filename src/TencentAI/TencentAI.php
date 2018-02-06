@@ -13,6 +13,8 @@ class TencentAI
 
     private static $app_key;
 
+    private static $format;
+
     private static $curl;
 
     public $audio;
@@ -33,6 +35,7 @@ class TencentAI
     {
         self::$app_id = $config['app_id'];
         self::$app_key = $config['app_key'];
+        self::$format = $config['format'];
         self::$curl = new Curl();
         $this->audio = new Audio();
         $this->face = new Face();
@@ -96,7 +99,11 @@ class TencentAI
         if ($ret !== 0) {
             throw new TencentAIError($ret);
         }
-        return $array;
+        if (strtolower(self::$format) === 'json') {
+            return json_encode($array);
+        } else {
+            return $array;
+        }
     }
 
     public function nlp()

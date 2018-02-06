@@ -35,40 +35,11 @@ trait Image
      */
     public static function encode(string $image)
     {
-        self::check($image);
-        return base64_encode(file_get_contents($image));
-    }
+        if (@is_file($image)) {
+            return base64_encode(file_get_contents($image));
+        } else {
 
-    /**
-     * 检查是否是图片文件，检查后缀
-     *
-     * @param $image
-     * @throws TencentAIError
-     */
-    public static function check($image)
-    {
-        // 是否为文件
-
-        if (!is_file($image)) {
-            throw new TencentAIError(90002);
-        }
-
-        // 检查大小
-
-        if (filesize($image) >= 1024 * 1024) {
-            throw new TencentAIError(16397);
-        }
-
-        // 检查后缀
-
-        $file_name = basename($image);
-
-        $array = explode('.', $file_name);
-
-        $extensions = end($array);
-
-        if (!in_array($extensions, self::$file_type_array)) {
-            throw new TencentAIError(16396);
+            return base64_encode($image);
         }
     }
 }

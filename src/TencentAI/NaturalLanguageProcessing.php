@@ -2,88 +2,108 @@
 
 namespace TencentAI;
 
+use TencentAI\Error\TencentAIError;
+use TencentAI\Module\NLP;
+
 class NaturalLanguageProcessing
 {
     const BASE_URL = 'https://api.ai.qq.com/fcgi-bin/nlp/';
 
-    public function common($url, $text, bool $charSetGBK = true)
-    {
-        if ($charSetGBK) {
-            $data = [
-                'text' => mb_convert_encoding($text, 'gbk', 'utf8'),
-            ];
+    use NLP;
 
-            return TencentAI::exec($url, $data, false);
-        }
-
-        $data = [
-            'text' => $text
-        ];
-
-        return TencentAI::exec($url, $data);
-    }
-
-    // GBK START
-
-    // 分词
-
+    /**
+     * 分词 GBK
+     *
+     * @param string $text
+     * @return array
+     * @throws TencentAIError
+     */
     public function wordseg(string $text)
     {
         $url = self::BASE_URL.'nlp_wordseg';
 
-        return $this->common($url, $text);
+        return $this->nlp($url, $text);
     }
 
-    // 词性标注
-
+    /**
+     * 词性标注 GBK
+     *
+     * @param string $text
+     * @return array
+     * @throws TencentAIError
+     */
     public function wordpos(string $text)
     {
         $url = self::BASE_URL.'nlp_wordpos';
 
-        return $this->common($url, $text);
+        return $this->nlp($url, $text);
     }
 
-    // 专有名词识别
-
+    /**
+     * 专有名词识别 GBK
+     *
+     * @param string $text
+     * @return array
+     * @throws TencentAIError
+     */
     public function wordner(string $text)
     {
         $url = self::BASE_URL.'nlp_wordner';
 
-        return $this->common($url, $text);
+        return $this->nlp($url, $text);
     }
 
-    // 同义词识别
-
+    /**
+     * 同义词识别 GBK
+     *
+     * @param string $text
+     * @return array
+     * @throws TencentAIError
+     */
     public function wordsyn(string $text)
     {
         $url = self::BASE_URL.'nlp_wordsyn';
 
-        return $this->common($url, $text);
+        return $this->nlp($url, $text);
     }
 
-    // GBK END
-
-    // 语义解析 => 意图成分识别
-
-    public function wordcom($text)
+    /**
+     * 语义解析 => 意图成分识别
+     *
+     * @param string $text
+     * @return array
+     * @throws TencentAIError
+     */
+    public function wordcom(string $text)
     {
         $url = self::BASE_URL.'nlp_wordcom';
 
-        return $this->common($url, $text, false);
+        return $this->nlp($url, $text, false);
     }
 
-    // 情感分析
-
-    public function textPolar($text)
+    /**
+     * 情感分析
+     *
+     * @param string $text
+     * @return array
+     * @throws TencentAIError
+     */
+    public function textPolar(string $text)
     {
         $url = self::BASE_URL.'nlp_textpolar';
 
-        return $this->common($url, $text, false);
+        return $this->nlp($url, $text, false);
     }
 
-    // 智能闲聊
-
-    public function textChat(string $question, string $session)
+    /**
+     * 智能闲聊
+     *
+     * @param string $question
+     * @param string $session
+     * @return array
+     * @throws TencentAIError
+     */
+    public function chat(string $question, string $session)
     {
         $data = [
             'question' => $question,

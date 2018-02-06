@@ -11,11 +11,19 @@ class Face
     const BASE_URL = 'https://api.ai.qq.com/fcgi-bin/face/';
 
     /**
-     * 人脸分析
+     * 接口名称：人脸分析
+     * 接口描述：识别上传图像上面的人脸信息.
+     * 详细描述：
      *
-     * @param string $image
-     * @param int    $mode 检测模式，0-正常，1-大脸模式
+     * 检测给定图片（Image）中的所有人脸（Face）的位置和相应的面部属性.
+     * 位置包括（x, y, w, h）.
+     * 面部属性包括性别（gender）, 年龄（age）, 表情（expression）, 魅力（beauty）, 眼镜（glass）和姿态（pitch，roll，yaw）.
+     *
+     * @param  string $image
+     * @param  int    $mode 检测模式，0-正常，1-大脸模式.
      * @return mixed
+     * @link   https://ai.qq.com/doc/detectface.shtml
+     *
      * @throws TencentAIError
      */
     public function detect(string $image, $mode = 1)

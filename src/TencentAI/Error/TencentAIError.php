@@ -88,7 +88,10 @@ class TencentAIError extends \Error
         16460 => '输入图片与识别场景不匹配',
         16461 => '识别结果为空，当前图片无法匹配已收录的标签，请尝试更换图片',
         90001 => '人脸对比必须为两张图片',
-        90002 => '不是文件',
+        90003 => 'AI Lab 源语言类型必须小于等于 16',
+        90004 => '图片翻译类型必须为二者之一 word-单词识别，doc-文档识别',
+        90010 => '身份证类型必须为 0 正面 1 反面',
+        90011 => '行驶证驾驶证识别, 0 行驶证识别 1 驾驶证识别',
     ];
 
     public $code;
@@ -119,5 +122,10 @@ class TencentAIError extends \Error
     public function getArray()
     {
         return ['ret' => $this->code, 'msg' => $this->message];
+    }
+
+    public function getJson()
+    {
+        return json_encode(['ret' => $this->code, 'msg' => $this->message]);
     }
 }

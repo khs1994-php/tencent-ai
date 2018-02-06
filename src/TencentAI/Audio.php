@@ -6,10 +6,21 @@ class Audio
 {
     const BASE_URL = 'https://api.ai.qq.com/fcgi-bin/aai/';
 
-    // 语音识别 echo 版
+    use Module\Audio;
 
+    /**
+     * 语音识别 echo 版
+     *
+     * @param int    $format
+     * @param string $speech
+     * @param int    $rate
+     * @return array
+     * @throws Error\TencentAIError
+     */
     public function asr(int $format = 3, string $speech, int $rate = 16000)
     {
+        $this->checkAsrFormat($format);
+        $this->checkAsrRate($rate);
         $data = [
             'format' => $format,
             'speech' => base64_encode(file_get_contents($speech)),
