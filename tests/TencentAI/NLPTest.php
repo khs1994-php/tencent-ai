@@ -68,7 +68,7 @@ class NLPTest extends TestCase
 
     public function testChat()
     {
-        $array = $this->aiNLP->chat('中国女演员王晓晨');
+        $array = $this->aiNLP->chat('中国女演员王晓晨', 1);
         $this->assertEquals(0, $array['ret']);
     }
 }

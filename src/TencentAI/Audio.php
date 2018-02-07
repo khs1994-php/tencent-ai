@@ -21,9 +21,10 @@ class Audio
     {
         $this->checkAsrFormat($format);
         $this->checkAsrRate($rate);
+        $speech = $this->encode($speech);
         $data = [
             'format' => $format,
-            'speech' => base64_encode(file_get_contents($speech)),
+            'speech' => $speech,
             'rate' => $rate
         ];
         $url = self::BASE_URL.'aai_asr';

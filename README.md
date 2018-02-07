@@ -46,6 +46,9 @@ use TencentAI\Error\TencentAIError;
 $config = [
     'app_id' => 1106560031,
     'app_key' => 'ZbRY9cf72TbDO0xb',
+    'format' => 'json',
+    # 'format' => 'array'
+    # default is array
 ];
 
 $ai = TencentAI::tencentAI($config);

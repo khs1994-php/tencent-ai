@@ -35,7 +35,14 @@ class TencentAI
     {
         self::$app_id = $config['app_id'];
         self::$app_key = $config['app_key'];
-        self::$format = $config['format'];
+
+        // format is array
+
+        if (array_key_exists('format',$config)){
+          self::$format = $config['format'];
+        }else{
+          self::$format = 'array';
+        }
         self::$curl = new Curl();
         $this->audio = new Audio();
         $this->face = new Face();

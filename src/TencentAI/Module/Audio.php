@@ -43,4 +43,14 @@ trait Audio
         $this->check($rate, 'asrRate', 90021);
     }
 
+    public function encode(string $voice)
+    {
+        if (@is_file($voice)) {
+            return base64_encode(file_get_contents($voice));
+        } else {
+
+            return base64_encode($voice);
+        }
+    }
+
 }
