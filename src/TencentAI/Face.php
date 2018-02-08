@@ -227,7 +227,6 @@ class Face
      * @link   https://ai.qq.com/doc/delface.shtml
      *
      * @throws TencentAIError
-     * @
      */
     public function delete(string $person_id, array $face_ids)
     {
