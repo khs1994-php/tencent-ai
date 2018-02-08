@@ -1,78 +1,89 @@
 <?php
 
-use TencentAI\TencentAI;
-use PHPUnit\Framework\TestCase;
+namespace TencentAI\Tests;
 
-class TranslateTest extends TestCase
+use TencentAI\Error\TencentAIError;
+
+class TranslateTest extends AI
 {
     const IMAGE = __DIR__.'/../resource/translate/english.jpg';
 
-    private $aiTranslate;
-
-    private $image;
+    const OUTPUT = __DIR__.'/../output/translate/';
 
     private $name;
 
     private $array;
 
-    public function setUp()
+    private function translate()
     {
-        $app_id = 1106560031;
-        $app_key = 'ZbRY9cf72TbDO0xb';
-
-        $this->aiTranslate = TencentAI::tencentAI($app_id, $app_key)->translate;
+        return $this->ai()->translate;
     }
 
-    // 文本翻译 AILab
-
+    /**
+     * 文本翻译 AILAB
+     *
+     * @throws TencentAIError
+     */
     public function testAILabText()
     {
         $this->name = __FUNCTION__;
 
-        $this->array = $array = $this->aiTranslate->aILabText('中华人民共和国', 0);
-        $this->assertEquals(0, $array['ret']);
+        $this->array = $this->translate()->aILabText('中华人民共和国', 0);
     }
 
-    // 文本翻译 翻译君
-
+    /**
+     * 文本翻译 翻译君
+     *
+     * @throws TencentAIError
+     */
     public function testText()
     {
         $this->name = __FUNCTION__;
 
-        $this->array = $array = $this->aiTranslate->text('中华人民共和国', 'zh', 'en');
+        $this->array = $this->translate()->text('中华人民共和国', 'zh', 'en');
     }
 
-    // 图片翻译
-
+    /**
+     * 图片翻译
+     *
+     * @throws TencentAIError
+     */
     public function testImage()
     {
         $this->name = __FUNCTION__;
 
-        $this->array = $this->aiTranslate->image(self::IMAGE, 1, 'word', 'en', 'zh');
+        $this->array = $this->translate()->image(self::IMAGE, 1, 'word', 'en', 'zh');
     }
 
-    // 语音翻译
-
+    /**
+     * 语音翻译
+     *
+     * @throws TencentAIError
+     */
     public function testAudio()
     {
         $this->name = __FUNCTION__;
+
         $voice = __DIR__.'/../resource/translate/t.pcm';
-        $this->array = $this->aiTranslate->audio(6, 0, true, 1, $voice);
+        $this->array = $this->translate()->audio(6, 0, true, 1, $voice);
     }
 
-    // 语种识别
-
+    /**
+     * 语种识别
+     *
+     * @throws TencentAIError
+     */
     public function testDetect()
     {
         $this->name = __FUNCTION__;
 
-        $this->array = $this->aiTranslate->detect('chinese');
+        $this->array = $this->translate()->detect('chinese');
     }
 
     public function tearDown()
     {
         $this->assertEquals(0, $this->array['ret']);
 
-        file_put_contents(__DIR__.'/../output/translate/'.$this->name.'.json', json_encode($this->array, JSON_UNESCAPED_UNICODE));
+        file_put_contents(self::OUTPUT.$this->name.'.json', json_encode($this->array, JSON_UNESCAPED_UNICODE));
     }
 }

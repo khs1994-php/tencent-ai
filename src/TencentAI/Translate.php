@@ -123,7 +123,7 @@ class Translate
      */
     public function audio(int $format,
                           int $seq,
-                          bool $end,
+                          bool $end = true,
                           string $session_id,
                           string $speech_chunk,
                           string $source = 'auto',

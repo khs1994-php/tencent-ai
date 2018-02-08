@@ -1,67 +1,58 @@
 <?php
 
-use TencentAI\TencentAI;
-use PHPUnit\Framework\TestCase;
+namespace TencentAI\Tests;
 
-// 类名 + Test
-
-class FaceTest extends TestCase
+class FaceTest extends AI
 {
     const IMAGE = __DIR__.'/../resource/face/';
 
-    private $aiFace;
+    const OUTPUT = __DIR__.'/../output/face/';
 
-    private $image;
+    const IMAGE1 = self::IMAGE.'wxc.jpg';
 
-    private $image2;
+    const IMAGE2 = self::IMAGE.'wxc2.jpg';
 
-    private $image3;
+    const IMAGE3 = self::IMAGE.'wxc3.jpg';
 
-    private $image5;
+    const IMAGE5 = self::IMAGE.'wxc5.jpg';
 
-    private $groupId;
+    const PERSON_ID = 'testPersonId';
 
-    private $personId;
+    const PERSON_NAME = 'testPersonName';
 
-    private $personName;
-
-    private $personTag;
+    const PERSON_TAG = 'testPersonTag';
 
     private $name;
 
     private $array;
 
-    // 初始化，每次在开始执行测试函数之前，会先执行 setUp 进行测试之前的初始化
-
-    public function setup()
+    private function face()
     {
-        $app_id = 1106560031;
-        $app_key = 'ZbRY9cf72TbDO0xb';
-
-        $this->aiFace = TencentAI::tencentAI($app_id, $app_key)->face();
-        $this->image = self::IMAGE.'/wxc.jpg';
-        $this->image2 = self::IMAGE.'/wxc2.jpg';
-        $this->image3 = self::IMAGE.'wxc3.jpg';
-        $this->image5 = self::IMAGE.'wxc5.jpg';
-        $this->groupId = 'testGroupId1|testGroupId2';
-        $this->personId = 'testPersonId';
-        $this->personName = 'testPersonName';
-        $this->personTag = 'testPersonTag';
+        return $this->ai()->face;
     }
 
-    // 人体创建
-
+    /**
+     * 人体创建
+     *
+     * @return mixed
+     * @throws \TencentAI\Error\TencentAIError
+     */
     public function testCreatePerson()
     {
         $this->name = __FUNCTION__;
 
         // 单个组ID
-        $this->array = $array = $this->aiFace->createPerson([$this->groupId], $this->personId, $this->personName, $this->image, $this->personTag);
-        $this->assertEquals(0, $array['ret']);
-        $this->aiFace->deletePerson($this->personId);
+        $this->array = $array = $this
+            ->face()
+            ->createPerson
+            (['test'], self::PERSON_ID, self::PERSON_NAME, self::IMAGE1, self::PERSON_TAG);
+        $this->face()->deletePerson(self::PERSON_ID);
 
         // 多个组ID为
-        $this->array = $array = $this->aiFace->createPerson(['test1', 'test2'], $this->personId, $this->personName, $this->image, $this->personTag);
+        $this->array = $array = $this
+            ->face()
+            ->createPerson
+            (['test1', 'test2'], self::PERSON_ID, self::PERSON_NAME, self::IMAGE1, self::PERSON_TAG);
         $this->assertEquals(0, $array['ret']);
 
         return $faceId = $array['data']['face_id'];
@@ -71,41 +62,44 @@ class FaceTest extends TestCase
      * 获取人体列表.
      *
      * @depends testCreatePerson
+     * @throws \TencentAI\Error\TencentAIError
      */
     public function testGetPersonList()
     {
         $this->name = __FUNCTION__;
 
-        $this->array = $this->aiFace->getPersonList($this->groupId);
+        $this->array = $this->face()->getPersonList('test1');
 
-//        $this->assertContains('ok', $array['msg']);
-//        $this->assertJsonStringEqualsJsonString('0', json_encode($array['ret']));
+        // $this->assertContains('ok', $array['msg']);
+        // $this->assertJsonStringEqualsJsonString('0', json_encode($array['ret']));
     }
 
     /**
      * 获取组列表.
      *
      * @depends testCreatePerson
+     * @throws \TencentAI\Error\TencentAIError
      */
     public function testGetGroupList()
     {
         $this->name = __FUNCTION__;
 
-        $this->array = $this->aiFace->getGroupList();
+        $this->array = $this->face()->getGroupList();
     }
 
     /**
      * 个体 => 增加人脸.
      *
      * @depends testCreatePerson
+     * @throws \TencentAI\Error\TencentAIError
      */
     public function testAdd()
     {
         $this->name = __FUNCTION__;
 
-        $this->array = $array = $this->aiFace->add($this->personId, [$this->image2], $this->personTag);
+        $this->array = $array = $this->face()->add(self::PERSON_ID, [self::IMAGE2], self::PERSON_TAG);
         $this->assertEquals(0, $array['ret']);
-        $this->array = $array = $this->aiFace->add($this->personId, [$this->image3, $this->image5], $this->personTag);
+        $this->array = $array = $this->face()->add(self::PERSON_ID, [self::IMAGE3, self::IMAGE5], self::PERSON_TAG);
         $this->assertEquals(0, $array['ret']);
 
         return $faceIds = $array['data']['face_ids'];
@@ -115,12 +109,13 @@ class FaceTest extends TestCase
      * 个体 => 获取人脸列表.
      *
      * @depends testCreatePerson
+     * @throws \TencentAI\Error\TencentAIError
      */
     public function testGetList()
     {
         $this->name = __FUNCTION__;
 
-        $this->array = $this->aiFace->getList($this->personId);
+        $this->array = $this->face()->getList(self::PERSON_ID);
     }
 
     /**
@@ -129,12 +124,13 @@ class FaceTest extends TestCase
      * @param string $faceId
      *
      * @depends testCreatePerson
+     * @throws \TencentAI\Error\TencentAIError
      */
     public function testGetInfo(string $faceId)
     {
         $this->name = __FUNCTION__;
 
-        $this->array = $this->aiFace->getInfo($faceId);
+        $this->array = $this->face()->getInfo($faceId);
     }
 
     /**
@@ -143,63 +139,73 @@ class FaceTest extends TestCase
      * @param array $faceIds
      *
      * @depends testAdd
+     * @throws \TencentAI\Error\TencentAIError
      */
     public function testDelete(array $faceIds)
     {
         $this->name = __FUNCTION__;
 
-        $this->array = $this->aiFace->delete('testPersonId', $faceIds);
+        $this->array = $this->face()->delete('testPersonId', $faceIds);
     }
 
     /**
      * 设置个体信息.
      *
      * @depends testCreatePerson
+     * @throws \TencentAI\Error\TencentAIError
      */
     public function testSetPersonInfo()
     {
         $this->name = __FUNCTION__;
 
-        $this->array = $this->aiFace->setPersonInfo($this->personId, 'testPersonNewName', 'testPersonNewTag');
+        $this->array = $this->face()->setPersonInfo(self::PERSON_ID, 'testPersonNewName', 'testPersonNewTag');
     }
 
     /**
      * 获取个体信息.
      *
      * @depends testCreatePerson
+     * @throws \TencentAI\Error\TencentAIError
      */
     public function testGetPersonInfo()
     {
         $this->name = __FUNCTION__;
 
-        $this->array = $this->aiFace->getPersonInfo($this->personId);
+        $this->array = $this->face()->getPersonInfo(self::PERSON_ID);
     }
 
-    // 人脸分析
-
+    /**
+     * 人脸分析
+     *
+     * @throws \TencentAI\Error\TencentAIError
+     */
     public function testDetect()
     {
         $this->name = __FUNCTION__;
 
-        $this->array = $this->aiFace->detect($this->image);
+        $this->array = $this->face()->detect(self::IMAGE1);
     }
 
-    // 多人脸识别
-
+    /**
+     * 多人脸识别
+     * @throws \TencentAI\Error\TencentAIError
+     */
     public function testMultiDetect()
     {
         $this->name = __FUNCTION__;
 
-        $this->array = $this->aiFace->multiDetect($this->image);
+        $this->array = $this->face()->multiDetect(self::IMAGE1);
     }
 
-    // 五官检测
-
+    /**
+     *五官检测
+     * @throws \TencentAI\Error\TencentAIError
+     */
     public function testShape()
     {
         $this->name = __FUNCTION__;
 
-        $this->array = $this->aiFace->shape($this->image, 0);
+        $this->array = $this->face()->shape(self::IMAGE1, 0);
     }
 
     /**
@@ -208,48 +214,52 @@ class FaceTest extends TestCase
      * 人脸对比
      *
      * @test
+     * @throws \TencentAI\Error\TencentAIError
      */
     public function compare()
     {
         $this->name = __FUNCTION__;
 
-        $this->array = $this->aiFace->compare([$this->image, $this->image2]);
+        $this->array = $this->face()->compare([self::IMAGE1, self::IMAGE3]);
     }
 
     /**
      * 人脸识别.
      *
      * @depends testCreatePerson
+     * @throws \TencentAI\Error\TencentAIError
      */
     public function testIdentify()
     {
         $this->name = __FUNCTION__;
 
-        $this->array = $this->aiFace->identify($this->groupId, $this->image3, 9);
+        $this->array = $this->face()->identify('test1', self::IMAGE3, 9);
     }
 
     /**
      * 人脸验证
      *
      * @depends testCreatePerson
+     * @throws \TencentAI\Error\TencentAIError
      */
     public function testVerify()
     {
         $this->name = __FUNCTION__;
 
-        $this->array = $this->aiFace->verify($this->personId, $this->image3);
+        $this->array = $this->face()->verify(self::PERSON_ID, self::IMAGE3);
     }
 
     /**
      * 删除个体.
      *
      * @depends testCreatePerson
+     * @throws \TencentAI\Error\TencentAIError
      */
     public function testDeletePerson()
     {
         $this->name = __FUNCTION__;
 
-        $this->array = $this->aiFace->deletePerson($this->personId);
+        $this->array = $this->face()->deletePerson(self::PERSON_ID);
     }
 
     // 在测试函数执行完毕之后调用 tearDown 函数
@@ -258,6 +268,6 @@ class FaceTest extends TestCase
     {
         $this->assertEquals(0, $this->array['ret']);
 
-        file_put_contents(__DIR__.'/../output/face/'.$this->name.'.json', json_encode($this->array, JSON_UNESCAPED_UNICODE));
+        file_put_contents(self::OUTPUT.$this->name.'.json', json_encode($this->array, JSON_UNESCAPED_UNICODE));
     }
 }

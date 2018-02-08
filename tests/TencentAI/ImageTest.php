@@ -1,141 +1,162 @@
 <?php
 
-use TencentAI\TencentAI;
-use PHPUnit\Framework\TestCase;
+namespace TencentAI\Tests;
 
-class ImageTest extends TestCase
+use TencentAI\Error\TencentAIError;
+
+class ImageTest extends AI
 {
     const IMAGE = __DIR__.'/../resource/vision/';
 
-    private $aiImage;
+    const OUTPUT = __DIR__.'/../output/image/';
 
-    private $image;
+    const IMAGE_FACE = self::IMAGE.'../face/wxc.jpg';
 
-    private $imageTerrorism;
+    const TERRORISM = self::IMAGE.'terrorism.jpg';
 
-    private $imageScener;
+    const SCENER = self::IMAGE.'scener.jpg';
 
-    private $imageDog;
+    const DOG = self::IMAGE.'dog.jpg';
 
-    private $imageFlower;
+    const FLOWER = self::IMAGE.'flower.jpg';
 
-    private $imageVehicle;
+    const VEHICLE = self::IMAGE.'vehicle.jpg';
 
-    private $imageFood;
+    const FOOD = self::IMAGE.'food.jpg';
 
     private $name;
 
     private $array;
 
-    public function setup()
+    private function image()
     {
-        $app_id = 1106560031;
-        $app_key = 'ZbRY9cf72TbDO0xb';
-
-        $this->aiImage = TencentAI::tencentAI($app_id, $app_key)->image;
-        $this->image = self::IMAGE.'../face/wxc.jpg';
-        $this->imageDog = self::IMAGE.'dog.jpg';
-        $this->imageFlower = self::IMAGE.'flower.jpg';
-        $this->imageFood = self::IMAGE.'food.jpg';
-        $this->imageTerrorism = self::IMAGE.'terrorism.jpg';
-        $this->imageScener = self::IMAGE.'scener.jpg';
-        $this->imageVehicle = self::IMAGE.'vehicle.jpg';
+        return $this->ai()->image;
     }
 
-    // 智能鉴黄
-
+    /**
+     * 智能鉴黄
+     *
+     * @throws TencentAIError
+     */
     public function testPorn()
     {
         $this->name = __FUNCTION__;
 
-        $this->array = $this->aiImage->porn($this->image);
+        $this->array = $this->image()->porn(self::IMAGE_FACE);
     }
 
-    // 暴恐识别
-
+    /**
+     * 暴恐识别
+     *
+     * @throws TencentAIError
+     */
     public function testTerrorism()
     {
         $this->name = __FUNCTION__;
 
-        $this->array = $this->aiImage->terrorism($this->imageTerrorism);
+        $this->array = $this->image()->terrorism(self::TERRORISM);
     }
 
-    //物体场景识别 => 场景识别
-
+    /**
+     * 物体场景识别 => 场景识别
+     *
+     * @throws TencentAIError
+     */
     public function testScener()
     {
         $this->name = __FUNCTION__;
 
-        $this->array = $this->aiImage->scener($this->imageScener);
+        $this->array = $this->image()->scener(self::SCENER);
     }
 
-    // 物体场景识别 => 物体识别
-
+    /**
+     * 物体场景识别 => 物体识别
+     *
+     * @throws TencentAIError
+     */
     public function testObject()
     {
         $this->name = __FUNCTION__;
 
-        $this->array = $this->aiImage->object($this->imageDog);
+        $this->array = $this->image()->object(self::DOG);
     }
 
-    // 标签识别
-
+    /**
+     * 标签识别
+     *
+     * @throws TencentAIError
+     */
     public function testTag()
     {
         $this->name = __FUNCTION__;
 
-        $this->array = $this->aiImage->tag($this->image);
+        $this->array = $this->image()->tag(self::IMAGE_FACE);
     }
 
-    // 花草识别
-
+    /**
+     * 花草识别
+     *
+     * @throws TencentAIError
+     */
     public function testIdentifyFlower()
     {
         $this->name = __FUNCTION__;
 
-        $this->array = $this->aiImage->identifyFlower($this->imageFlower);
+        $this->array = $this->image()->identifyFlower(self::FLOWER);
     }
 
-    // 车辆识别
-
+    /**
+     * 车辆识别
+     *
+     * @throws TencentAIError
+     */
     public function testIdentifyVehicle()
     {
         $this->name = __FUNCTION__;
 
-        $this->array = $this->aiImage->identifyVehicle($this->imageVehicle);
+        $this->array = $this->image()->identifyVehicle(self::VEHICLE);
     }
 
-    // 看图说话
-
+    /**
+     * 看图说话
+     *
+     * @throws TencentAIError
+     */
     public function testImageToText()
     {
         $this->name = __FUNCTION__;
 
-        $this->array = $this->aiImage->imageToText($this->image, 1);
+        $this->array = $this->image()->imageToText(self::IMAGE_FACE, 1);
     }
 
-    // 模糊图片检测
-
+    /**
+     * 模糊图片检测
+     *
+     * @throws TencentAIError
+     */
     public function testFuzzy()
     {
         $this->name = __FUNCTION__;
 
-        $this->array = $this->aiImage->fuzzy($this->image);
+        $this->array = $this->image()->fuzzy(self::IMAGE_FACE);
     }
 
-    // 美食图片
-
+    /**
+     * 美食图片
+     *
+     * @throws TencentAIError
+     */
     public function testFood()
     {
         $this->name = __FUNCTION__;
 
-        $this->array = $this->aiImage->food($this->imageFood);
+        $this->array = $this->image()->food(self::FOOD);
     }
 
     public function tearDown()
     {
         $this->assertEquals(0, $this->array['ret']);
 
-        file_put_contents(__DIR__.'/../output/image/'.$this->name.'.json', json_encode($this->array, JSON_UNESCAPED_UNICODE));
+        file_put_contents(self::OUTPUT.$this->name.'.json', json_encode($this->array, JSON_UNESCAPED_UNICODE));
     }
 }
