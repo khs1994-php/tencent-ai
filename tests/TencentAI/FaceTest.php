@@ -7,23 +7,27 @@ use PHPUnit\Framework\TestCase;
 
 class FaceTest extends TestCase
 {
-    public $aiFace;
+    private $aiFace;
 
-    public $image;
+    private $image;
 
-    public $image2;
+    private $image2;
 
-    public $image3;
+    private $image3;
 
-    public $image5;
+    private $image5;
 
-    public $groupId;
+    private $groupId;
 
-    public $personId;
+    private $personId;
 
-    public $personName;
+    private $personName;
 
-    public $personTag;
+    private $personTag;
+
+    private $name;
+
+    private $array;
 
     // 初始化，每次在开始执行测试函数之前，会先执行 setUp 进行测试之前的初始化
 
@@ -48,12 +52,15 @@ class FaceTest extends TestCase
 
     public function testCreatePerson()
     {
-        // 组ID为字符串
-        $array = $this->aiFace->createPerson([$this->groupId], $this->personId, $this->personName, $this->image, $this->personTag);
+        $this->name = __FUNCTION__;
+
+        // 单个组ID
+        $this->array = $array = $this->aiFace->createPerson([$this->groupId], $this->personId, $this->personName, $this->image, $this->personTag);
         $this->assertEquals(0, $array['ret']);
         $this->aiFace->deletePerson($this->personId);
-        // 组ID为数组
-        $array = $this->aiFace->createPerson(['test1', 'test2'], $this->personId, $this->personName, $this->image, $this->personTag);
+
+        // 多个组ID为
+        $this->array = $array = $this->aiFace->createPerson(['test1', 'test2'], $this->personId, $this->personName, $this->image, $this->personTag);
         $this->assertEquals(0, $array['ret']);
 
         return $faceId = $array['data']['face_id'];
@@ -66,8 +73,12 @@ class FaceTest extends TestCase
      */
     public function testGetPersonList()
     {
-        $array = $this->aiFace->getPersonList($this->groupId);
-        $this->assertContains('ok', $array['msg']);
+        $this->name = __FUNCTION__;
+
+        $this->array = $this->aiFace->getPersonList($this->groupId);
+
+//        $this->assertContains('ok', $array['msg']);
+//        $this->assertJsonStringEqualsJsonString('0', json_encode($array['ret']));
     }
 
     /**
@@ -77,8 +88,9 @@ class FaceTest extends TestCase
      */
     public function testGetGroupList()
     {
-        $array = $this->aiFace->getGroupList();
-        $this->assertContains('ok', $array['msg']);
+        $this->name = __FUNCTION__;
+
+        $this->array = $this->aiFace->getGroupList();
     }
 
     /**
@@ -88,9 +100,11 @@ class FaceTest extends TestCase
      */
     public function testAdd()
     {
-        $array = $this->aiFace->add($this->personId, [$this->image2], $this->personTag);
+        $this->name = __FUNCTION__;
+
+        $this->array = $array = $this->aiFace->add($this->personId, [$this->image2], $this->personTag);
         $this->assertEquals(0, $array['ret']);
-        $array = $this->aiFace->add($this->personId, [$this->image3, $this->image5], $this->personTag);
+        $this->array = $array = $this->aiFace->add($this->personId, [$this->image3, $this->image5], $this->personTag);
         $this->assertEquals(0, $array['ret']);
 
         return $faceIds = $array['data']['face_ids'];
@@ -103,8 +117,9 @@ class FaceTest extends TestCase
      */
     public function testGetList()
     {
-        $array = $this->aiFace->getList($this->personId);
-        $this->assertContains('ok', $array['msg']);
+        $this->name = __FUNCTION__;
+
+        $this->array = $this->aiFace->getList($this->personId);
     }
 
     /**
@@ -116,8 +131,9 @@ class FaceTest extends TestCase
      */
     public function testGetInfo(string $faceId)
     {
-        $array = $this->aiFace->getInfo($faceId);
-        $this->assertContains('ok', $array['msg']);
+        $this->name = __FUNCTION__;
+
+        $this->array = $this->aiFace->getInfo($faceId);
     }
 
     /**
@@ -129,8 +145,9 @@ class FaceTest extends TestCase
      */
     public function testDelete(array $faceIds)
     {
-        $array = $this->aiFace->delete('testPersonId', $faceIds);
-        $this->assertContains('ok', $array['msg']);
+        $this->name = __FUNCTION__;
+
+        $this->array = $this->aiFace->delete('testPersonId', $faceIds);
     }
 
     /**
@@ -140,8 +157,9 @@ class FaceTest extends TestCase
      */
     public function testSetPersonInfo()
     {
-        $array = $this->aiFace->setPersonInfo($this->personId, 'testPersonNewName', 'testPersonNewTag');
-        $this->assertContains('ok', $array['msg']);
+        $this->name = __FUNCTION__;
+
+        $this->array = $this->aiFace->setPersonInfo($this->personId, 'testPersonNewName', 'testPersonNewTag');
     }
 
     /**
@@ -151,33 +169,36 @@ class FaceTest extends TestCase
      */
     public function testGetPersonInfo()
     {
-        $array = $this->aiFace->getPersonInfo($this->personId);
-        $this->assertContains('ok', $array['msg']);
-        $this->assertContains('testPersonNewName', $array['data']['person_name']);
+        $this->name = __FUNCTION__;
+
+        $this->array = $this->aiFace->getPersonInfo($this->personId);
     }
 
     // 人脸分析
 
     public function testDetect()
     {
-        $array = $this->aiFace->detect($this->image);
-        $this->assertContains('ok', $array['msg']);
+        $this->name = __FUNCTION__;
+
+        $this->array = $this->aiFace->detect($this->image);
     }
 
     // 多人脸识别
 
     public function testMultiDetect()
     {
-        $array = $this->aiFace->multiDetect($this->image);
-        $this->assertContains('ok', $array['msg']);
+        $this->name = __FUNCTION__;
+
+        $this->array = $this->aiFace->multiDetect($this->image);
     }
 
     // 五官检测
 
     public function testShape()
     {
-        $array = $this->aiFace->shape($this->image, 0);
-        $this->assertJsonStringEqualsJsonString('0', json_encode($array['ret']));
+        $this->name = __FUNCTION__;
+
+        $this->array = $this->aiFace->shape($this->image, 0);
     }
 
     /**
@@ -189,8 +210,9 @@ class FaceTest extends TestCase
      */
     public function compare()
     {
-        $array = $this->aiFace->compare([$this->image, $this->image2]);
-        $this->assertEquals(0, $array['ret']);
+        $this->name = __FUNCTION__;
+
+        $this->array = $this->aiFace->compare([$this->image, $this->image2]);
     }
 
     /**
@@ -200,8 +222,9 @@ class FaceTest extends TestCase
      */
     public function testIdentify()
     {
-        $array = $this->aiFace->identify($this->groupId, $this->image3, 9);
-        $this->assertEquals(0, $array['ret']);
+        $this->name = __FUNCTION__;
+
+        $this->array = $this->aiFace->identify($this->groupId, $this->image3, 9);
     }
 
     /**
@@ -211,8 +234,9 @@ class FaceTest extends TestCase
      */
     public function testVerify()
     {
-        $array = $this->aiFace->verify($this->personId, $this->image3);
-        $this->assertEquals(0, $array['ret']);
+        $this->name = __FUNCTION__;
+
+        $this->array = $this->aiFace->verify($this->personId, $this->image3);
     }
 
     /**
@@ -222,13 +246,17 @@ class FaceTest extends TestCase
      */
     public function testDeletePerson()
     {
-        $array = $this->aiFace->deletePerson($this->personId);
-        $this->assertEquals(0, $array['ret']);
+        $this->name = __FUNCTION__;
+
+        $this->array = $this->aiFace->deletePerson($this->personId);
     }
 
     // 在测试函数执行完毕之后调用 tearDown 函数
 
     public function tearDown()
     {
+        $this->assertEquals(0, $this->array['ret']);
+
+        file_put_contents(__DIR__.'/../output/face/'.$this->name.'.json', json_encode($this->array, JSON_UNESCAPED_UNICODE));
     }
 }

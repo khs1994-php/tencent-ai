@@ -7,7 +7,11 @@ class TranslateTest extends TestCase
 {
     private $aiTranslate;
 
-    public $image;
+    private $image;
+
+    private $name;
+
+    private $array;
 
     public function setUp()
     {
@@ -23,7 +27,9 @@ class TranslateTest extends TestCase
 
     public function testAILabText()
     {
-        $array = $this->aiTranslate->aILabText('中华人民共和国', 0);
+        $this->name = __FUNCTION__;
+
+        $this->array = $array = $this->aiTranslate->aILabText('中华人民共和国', 0);
         $this->assertEquals(0, $array['ret']);
     }
 
@@ -31,16 +37,18 @@ class TranslateTest extends TestCase
 
     public function testText()
     {
-        $array = $this->aiTranslate->text('中华人民共和国', 'zh', 'en');
-        $this->assertEquals(0, $array['ret']);
+        $this->name = __FUNCTION__;
+
+        $this->array = $array = $this->aiTranslate->text('中华人民共和国', 'zh', 'en');
     }
 
     // 图片翻译
 
     public function testImage()
     {
-        $array = $this->aiTranslate->image($this->image, 1, 'word', 'en', 'zh');
-        $this->assertEquals(0, $array['ret']);
+        $this->name = __FUNCTION__;
+
+        $this->array = $this->aiTranslate->image($this->image, 1, 'word', 'en', 'zh');
     }
 
     // 语音翻译 TODO
@@ -49,7 +57,15 @@ class TranslateTest extends TestCase
 
     public function testDetect()
     {
-        $array = $this->aiTranslate->detect('chinese');
-        $this->assertEquals(0, $array['ret']);
+        $this->name = __FUNCTION__;
+
+        $this->array = $this->aiTranslate->detect('chinese');
+    }
+
+    public function tearDown()
+    {
+        $this->assertEquals(0, $this->array['ret']);
+
+        file_put_contents(__DIR__.'/../output/translate/'.$this->name.'.json', json_encode($this->array, JSON_UNESCAPED_UNICODE));
     }
 }
