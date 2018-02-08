@@ -31,18 +31,19 @@ class TencentAI
 
     public $translate;
 
-    private function __construct(array $config)
+    private function __construct(int $appId, string $appKey, bool $jsonFormat = false)
     {
-        self::$app_id = $config['app_id'];
-        self::$app_key = $config['app_key'];
+        self::$app_id = $appId;
+        self::$app_key = $appKey;
 
         // default format is array
 
-        if (array_key_exists('format', $config)) {
-            self::$format = $config['format'];
+        if ($jsonFormat) {
+            self::$format = 'json';
         } else {
             self::$format = 'array';
         }
+
         self::$curl = new Curl();
         $this->audio = new Audio();
         $this->face = new Face();
@@ -53,10 +54,10 @@ class TencentAI
         $this->translate = new Translate();
     }
 
-    public static function tencentAI(array $config)
+    public static function tencentAI(int $appId, string $appKey, bool $jsonFormat = false)
     {
         if (!self::$tencentAI instanceof self) {
-            self::$tencentAI = new self($config);
+            self::$tencentAI = new self($appId, $appKey, $jsonFormat);
         }
 
         return self::$tencentAI;
@@ -71,7 +72,7 @@ class TencentAI
      *
      * @link   https://ai.qq.com/doc/auth.shtml
      */
-    public static function sign(string $request_body)
+    private static function sign(string $request_body)
     {
         $app_key = self::$app_key;
         $sign = strtoupper(md5($request_body.'&app_key='.$app_key));
@@ -93,6 +94,7 @@ class TencentAI
     public static function exec(string $url, array $arg, bool $charSetUTF8 = true)
     {
         $app_id = self::$app_id;
+        $format = strtolower(self::$format);
         $nonce_str = 'fa577ce340859f95b';
         $data = [
             'app_id' => $app_id,
@@ -102,8 +104,17 @@ class TencentAI
         $array = array_merge($data, $arg);
         ksort($array);
         $request_body = http_build_query($array);
+
+        // 签名
+
         $sign = self::sign($request_body);
+
+        // 最终请求体
+
         $data = $request_body."&sign=$sign";
+
+        // 发起请求
+
         $json = self::$curl->post($url, $data);
         if ($charSetUTF8) {
             $array = json_decode($json, true);
@@ -111,14 +122,28 @@ class TencentAI
             $json = mb_convert_encoding($json, 'utf8', 'gbk');
             $array = json_decode($json, true);
         }
-        $ret = $array['ret'];
-        if ($ret !== 0) {
-            throw new TencentAIError($ret);
-        }
-        if (strtolower(self::$format) === 'json') {
+
+        // 检查返回值
+
+        self::checkReturn($array['ret']);
+
+        if ($format === 'json') {
             return json_encode($array);
         } else {
             return $array;
+        }
+    }
+
+    /**
+     * 检查返回值，不为 0 抛出错误
+     *
+     * @param  int $ret
+     * @throws TencentAIError
+     */
+    public static function checkReturn(int $ret)
+    {
+        if ($ret !== 0) {
+            throw new TencentAIError($ret);
         }
     }
 

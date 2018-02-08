@@ -27,12 +27,10 @@ class ImageTest extends TestCase
 
     public function setup()
     {
-        $config = [
-            'app_id' => 1106560031,
-            'app_key' => 'ZbRY9cf72TbDO0xb',
-        ];
+        $app_id = 1106560031;
+        $app_key = 'ZbRY9cf72TbDO0xb';
 
-        $this->aiImage = TencentAI::tencentAI($config)->image;
+        $this->aiImage = TencentAI::tencentAI($app_id, $app_key)->image;
         $imageDir = __DIR__.'/../image/ai/tencent/vision/';
         $this->image = $imageDir.'../face/wxc.jpg';
         $this->imageDog = $imageDir.'dog.jpg';

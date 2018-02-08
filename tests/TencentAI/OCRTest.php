@@ -15,11 +15,10 @@ class OCRTest extends TestCase
 
     public function setUp()
     {
-        $config = [
-            'app_id' => 1106560031,
-            'app_key' => 'ZbRY9cf72TbDO0xb',
-        ];
-        $this->aiOCR = TencentAI::tencentAI($config)->ocr;
+        $app_id = 1106560031;
+        $app_key = 'ZbRY9cf72TbDO0xb';
+
+        $this->aiOCR = TencentAI::tencentAI($app_id, $app_key)->ocr;
     }
 
     /**

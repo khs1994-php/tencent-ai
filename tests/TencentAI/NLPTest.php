@@ -13,11 +13,10 @@ class NLPTest extends TestCase
 
     public function setUp()
     {
-        $config = [
-            'app_id' => 1106560031,
-            'app_key' => 'ZbRY9cf72TbDO0xb',
-        ];
-        $this->aiNLP = TencentAI::tencentAI($config)->nlp;
+        $app_id = 1106560031;
+        $app_key = 'ZbRY9cf72TbDO0xb';
+
+        $this->aiNLP = TencentAI::tencentAI($app_id, $app_key)->nlp;
     }
 
     // 分词

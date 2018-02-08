@@ -33,11 +33,11 @@ class FaceTest extends TestCase
 
     public function setup()
     {
-        $config = [
-            'app_id' => 1106560031,
-            'app_key' => 'ZbRY9cf72TbDO0xb',
-        ];
-        $this->aiFace = TencentAI::tencentAI($config)->face();
+
+        $app_id = 1106560031;
+        $app_key = 'ZbRY9cf72TbDO0xb';
+
+        $this->aiFace = TencentAI::tencentAI($app_id, $app_key)->face();
         $this->image = __DIR__.'/../image/ai/tencent/face/wxc.jpg';
         $this->image2 = __DIR__.'/../image/ai/tencent/face/wxc2.jpg';
         $this->image3 = __DIR__.'/../image/ai/tencent/face/wxc3.jpg';

@@ -43,15 +43,10 @@ use TencentAI\TencentAI;
 
 use TencentAI\Error\TencentAIError;
 
-$config = [
-    'app_id' => 1106560031,
-    'app_key' => 'ZbRY9cf72TbDO0xb',
-    'format' => 'json',
-    # 'format' => 'array'
-    # default is array
-];
+$app_id = 1106560031;
+$app_key = 'ZbRY9cf72TbDO0xb';
 
-$ai = TencentAI::tencentAI($config);
+$ai = TencentAI::tencentAI($app_id, $app_key);
 
 $image = __DIR__.'/image/ai/tencent/face/wxc.jpg';
 
@@ -61,7 +56,7 @@ try {
     $output = $e->getArray();
 }
 
-// return array
+// default return array
 
 var_dump($output);
 ```

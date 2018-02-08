@@ -15,11 +15,10 @@ class TranslateTest extends TestCase
 
     public function setUp()
     {
-        $config = [
-            'app_id' => 1106560031,
-            'app_key' => 'ZbRY9cf72TbDO0xb',
-        ];
-        $this->aiTranslate = TencentAI::tencentAI($config)->translate;
+        $app_id = 1106560031;
+        $app_key = 'ZbRY9cf72TbDO0xb';
+
+        $this->aiTranslate = TencentAI::tencentAI($app_id, $app_key)->translate;
         $this->image = __DIR__.'/../image/ai/tencent/translate/english.jpg';
     }
 
