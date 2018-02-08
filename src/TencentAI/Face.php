@@ -10,6 +10,38 @@ class Face
 
     const BASE_URL = 'https://api.ai.qq.com/fcgi-bin/face/';
 
+    const DETECT = self::BASE_URL.'face_detectface';
+
+    const MULTI_DETECT = self::BASE_URL.'face_detectmultiface';
+
+    const COMPARE = self::BASE_URL.'face_facecompare';
+
+    const SHAPE = self::BASE_URL.'face_faceshape';
+
+    const IDENTIFY = self::BASE_URL.'face_faceidentify';
+
+    const VERIFY = self::BASE_URL.'face_faceverify';
+
+    const ADD = self::BASE_URL.'face_addface';
+
+    const DELETE = self::BASE_URL.'face_delface';
+
+    const GET_LIST = self::BASE_URL.'face_getfaceids';
+
+    const GET_INFO = self::BASE_URL.'face_getfaceinfo';
+
+    const CREATE_PERSON = self::BASE_URL.'face_newperson';
+
+    const DELETE_PERSON = self::BASE_URL.'face_delperson';
+
+    const SET_PERSON_INFO = self::BASE_URL.'face_setinfo';
+
+    const GET_PERSON_INFO = self::BASE_URL.'face_getinfo';
+
+    const GET_GROUP_LIST = self::BASE_URL.'face_getgroupids';
+
+    const GET_PERSON_LIST = self::BASE_URL.'face_getpersonids';
+
     /**
      * 接口名称：人脸分析
      * 接口描述：识别上传图像上面的人脸信息.
@@ -32,7 +64,7 @@ class Face
             'image' => self::encode($image),
             'mode' => $mode,
         ];
-        $url = self::BASE_URL.'face_detectface';
+        $url = self::DETECT;
 
         return TencentAI::exec($url, $data);
     }
@@ -46,7 +78,7 @@ class Face
      */
     public function multiDetect(string $image)
     {
-        $url = self::BASE_URL.'face_detectmultiface';
+        $url = self::MULTI_DETECT;
         return $this->image($url, $image);
     }
 
@@ -66,7 +98,7 @@ class Face
             'image_a' => self::encode($images[0]),
             'image_b' => self::encode($images[1]),
         ];
-        $url = self::BASE_URL.'face_facecompare';
+        $url = self::COMPARE;
 
         return TencentAI::exec($url, $data);
     }
@@ -88,7 +120,7 @@ class Face
             'image' => self::encode($image),
             'mode' => $mode,
         ];
-        $url = self::BASE_URL.'face_detectface';
+        $url = self::SHAPE;
 
         return TencentAI::exec($url, $data);
     }
@@ -109,7 +141,7 @@ class Face
             'group_id' => $group_id,
             'topn' => $topon,
         ];
-        $url = self::BASE_URL.'face_faceidentify';
+        $url = self::IDENTIFY;
 
         return TencentAI::exec($url, $data);
     }
@@ -128,7 +160,7 @@ class Face
             'person_id' => $person_id,
             'image' => self::encode($image),
         ];
-        $url = self::BASE_URL.'face_faceverify';
+        $url = self::VERIFY;
 
         return TencentAI::exec($url, $data);
     }
@@ -158,7 +190,7 @@ class Face
             'images' => $images,
             'tag' => $tag,
         ];
-        $url = self::BASE_URL.'face_addface';
+        $url = self::ADD;
 
         return TencentAI::exec($url, $data);
     }
@@ -179,7 +211,7 @@ class Face
             'person_id' => $person_id,
             'face_ids' => $face_ids,
         ];
-        $url = self::BASE_URL.'face_delface';
+        $url = self::DELETE;
 
         return TencentAI::exec($url, $data);
     }
@@ -196,7 +228,7 @@ class Face
         $data = [
             'person_id' => $person_id,
         ];
-        $url = self::BASE_URL.'face_getfaceids';
+        $url = self::GET_LIST;
 
         return TencentAI::exec($url, $data);
     }
@@ -213,7 +245,7 @@ class Face
         $data = [
             'face_id' => $face_id,
         ];
-        $url = self::BASE_URL.'face_getfaceinfo';
+        $url = self::GET_INFO;
 
         return TencentAI::exec($url, $data);
     }
@@ -243,7 +275,7 @@ class Face
             'person_name' => $person_name,
             'tag' => $tag,
         ];
-        $url = self::BASE_URL.'face_newperson';
+        $url = self::CREATE_PERSON;
 
         return TencentAI::exec($url, $data);
     }
@@ -260,7 +292,7 @@ class Face
         $data = [
             'person_id' => $person_id,
         ];
-        $url = self::BASE_URL.'face_delperson';
+        $url = self::DELETE_PERSON;
 
         return TencentAI::exec($url, $data);
     }
@@ -281,7 +313,7 @@ class Face
             'person_name' => $person_name,
             'tag' => $tag,
         ];
-        $url = self::BASE_URL.'face_setinfo';
+        $url = self::SET_PERSON_INFO;
 
         return TencentAI::exec($url, $data);
     }
@@ -298,7 +330,7 @@ class Face
         $data = [
             'person_id' => $person_id,
         ];
-        $url = self::BASE_URL.'face_getinfo';
+        $url = self::GET_PERSON_INFO;
 
         return TencentAI::exec($url, $data);
     }
@@ -311,7 +343,7 @@ class Face
      */
     public function getGroupList()
     {
-        $url = self::BASE_URL.'face_getgroupids';
+        $url = self::GET_GROUP_LIST;
         return TencentAI::exec($url, []);
     }
 
@@ -327,7 +359,7 @@ class Face
         $data = [
             'group_id' => $group_id,
         ];
-        $url = self::BASE_URL.'face_getpersonids';
+        $url = self::GET_PERSON_LIST;
 
         return TencentAI::exec($url, $data);
     }

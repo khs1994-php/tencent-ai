@@ -6,6 +6,10 @@ class Audio
 {
     const BASE_URL = 'https://api.ai.qq.com/fcgi-bin/aai/';
 
+    const ASR=self::BASE_URL.'aai_asr';
+
+    const ASRS=self::BASE_URL.'';
+
     use Module\Audio;
 
     /**
@@ -27,7 +31,7 @@ class Audio
             'speech' => $speech,
             'rate' => $rate
         ];
-        $url = self::BASE_URL.'aai_asr';
+        $url = self::ASR;
         return TencentAI::exec($url, $data);
     }
 
@@ -35,34 +39,29 @@ class Audio
 
     public function asrs($value = '')
     {
-
     }
 
     // 语音识别 流式版 WeChatAI
 
     public function wxasrs($value = '')
     {
-
     }
 
     // 长语音识别
 
     public function wxasrlong($value = '')
     {
-
     }
 
     // 语音合成 AILab
 
     public function tts($value = '')
     {
-
     }
 
     // 语音合成 优图
 
     public function tta($value = '')
     {
-
     }
 }

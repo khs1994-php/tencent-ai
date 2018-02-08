@@ -1,0 +1,3 @@
+[submodule "tests/image"]
+	path = tests/image
+	url = https://github.com/khs1994-php/image.git

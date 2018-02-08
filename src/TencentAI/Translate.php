@@ -8,11 +8,21 @@ class Translate
 {
     const BASE_URL = 'https://api.ai.qq.com/fcgi-bin/nlp/';
 
+    const AILAB_TEXT = self::BASE_URL.'nlp_texttrans';
+
+    const TEXT = self::BASE_URL.'nlp_texttranslate';
+
+    const IMAGE = self::BASE_URL.'nlp_imagetranslate';
+
+    const AUDIO = self::BASE_URL.'nlp_speechtranslate';
+
+    const DETECT = self::BASE_URL.'nlp_textdetect';
+
     /**
      * 文本翻译（AI Lab）
      *
      * @param string $text
-     * @param int    $type
+     * @param int    $type 翻译类型 0-16
      * @return array
      * @throws TencentAIError
      */
@@ -25,7 +35,7 @@ class Translate
             'text' => $text,
             'type' => $type,
         ];
-        $url = self::BASE_URL.'nlp_texttrans';
+        $url = self::AILAB_TEXT;
 
         return TencentAI::exec($url, $data);
     }
@@ -39,7 +49,7 @@ class Translate
      * @return array
      * @throws TencentAIError
      */
-    public function text(string $text, string $source = 'en', string $target = 'zh')
+    public function text(string $text, string $source = 'auto', string $target = 'auto')
     {
         $data = [
             'text' => $text,
@@ -47,7 +57,7 @@ class Translate
             'target' => $target,
         ];
 
-        $url = self::BASE_URL.'nlp_texttranslate';
+        $url = self::TEXT;
 
         return TencentAI::exec($url, $data);
     }
@@ -63,7 +73,7 @@ class Translate
      * @return array
      * @throws TencentAIError
      */
-    public function image(string $image, string $session_id, string $scene = 'word', string $source = 'zh', string $target = 'en')
+    public function image(string $image, string $session_id, string $scene = 'word', string $source = 'auto', string $target = 'auto')
     {
         if ($scene !== 'word' and $scene !== 'doc') {
             throw new TencentAIError(90004);
@@ -75,7 +85,7 @@ class Translate
             'source' => $source,
             'target' => $target,
         ];
-        $url = self::BASE_URL.'nlp_imagetranslate';
+        $url = self::IMAGE;
 
         return TencentAI::exec($url, $data);
     }
@@ -83,9 +93,9 @@ class Translate
     /**
      * 语音翻译
      *
-     * @param int    $format
+     * @param int    $format 3 4 6 8 9
      * @param int    $seq
-     * @param int    $end
+     * @param int    $end    是否结束分片 0-中间分片，1-结束分片
      * @param string $session_id
      * @param string $speech_chunk
      * @param string $source
@@ -93,7 +103,13 @@ class Translate
      * @return array
      * @throws TencentAIError
      */
-    public function audio(int $format, int $seq, int $end, string $session_id, string $speech_chunk, string $source, string $target)
+    public function audio(int $format,
+                          int $seq,
+                          int $end,
+                          string $session_id,
+                          string $speech_chunk,
+                          string $source = 'auto',
+                          string $target = 'auto')
     {
         $data = [
             'format' => $format,
@@ -104,7 +120,7 @@ class Translate
             'source' => $source,
             'target' => $target
         ];
-        $url = self::BASE_URL.'nlp_speechtranslate';
+        $url = self::AUDIO;
 
         return TencentAI::exec($url, $data);
     }
@@ -113,8 +129,8 @@ class Translate
      * 语种识别
      *
      * @param string $text
-     * @param string $candidate_langs
-     * @param int    $force
+     * @param string $candidate_langs 待选择语言
+     * @param int    $force           强制从待选择语言中选择
      * @return array
      * @throws TencentAIError
      */
@@ -126,7 +142,7 @@ class Translate
             'candidate_langs' => $candidate_langs,
             'force' => $force
         ];
-        $url = self::BASE_URL.'nlp_textdetect';
+        $url = self::DETECT;
 
         return TencentAI::exec($url, $data);
     }

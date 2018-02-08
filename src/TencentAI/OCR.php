@@ -10,6 +10,18 @@ class OCR
 
     const  BASE_URL = 'https://api.ai.qq.com/fcgi-bin/ocr/';
 
+    const ID_CARD = self::BASE_URL.'ocr_idcardocr';
+
+    const BUSINESS_CARD = self::BASE_URL.'ocr_bcocr';
+
+    const DRIVE = self::BASE_URL.'ocr_driverlicenseocr';
+
+    const BIZ = self::BASE_URL.'ocr_bizlicenseocr';
+
+    const CREDIT_CARD = self::BASE_URL.'ocr_creditcardocr';
+
+    const GENERAL = self::BASE_URL.'ocr_generalocr';
+
     /**
      * 身份证识别
      *
@@ -28,7 +40,7 @@ class OCR
             'card_type' => $type,
         ];
 
-        $url = self::BASE_URL.'ocr_idcardocr';
+        $url = self::ID_CARD;
 
         return TencentAI::exec($url, $data);
     }
@@ -42,7 +54,7 @@ class OCR
      */
     public function businessCard(string $image)
     {
-        $url = self::BASE_URL.'ocr_bcocr';
+        $url = self::BUSINESS_CARD;
 
         return $this->image($url, $image);
     }
@@ -64,7 +76,7 @@ class OCR
             'image' => base64_encode(file_get_contents($image)),
             'type' => $type,
         ];
-        $url = self::BASE_URL.'ocr_driverlicenseocr';
+        $url = self::DRIVE;
 
         return TencentAI::exec($url, $data);
     }
@@ -78,7 +90,7 @@ class OCR
      */
     public function bizLicense(string $image)
     {
-        $url = self::BASE_URL.'ocr_bizlicenseocr';
+        $url = self::BIZ;
 
         return $this->image($url, $image);
     }
@@ -92,7 +104,7 @@ class OCR
      */
     public function creditCard(string $image)
     {
-        $url = self::BASE_URL.'ocr_creditcardocr';
+        $url = self::CREDIT_CARD;
 
         return $this->image($url, $image);
     }
@@ -106,7 +118,7 @@ class OCR
      */
     public function general(string $image)
     {
-        $url = self::BASE_URL.'ocr_generalocr';
+        $url = self::GENERAL;
 
         return $this->image($url, $image);
     }

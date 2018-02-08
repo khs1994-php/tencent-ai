@@ -10,6 +10,24 @@ class Image
 
     const BASE_URL = 'https://api.ai.qq.com/fcgi-bin/';
 
+    const PORN = self::BASE_URL.'vision/vision_porn';
+
+    const TERRORISM = self::BASE_URL.'image/image_terrorism';
+
+    const SCENER = self::BASE_URL.'vision/vision_scener';
+
+    const OBJECT = self::BASE_URL.'vision/vision_objectr';
+
+    const TAG = self::BASE_URL.'image/image_tag';
+
+    const IDENTIFY = self::BASE_URL.'vision/vision_imgidentify';
+
+    const IMAGE_TO_TEXT = self::BASE_URL.'vision/vision_imgtotext';
+
+    const FUZZY = self::BASE_URL.'image/image_fuzzy';
+
+    const FOOD = self::BASE_URL.'image/image_food';
+
     /**
      * 智能鉴黄
      *
@@ -19,7 +37,7 @@ class Image
      */
     public function porn(string $image)
     {
-        $url = self::BASE_URL.'vision/vision_porn';
+        $url = self::PORN;
 
         return self::image($url, $image);
     }
@@ -33,7 +51,7 @@ class Image
      */
     public function terrorism(string $image)
     {
-        $url = self::BASE_URL.'image/image_terrorism';
+        $url = self::TERRORISM;
 
         return $this->image($url, $image);
     }
@@ -54,7 +72,7 @@ class Image
             'format' => $format,
             'topk' => $topk,
         ];
-        $url = self::BASE_URL.'vision/vision_scener';
+        $url = self::SCENER;
 
         return TencentAI::exec($url, $data);
     }
@@ -75,7 +93,7 @@ class Image
             'format' => $format,
             'topk' => $topk,
         ];
-        $url = self::BASE_URL.'vision/vision_objectr';
+        $url = self::OBJECT;
 
         return TencentAI::exec($url, $data);
     }
@@ -89,7 +107,7 @@ class Image
      */
     public function tag(string $image)
     {
-        $url = self::BASE_URL.'image/image_tag';
+        $url = self::TAG;
 
         return self::image($url, $image);
     }
@@ -108,7 +126,7 @@ class Image
             'image' => self::encode($image),
             'scene' => $scene,
         ];
-        $url = self::BASE_URL.'vision/vision_imgidentify';
+        $url = self::IDENTIFY;
 
         return TencentAI::exec($url, $data);
     }
@@ -152,7 +170,7 @@ class Image
             'session_id' => $session_id,
         ];
 
-        $url = self::BASE_URL.'vision/vision_imgtotext';
+        $url = self::IMAGE_TO_TEXT;
 
         return TencentAI::exec($url, $data);
     }
@@ -166,7 +184,7 @@ class Image
      */
     public function fuzzy(string $image)
     {
-        $url = self::BASE_URL.'image/image_fuzzy';
+        $url = self::FUZZY;
 
         return $this->image($url, $image);
     }
@@ -180,7 +198,7 @@ class Image
      */
     public function food(string $image)
     {
-        $url = self::BASE_URL.'image/image_food';
+        $url = self::FOOD;
 
         return $this->image($url, $image);
     }

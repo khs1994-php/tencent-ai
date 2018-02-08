@@ -13,6 +13,8 @@ trait Audio
     private $aaiWxAsrsFormat = [1, 2, 3, 4, 5,];
 
     /**
+     * 抛出错误
+     *
      * @param        $check
      * @param string $array_name
      * @param int    $code
@@ -26,6 +28,8 @@ trait Audio
     }
 
     /**
+     * 检查格式参数
+     *
      * @param $format
      * @throws TencentAIError
      */
@@ -35,6 +39,8 @@ trait Audio
     }
 
     /**
+     * 检查速率参数
+     *
      * @param int $rate
      * @throws TencentAIError
      */
@@ -43,6 +49,12 @@ trait Audio
         $this->check($rate, 'asrRate', 90021);
     }
 
+    /**
+     * 编码文件
+     *
+     * @param string $voice
+     * @return string
+     */
     public function encode(string $voice)
     {
         if (@is_file($voice)) {

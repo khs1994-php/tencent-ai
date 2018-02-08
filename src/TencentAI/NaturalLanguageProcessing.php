@@ -9,6 +9,20 @@ class NaturalLanguageProcessing
 {
     const BASE_URL = 'https://api.ai.qq.com/fcgi-bin/nlp/';
 
+    const SEG = self::BASE_URL.'nlp_wordseg';
+
+    const POS = self::BASE_URL.'nlp_wordpos';
+
+    const NER = self::BASE_URL.'nlp_wordner';
+
+    const SYN = self::BASE_URL.'nlp_wordsyn';
+
+    const COM = self::BASE_URL.'nlp_wordcom';
+
+    const POLAR = self::BASE_URL.'nlp_textpolar';
+
+    const CHAT = self::BASE_URL.'nlp_textchat';
+
     use NLP;
 
     /**
@@ -20,7 +34,7 @@ class NaturalLanguageProcessing
      */
     public function wordseg(string $text)
     {
-        $url = self::BASE_URL.'nlp_wordseg';
+        $url = self::SEG;
 
         return $this->nlp($url, $text);
     }
@@ -34,7 +48,7 @@ class NaturalLanguageProcessing
      */
     public function wordpos(string $text)
     {
-        $url = self::BASE_URL.'nlp_wordpos';
+        $url = self::POS;
 
         return $this->nlp($url, $text);
     }
@@ -48,7 +62,7 @@ class NaturalLanguageProcessing
      */
     public function wordner(string $text)
     {
-        $url = self::BASE_URL.'nlp_wordner';
+        $url = self::NER;
 
         return $this->nlp($url, $text);
     }
@@ -62,7 +76,7 @@ class NaturalLanguageProcessing
      */
     public function wordsyn(string $text)
     {
-        $url = self::BASE_URL.'nlp_wordsyn';
+        $url = self::SYN;
 
         return $this->nlp($url, $text);
     }
@@ -76,7 +90,7 @@ class NaturalLanguageProcessing
      */
     public function wordcom(string $text)
     {
-        $url = self::BASE_URL.'nlp_wordcom';
+        $url = self::COM;
 
         return $this->nlp($url, $text, false);
     }
@@ -90,7 +104,7 @@ class NaturalLanguageProcessing
      */
     public function textPolar(string $text)
     {
-        $url = self::BASE_URL.'nlp_textpolar';
+        $url = self::POLAR;
 
         return $this->nlp($url, $text, false);
     }
@@ -110,7 +124,7 @@ class NaturalLanguageProcessing
             'session' => $session,
         ];
 
-        $url = self::BASE_URL.'/nlp_textchat';
+        $url = self::CHAT;
 
         return TencentAI::exec($url, $data);
     }

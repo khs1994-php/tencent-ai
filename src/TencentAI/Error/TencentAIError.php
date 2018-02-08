@@ -13,7 +13,8 @@ use Throwable;
 
 class TencentAIError extends \Error
 {
-    public static $array = [4096 => '参数非法',
+    public static $array = [
+        4096 => '参数非法',
         12289 => '应用不存在，请检查app_id是否有效的应用标识',
         12801 => '素材不存在，请检查app_id对应的素材模版id',
         12802 => '素材ID与应用ID不匹配，请检查app_id对应的素材模版id',
