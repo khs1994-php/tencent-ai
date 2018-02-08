@@ -6,20 +6,21 @@ use TencentAI\Error\TencentAIError;
 
 trait Audio
 {
-    private $asrFormat = [1, 2, 3, 4,];
+    private $asrFormat = [1, 2, 3, 4];
 
-    private $asrRate = [8000, 16000,];
+    private $asrRate = [8000, 16000];
 
-    private $aaiWxAsrsFormat = [1, 2, 3, 4, 5,];
+    private $aaiWxAsrsFormat = [1, 2, 3, 4, 5];
 
     private $translateFormat = [3, 4, 6, 8, 9];
 
     /**
-     * 抛出错误
+     * 抛出错误.
      *
      * @param        $check
      * @param string $array_name
      * @param int    $code
+     *
      * @throws TencentAIError
      */
     private function check($check, string $array_name, int $code)
@@ -30,9 +31,10 @@ trait Audio
     }
 
     /**
-     * 检查格式参数
+     * 检查格式参数.
      *
      * @param $format
+     *
      * @throws TencentAIError
      */
     public function checkAsrFormat(int $format)
@@ -41,9 +43,10 @@ trait Audio
     }
 
     /**
-     * 检查速率参数
+     * 检查速率参数.
      *
      * @param int $rate
+     *
      * @throws TencentAIError
      */
     public function checkAsrRate(int $rate)
@@ -52,9 +55,10 @@ trait Audio
     }
 
     /**
-     * 检查语音翻译文件格式
+     * 检查语音翻译文件格式.
      *
      * @param string $format
+     *
      * @throws TencentAIError
      */
     public function checkTranslateFormat(string $format)
@@ -63,9 +67,10 @@ trait Audio
     }
 
     /**
-     * 编码文件
+     * 编码文件.
      *
      * @param string $voice
+     *
      * @return string
      */
     public function encode(string $voice)
@@ -73,9 +78,7 @@ trait Audio
         if (@is_file($voice)) {
             return base64_encode(file_get_contents($voice));
         } else {
-
             return base64_encode($voice);
         }
     }
-
 }

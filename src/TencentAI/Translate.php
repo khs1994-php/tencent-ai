@@ -7,7 +7,6 @@ use TencentAI\Error\TencentAIError;
 class Translate
 {
     use Module\Translate;
-
     use Module\Audio;
 
     const BASE_URL = 'https://api.ai.qq.com/fcgi-bin/nlp/';
@@ -23,14 +22,16 @@ class Translate
     const DETECT = self::BASE_URL.'nlp_textdetect';
 
     /**
-     * 文本翻译（AI Lab）
+     * 文本翻译（AI Lab）.
      *
      * @param  string $text
      * @param  int    $type 翻译类型 0-16
-     * @return array
-     * @link   https://ai.qq.com/doc/nlptrans.shtml
      *
      * @throws TencentAIError
+     *
+     * @return array
+     *
+     * @link   https://ai.qq.com/doc/nlptrans.shtml
      */
     public function aILabText(string $text, int $type = 0)
     {
@@ -45,13 +46,15 @@ class Translate
     }
 
     /**
-     * 文本翻译（翻译君）
+     * 文本翻译（翻译君）.
      *
      * @param string $text
      * @param string $source 源语言缩写
      * @param string $target 目标语言缩写
-     * @return array
+     *
      * @throws TencentAIError
+     *
+     * @return array
      */
     public function text(string $text, string $source = 'auto', string $target = 'auto')
     {
@@ -66,17 +69,19 @@ class Translate
     }
 
     /**
-     * 图片翻译
+     * 图片翻译.
      *
      * @param  string $image
      * @param  string $session_id 一次请求ID
      * @param  string $scene      识别类型 word-单词识别，doc-文档识别
      * @param  string $source     源语言缩写
      * @param  string $target     目标语言缩写
-     * @return array
-     * @link   https://ai.qq.com/doc/imagetranslate.shtml
      *
      * @throws TencentAIError
+     *
+     * @return array
+     *
+     * @link   https://ai.qq.com/doc/imagetranslate.shtml
      */
     public function image(string $image,
                           string $session_id,
@@ -100,7 +105,7 @@ class Translate
     }
 
     /**
-     * 语音翻译
+     * 语音翻译.
      *
      * @param  int    $format       3 4 6 8 9
      * @param  int    $seq          语音分片所在语音流的偏移量（字节）
@@ -109,10 +114,12 @@ class Translate
      * @param  string $speech_chunk 待识别语音分片
      * @param  string $source       源语言缩写
      * @param  string $target       目标语言缩写
-     * @return array
-     * @link   https://ai.qq.com/doc/speechtranslate.shtml
      *
      * @throws TencentAIError
+     *
+     * @return array
+     *
+     * @link   https://ai.qq.com/doc/speechtranslate.shtml
      */
     public function audio(int $format,
                           int $seq,
@@ -126,11 +133,11 @@ class Translate
         $data = [
             'format' => $format,
             'seq' => $seq,
-            'end' => (int)$end,
+            'end' => (int) $end,
             'session_id' => $session_id,
             'speech_chunk' => $speech_chunk,
             'source' => $source,
-            'target' => $target
+            'target' => $target,
         ];
         $url = self::AUDIO;
 
@@ -138,15 +145,17 @@ class Translate
     }
 
     /**
-     * 语种识别
+     * 语种识别.
      *
      * @param  string $text
      * @param  string $candidate_langs 待选择语言
      * @param  bool   $force           强制从待选择语言中选择
-     * @return array
-     * @throws TencentAIError
-     * @link   https://ai.qq.com/doc/textdetect.shtml
      *
+     * @throws TencentAIError
+     *
+     * @return array
+     *
+     * @link   https://ai.qq.com/doc/textdetect.shtml
      */
     public function detect(string $text, $candidate_langs = 'zh', bool $force = false)
     {
@@ -154,7 +163,7 @@ class Translate
         $data = [
             'text' => $text,
             'candidate_langs' => $candidate_langs,
-            'force' => (int)$force
+            'force' => (int) $force,
         ];
         $url = self::DETECT;
 

@@ -7,7 +7,6 @@ use TencentAI\Error\TencentAIError;
 class OCR
 {
     use Module\Image;
-
     use Module\OCR;
 
     const  BASE_URL = 'https://api.ai.qq.com/fcgi-bin/ocr/';
@@ -25,20 +24,22 @@ class OCR
     const GENERAL = self::BASE_URL.'ocr_generalocr';
 
     /**
-     * 身份证识别
+     * 身份证识别.
      *
      * @param  string $image
      * @param  bool   $front 正面为 true
-     * @return array
-     * @throws TencentAIError
-     * @link   https://ai.qq.com/doc/ocridcardocr.shtml
      *
+     * @throws TencentAIError
+     *
+     * @return array
+     *
+     * @link   https://ai.qq.com/doc/ocridcardocr.shtml
      */
     public function idCard(string $image, bool $front = true)
     {
         $data = [
             'image' => self::encode($image),
-            'card_type' => (int)!$front,
+            'card_type' => (int) !$front,
         ];
         $url = self::ID_CARD;
 
@@ -46,36 +47,40 @@ class OCR
     }
 
     /**
-     * 名片识别
+     * 名片识别.
      *
      * @param  string $image
-     * @return mixed
-     * @link   https://ai.qq.com/doc/ocrbcocr.shtml
      *
      * @throws TencentAIError
+     *
+     * @return mixed
+     *
+     * @link   https://ai.qq.com/doc/ocrbcocr.shtml
      */
     public function businessCard(string $image)
     {
         $url = self::BUSINESS_CARD;
+
         return $this->image($url, $image);
     }
 
     /**
-     * 行驶证驾驶证识别
+     * 行驶证驾驶证识别.
      *
      * @param  string $image
      * @param  bool   $driver 驾驶证为 true
-     * @return array
-     * @link   https://ai.qq.com/doc/ocrdriverlicenseocr.shtml
      *
      * @throws TencentAIError
      *
+     * @return array
+     *
+     * @link   https://ai.qq.com/doc/ocrdriverlicenseocr.shtml
      */
     public function driverLicense(string $image, bool $driver = true)
     {
         $data = [
             'image' => self::encode($image),
-            'type' => (int)$driver,
+            'type' => (int) $driver,
         ];
         $url = self::DRIVE;
 
@@ -83,47 +88,56 @@ class OCR
     }
 
     /**
-     * 营业执照识别
+     * 营业执照识别.
      *
      * @param  string $image
-     * @return mixed
-     * @link   https://ai.qq.com/doc/ocrbizlicenseocr.shtml
      *
      * @throws TencentAIError
+     *
+     * @return mixed
+     *
+     * @link   https://ai.qq.com/doc/ocrbizlicenseocr.shtml
      */
     public function bizLicense(string $image)
     {
         $url = self::BIZ;
+
         return $this->image($url, $image);
     }
 
     /**
-     * 银行卡识别
+     * 银行卡识别.
      *
      * @param  string $image
-     * @return mixed
-     * @link   https://ai.qq.com/doc/ocrcreditcardocr.shtml
      *
      * @throws TencentAIError
+     *
+     * @return mixed
+     *
+     * @link   https://ai.qq.com/doc/ocrcreditcardocr.shtml
      */
     public function creditCard(string $image)
     {
         $url = self::CREDIT_CARD;
+
         return $this->image($url, $image);
     }
 
     /**
-     * 通用识别
+     * 通用识别.
      *
      * @param  string $image
-     * @return mixed
-     * @link   https://ai.qq.com/doc/ocrgeneralocr.shtml
      *
      * @throws TencentAIError
+     *
+     * @return mixed
+     *
+     * @link   https://ai.qq.com/doc/ocrgeneralocr.shtml
      */
     public function general(string $image)
     {
         $url = self::GENERAL;
+
         return $this->image($url, $image);
     }
 }

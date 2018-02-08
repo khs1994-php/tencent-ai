@@ -8,6 +8,7 @@ trait Translate
 {
     /**
      * @param int $type
+     *
      * @throws TencentAIError
      */
     public function checkAILabTextType(int $type)

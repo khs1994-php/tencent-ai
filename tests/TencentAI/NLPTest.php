@@ -1,7 +1,7 @@
 <?php
 
-use PHPUnit\Framework\TestCase;
 use TencentAI\TencentAI;
+use PHPUnit\Framework\TestCase;
 
 class NLPTest extends TestCase
 {

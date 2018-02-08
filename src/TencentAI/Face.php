@@ -50,10 +50,12 @@ class Face
      *
      * @param  string $image
      * @param  int    $mode 检测模式，0-正常，1-大脸模式.
-     * @return mixed
-     * @link   https://ai.qq.com/doc/detectface.shtml
      *
      * @throws TencentAIError
+     *
+     * @return mixed
+     *
+     * @link   https://ai.qq.com/doc/detectface.shtml
      */
     public function detect(string $image, $mode = 1)
     {
@@ -72,27 +74,32 @@ class Face
      * 检测图片中的人脸位置，可以识别出一张图片上的多个人脸.
      *
      * @param  string $image
-     * @return mixed
-     * @link   https://ai.qq.com/doc/detectmultiface.shtml
      *
      * @throws TencentAIError
+     *
+     * @return mixed
+     *
+     * @link   https://ai.qq.com/doc/detectmultiface.shtml
      */
     public function multiDetect(string $image)
     {
         $url = self::MULTI_DETECT;
+
         return $this->image($url, $image);
     }
 
     /**
-     * 人脸对比：对请求图片进行人脸对比
+     * 人脸对比：对请求图片进行人脸对比.
      *
      * 对请求图片的两个人脸进行对比，计算相似性以及五官相似度.
      *
      * @param  array $images
-     * @return mixed
-     * @link   https://ai.qq.com/doc/facecompare.shtml
      *
      * @throws TencentAIError
+     *
+     * @return mixed
+     *
+     * @link   https://ai.qq.com/doc/facecompare.shtml
      */
     public function compare(array $images)
     {
@@ -109,16 +116,18 @@ class Face
     }
 
     /**
-     * 五官检测：对请求图片进行五官定位
+     * 五官检测：对请求图片进行五官定位.
      *
      * 计算构成人脸轮廓的 88 个点，包括眉毛（左右各 8 点）、眼睛（左右各 8 点）、鼻子（13 点）、嘴巴（22 点）、脸型轮廓（21 点）.
      *
      * @param  string $image
      * @param  int    $mode 检测模式，0-正常，1-大脸模式
-     * @return mixed
-     * @link   https://ai.qq.com/doc/faceshape.shtml
      *
      * @throws TencentAIError
+     *
+     * @return mixed
+     *
+     * @link   https://ai.qq.com/doc/faceshape.shtml
      */
     public function shape(string $image, int $mode)
     {
@@ -135,17 +144,19 @@ class Face
     }
 
     /**
-     * 人脸识别
+     * 人脸识别.
      *
      * 对于一个待识别的人脸图片，在一个组中识别出最相似的 N 个个体作为候选人返回，返回的 N 个个体按照相似度从大到小排列，N 由参数 topn 指定.
      *
      * @param  string $group_id
      * @param  string $image
      * @param  int    $topon 返回的候选人个数
-     * @return mixed
-     * @link   https://ai.qq.com/doc/faceidentify.shtml
      *
      * @throws TencentAIError
+     *
+     * @return mixed
+     *
+     * @link   https://ai.qq.com/doc/faceidentify.shtml
      */
     public function identify(string $group_id, string $image, int $topon = 9)
     {
@@ -166,10 +177,12 @@ class Face
      *
      * @param  string $person_id
      * @param  string $image
-     * @return mixed
-     * @link   https://ai.qq.com/doc/faceverify.shtml
      *
      * @throws TencentAIError
+     *
+     * @return mixed
+     *
+     * @link   https://ai.qq.com/doc/faceverify.shtml
      */
     public function verify(string $person_id, string $image)
     {
@@ -190,10 +203,13 @@ class Face
      * @param  string $person_id
      * @param  array  $images
      * @param  string $tag 备注信息
-     * @return mixed
-     * @link   https://ai.qq.com/doc/addface.shtml
      *
      * @throws TencentAIError
+     *
+     * @return mixed
+     *
+     * @link   https://ai.qq.com/doc/addface.shtml
+     *
      * @example
      *
      * <pre>
@@ -219,14 +235,16 @@ class Face
     }
 
     /**
-     * 个体管理 => 删除人脸：从一个个体中删除一个或一组人脸
+     * 个体管理 => 删除人脸：从一个个体中删除一个或一组人脸.
      *
      * @param  string $person_id
      * @param  array  $face_ids
-     * @return mixed
-     * @link   https://ai.qq.com/doc/delface.shtml
      *
      * @throws TencentAIError
+     *
+     * @return mixed
+     *
+     * @link   https://ai.qq.com/doc/delface.shtml
      */
     public function delete(string $person_id, array $face_ids)
     {
@@ -241,15 +259,17 @@ class Face
     }
 
     /**
-     * 获取人脸列表
+     * 获取人脸列表.
      *
      * 获取一个个体下所有人脸 ID.
      *
      * @param  string $person_id
-     * @return mixed
-     * @link   https://ai.qq.com/doc/getfaceids.shtml
      *
      * @throws TencentAIError
+     *
+     * @return mixed
+     *
+     * @link   https://ai.qq.com/doc/getfaceids.shtml
      */
     public function getList(string $person_id)
     {
@@ -262,13 +282,15 @@ class Face
     }
 
     /**
-     * 获取人脸信息
+     * 获取人脸信息.
      *
      * @param  string $face_id
-     * @return mixed
-     * @link   https://ai.qq.com/doc/getfaceinfo.shtml
      *
      * @throws TencentAIError
+     *
+     * @return mixed
+     *
+     * @link   https://ai.qq.com/doc/getfaceinfo.shtml
      */
     public function getInfo(string $face_id)
     {
@@ -281,7 +303,7 @@ class Face
     }
 
     /**
-     * 人体创建(属于一个组，或多个组)
+     * 人体创建(属于一个组，或多个组).
      *
      * 创建一个个体，并将个体放置到指定的组当中。一个组里面的个体总数上限为 20000 个。如果 ID 指定的组不存在，则会新建组并创建个体。
      *
@@ -290,10 +312,12 @@ class Face
      * @param  string $person_name
      * @param  string $image
      * @param  string $tag
-     * @return mixed
-     * @link   https://ai.qq.com/doc/newperson.shtml
      *
      * @throws TencentAIError
+     *
+     * @return mixed
+     *
+     * @link   https://ai.qq.com/doc/newperson.shtml
      */
     public function createPerson(array $group_ids,
                                  string $person_id,
@@ -315,13 +339,15 @@ class Face
     }
 
     /**
-     * 删除个体
+     * 删除个体.
      *
      * @param  string $person_id
-     * @return mixed
-     * @link   https://ai.qq.com/doc/delperson.shtml
      *
      * @throws TencentAIError
+     *
+     * @return mixed
+     *
+     * @link   https://ai.qq.com/doc/delperson.shtml
      */
     public function deletePerson(string $person_id)
     {
@@ -339,10 +365,12 @@ class Face
      * @param  string $person_id
      * @param  string $person_name
      * @param  string $tag
-     * @return mixed
-     * @link   https://ai.qq.com/doc/setinfo.shtml
      *
      * @throws TencentAIError
+     *
+     * @return mixed
+     *
+     * @link   https://ai.qq.com/doc/setinfo.shtml
      */
     public function setPersonInfo(string $person_id, string $person_name, string $tag)
     {
@@ -357,15 +385,17 @@ class Face
     }
 
     /**
-     * 获取个体信息
+     * 获取个体信息.
      *
      * 获取一个个体的信息，包括 ID，名字，备注，相关的人脸 ID 列表，以及所属组 ID 列表.
      *
      * @param  string $person_id
-     * @return mixed
-     * @link   https://ai.qq.com/doc/getinfo.shtml
      *
      * @throws TencentAIError
+     *
+     * @return mixed
+     *
+     * @link   https://ai.qq.com/doc/getinfo.shtml
      */
     public function getPersonInfo(string $person_id)
     {
@@ -378,30 +408,35 @@ class Face
     }
 
     /**
-     * 获取组列表
+     * 获取组列表.
      *
      * 获取一个 AppId 下所有组 ID.
      *
-     * @return mixed
-     * @link   https://ai.qq.com/doc/getgroupids.shtml
      * @throws TencentAIError
+     *
+     * @return mixed
+     *
+     * @link   https://ai.qq.com/doc/getgroupids.shtml
      */
     public function getGroupList()
     {
         $url = self::GET_GROUP_LIST;
+
         return TencentAI::exec($url, []);
     }
 
     /**
-     * 获取人体列表
+     * 获取人体列表.
      *
      * 获取一个组中的所有个体 ID.
      *
      * @param  string $group_id
-     * @return mixed
-     * @link   https://ai.qq.com/doc/getpersonids.shtml
      *
      * @throws TencentAIError
+     *
+     * @return mixed
+     *
+     * @link   https://ai.qq.com/doc/getpersonids.shtml
      */
     public function getPersonList(string $group_id)
     {

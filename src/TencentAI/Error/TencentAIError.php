@@ -8,7 +8,6 @@
 
 namespace TencentAI\Error;
 
-
 use Throwable;
 
 class TencentAIError extends \Error
@@ -88,21 +87,21 @@ class TencentAIError extends \Error
         16457 => '不支持的翻译类型',
         16460 => '输入图片与识别场景不匹配',
         16461 => '识别结果为空，当前图片无法匹配已收录的标签，请尝试更换图片',
-        # 语音
+        // 语音
         90100 => '语音文件格式错误',
         90101 => '语音速率错误',
-        # 人脸
+        // 人脸
         90200 => '人脸对比必须为两张图片',
-        # 图片
+        // 图片
         90300 => '图片翻译类型必须为二者之一 word-单词识别，doc-文档识别',
-        # 自然语言处理
+        // 自然语言处理
         90400 => null,
-        # OCR
+        // OCR
         90500 => null,
-        # 照片处理
+        // 照片处理
         90600 => null,
-        # 翻译
-        90700 => '语音翻译文件格式错误'
+        // 翻译
+        90700 => '语音翻译文件格式错误',
     ];
 
     public $code;
@@ -127,6 +126,7 @@ class TencentAIError extends \Error
     public function __toString()
     {
         header('content-type', 'application/json;charset=utf-8');
+
         return json_encode(['ret' => $this->code, 'msg' => $this->message]);
     }
 

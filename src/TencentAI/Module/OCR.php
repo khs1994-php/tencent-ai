@@ -4,5 +4,4 @@ namespace TencentAI\Module;
 
 trait OCR
 {
-
 }
