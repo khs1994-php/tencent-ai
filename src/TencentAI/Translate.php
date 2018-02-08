@@ -134,9 +134,9 @@ class Translate
      * @return array
      * @throws TencentAIError
      */
-    public function detect(string $text, $candidate_langs = 'zh“en', int $force = 0)
+    public function detect(string $text, $candidate_langs = 'zh', int $force = 0)
     {
-        $candidate_langs = is_array($candidate_langs) ? implode('“', $candidate_langs) : $candidate_langs;
+        $candidate_langs = is_array($candidate_langs) ? implode('"', $candidate_langs) : $candidate_langs;
         $data = [
             'text' => $text,
             'candidate_langs' => $candidate_langs,

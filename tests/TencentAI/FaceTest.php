@@ -49,7 +49,7 @@ class FaceTest extends TestCase
     public function testCreatePerson()
     {
         // 组ID为字符串
-        $array = $this->aiFace->createPerson($this->groupId, $this->personId, $this->personName, $this->image, $this->personTag);
+        $array = $this->aiFace->createPerson([$this->groupId], $this->personId, $this->personName, $this->image, $this->personTag);
         $this->assertEquals(0, $array['ret']);
         $this->aiFace->deletePerson($this->personId);
         // 组ID为数组
@@ -87,7 +87,7 @@ class FaceTest extends TestCase
      */
     public function testAdd()
     {
-        $array = $this->aiFace->add($this->personId, $this->image2, $this->personTag);
+        $array = $this->aiFace->add($this->personId, [$this->image2], $this->personTag);
         $this->assertEquals(0, $array['ret']);
         $array = $this->aiFace->add($this->personId, [$this->image3, $this->image5], $this->personTag);
         $this->assertEquals(0, $array['ret']);
@@ -122,11 +122,11 @@ class FaceTest extends TestCase
     /**
      * 个体 => 删除人脸
      *
-     * @param string|array $faceIds
+     * @param array $faceIds
      *
      * @depends testAdd
      */
-    public function testDelete($faceIds)
+    public function testDelete(array $faceIds)
     {
         $array = $this->aiFace->delete('testPersonId', $faceIds);
         $this->assertContains('ok', $array['msg']);
