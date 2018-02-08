@@ -5,6 +5,8 @@ use PHPUnit\Framework\TestCase;
 
 class TranslateTest extends TestCase
 {
+    const IMAGE = __DIR__.'/../resource/translate/english.jpg';
+
     private $aiTranslate;
 
     private $image;
@@ -19,7 +21,6 @@ class TranslateTest extends TestCase
         $app_key = 'ZbRY9cf72TbDO0xb';
 
         $this->aiTranslate = TencentAI::tencentAI($app_id, $app_key)->translate;
-        $this->image = __DIR__.'/../image/ai/tencent/translate/english.jpg';
     }
 
     // 文本翻译 AILab
@@ -47,10 +48,17 @@ class TranslateTest extends TestCase
     {
         $this->name = __FUNCTION__;
 
-        $this->array = $this->aiTranslate->image($this->image, 1, 'word', 'en', 'zh');
+        $this->array = $this->aiTranslate->image(self::IMAGE, 1, 'word', 'en', 'zh');
     }
 
-    // 语音翻译 TODO
+    // 语音翻译
+
+    public function testAudio()
+    {
+        $this->name = __FUNCTION__;
+        $voice = __DIR__.'/../resource/translate/t.pcm';
+        $this->array = $this->aiTranslate->audio(6, 0, true, 1, $voice);
+    }
 
     // 语种识别
 

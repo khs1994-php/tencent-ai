@@ -5,6 +5,8 @@ use PHPUnit\Framework\TestCase;
 
 class ImageTest extends TestCase
 {
+    const IMAGE = __DIR__.'/../resource/vision/';
+
     private $aiImage;
 
     private $image;
@@ -31,14 +33,13 @@ class ImageTest extends TestCase
         $app_key = 'ZbRY9cf72TbDO0xb';
 
         $this->aiImage = TencentAI::tencentAI($app_id, $app_key)->image;
-        $imageDir = __DIR__.'/../image/ai/tencent/vision/';
-        $this->image = $imageDir.'../face/wxc.jpg';
-        $this->imageDog = $imageDir.'dog.jpg';
-        $this->imageFlower = $imageDir.'flower.jpg';
-        $this->imageFood = $imageDir.'food.jpg';
-        $this->imageTerrorism = $imageDir.'terrorism.jpg';
-        $this->imageScener = $imageDir.'scener.jpg';
-        $this->imageVehicle = $imageDir.'vehicle.jpg';
+        $this->image = self::IMAGE.'../face/wxc.jpg';
+        $this->imageDog = self::IMAGE.'dog.jpg';
+        $this->imageFlower = self::IMAGE.'flower.jpg';
+        $this->imageFood = self::IMAGE.'food.jpg';
+        $this->imageTerrorism = self::IMAGE.'terrorism.jpg';
+        $this->imageScener = self::IMAGE.'scener.jpg';
+        $this->imageVehicle = self::IMAGE.'vehicle.jpg';
     }
 
     // 智能鉴黄

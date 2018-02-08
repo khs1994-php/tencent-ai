@@ -7,6 +7,8 @@ use PHPUnit\Framework\TestCase;
 
 class FaceTest extends TestCase
 {
+    const IMAGE = __DIR__.'/../resource/face/';
+
     private $aiFace;
 
     private $image;
@@ -33,15 +35,14 @@ class FaceTest extends TestCase
 
     public function setup()
     {
-
         $app_id = 1106560031;
         $app_key = 'ZbRY9cf72TbDO0xb';
 
         $this->aiFace = TencentAI::tencentAI($app_id, $app_key)->face();
-        $this->image = __DIR__.'/../image/ai/tencent/face/wxc.jpg';
-        $this->image2 = __DIR__.'/../image/ai/tencent/face/wxc2.jpg';
-        $this->image3 = __DIR__.'/../image/ai/tencent/face/wxc3.jpg';
-        $this->image5 = __DIR__.'/../image/ai/tencent/face/wxc5.jpg';
+        $this->image = self::IMAGE.'/wxc.jpg';
+        $this->image2 = self::IMAGE.'/wxc2.jpg';
+        $this->image3 = self::IMAGE.'wxc3.jpg';
+        $this->image5 = self::IMAGE.'wxc5.jpg';
         $this->groupId = 'testGroupId1|testGroupId2';
         $this->personId = 'testPersonId';
         $this->personName = 'testPersonName';

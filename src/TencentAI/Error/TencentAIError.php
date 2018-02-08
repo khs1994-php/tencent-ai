@@ -120,6 +120,8 @@ class TencentAIError extends \Error
 
         if (array_key_exists($code, $array)) {
             $this->message = $array[$code];
+        } else {
+            $this->message = "错误码 $code ，未知错误";
         }
     }
 

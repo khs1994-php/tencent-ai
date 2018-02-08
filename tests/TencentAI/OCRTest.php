@@ -5,7 +5,7 @@ use TencentAI\TencentAI;
 
 class OCRTest extends TestCase
 {
-    const IMAGE = __DIR__.'/../image/ai/tencent/ocr/';
+    const IMAGE = __DIR__.'/../resource/ocr/';
 
     private $aiOCR;
 

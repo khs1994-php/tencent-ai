@@ -133,7 +133,7 @@ class Translate
         $data = [
             'format' => $format,
             'seq' => $seq,
-            'end' => (int) $end,
+            'end' => (int)$end,
             'session_id' => $session_id,
             'speech_chunk' => $speech_chunk,
             'source' => $source,
@@ -148,22 +148,21 @@ class Translate
      * 语种识别.
      *
      * @param  string $text
-     * @param  string $candidate_langs 待选择语言
-     * @param  bool   $force           强制从待选择语言中选择
-     *
-     * @throws TencentAIError
+     * @param  array  $languages
+     * @param  bool   $force 强制从待选择语言中选择
      *
      * @return array
      *
+     * @throws TencentAIError
      * @link   https://ai.qq.com/doc/textdetect.shtml
      */
-    public function detect(string $text, $candidate_langs = 'zh', bool $force = false)
+    public function detect(string $text, array $languages = ['zh'], bool $force = false)
     {
-        $candidate_langs = is_array($candidate_langs) ? implode('"', $candidate_langs) : $candidate_langs;
+        $languages = implode('"', $languages);
         $data = [
             'text' => $text,
-            'candidate_langs' => $candidate_langs,
-            'force' => (int) $force,
+            'candidate_langs' => $languages,
+            'force' => (int)$force,
         ];
         $url = self::DETECT;
 
