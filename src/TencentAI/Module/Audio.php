@@ -12,6 +12,8 @@ trait Audio
 
     private $aaiWxAsrsFormat = [1, 2, 3, 4, 5,];
 
+    private $translateFormat = [3, 4, 6, 8, 9];
+
     /**
      * 抛出错误
      *
@@ -35,7 +37,7 @@ trait Audio
      */
     public function checkAsrFormat(int $format)
     {
-        $this->check($format, 'asrFormat', 90020);
+        $this->check($format, 'asrFormat', 90100);
     }
 
     /**
@@ -46,7 +48,18 @@ trait Audio
      */
     public function checkAsrRate(int $rate)
     {
-        $this->check($rate, 'asrRate', 90021);
+        $this->check($rate, 'asrRate', 90101);
+    }
+
+    /**
+     * 检查语音翻译文件格式
+     *
+     * @param string $format
+     * @throws TencentAIError
+     */
+    public function checkTranslateFormat(string $format)
+    {
+        $this->check($format, 'translateFormat', 90700);
     }
 
     /**

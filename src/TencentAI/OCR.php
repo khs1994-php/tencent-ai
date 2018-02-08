@@ -28,18 +28,17 @@ class OCR
      * 身份证识别
      *
      * @param  string $image
-     * @param  int    $type 身份证图片类型，0-正面，1-反面
+     * @param  bool   $front 正面为 true
      * @return array
+     * @throws TencentAIError
      * @link   https://ai.qq.com/doc/ocridcardocr.shtml
      *
-     * @throws TencentAIError
      */
-    public function idCard(string $image, int $type = 0)
+    public function idCard(string $image, bool $front = true)
     {
-        $this->checkType($type);
         $data = [
             'image' => self::encode($image),
-            'card_type' => $type,
+            'card_type' => (int)!$front,
         ];
         $url = self::ID_CARD;
 
@@ -65,18 +64,18 @@ class OCR
      * 行驶证驾驶证识别
      *
      * @param  string $image
-     * @param  int    $type 识别类型，0-行驶证识别，1-驾驶证识别
+     * @param  bool   $driver 驾驶证为 true
      * @return array
      * @link   https://ai.qq.com/doc/ocrdriverlicenseocr.shtml
      *
      * @throws TencentAIError
+     *
      */
-    public function driverLicense(string $image, int $type = 0)
+    public function driverLicense(string $image, bool $driver = true)
     {
-        $this->checkType($type);
         $data = [
             'image' => self::encode($image),
-            'type' => $type,
+            'type' => (int)$driver,
         ];
         $url = self::DRIVE;
 

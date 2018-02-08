@@ -6,6 +6,10 @@ use TencentAI\Error\TencentAIError;
 
 class Translate
 {
+    use Module\Translate;
+
+    use Module\Audio;
+
     const BASE_URL = 'https://api.ai.qq.com/fcgi-bin/nlp/';
 
     const AILAB_TEXT = self::BASE_URL.'nlp_texttrans';
@@ -21,16 +25,16 @@ class Translate
     /**
      * 文本翻译（AI Lab）
      *
-     * @param string $text
-     * @param int    $type 翻译类型 0-16
+     * @param  string $text
+     * @param  int    $type 翻译类型 0-16
      * @return array
+     * @link   https://ai.qq.com/doc/nlptrans.shtml
+     *
      * @throws TencentAIError
      */
     public function aILabText(string $text, int $type = 0)
     {
-        if ($type > 16) {
-            throw new TencentAIError(90003);
-        }
+        $this->checkAILabTextType($type);
         $data = [
             'text' => $text,
             'type' => $type,
@@ -44,8 +48,8 @@ class Translate
      * 文本翻译（翻译君）
      *
      * @param string $text
-     * @param string $source
-     * @param string $target
+     * @param string $source 源语言缩写
+     * @param string $target 目标语言缩写
      * @return array
      * @throws TencentAIError
      */
@@ -56,7 +60,6 @@ class Translate
             'source' => $source,
             'target' => $target,
         ];
-
         $url = self::TEXT;
 
         return TencentAI::exec($url, $data);
@@ -65,15 +68,21 @@ class Translate
     /**
      * 图片翻译
      *
-     * @param string $image
-     * @param string $session_id
-     * @param string $scene 识别类型 word-单词识别，doc-文档识别
-     * @param string $source
-     * @param string $target
+     * @param  string $image
+     * @param  string $session_id 一次请求ID
+     * @param  string $scene      识别类型 word-单词识别，doc-文档识别
+     * @param  string $source     源语言缩写
+     * @param  string $target     目标语言缩写
      * @return array
+     * @link   https://ai.qq.com/doc/imagetranslate.shtml
+     *
      * @throws TencentAIError
      */
-    public function image(string $image, string $session_id, string $scene = 'word', string $source = 'auto', string $target = 'auto')
+    public function image(string $image,
+                          string $session_id,
+                          string $scene = 'word',
+                          string $source = 'auto',
+                          string $target = 'auto')
     {
         if ($scene !== 'word' and $scene !== 'doc') {
             throw new TencentAIError(90004);
@@ -93,28 +102,31 @@ class Translate
     /**
      * 语音翻译
      *
-     * @param int    $format 3 4 6 8 9
-     * @param int    $seq
-     * @param int    $end    是否结束分片 0-中间分片，1-结束分片
-     * @param string $session_id
-     * @param string $speech_chunk
-     * @param string $source
-     * @param string $target
+     * @param  int    $format       3 4 6 8 9
+     * @param  int    $seq          语音分片所在语音流的偏移量（字节）
+     * @param  bool   $end          是否结束分片 0-中间分片，1-结束分片
+     * @param  string $session_id   语音唯一标识（同一应用内）
+     * @param  string $speech_chunk 待识别语音分片
+     * @param  string $source       源语言缩写
+     * @param  string $target       目标语言缩写
      * @return array
+     * @link   https://ai.qq.com/doc/speechtranslate.shtml
+     *
      * @throws TencentAIError
      */
     public function audio(int $format,
                           int $seq,
-                          int $end,
+                          bool $end,
                           string $session_id,
                           string $speech_chunk,
                           string $source = 'auto',
                           string $target = 'auto')
     {
+        $this->checkTranslateFormat($format);
         $data = [
             'format' => $format,
             'seq' => $seq,
-            'end' => $end,
+            'end' => (int)$end,
             'session_id' => $session_id,
             'speech_chunk' => $speech_chunk,
             'source' => $source,
@@ -128,19 +140,21 @@ class Translate
     /**
      * 语种识别
      *
-     * @param string $text
-     * @param string $candidate_langs 待选择语言
-     * @param int    $force           强制从待选择语言中选择
+     * @param  string $text
+     * @param  string $candidate_langs 待选择语言
+     * @param  bool   $force           强制从待选择语言中选择
      * @return array
      * @throws TencentAIError
+     * @link   https://ai.qq.com/doc/textdetect.shtml
+     *
      */
-    public function detect(string $text, $candidate_langs = 'zh', int $force = 0)
+    public function detect(string $text, $candidate_langs = 'zh', bool $force = false)
     {
         $candidate_langs = is_array($candidate_langs) ? implode('"', $candidate_langs) : $candidate_langs;
         $data = [
             'text' => $text,
             'candidate_langs' => $candidate_langs,
-            'force' => $force
+            'force' => (int)$force
         ];
         $url = self::DETECT;
 

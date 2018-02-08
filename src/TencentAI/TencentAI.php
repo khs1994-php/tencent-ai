@@ -36,12 +36,12 @@ class TencentAI
         self::$app_id = $config['app_id'];
         self::$app_key = $config['app_key'];
 
-        // format is array
+        // default format is array
 
-        if (array_key_exists('format',$config)){
-          self::$format = $config['format'];
-        }else{
-          self::$format = 'array';
+        if (array_key_exists('format', $config)) {
+            self::$format = $config['format'];
+        } else {
+            self::$format = 'array';
         }
         self::$curl = new Curl();
         $this->audio = new Audio();
@@ -62,9 +62,14 @@ class TencentAI
         return self::$tencentAI;
     }
 
-    // 生成签名
-
-    public static function sign($request_body)
+    /**
+     * 生成签名
+     *
+     * @param  string $request_body
+     * @return string
+     * @link   https://ai.qq.com/doc/auth.shtml
+     */
+    public static function sign(string $request_body)
     {
         $app_key = self::$app_key;
         $sign = strtoupper(md5($request_body.'&app_key='.$app_key));
@@ -79,6 +84,7 @@ class TencentAI
      * @param array  $arg
      * @param bool   $charSetUTF8
      * @return array
+     *
      * @throws TencentAIError
      */
     public static function exec(string $url, array $arg, bool $charSetUTF8 = true)
