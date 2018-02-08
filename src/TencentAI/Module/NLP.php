@@ -3,20 +3,20 @@
 namespace TencentAI\Module;
 
 use TencentAI\TencentAI;
-
 use TencentAI\Error\TencentAIError;
-
 
 trait NLP
 {
     /**
-     * 自然语言处理公共方法
+     * 自然语言处理公共方法.
      *
      * @param      $url
      * @param      $text
      * @param bool $charSetGBK
-     * @return array
+     *
      * @throws TencentAIError
+     *
+     * @return array
      */
     public function nlp($url, $text, bool $charSetGBK = true)
     {
@@ -29,7 +29,7 @@ trait NLP
         }
 
         $data = [
-            'text' => $text
+            'text' => $text,
         ];
 
         return TencentAI::exec($url, $data);

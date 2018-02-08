@@ -55,7 +55,7 @@ class TencentAI
 
     public static function tencentAI(array $config)
     {
-        if (!self::$tencentAI instanceof TencentAI) {
+        if (!self::$tencentAI instanceof self) {
             self::$tencentAI = new self($config);
         }
 
@@ -63,10 +63,12 @@ class TencentAI
     }
 
     /**
-     * 生成签名
+     * 生成签名.
      *
      * @param  string $request_body
+     *
      * @return string
+     *
      * @link   https://ai.qq.com/doc/auth.shtml
      */
     public static function sign(string $request_body)
@@ -78,14 +80,15 @@ class TencentAI
     }
 
     /**
-     * 逻辑处理
+     * 逻辑处理.
      *
      * @param string $url
      * @param array  $arg
      * @param bool   $charSetUTF8
-     * @return array
      *
      * @throws TencentAIError
+     *
+     * @return array
      */
     public static function exec(string $url, array $arg, bool $charSetUTF8 = true)
     {

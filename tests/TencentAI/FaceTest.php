@@ -55,11 +55,12 @@ class FaceTest extends TestCase
         // 组ID为数组
         $array = $this->aiFace->createPerson(['test1', 'test2'], $this->personId, $this->personName, $this->image, $this->personTag);
         $this->assertEquals(0, $array['ret']);
+
         return $faceId = $array['data']['face_id'];
     }
 
     /**
-     * 获取人体列表
+     * 获取人体列表.
      *
      * @depends testCreatePerson
      */
@@ -70,7 +71,7 @@ class FaceTest extends TestCase
     }
 
     /**
-     * 获取组列表
+     * 获取组列表.
      *
      * @depends testCreatePerson
      */
@@ -81,7 +82,7 @@ class FaceTest extends TestCase
     }
 
     /**
-     * 个体 => 增加人脸
+     * 个体 => 增加人脸.
      *
      * @depends testCreatePerson
      */
@@ -91,11 +92,12 @@ class FaceTest extends TestCase
         $this->assertEquals(0, $array['ret']);
         $array = $this->aiFace->add($this->personId, [$this->image3, $this->image5], $this->personTag);
         $this->assertEquals(0, $array['ret']);
+
         return $faceIds = $array['data']['face_ids'];
     }
 
     /**
-     * 个体 => 获取人脸列表
+     * 个体 => 获取人脸列表.
      *
      * @depends testCreatePerson
      */
@@ -105,9 +107,8 @@ class FaceTest extends TestCase
         $this->assertContains('ok', $array['msg']);
     }
 
-
     /**
-     * 获取人脸信息
+     * 获取人脸信息.
      *
      * @param string $faceId
      *
@@ -120,7 +121,7 @@ class FaceTest extends TestCase
     }
 
     /**
-     * 个体 => 删除人脸
+     * 个体 => 删除人脸.
      *
      * @param array $faceIds
      *
@@ -133,7 +134,7 @@ class FaceTest extends TestCase
     }
 
     /**
-     * 设置个体信息
+     * 设置个体信息.
      *
      * @depends testCreatePerson
      */
@@ -143,9 +144,8 @@ class FaceTest extends TestCase
         $this->assertContains('ok', $array['msg']);
     }
 
-
     /**
-     * 获取个体信息
+     * 获取个体信息.
      *
      * @depends testCreatePerson
      */
@@ -181,7 +181,7 @@ class FaceTest extends TestCase
     }
 
     /**
-     * 如果一个测试函数添加了 @test 注解，那么测试函数名字就不必以 test 开头
+     * 如果一个测试函数添加了 @test 注解，那么测试函数名字就不必以 test 开头.
      *
      * 人脸对比
      *
@@ -189,12 +189,12 @@ class FaceTest extends TestCase
      */
     public function compare()
     {
-        $array = $this->aiFace->compare([$this->image, $this->image2,]);
+        $array = $this->aiFace->compare([$this->image, $this->image2]);
         $this->assertEquals(0, $array['ret']);
     }
 
     /**
-     * 人脸识别
+     * 人脸识别.
      *
      * @depends testCreatePerson
      */
@@ -216,7 +216,7 @@ class FaceTest extends TestCase
     }
 
     /**
-     * 删除个体
+     * 删除个体.
      *
      * @depends testCreatePerson
      */
@@ -230,6 +230,5 @@ class FaceTest extends TestCase
 
     public function tearDown()
     {
-
     }
 }

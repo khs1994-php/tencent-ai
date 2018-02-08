@@ -1,7 +1,7 @@
 <?php
 
-use PHPUnit\Framework\TestCase;
 use TencentAI\TencentAI;
+use PHPUnit\Framework\TestCase;
 
 class TranslateTest extends TestCase
 {
@@ -52,5 +52,4 @@ class TranslateTest extends TestCase
         $array = $this->aiTranslate->detect('chinese');
         $this->assertEquals(0, $array['ret']);
     }
-
 }
