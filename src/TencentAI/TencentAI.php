@@ -17,20 +17,6 @@ class TencentAI
 
     private static $curl;
 
-    public $audio;
-
-    public $face;
-
-    public $image;
-
-    public $nlp;
-
-    public $ocr;
-
-    public $photo;
-
-    public $translate;
-
     private function __construct(int $appId, string $appKey, bool $jsonFormat = false)
     {
         self::$app_id = $appId;
@@ -45,13 +31,6 @@ class TencentAI
         }
 
         self::$curl = new Curl();
-        $this->audio = new Audio();
-        $this->face = new Face();
-        $this->image = new Image();
-        $this->nlp = new NaturalLanguageProcessing();
-        $this->ocr = new OCR();
-        $this->photo = new Photo();
-        $this->translate = new Translate();
     }
 
     public static function tencentAI(int $appId, string $appKey, bool $jsonFormat = false)

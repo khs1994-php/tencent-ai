@@ -16,7 +16,7 @@ class TranslateTest extends AI
 
     private function translate()
     {
-        return $this->ai()->translate;
+        return $this->ai()->translate();
     }
 
     /**
@@ -80,6 +80,9 @@ class TranslateTest extends AI
         $this->array = $this->translate()->detect('chinese');
     }
 
+    /**
+     * @throws \Exception
+     */
     public function tearDown()
     {
         $this->assertEquals(0, $this->array['ret']);

@@ -16,7 +16,7 @@ class OCRTest extends AI
 
     private function ocr()
     {
-        return $this->ai()->ocr;
+        return $this->ai()->ocr();
     }
 
     /**
@@ -24,6 +24,7 @@ class OCRTest extends AI
      *
      * @group DON'TTEST
      * @throws TencentAIError
+     * @throws \Exception
      */
     public function testIdCard()
     {
@@ -51,6 +52,7 @@ class OCRTest extends AI
     /**
      *
      * @throws TencentAIError
+     * @throws \Exception
      */
     public function testDriverLicense()
     {
@@ -100,6 +102,9 @@ class OCRTest extends AI
         $this->array = $this->ocr()->general($image);
     }
 
+    /**
+     * @throws \Exception
+     */
     public function tearDown()
     {
         $this->assertEquals(0, $this->array['ret']);

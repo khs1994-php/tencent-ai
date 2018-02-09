@@ -28,7 +28,7 @@ class FaceTest extends AI
 
     private function face()
     {
-        return $this->ai()->face;
+        return $this->ai()->face();
     }
 
     /**
@@ -36,6 +36,7 @@ class FaceTest extends AI
      *
      * @return mixed
      * @throws \TencentAI\Error\TencentAIError
+     * @throws \Exception
      */
     public function testCreatePerson()
     {
@@ -92,6 +93,7 @@ class FaceTest extends AI
      *
      * @depends testCreatePerson
      * @throws \TencentAI\Error\TencentAIError
+     * @throws \Exception
      */
     public function testAdd()
     {
@@ -262,8 +264,11 @@ class FaceTest extends AI
         $this->array = $this->face()->deletePerson(self::PERSON_ID);
     }
 
-    // 在测试函数执行完毕之后调用 tearDown 函数
-
+    /**
+     * 在测试函数执行完毕之后调用 tearDown 函数
+     *
+     * @throws \Exception
+     */
     public function tearDown()
     {
         $this->assertEquals(0, $this->array['ret']);

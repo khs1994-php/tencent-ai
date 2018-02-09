@@ -15,7 +15,7 @@ class AudioTest extends AI
     private function audio()
     {
 
-        return $this->ai()->audio;
+        return $this->ai()->audio();
     }
 
     /**
@@ -74,6 +74,9 @@ class AudioTest extends AI
         file_put_contents(self::OUTPUT.$name, base64_decode($content));
     }
 
+    /**
+     * @throws \Exception
+     */
     public function tearDown()
     {
         $this->assertEquals(0, $this->array['ret']);

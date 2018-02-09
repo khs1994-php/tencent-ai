@@ -13,7 +13,7 @@ class NLPTest extends AI
 
     private function nlp()
     {
-        return $this->ai()->nlp;
+        return $this->ai()->nlp();
     }
 
     /**
@@ -100,6 +100,9 @@ class NLPTest extends AI
         $this->array = $this->nlp()->chat('中国女演员王晓晨', 1);
     }
 
+    /**
+     * @throws \Exception
+     */
     public function tearDown()
     {
         $this->assertEquals(0, $this->array['ret']);

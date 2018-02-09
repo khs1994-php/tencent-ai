@@ -30,7 +30,7 @@ class ImageTest extends AI
 
     private function image()
     {
-        return $this->ai()->image;
+        return $this->ai()->image();
     }
 
     /**
@@ -153,6 +153,9 @@ class ImageTest extends AI
         $this->array = $this->image()->food(self::FOOD);
     }
 
+    /**
+     * @throws \Exception
+     */
     public function tearDown()
     {
         $this->assertEquals(0, $this->array['ret']);
