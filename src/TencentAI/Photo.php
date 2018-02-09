@@ -171,9 +171,10 @@ class Photo
      *
      * @param string $image 仅支持 JPG、PNG 类型图片，尺寸长宽不超过 1080，返回格式 JPG
      *
+     * @throws TencentAIError
+     *
      * @return mixed
      *
-     * @throws TencentAIError
      * @link https://ai.qq.com/doc/faceage.shtml
      */
     public function age(string $image)

@@ -92,8 +92,9 @@ class OCR
      *
      * @param string $image 支持 JPG PNG BMP 格式
      *
-     * @return array
      * @throws TencentAIError
+     *
+     * @return array
      */
     public function driverLicense(string $image)
     {
@@ -105,8 +106,9 @@ class OCR
      *
      * @param string $image 支持 JPG PNG BMP 格式
      *
-     * @return array
      * @throws TencentAIError
+     *
+     * @return array
      */
     public function drivingLicense(string $image)
     {
