@@ -18,7 +18,7 @@ trait NLP
      *
      * @return array
      */
-    public function nlp($url, $text, bool $charSetGBK = true)
+    private function nlp($url, $text, bool $charSetGBK = true)
     {
         if ($charSetGBK) {
             $data = [

@@ -1,3 +1,4 @@
 /*.php
 !.gitignore
 !callback.php
+!cleanup.sh

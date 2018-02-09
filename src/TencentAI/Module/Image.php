@@ -7,7 +7,7 @@ use TencentAI\Error\TencentAIError;
 
 trait Image
 {
-    public static $file_type_array = ['jpg', 'png', 'bmp'];
+    private static $file_type_array = ['jpg', 'png', 'bmp'];
 
     /**
      * 图片公共方法.
@@ -19,7 +19,7 @@ trait Image
      *
      * @return mixed
      */
-    public static function image($url, $image)
+    private static function image($url, $image)
     {
         $data = [
             'image' => self::encode($image),
@@ -37,7 +37,7 @@ trait Image
      *
      * @return string
      */
-    public static function encode(string $image)
+    private static function encode(string $image)
     {
         if (@is_file($image)) {
             return base64_encode(file_get_contents($image));

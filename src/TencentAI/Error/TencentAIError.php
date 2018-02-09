@@ -112,16 +112,18 @@ class TencentAIError extends \Error
     {
         parent::__construct($message, $code, $previous);
 
-        $this->code = $code;
-
         $array = self::$array;
+
+        $this->code = $code;
 
         $this->message = $message;
 
         if (array_key_exists($code, $array)) {
             $this->message = $array[$code];
         } else {
-            $this->message = "错误码 $code ，未知错误";
+            if (!$message) {
+                $this->message = "错误码 $code ，未知错误";
+            }
         }
     }
 

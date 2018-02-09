@@ -95,6 +95,7 @@ class TencentAI
         // 发起请求
 
         $json = self::$curl->post($url, $data);
+
         if ($charSetUTF8) {
             $array = json_decode($json, true);
         } else {
@@ -104,6 +105,10 @@ class TencentAI
 
         // 检查返回值
 
+        if (!$array) {
+            self::returnStr($json);
+        }
+
         self::checkReturn($array['ret']);
 
         if ($format === 'json') {
@@ -111,6 +116,15 @@ class TencentAI
         } else {
             return $array;
         }
+    }
+
+    /**
+     * @param $str
+     * @throws TencentAIError
+     */
+    public static function returnStr($str)
+    {
+        throw new TencentAIError(90000, $str);
     }
 
     /**

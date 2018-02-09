@@ -2,6 +2,8 @@
 
 namespace TencentAI\Tests;
 
+use TencentAI\Error\TencentAIError;
+
 class AudioTest extends AI
 {
     const AUDIO = __DIR__.'/../resource/audio/';
@@ -19,20 +21,48 @@ class AudioTest extends AI
     }
 
     /**
-     * @throws \TencentAI\Error\TencentAIError
+     * 语音识别
+     *
+     * @throws TencentAIError
      */
     public function testAsr()
     {
         $this->name = __FUNCTION__;
 
-        $voice = self::AUDIO.'/t.amr';
-        $this->array = $this->audio()->asr($voice);
+        $voice = self::AUDIO.'/2.wav';
+        $this->array = $this->audio()->asr($voice, 2, 16000);
+    }
+
+    /**
+     * 语音识别 流式版 AILAB
+     *
+     * @throws TencentAIError
+     */
+    public function testasrs()
+    {
+        $this->name = __FUNCTION__;
+
+        $voice = self::AUDIO.'/2.wav';
+        $this->array = $this->audio()->asrs($voice, 2, 16000, 0, 1, true);
+    }
+
+    /**
+     * 语音识别 流式版 微信
+     *
+     * @throws TencentAIError
+     */
+    public function testWxasrs()
+    {
+        $this->name = __FUNCTION__;
+
+        $voice = self::AUDIO.'/2.wav';
+        $this->array = $this->audio()->wxasrs($voice, 2, 16000, 0, 1, 16, true, true);
     }
 
     /**
      * 长语音识别
      *
-     * @throws \TencentAI\Error\TencentAIError
+     * @throws TencentAIError
      */
     public function testWxAsrLong()
     {
@@ -46,26 +76,26 @@ class AudioTest extends AI
     /**
      * 语音合成 AILAB
      *
-     * @throws \TencentAI\Error\TencentAIError
+     * @throws TencentAIError
      */
     public function testTts()
     {
         $this->name = __FUNCTION__;
 
-        $this->array = $array = $this->audio()->tts('你好', 1, 1);
-        $this->put(__FUNCTION__.'.pcm', $array['data']['speech']);
+        $this->array = $array = $this->audio()->tts('北京天气怎么样', 1, 2);
+        $this->put(__FUNCTION__.'.wav', $array['data']['speech']);
     }
 
     /**
      * 语音合成 优图
      *
-     * @throws \TencentAI\Error\TencentAIError
+     * @throws TencentAIError
      */
     public function testTta()
     {
         $this->name = __FUNCTION__;
 
-        $this->array = $array = $this->audio()->tta('你好');
+        $this->array = $array = $this->audio()->tta('北京天气怎么样');
         $this->put(__FUNCTION__.'.mp3', $array['data']['voice']);
     }
 

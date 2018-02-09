@@ -37,7 +37,7 @@ trait Audio
      *
      * @throws TencentAIError
      */
-    public function checkAsrFormat(int $format)
+    private function checkAsrFormat(int $format)
     {
         $this->check($format, 'asrFormat', 90100);
     }
@@ -49,7 +49,7 @@ trait Audio
      *
      * @throws TencentAIError
      */
-    public function checkAsrRate(int $rate)
+    private function checkAsrRate(int $rate)
     {
         $this->check($rate, 'asrRate', 90101);
     }
@@ -61,7 +61,7 @@ trait Audio
      *
      * @throws TencentAIError
      */
-    public function checkTranslateFormat(string $format)
+    private function checkTranslateFormat(string $format)
     {
         $this->check($format, 'translateFormat', 90700);
     }
@@ -73,7 +73,7 @@ trait Audio
      *
      * @return string
      */
-    public function encode(string $voice)
+    private function encode(string $voice)
     {
         if (@is_file($voice)) {
             return base64_encode(file_get_contents($voice));
