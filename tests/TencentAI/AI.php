@@ -2,8 +2,8 @@
 
 namespace TencentAI\Tests;
 
-use PHPUnit\Framework\TestCase;
 use TencentAI\TencentAI;
+use PHPUnit\Framework\TestCase;
 
 class AI extends TestCase
 {
@@ -16,6 +16,7 @@ class AI extends TestCase
             $app_key = 'ZbRY9cf72TbDO0xb';
             self::$ai = TencentAI::tencentAI($app_id, $app_key);
         }
+
         return self::$ai;
     }
 }

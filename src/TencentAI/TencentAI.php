@@ -120,6 +120,7 @@ class TencentAI
 
     /**
      * @param $str
+     *
      * @throws TencentAIError
      */
     public static function returnStr($str)
@@ -128,9 +129,10 @@ class TencentAI
     }
 
     /**
-     * 检查返回值，不为 0 抛出错误
+     * 检查返回值，不为 0 抛出错误.
      *
      * @param  int $ret
+     *
      * @throws TencentAIError
      */
     public static function checkReturn(int $ret)

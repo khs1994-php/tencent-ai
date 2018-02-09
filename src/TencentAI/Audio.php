@@ -48,7 +48,7 @@ class Audio
     }
 
     /**
-     * 语音识别 流式版 AILab
+     * 语音识别 流式版 AILab.
      *
      * @param  string $speech_chunk 语音数据
      * @param  int    $format       pcm-1 wav-2 amr-3 silk-4
@@ -56,8 +56,10 @@ class Audio
      * @param  int    $seq          语音分片所在语音流的偏移量（字节）
      * @param  string $speech_id    语音唯一标识（同一应用内）
      * @param  bool   $end          是否结束分片标识
-     * @return array
+     *
      * @throws Error\TencentAIError
+     *
+     * @return array
      */
     public function asrs(string $speech_chunk,
                          int $format,
@@ -74,16 +76,16 @@ class Audio
             'rate' => $rate,
             'seq' => $seq,
             'len' => $length,
-            'end' => (int)$end,
+            'end' => (int) $end,
             'speech_id' => $speech_id,
-            'speech_chunk' => $speech_chunk
+            'speech_chunk' => $speech_chunk,
         ];
 
         return TencentAI::exec($url, $data);
     }
 
     /**
-     * 语音识别 流式版 WeChatAI
+     * 语音识别 流式版 WeChatAI.
      *
      * @param  string $speech_chunk 语音数据
      * @param  int    $format       pcm-1 wav-2 amr-3 silk-4 speex-5
@@ -93,8 +95,10 @@ class Audio
      * @param  int    $bits         音频采样位数 16位 16
      * @param  bool   $cont_res     是否获取中间识别结果 默认 true
      * @param  bool   $end          是否结束分片标识 默认 true
-     * @return array
+     *
      * @throws Error\TencentAIError
+     *
+     * @return array
      */
     public function wxasrs(string $speech_chunk,
                            int $format,
@@ -114,24 +118,27 @@ class Audio
             'bits' => $bits,
             'seq' => $seq,
             'len' => $length,
-            'end' => (int)$end,
+            'end' => (int) $end,
             'speech_id' => $speech_id,
             'speech_chunk' => $speech_chunk,
-            'cont_res' => (int)$cont_res
+            'cont_res' => (int) $cont_res,
         ];
 
         return TencentAI::exec($url, $data);
     }
 
     /**
-     * 长语音识别
+     * 长语音识别.
      *
      * @param  string $speech
      * @param  string $callback_url 异步识别，结果会 post 到回调地址.
      * @param  int    $format       文件格式 pcm-1 wav-2 amr-3 silk-4
      * @param  string $speech_url
-     * @return array
+     *
      * @throws Error\TencentAIError
+     *
+     * @return array
+     *
      * @link   https://ai.qq.com/doc/wxasrlong.shtml
      */
     public function wxasrlong(string $speech = null, string $callback_url, int $format = 3, string $speech_url = null)
@@ -148,7 +155,7 @@ class Audio
     }
 
     /**
-     * 语音合成 AILab
+     * 语音合成 AILab.
      *
      * 文字转语音
      *
@@ -159,8 +166,11 @@ class Audio
      * @param  int    $speed   合成语音语速，默认100
      * @param  int    $aht     合成语音降低/升高半音个数，即改变音高，默认0
      * @param  int    $apc     控制频谱翘曲的程度，改变说话人的音色，默认58
-     * @return array
+     *
      * @throws Error\TencentAIError
+     *
+     * @return array
+     *
      * @link   https://ai.qq.com/doc/aaitts.shtml
      */
     public function tts(string $text,
@@ -179,20 +189,22 @@ class Audio
             'speed' => $speed,
             'text' => $text,
             'aht' => $aht,
-            'apc' => $apc
+            'apc' => $apc,
         ];
 
         return TencentAI::exec($url, $data);
     }
 
     /**
-     * 语音合成 优图
+     * 语音合成 优图.
      *
      * @param  string $text
      * @param  int    $model 发音模型 女-0 女英-1 男-2 喜道公子-6
      * @param  int    $speed 语速，默认为 0 , 0.6x => -2 , 0.8x => -1 , 1.2x => 1 , 1.5x => 2
-     * @return array
+     *
      * @throws Error\TencentAIError
+     *
+     * @return array
      */
     public function tta(string $text, int $model = 0, int $speed = -2)
     {
@@ -200,7 +212,7 @@ class Audio
         $data = [
             'text' => $text,
             'model_type' => $model,
-            'speed' => $speed
+            'speed' => $speed,
         ];
 
         return TencentAI::exec($url, $data);

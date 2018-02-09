@@ -34,11 +34,12 @@ class FaceTest extends AI
     }
 
     /**
-     * 人体创建
+     * 人体创建.
      *
-     * @return mixed
      * @throws TencentAIError
      * @throws \Exception
+     *
+     * @return mixed
      */
     public function testCreatePerson()
     {
@@ -47,15 +48,13 @@ class FaceTest extends AI
         // 单个组ID
         $this->array = $array = $this
             ->face()
-            ->createPerson
-            (['test'], self::PERSON_ID, self::PERSON_NAME, self::IMAGE1, self::PERSON_TAG);
+            ->createPerson(['test'], self::PERSON_ID, self::PERSON_NAME, self::IMAGE1, self::PERSON_TAG);
         $this->face()->deletePerson(self::PERSON_ID);
 
         // 多个组ID为
         $this->array = $array = $this
             ->face()
-            ->createPerson
-            (['test1', 'test2'], self::PERSON_ID, self::PERSON_NAME, self::IMAGE1, self::PERSON_TAG);
+            ->createPerson(['test1', 'test2'], self::PERSON_ID, self::PERSON_NAME, self::IMAGE1, self::PERSON_TAG);
         $this->assertEquals(0, $array['ret']);
 
         return $faceId = $array['data']['face_id'];
@@ -65,6 +64,7 @@ class FaceTest extends AI
      * 获取人体列表.
      *
      * @depends testCreatePerson
+     *
      * @throws TencentAIError
      */
     public function testGetPersonList()
@@ -81,6 +81,7 @@ class FaceTest extends AI
      * 获取组列表.
      *
      * @depends testCreatePerson
+     *
      * @throws TencentAIError
      */
     public function testGetGroupList()
@@ -94,6 +95,7 @@ class FaceTest extends AI
      * 个体 => 增加人脸.
      *
      * @depends testCreatePerson
+     *
      * @throws TencentAIError
      * @throws \Exception
      */
@@ -113,6 +115,7 @@ class FaceTest extends AI
      * 个体 => 获取人脸列表.
      *
      * @depends testCreatePerson
+     *
      * @throws TencentAIError
      */
     public function testGetList()
@@ -128,6 +131,7 @@ class FaceTest extends AI
      * @param string $faceId
      *
      * @depends testCreatePerson
+     *
      * @throws TencentAIError
      */
     public function testGetInfo(string $faceId)
@@ -143,6 +147,7 @@ class FaceTest extends AI
      * @param array $faceIds
      *
      * @depends testAdd
+     *
      * @throws TencentAIError
      */
     public function testDelete(array $faceIds)
@@ -156,6 +161,7 @@ class FaceTest extends AI
      * 设置个体信息.
      *
      * @depends testCreatePerson
+     *
      * @throws TencentAIError
      */
     public function testSetPersonInfo()
@@ -169,6 +175,7 @@ class FaceTest extends AI
      * 获取个体信息.
      *
      * @depends testCreatePerson
+     *
      * @throws TencentAIError
      */
     public function testGetPersonInfo()
@@ -179,7 +186,7 @@ class FaceTest extends AI
     }
 
     /**
-     * 人脸分析
+     * 人脸分析.
      *
      * @throws TencentAIError
      */
@@ -191,7 +198,8 @@ class FaceTest extends AI
     }
 
     /**
-     * 多人脸识别
+     * 多人脸识别.
+     *
      * @throws TencentAIError
      */
     public function testMultiDetect()
@@ -202,7 +210,8 @@ class FaceTest extends AI
     }
 
     /**
-     *五官检测
+     *五官检测.
+     *
      * @throws TencentAIError
      */
     public function testShape()
@@ -218,6 +227,7 @@ class FaceTest extends AI
      * 人脸对比
      *
      * @test
+     *
      * @throws TencentAIError
      */
     public function compare()
@@ -231,6 +241,7 @@ class FaceTest extends AI
      * 人脸识别.
      *
      * @depends testCreatePerson
+     *
      * @throws TencentAIError
      */
     public function testIdentify()
@@ -244,6 +255,7 @@ class FaceTest extends AI
      * 人脸验证
      *
      * @depends testCreatePerson
+     *
      * @throws TencentAIError
      */
     public function testVerify()
@@ -257,6 +269,7 @@ class FaceTest extends AI
      * 删除个体.
      *
      * @depends testCreatePerson
+     *
      * @throws TencentAIError
      */
     public function testDeletePerson()
@@ -267,7 +280,7 @@ class FaceTest extends AI
     }
 
     /**
-     * 在测试函数执行完毕之后调用 tearDown 函数
+     * 在测试函数执行完毕之后调用 tearDown 函数.
      *
      * @throws \Exception
      */

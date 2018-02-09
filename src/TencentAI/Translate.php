@@ -123,7 +123,7 @@ class Translate
      */
     public function audio(int $format,
                           int $seq,
-                          bool $end = true,
+                          bool $end,
                           string $session_id,
                           string $speech_chunk,
                           string $source = 'auto',
@@ -133,7 +133,7 @@ class Translate
         $data = [
             'format' => $format,
             'seq' => $seq,
-            'end' => (int)$end,
+            'end' => (int) $end,
             'session_id' => $session_id,
             'speech_chunk' => $speech_chunk,
             'source' => $source,
@@ -151,9 +151,10 @@ class Translate
      * @param  array  $languages
      * @param  bool   $force 强制从待选择语言中选择
      *
+     * @throws TencentAIError
+     *
      * @return array
      *
-     * @throws TencentAIError
      * @link   https://ai.qq.com/doc/textdetect.shtml
      */
     public function detect(string $text, array $languages = ['zh'], bool $force = false)
@@ -162,7 +163,7 @@ class Translate
         $data = [
             'text' => $text,
             'candidate_langs' => $languages,
-            'force' => (int)$force,
+            'force' => (int) $force,
         ];
         $url = self::DETECT;
 
