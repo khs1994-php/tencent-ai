@@ -88,11 +88,13 @@ class OCR
     }
 
     /**
-     * 驾驶证识别
+     * 驾驶证识别.
      *
      * @param $image
-     * @return array
+     *
      * @throws TencentAIError
+     *
+     * @return array
      */
     public function driverLicense($image)
     {
@@ -100,11 +102,13 @@ class OCR
     }
 
     /**
-     * 行驶证识别
+     * 行驶证识别.
      *
      * @param $image
-     * @return array
+     *
      * @throws TencentAIError
+     *
+     * @return array
      */
     public function drivingLicense($image)
     {

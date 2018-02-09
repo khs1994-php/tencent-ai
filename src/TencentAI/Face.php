@@ -51,9 +51,10 @@ class Face
      * @param  string $image
      * @param  bool   $big 检测模式，false-正常，true-大脸模式(默认).
      *
+     * @throws TencentAIError
+     *
      * @return mixed
      *
-     * @throws TencentAIError
      * @link   https://ai.qq.com/doc/detectface.shtml
      */
     public function detect(string $image, bool $big = true)

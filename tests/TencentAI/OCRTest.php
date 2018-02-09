@@ -41,7 +41,7 @@ class OCRTest extends AI
     }
 
     /**
-     * 名片识别
+     * 名片识别.
      *
      * @throws TencentAIError
      */
@@ -54,7 +54,7 @@ class OCRTest extends AI
     }
 
     /**
-     * 驾驶证识别
+     * 驾驶证识别.
      *
      * @throws TencentAIError
      * @throws \Exception
@@ -68,7 +68,7 @@ class OCRTest extends AI
     }
 
     /**
-     * 行驶证识别
+     * 行驶证识别.
      *
      * @throws TencentAIError
      * @throws \Exception
@@ -82,7 +82,7 @@ class OCRTest extends AI
     }
 
     /**
-     * 营业执照识别
+     * 营业执照识别.
      *
      * @throws TencentAIError
      */
@@ -95,7 +95,7 @@ class OCRTest extends AI
     }
 
     /**
-     * 银行卡识别
+     * 银行卡识别.
      *
      * @throws TencentAIError
      */
@@ -108,7 +108,7 @@ class OCRTest extends AI
     }
 
     /**
-     * 通用识别
+     * 通用识别.
      *
      * @throws TencentAIError
      */

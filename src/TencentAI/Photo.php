@@ -132,8 +132,7 @@ class Photo
      *
      * @link https://ai.qq.com/doc/facemerge.shtml
      */
-    public
-    function merge(string $image, int $model = 50)
+    public function merge(string $image, int $model = 50)
     {
         $url = self::MERGE;
         $data = [
@@ -156,8 +155,7 @@ class Photo
      *
      * @link   https://ai.qq.com/doc/facesticker.shtml
      */
-    public
-    function sticker(string $image, int $sticker = 30)
+    public function sticker(string $image, int $sticker = 30)
     {
         $url = self::STICKER;
         $data = [
@@ -179,8 +177,7 @@ class Photo
      *
      * @link https://ai.qq.com/doc/faceage.shtml
      */
-    public
-    function age($image)
+    public function age($image)
     {
         $url = self::AGE;
 
