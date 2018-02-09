@@ -53,9 +53,9 @@ class Audio
      * @param  string $speech_chunk 语音数据
      * @param  int    $format       pcm-1 wav-2 amr-3 silk-4
      * @param  int    $rate         8000 16000
-     * @param  int    $seq          语音分片所在语音流的偏移量（字节）
+     * @param  int    $seq          语音分片所在语音流的偏移量（字节）=> 上一个分片的 seq + 上一个分片的 length
      * @param  string $speech_id    语音唯一标识（同一应用内）
-     * @param  bool   $end          是否结束分片标识
+     * @param  bool   $end          是否结束分片标识 默认 true
      *
      * @throws Error\TencentAIError
      *
@@ -76,7 +76,7 @@ class Audio
             'rate' => $rate,
             'seq' => $seq,
             'len' => $length,
-            'end' => (int) $end,
+            'end' => (int)$end,
             'speech_id' => $speech_id,
             'speech_chunk' => $speech_chunk,
         ];
@@ -90,7 +90,7 @@ class Audio
      * @param  string $speech_chunk 语音数据
      * @param  int    $format       pcm-1 wav-2 amr-3 silk-4 speex-5
      * @param  int    $rate         8000 16000
-     * @param  int    $seq          语音分片所在语音流的偏移量（字节）
+     * @param  int    $seq          语音分片所在语音流的偏移量（字节）=> 上一个分片的 seq + 上一个分片的 length
      * @param  string $speech_id    语音唯一标识（同一应用内）
      * @param  int    $bits         音频采样位数 16位 16
      * @param  bool   $cont_res     是否获取中间识别结果 默认 true
@@ -118,10 +118,10 @@ class Audio
             'bits' => $bits,
             'seq' => $seq,
             'len' => $length,
-            'end' => (int) $end,
+            'end' => (int)$end,
             'speech_id' => $speech_id,
             'speech_chunk' => $speech_chunk,
-            'cont_res' => (int) $cont_res,
+            'cont_res' => (int)$cont_res,
         ];
 
         return TencentAI::exec($url, $data);

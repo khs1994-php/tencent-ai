@@ -107,11 +107,11 @@ class Translate
     /**
      * 语音翻译.
      *
-     * @param  int    $format       3 4 6 8 9
-     * @param  int    $seq          语音分片所在语音流的偏移量（字节）
-     * @param  bool   $end          是否结束分片 0-中间分片，1-结束分片
-     * @param  string $session_id   语音唯一标识（同一应用内）
      * @param  string $speech_chunk 待识别语音分片
+     * @param  int    $format       amr-3 silk-4 pcm-6 mp3-8 aac-9
+     * @param  int    $seq          语音分片所在语音流的偏移量（字节）
+     * @param  bool   $end          是否结束分片 true
+     * @param  string $session_id   语音唯一标识（同一应用内）
      * @param  string $source       源语言缩写
      * @param  string $target       目标语言缩写
      *
@@ -121,11 +121,11 @@ class Translate
      *
      * @link   https://ai.qq.com/doc/speechtranslate.shtml
      */
-    public function audio(int $format,
+    public function audio(string $speech_chunk,
+                          int $format,
                           int $seq,
                           bool $end,
                           string $session_id,
-                          string $speech_chunk,
                           string $source = 'auto',
                           string $target = 'auto')
     {
@@ -133,9 +133,9 @@ class Translate
         $data = [
             'format' => $format,
             'seq' => $seq,
-            'end' => (int) $end,
+            'end' => (int)$end,
             'session_id' => $session_id,
-            'speech_chunk' => $speech_chunk,
+            'speech_chunk' => self::encode($speech_chunk),
             'source' => $source,
             'target' => $target,
         ];
@@ -157,13 +157,15 @@ class Translate
      *
      * @link   https://ai.qq.com/doc/textdetect.shtml
      */
-    public function detect(string $text, array $languages = ['zh'], bool $force = false)
+    public function detect(string $text, array $languages = null, bool $force = false)
     {
-        $languages = implode('"', $languages);
+        if ($languages) {
+            $languages = implode('"', $languages);
+        }
         $data = [
             'text' => $text,
             'candidate_langs' => $languages,
-            'force' => (int) $force,
+            'force' => (int)$force,
         ];
         $url = self::DETECT;
 

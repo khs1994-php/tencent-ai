@@ -103,11 +103,13 @@ class TencentAI
             $array = json_decode($json, true);
         }
 
-        // 检查返回值
+        // 检查是否返回数组
 
-        if (!$array) {
+        if (is_array($array)) {
             self::returnStr($json);
         }
+
+        // 检查返回值
 
         self::checkReturn($array['ret']);
 
@@ -119,6 +121,8 @@ class TencentAI
     }
 
     /**
+     * 结果返回字符串则抛出错误.
+     *
      * @param $str
      *
      * @throws TencentAIError

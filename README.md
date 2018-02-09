@@ -40,7 +40,6 @@ Then exec `$ composer update`
 require __DIR__.'/vendor/autoload.php';
 
 use TencentAI\TencentAI;
-
 use TencentAI\Error\TencentAIError;
 
 $app_id = 1106560031;
@@ -48,7 +47,7 @@ $app_key = 'ZbRY9cf72TbDO0xb';
 
 $ai = TencentAI::tencentAI($app_id, $app_key);
 
-$image = __DIR__.'/image/ai/tencent/face/wxc.jpg';
+$image = __DIR__.'/path/name.jpg';
 
 try {
     $output = $ai->face()->detect($image);
