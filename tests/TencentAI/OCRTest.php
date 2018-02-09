@@ -31,8 +31,9 @@ class OCRTest extends AI
         $this->name = __FUNCTION__;
 
         $image = self::IMAGE.'idcardz.jpg';
-        $this->array = $array = $this->ocr()->idCard($image);
+        $array = $this->ocr()->idCard($image);
         $this->assertEquals(0, $array['ret']);
+        file_put_contents(self::OUTPUT.'testIdCardz.json', json_encode($array, JSON_UNESCAPED_UNICODE));
 
         $image = self::IMAGE.'idcardf.jpg';
         $this->array = $this->ocr()->idCard($image, false);
@@ -50,7 +51,6 @@ class OCRTest extends AI
     }
 
     /**
-     *
      * @throws TencentAIError
      * @throws \Exception
      */
@@ -58,11 +58,12 @@ class OCRTest extends AI
     {
         $this->name = __FUNCTION__;
 
-        $image = self::IMAGE.'driver.jpg';
-        $this->array = $array = $this->ocr()->driverLicense($image);
-        $this->assertEquals(0, $array['ret']);
-
         $image = self::IMAGE.'driving.jpg';
+        $array = $this->ocr()->driverLicense($image, false);
+        $this->assertEquals(0, $array['ret']);
+        file_put_contents(self::OUTPUT.'testDrivingLicense.json', json_encode($array, JSON_UNESCAPED_UNICODE));
+
+        $image = self::IMAGE.'driver.jpg';
         $this->array = $this->ocr()->driverLicense($image);
     }
 

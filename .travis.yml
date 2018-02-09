@@ -6,6 +6,7 @@ php:
   - 7.2.1
 script:
 - composer self-update
+- composer install -q
 - composer update -q
 - vendor/bin/phpunit
 branches:
