@@ -105,7 +105,7 @@ class TencentAI
 
         // 检查是否返回数组
 
-        if (is_array($array)) {
+        if (!is_array($array)) {
             self::returnStr($json);
         }
 
@@ -163,7 +163,7 @@ class TencentAI
 
     public function audio()
     {
-        return new audio();
+        return new Audio();
     }
 
     public function ocr()
@@ -178,6 +178,6 @@ class TencentAI
 
     public function translate()
     {
-        return new translate();
+        return new Translate();
     }
 }

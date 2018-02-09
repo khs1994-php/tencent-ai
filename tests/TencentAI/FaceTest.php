@@ -34,6 +34,15 @@ class FaceTest extends AI
     }
 
     /**
+     * @throws TencentAIError
+     * @group  DON'TTEST
+     */
+    public function testDeleteForce()
+    {
+        $this->array = $this->face()->deletePerson(self::PERSON_ID);
+    }
+
+    /**
      * 人体创建.
      *
      * @throws TencentAIError

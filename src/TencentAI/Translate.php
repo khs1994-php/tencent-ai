@@ -133,7 +133,7 @@ class Translate
         $data = [
             'format' => $format,
             'seq' => $seq,
-            'end' => (int)$end,
+            'end' => (int) $end,
             'session_id' => $session_id,
             'speech_chunk' => self::encode($speech_chunk),
             'source' => $source,
@@ -165,7 +165,7 @@ class Translate
         $data = [
             'text' => $text,
             'candidate_langs' => $languages,
-            'force' => (int)$force,
+            'force' => (int) $force,
         ];
         $url = self::DETECT;
 

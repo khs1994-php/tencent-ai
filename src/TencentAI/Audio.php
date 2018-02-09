@@ -76,7 +76,7 @@ class Audio
             'rate' => $rate,
             'seq' => $seq,
             'len' => $length,
-            'end' => (int)$end,
+            'end' => (int) $end,
             'speech_id' => $speech_id,
             'speech_chunk' => $speech_chunk,
         ];
@@ -118,10 +118,10 @@ class Audio
             'bits' => $bits,
             'seq' => $seq,
             'len' => $length,
-            'end' => (int)$end,
+            'end' => (int) $end,
             'speech_id' => $speech_id,
             'speech_chunk' => $speech_chunk,
-            'cont_res' => (int)$cont_res,
+            'cont_res' => (int) $cont_res,
         ];
 
         return TencentAI::exec($url, $data);

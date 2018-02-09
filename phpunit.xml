@@ -4,10 +4,10 @@
         <testsuite>
             <directory>tests/TencentAI</directory>
         </testsuite>
-        <groups>
-            <exclude>
-                <group>DON'TTEST</group>
-            </exclude>
-        </groups>
     </testsuites>
+    <groups>
+        <exclude>
+            <group>DON'TTEST</group>
+        </exclude>
+    </groups>
 </phpunit>
