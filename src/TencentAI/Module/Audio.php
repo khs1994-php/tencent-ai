@@ -63,11 +63,13 @@ trait Audio
      */
     private function checkTranslateFormat(string $format)
     {
-        $this->check($format, 'translateFormat', 90700);
+        $this->check($format, 'translateFormat', 90702);
     }
 
     /**
      * 编码文件.
+     *
+     * 传入本地路径或文件内容
      *
      * @param string $voice
      *

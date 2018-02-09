@@ -29,7 +29,7 @@ class Photo
      *
      * 提供人脸美妆特效功能，可以帮您快速实现原始图片的人脸美妆特效处理
      *
-     * @param  string $image
+     * @param  string $image    仅支持 JPG、PNG 类型图片，尺寸长宽不超过 1080，返回格式 JPG
      * @param  int    $cosmetic 美妆编码 1-23
      *
      * @throws TencentAIError
@@ -54,7 +54,7 @@ class Photo
      *
      * 提供人脸变妆特效功能，可以帮您快速实现原始图片的人脸变妆特效处理.
      *
-     * @param  string $image
+     * @param  string $image      仅支持 JPG、PNG 类型图片，尺寸长宽不超过 1080，返回格式 JPG
      * @param  int    $decoration 变妆编码 1-22
      *
      * @throws TencentAIError
@@ -77,7 +77,7 @@ class Photo
     /**
      * 图片滤镜（天天P图）.
      *
-     * @param  string $image
+     * @param  string $image  仅支持 JPG、PNG 类型图片，尺寸长宽不超过 1080，返回格式 JPG
      * @param  int    $filter 滤镜效果编码 1-32
      *
      * @throws TencentAIError
@@ -100,7 +100,7 @@ class Photo
     /**
      * 图片滤镜（AI Lab）.
      *
-     * @param  string $image
+     * @param  string $image  仅支持 JPG、PNG 类型图片，尺寸长宽不超过 1080，返回格式 JPG
      * @param  string $session_id
      * @param  int    $filter 滤镜效果编码 1-65
      *
@@ -123,7 +123,7 @@ class Photo
     /**
      * 人脸融合.
      *
-     * @param string $image
+     * @param string $image 仅支持 JPG、PNG 类型图片，尺寸长宽不超过 1080，返回格式 JPG
      * @param int    $model 素材模板编码 1-50
      *
      * @throws TencentAIError
@@ -146,7 +146,7 @@ class Photo
     /**
      * 大头贴.
      *
-     * @param  string $image
+     * @param  string $image   仅支持 JPG、PNG 类型图片，尺寸长宽不超过 1080，返回格式 JPG
      * @param  int    $sticker 大头贴编码 1-30
      *
      * @throws TencentAIError
@@ -169,15 +169,14 @@ class Photo
     /**
      * 颜龄检测.
      *
-     * @param $image
-     *
-     * @throws TencentAIError
+     * @param string $image 仅支持 JPG、PNG 类型图片，尺寸长宽不超过 1080，返回格式 JPG
      *
      * @return mixed
      *
+     * @throws TencentAIError
      * @link https://ai.qq.com/doc/faceage.shtml
      */
-    public function age($image)
+    public function age(string $image)
     {
         $url = self::AGE;
 

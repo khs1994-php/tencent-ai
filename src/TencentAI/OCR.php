@@ -26,7 +26,7 @@ class OCR
     /**
      * 身份证识别.
      *
-     * @param  string $image
+     * @param  string $image 支持 JPG、PNG、BMP 格式
      * @param  bool   $front 正面为 true
      *
      * @throws TencentAIError
@@ -49,7 +49,7 @@ class OCR
     /**
      * 名片识别.
      *
-     * @param  string $image
+     * @param  string $image 支持 JPG、PNG、BMP 格式
      *
      * @throws TencentAIError
      *
@@ -67,8 +67,8 @@ class OCR
     /**
      * 行驶证驾驶证识别.
      *
-     * @param  string $image
-     * @param  int    $type 识别类型，0-行驶证识别，1-驾驶证识别
+     * @param  string $image 支持 JPG PNG BMP 格式
+     * @param  int    $type  识别类型，0-行驶证识别，1-驾驶证识别
      *
      * @throws TencentAIError
      *
@@ -90,13 +90,12 @@ class OCR
     /**
      * 驾驶证识别.
      *
-     * @param $image
-     *
-     * @throws TencentAIError
+     * @param string $image 支持 JPG PNG BMP 格式
      *
      * @return array
+     * @throws TencentAIError
      */
-    public function driverLicense($image)
+    public function driverLicense(string $image)
     {
         return $this->driver($image, 1);
     }
@@ -104,13 +103,12 @@ class OCR
     /**
      * 行驶证识别.
      *
-     * @param $image
-     *
-     * @throws TencentAIError
+     * @param string $image 支持 JPG PNG BMP 格式
      *
      * @return array
+     * @throws TencentAIError
      */
-    public function drivingLicense($image)
+    public function drivingLicense(string $image)
     {
         return $this->driver($image);
     }
@@ -118,7 +116,7 @@ class OCR
     /**
      * 营业执照识别.
      *
-     * @param  string $image
+     * @param  string $image 支持 JPG PNG BMP 格式
      *
      * @throws TencentAIError
      *
@@ -136,7 +134,7 @@ class OCR
     /**
      * 银行卡识别.
      *
-     * @param  string $image
+     * @param  string $image 支持 JPG PNG BMP 格式
      *
      * @throws TencentAIError
      *
@@ -154,7 +152,7 @@ class OCR
     /**
      * 通用识别.
      *
-     * @param  string $image
+     * @param  string $image 支持 JPG PNG BMP 格式
      *
      * @throws TencentAIError
      *

@@ -71,7 +71,7 @@ class Translate
     /**
      * 图片翻译.
      *
-     * @param  string $image
+     * @param  string $image      支持 JPG PNG BMP 格式
      * @param  string $session_id 一次请求ID
      * @param  string $scene      识别类型 word-单词识别，doc-文档识别
      * @param  string $source     源语言缩写
@@ -90,7 +90,7 @@ class Translate
                           string $target = 'auto')
     {
         if ($scene !== 'word' and $scene !== 'doc') {
-            throw new TencentAIError(90004);
+            throw new TencentAIError(90701);
         }
         $data = [
             'image' => base64_encode(file_get_contents($image)),

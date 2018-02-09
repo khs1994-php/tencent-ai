@@ -31,7 +31,7 @@ class Image
     /**
      * 智能鉴黄.
      *
-     * @param  string $image
+     * @param  string $image 支持 JPG PNG BMP 格式
      *
      * @throws TencentAIError
      *
@@ -49,7 +49,7 @@ class Image
     /**
      * 暴恐识别.
      *
-     * @param  string $image
+     * @param  string $image 支持 JPG PNG BMP 格式
      *
      * @throws TencentAIError
      *
@@ -70,8 +70,8 @@ class Image
      * 快速找出图片中包含的场景信息.
      *
      * @param  string $image
-     * @param  int    $format
-     * @param  int    $topk 返回结果个数（已按置信度倒排）[1,5]
+     * @param  int    $format 图片格式，只支持 JPG 格式
+     * @param  int    $topk   返回结果个数（已按置信度倒排）[1,5]
      *
      * @throws TencentAIError
      *
@@ -97,8 +97,8 @@ class Image
      * 快速找出图片中包含的物体信息.
      *
      * @param string $image
-     * @param int    $format
-     * @param int    $topk 返回结果个数（已按置信度倒排）[1,5]
+     * @param int    $format 图片格式，只支持 JPG 格式
+     * @param int    $topk   返回结果个数（已按置信度倒排）[1,5]
      *
      * @throws TencentAIError
      *
@@ -121,7 +121,7 @@ class Image
      *
      * 识别一个图像的标签信息,对图像分类.
      *
-     * @param  string $image
+     * @param  string $image 支持 JPG PNG BMP 格式
      *
      * @throws TencentAIError
      *
@@ -139,7 +139,7 @@ class Image
     /**
      * 花草/车辆识别.
      *
-     * @param  string $image
+     * @param  string $image 支持 JPG PNG BMP 格式
      * @param  int    $scene 识别场景，1-车辆识别，2-花草识别
      *
      * @throws TencentAIError
@@ -162,7 +162,7 @@ class Image
     /**
      * 花草识别.
      *
-     * @param string $image
+     * @param string $image 支持 JPG PNG BMP 格式
      *
      * @throws TencentAIError
      *
@@ -176,7 +176,7 @@ class Image
     /**
      * 车辆识别.
      *
-     * @param string $image
+     * @param string $image 支持 JPG PNG BMP 格式
      *
      * @throws TencentAIError
      *
@@ -190,7 +190,7 @@ class Image
     /**
      * 看图说话：用一句话文字描述图片.
      *
-     * @param  string $image
+     * @param  string $image 支持 JPG PNG BMP 格式
      * @param  string $session_id
      *
      * @throws TencentAIError
@@ -214,7 +214,7 @@ class Image
     /**
      * 模糊图片检测：判断一个图像的模糊程度.
      *
-     * @param  string $image
+     * @param  string $image 支持 JPG PNG BMP 格式
      *
      * @throws TencentAIError
      *
@@ -232,7 +232,7 @@ class Image
     /**
      * 美食图片识别：识别一个图像是否为美食图像.
      *
-     * @param  string $image
+     * @param  string $image 支持 JPG PNG BMP 格式
      *
      * @throws TencentAIError
      *

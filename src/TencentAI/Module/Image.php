@@ -31,6 +31,8 @@ trait Image
     /**
      * 对图片文件进行 base64 编码
      *
+     * 传入本地路径或文件内容
+     *
      * @param string $image
      *
      * @throws TencentAIError

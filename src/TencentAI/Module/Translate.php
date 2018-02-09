@@ -14,7 +14,7 @@ trait Translate
     private function checkAILabTextType(int $type)
     {
         if ($type > 16 or $type < 0) {
-            throw new TencentAIError(90701);
+            throw new TencentAIError(90700);
         }
     }
 }
