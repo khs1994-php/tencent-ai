@@ -73,7 +73,7 @@ trait Audio
      *
      * @return string
      */
-    private function encode(string $voice)
+    private static function encode(string $voice)
     {
         if (@is_file($voice)) {
             return base64_encode(file_get_contents($voice));

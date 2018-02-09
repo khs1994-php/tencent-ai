@@ -71,7 +71,7 @@ class Image
      *
      * @param  string $image
      * @param  int    $format
-     * @param  int    $topk
+     * @param  int    $topk 返回结果个数（已按置信度倒排）[1,5]
      *
      * @throws TencentAIError
      *
@@ -98,7 +98,7 @@ class Image
      *
      * @param string $image
      * @param int    $format
-     * @param int    $topk
+     * @param int    $topk 返回结果个数（已按置信度倒排）[1,5]
      *
      * @throws TencentAIError
      *

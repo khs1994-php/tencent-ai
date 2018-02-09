@@ -49,19 +49,18 @@ class Face
      * 包括性别 (gender),年龄, 表情 (expression), 魅力 (beauty), 眼镜 (glass) 和姿态 (pitch，roll，yaw).
      *
      * @param  string $image
-     * @param  int    $mode 检测模式，0-正常，1-大脸模式.
-     *
-     * @throws TencentAIError
+     * @param  bool   $big 检测模式，false-正常，true-大脸模式(默认).
      *
      * @return mixed
      *
+     * @throws TencentAIError
      * @link   https://ai.qq.com/doc/detectface.shtml
      */
-    public function detect(string $image, $mode = 1)
+    public function detect(string $image, bool $big = true)
     {
         $data = [
             'image' => self::encode($image),
-            'mode' => $mode,
+            'mode' => (int) $big,
         ];
         $url = self::DETECT;
 
@@ -121,7 +120,7 @@ class Face
      * 计算构成人脸轮廓的 88 个点，包括眉毛（左右各 8 点）、眼睛（左右各 8 点）、鼻子（13 点）、嘴巴（22 点）、脸型轮廓（21 点）.
      *
      * @param  string $image
-     * @param  int    $mode 检测模式，0-正常，1-大脸模式
+     * @param  bool   $big 检测模式，false-正常，true-大脸模式(默认).
      *
      * @throws TencentAIError
      *
@@ -129,14 +128,11 @@ class Face
      *
      * @link   https://ai.qq.com/doc/faceshape.shtml
      */
-    public function shape(string $image, int $mode)
+    public function shape(string $image, bool $big = true)
     {
-        if ($mode !== 0 && $mode !== 1) {
-            throw new TencentAIError('20002');
-        }
         $data = [
             'image' => self::encode($image),
-            'mode' => $mode,
+            'mode' => (int) $big,
         ];
         $url = self::SHAPE;
 
@@ -150,7 +146,7 @@ class Face
      *
      * @param  string $group_id
      * @param  string $image
-     * @param  int    $topon 返回的候选人个数
+     * @param  int    $topon 返回的候选人个数 默认 9
      *
      * @throws TencentAIError
      *

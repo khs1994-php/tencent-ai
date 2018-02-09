@@ -2,6 +2,8 @@
 
 namespace TencentAI;
 
+use TencentAI\Error\TencentAIError;
+
 class Photo
 {
     const BASE_URL = 'https://api.ai.qq.com/fcgi-bin/ptu/';
@@ -30,13 +32,13 @@ class Photo
      * @param  string $image
      * @param  int    $cosmetic 美妆编码 1-23
      *
-     * @throws Error\TencentAIError
+     * @throws TencentAIError
      *
      * @return array
      *
      * @link   https://ai.qq.com/doc/facecosmetic.shtml
      */
-    public function cosmetic(string $image, int $cosmetic)
+    public function cosmetic(string $image, int $cosmetic = 23)
     {
         $url = self::COSMETIC;
         $data = [
@@ -55,13 +57,13 @@ class Photo
      * @param  string $image
      * @param  int    $decoration 变妆编码 1-22
      *
-     * @throws Error\TencentAIError
+     * @throws TencentAIError
      *
      * @return array
      *
      * @link   https://ai.qq.com/doc/facedecoration.shtml
      */
-    public function decoration(string $image, int $decoration)
+    public function decoration(string $image, int $decoration = 22)
     {
         $url = self::DECORATION;
         $data = [
@@ -76,15 +78,15 @@ class Photo
      * 图片滤镜（天天P图）.
      *
      * @param  string $image
-     * @param  int    $filter
+     * @param  int    $filter 滤镜效果编码 1-32
      *
-     * @throws Error\TencentAIError
+     * @throws TencentAIError
      *
      * @return array
      *
      * @link   https://ai.qq.com/doc/ptuimgfilter.shtml
      */
-    public function filter(string $image, int $filter)
+    public function filter(string $image, int $filter = 32)
     {
         $url = self::FILTER;
         $data = [
@@ -99,14 +101,14 @@ class Photo
      * 图片滤镜（AI Lab）.
      *
      * @param  string $image
-     * @param  int    $filter
      * @param  string $session_id
+     * @param  int    $filter 滤镜效果编码 1-65
      *
-     * @throws Error\TencentAIError
+     * @throws TencentAIError
      *
      * @return array
      */
-    public function aiLabFilter(string $image, int $filter, string $session_id)
+    public function aiLabFilter(string $image, string $session_id, int $filter)
     {
         $url = self::AILAB_FILTER;
         $data = [
@@ -124,13 +126,14 @@ class Photo
      * @param string $image
      * @param int    $model 素材模板编码 1-50
      *
-     * @throws Error\TencentAIError
+     * @throws TencentAIError
      *
      * @return array
      *
      * @link https://ai.qq.com/doc/facemerge.shtml
      */
-    public function merge(string $image, int $model)
+    public
+    function merge(string $image, int $model = 50)
     {
         $url = self::MERGE;
         $data = [
@@ -147,13 +150,14 @@ class Photo
      * @param  string $image
      * @param  int    $sticker 大头贴编码 1-30
      *
-     * @throws Error\TencentAIError
+     * @throws TencentAIError
      *
      * @return array
      *
      * @link   https://ai.qq.com/doc/facesticker.shtml
      */
-    public function sticker(string $image, int $sticker)
+    public
+    function sticker(string $image, int $sticker = 30)
     {
         $url = self::STICKER;
         $data = [
@@ -169,13 +173,14 @@ class Photo
      *
      * @param $image
      *
-     * @throws Error\TencentAIError
+     * @throws TencentAIError
      *
      * @return mixed
      *
      * @link https://ai.qq.com/doc/faceage.shtml
      */
-    public function age($image)
+    public
+    function age($image)
     {
         $url = self::AGE;
 

@@ -68,7 +68,7 @@ class OCR
      * 行驶证驾驶证识别.
      *
      * @param  string $image
-     * @param  bool   $driver 驾驶证为 true
+     * @param  int    $type 识别类型，0-行驶证识别，1-驾驶证识别
      *
      * @throws TencentAIError
      *
@@ -76,15 +76,39 @@ class OCR
      *
      * @link   https://ai.qq.com/doc/ocrdriverlicenseocr.shtml
      */
-    public function driverLicense(string $image, bool $driver = true)
+    private function driver(string $image, int $type = 0)
     {
         $data = [
             'image' => self::encode($image),
-            'type' => (int) $driver,
+            'type' => $type,
         ];
         $url = self::DRIVE;
 
         return TencentAI::exec($url, $data);
+    }
+
+    /**
+     * 驾驶证识别
+     *
+     * @param $image
+     * @return array
+     * @throws TencentAIError
+     */
+    public function driverLicense($image)
+    {
+        return $this->driver($image, 1);
+    }
+
+    /**
+     * 行驶证识别
+     *
+     * @param $image
+     * @return array
+     * @throws TencentAIError
+     */
+    public function drivingLicense($image)
+    {
+        return $this->driver($image);
     }
 
     /**

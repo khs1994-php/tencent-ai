@@ -108,10 +108,10 @@ class Translate
      * 语音翻译.
      *
      * @param  string $speech_chunk 待识别语音分片
+     * @param  string $session_id   语音唯一标识（同一应用内）
      * @param  int    $format       amr-3 silk-4 pcm-6 mp3-8 aac-9
      * @param  int    $seq          语音分片所在语音流的偏移量（字节）
      * @param  bool   $end          是否结束分片 true
-     * @param  string $session_id   语音唯一标识（同一应用内）
      * @param  string $source       源语言缩写
      * @param  string $target       目标语言缩写
      *
@@ -122,10 +122,10 @@ class Translate
      * @link   https://ai.qq.com/doc/speechtranslate.shtml
      */
     public function audio(string $speech_chunk,
-                          int $format,
-                          int $seq,
-                          bool $end,
                           string $session_id,
+                          int $format = 3,
+                          int $seq = 0,
+                          bool $end = true,
                           string $source = 'auto',
                           string $target = 'auto')
     {
