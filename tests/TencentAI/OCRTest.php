@@ -41,6 +41,8 @@ class OCRTest extends AI
     }
 
     /**
+     * 名片识别
+     *
      * @throws TencentAIError
      */
     public function testBusinessCard()
@@ -52,6 +54,8 @@ class OCRTest extends AI
     }
 
     /**
+     * 驾驶证识别
+     *
      * @throws TencentAIError
      * @throws \Exception
      */
@@ -59,16 +63,27 @@ class OCRTest extends AI
     {
         $this->name = __FUNCTION__;
 
-        $image = self::IMAGE.'driving.jpg';
-        $array = $this->ocr()->driverLicense($image, false);
-        $this->assertEquals(0, $array['ret']);
-        file_put_contents(self::OUTPUT.'testDrivingLicense.json', json_encode($array, JSON_UNESCAPED_UNICODE));
-
         $image = self::IMAGE.'driver.jpg';
         $this->array = $this->ocr()->driverLicense($image);
     }
 
     /**
+     * 行驶证识别
+     *
+     * @throws TencentAIError
+     * @throws \Exception
+     */
+    public function testDrivingLicense()
+    {
+        $this->name = __FUNCTION__;
+
+        $image = self::IMAGE.'driving.jpg';
+        $this->array = $this->ocr()->drivingLicense($image);
+    }
+
+    /**
+     * 营业执照识别
+     *
      * @throws TencentAIError
      */
     public function testBizLicense()
@@ -80,6 +95,8 @@ class OCRTest extends AI
     }
 
     /**
+     * 银行卡识别
+     *
      * @throws TencentAIError
      */
     public function testCreditCard()
@@ -91,6 +108,8 @@ class OCRTest extends AI
     }
 
     /**
+     * 通用识别
+     *
      * @throws TencentAIError
      */
     public function testGeneral()

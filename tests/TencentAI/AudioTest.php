@@ -42,7 +42,7 @@ class AudioTest extends AI
         $this->name = __FUNCTION__;
 
         $voice = self::AUDIO.'/2.wav';
-        $this->array = $this->audio()->asrs($voice, 2, 16000, 0, 1, true);
+        $this->array = $this->audio()->asrs($voice, 1, 0, 2);
     }
 
     /**
@@ -55,7 +55,7 @@ class AudioTest extends AI
         $this->name = __FUNCTION__;
 
         $voice = self::AUDIO.'/2.wav';
-        $this->array = $this->audio()->wxasrs($voice, 2, 16000, 0, 1, 16, true, true);
+        $this->array = $this->audio()->wxasrs($voice, 1, 0, 2);
     }
 
     /**

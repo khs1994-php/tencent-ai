@@ -65,7 +65,7 @@ class TranslateTest extends AI
         $this->name = __FUNCTION__;
 
         $voice = __DIR__.'/../resource/translate/t.pcm';
-        $this->array = $this->translate()->audio($voice, 6, 0, true, 10010);
+        $this->array = $this->translate()->audio($voice, 1, 6);
     }
 
     /**
