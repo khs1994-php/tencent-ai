@@ -20,7 +20,7 @@ class TranslateTest extends AI
     }
 
     /**
-     * 文本翻译 AILAB
+     * 文本翻译 AILAB.
      *
      * @throws TencentAIError
      */
@@ -32,7 +32,7 @@ class TranslateTest extends AI
     }
 
     /**
-     * 文本翻译 翻译君
+     * 文本翻译 翻译君.
      *
      * @throws TencentAIError
      */
@@ -44,7 +44,7 @@ class TranslateTest extends AI
     }
 
     /**
-     * 图片翻译
+     * 图片翻译.
      *
      * @throws TencentAIError
      */
@@ -56,7 +56,7 @@ class TranslateTest extends AI
     }
 
     /**
-     * 语音翻译
+     * 语音翻译.
      *
      * @throws TencentAIError
      */
@@ -69,7 +69,7 @@ class TranslateTest extends AI
     }
 
     /**
-     * 语种识别
+     * 语种识别.
      *
      * @throws TencentAIError
      */

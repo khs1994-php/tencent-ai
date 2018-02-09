@@ -20,7 +20,7 @@ class PhotoTest extends AI
     }
 
     /**
-     * 人脸美妆
+     * 人脸美妆.
      *
      * @throws TencentAIError
      */
@@ -31,7 +31,7 @@ class PhotoTest extends AI
     }
 
     /**
-     * 人脸变妆
+     * 人脸变妆.
      *
      * @throws TencentAIError
      */
@@ -43,7 +43,7 @@ class PhotoTest extends AI
     }
 
     /**
-     * 滤镜 天天 P 图
+     * 滤镜 天天 P 图.
      *
      * @throws TencentAIError
      */
@@ -55,7 +55,7 @@ class PhotoTest extends AI
     }
 
     /**
-     * 滤镜 AILAB
+     * 滤镜 AILAB.
      *
      * @throws TencentAIError
      */
@@ -67,7 +67,7 @@ class PhotoTest extends AI
     }
 
     /**
-     * 人脸融合
+     * 人脸融合.
      *
      * @throws TencentAIError
      */
@@ -79,7 +79,7 @@ class PhotoTest extends AI
     }
 
     /**
-     * 大头贴
+     * 大头贴.
      *
      * @throws TencentAIError
      */
@@ -91,7 +91,7 @@ class PhotoTest extends AI
     }
 
     /**
-     * 颜龄检测
+     * 颜龄检测.
      *
      * @throws TencentAIError
      */
@@ -101,7 +101,6 @@ class PhotoTest extends AI
 
         $this->array = $this->photo()->age(self::IMAGE);
     }
-
 
     /**
      * @throws \Exception
@@ -114,5 +113,4 @@ class PhotoTest extends AI
 
         file_put_contents(self::OUTPUT.$this->name.'.jpg', base64_decode($this->array['data']['image']));
     }
-
 }

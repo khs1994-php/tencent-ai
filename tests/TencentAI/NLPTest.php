@@ -17,7 +17,7 @@ class NLPTest extends AI
     }
 
     /**
-     * 分词
+     * 分词.
      *
      * @throws TencentAIError
      */
@@ -26,11 +26,10 @@ class NLPTest extends AI
         $this->name = __FUNCTION__;
 
         $this->array = $this->nlp()->wordseg('腾讯人工智能');
-
     }
 
     /**
-     * 词性标注
+     * 词性标注.
      *
      * @throws TencentAIError
      */
@@ -42,7 +41,7 @@ class NLPTest extends AI
     }
 
     /**
-     * 专有名词识别
+     * 专有名词识别.
      *
      * @throws TencentAIError
      */
@@ -54,7 +53,7 @@ class NLPTest extends AI
     }
 
     /**
-     * 同义词识别
+     * 同义词识别.
      *
      * @throws TencentAIError
      */
@@ -66,7 +65,7 @@ class NLPTest extends AI
     }
 
     /**
-     * 语义解析 => 意图成分识别
+     * 语义解析 => 意图成分识别.
      *
      * @throws TencentAIError
      */
@@ -78,7 +77,7 @@ class NLPTest extends AI
     }
 
     /**
-     * 情感分析
+     * 情感分析.
      *
      * @throws TencentAIError
      */
@@ -90,7 +89,8 @@ class NLPTest extends AI
     }
 
     /**
-     * 智能闲聊
+     * 智能闲聊.
+     *
      * @throws TencentAIError
      */
     public function testChat()

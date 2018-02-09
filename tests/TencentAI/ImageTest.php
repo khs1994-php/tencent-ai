@@ -34,7 +34,7 @@ class ImageTest extends AI
     }
 
     /**
-     * 智能鉴黄
+     * 智能鉴黄.
      *
      * @throws TencentAIError
      */
@@ -46,7 +46,7 @@ class ImageTest extends AI
     }
 
     /**
-     * 暴恐识别
+     * 暴恐识别.
      *
      * @throws TencentAIError
      */
@@ -58,7 +58,7 @@ class ImageTest extends AI
     }
 
     /**
-     * 物体场景识别 => 场景识别
+     * 物体场景识别 => 场景识别.
      *
      * @throws TencentAIError
      */
@@ -70,7 +70,7 @@ class ImageTest extends AI
     }
 
     /**
-     * 物体场景识别 => 物体识别
+     * 物体场景识别 => 物体识别.
      *
      * @throws TencentAIError
      */
@@ -82,7 +82,7 @@ class ImageTest extends AI
     }
 
     /**
-     * 标签识别
+     * 标签识别.
      *
      * @throws TencentAIError
      */
@@ -94,7 +94,7 @@ class ImageTest extends AI
     }
 
     /**
-     * 花草识别
+     * 花草识别.
      *
      * @throws TencentAIError
      */
@@ -106,7 +106,7 @@ class ImageTest extends AI
     }
 
     /**
-     * 车辆识别
+     * 车辆识别.
      *
      * @throws TencentAIError
      */
@@ -118,7 +118,7 @@ class ImageTest extends AI
     }
 
     /**
-     * 看图说话
+     * 看图说话.
      *
      * @throws TencentAIError
      */
@@ -130,7 +130,7 @@ class ImageTest extends AI
     }
 
     /**
-     * 模糊图片检测
+     * 模糊图片检测.
      *
      * @throws TencentAIError
      */
@@ -142,7 +142,7 @@ class ImageTest extends AI
     }
 
     /**
-     * 美食图片
+     * 美食图片.
      *
      * @throws TencentAIError
      */

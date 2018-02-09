@@ -16,12 +16,11 @@ class AudioTest extends AI
 
     private function audio()
     {
-
         return $this->ai()->audio();
     }
 
     /**
-     * 语音识别
+     * 语音识别.
      *
      * @throws TencentAIError
      */
@@ -34,7 +33,7 @@ class AudioTest extends AI
     }
 
     /**
-     * 语音识别 流式版 AILAB
+     * 语音识别 流式版 AILAB.
      *
      * @throws TencentAIError
      */
@@ -60,7 +59,7 @@ class AudioTest extends AI
     }
 
     /**
-     * 长语音识别
+     * 长语音识别.
      *
      * @throws TencentAIError
      */
@@ -74,7 +73,7 @@ class AudioTest extends AI
     }
 
     /**
-     * 语音合成 AILAB
+     * 语音合成 AILAB.
      *
      * @throws TencentAIError
      */
@@ -87,7 +86,7 @@ class AudioTest extends AI
     }
 
     /**
-     * 语音合成 优图
+     * 语音合成 优图.
      *
      * @throws TencentAIError
      */
@@ -116,4 +115,3 @@ class AudioTest extends AI
         }
     }
 }
-

@@ -20,9 +20,10 @@ class OCRTest extends AI
     }
 
     /**
-     * 身份证识别
+     * 身份证识别.
      *
      * @group DON'TTEST
+     *
      * @throws TencentAIError
      * @throws \Exception
      */
@@ -68,7 +69,6 @@ class OCRTest extends AI
     }
 
     /**
-     *
      * @throws TencentAIError
      */
     public function testBizLicense()
@@ -80,7 +80,6 @@ class OCRTest extends AI
     }
 
     /**
-     *
      * @throws TencentAIError
      */
     public function testCreditCard()
@@ -92,7 +91,6 @@ class OCRTest extends AI
     }
 
     /**
-     *
      * @throws TencentAIError
      */
     public function testGeneral()
