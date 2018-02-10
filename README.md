@@ -21,18 +21,6 @@ $ composer require khs1994/tencent-ai @dev
 # $ composer require khs1994/tencent-ai
 ```
 
-Or edit `composer.json`
-
-```json
-{
-    "require": {
-        "khs1994/tencent-ai": "@dev"
-    }
-}
-```
-
-Then exec `$ composer update`
-
 # Usage
 
 ```php
