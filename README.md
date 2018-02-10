@@ -6,8 +6,6 @@
 
 - [Official Documents](https://ai.qq.com/doc/index.shtml)
 
-- [SDK Documents](https://github.com/khs1994-php/tencent-ai/tree/master/docs)
-
 # Installation
 
 Exec `composer` command

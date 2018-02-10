@@ -5,6 +5,18 @@ namespace TencentAI;
 use Curl\Curl;
 use TencentAI\Error\TencentAIError;
 
+/**
+ * Class TencentAI.
+ *
+ * @method Audio                      audio();
+ * @method Face                       face();
+ * @method Image                      image();
+ * @method NaturalLanguageProcessing  nlp();
+ * @method OCR                        ocr();
+ * @method Photo                      photo();
+ * @method Translate                  translate();
+ *
+ */
 class TencentAI
 {
     private static $tencentAI;
@@ -139,45 +151,31 @@ class TencentAI
      *
      * @throws TencentAIError
      */
-    public static function checkReturn(int $ret)
+    private static function checkReturn(int $ret)
     {
         if ($ret !== 0) {
             throw new TencentAIError($ret);
         }
     }
 
-    public function nlp()
+    /**
+     * 返回对象
+     *
+     * @param  string $name
+     * @param  array  $arguments
+     *
+     * @return mixed
+     */
+    public function __call(string $name, array $arguments)
     {
-        return new NaturalLanguageProcessing();
-    }
-
-    public function face()
-    {
-        return new Face();
-    }
-
-    public function image()
-    {
-        return new Image();
-    }
-
-    public function audio()
-    {
-        return new Audio();
-    }
-
-    public function ocr()
-    {
-        return new OCR();
-    }
-
-    public function photo()
-    {
-        return new Photo();
-    }
-
-    public function translate()
-    {
-        return new Translate();
+        switch ($name) {
+            case 'nlp':
+                $service = '\\TencentAI\\NaturalLanguageProcessing';
+                break;
+            default:
+                $service = '\\TencentAI\\'.ucfirst($name);
+                return new $service;
+        }
+        return new $service;
     }
 }
