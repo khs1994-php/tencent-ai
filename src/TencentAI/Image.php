@@ -106,7 +106,7 @@ class Image
             $label_id = self::$scene_array[$label_id];
             $scene_list_array[] = [
                 'label_id' => $label_id,
-                'label_confd' => $k['label_confd']
+                'label_confd' => $k['label_confd'],
             ];
         }
         $output['data']['scene_list'] = $scene_list_array;
