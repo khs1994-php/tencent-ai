@@ -171,6 +171,9 @@ class TencentAI
             case 'nlp':
                 $service = '\\TencentAI\\NaturalLanguageProcessing';
                 break;
+            case 'ocr':
+                $service = '\\TencentAI\\OCR';
+                break;
             default:
                 $service = '\\TencentAI\\'.ucfirst($name);
         }
