@@ -28,12 +28,14 @@ require __DIR__.'/vendor/autoload.php';
 use TencentAI\TencentAI;
 use TencentAI\Error\TencentAIError;
 
-$app_id = 1106560031;
-$app_key = 'ZbRY9cf72TbDO0xb';
+const APP_ID = 1106560031;
+const APP_KEY = 'ZbRY9cf72TbDO0xb';
 
-$ai = TencentAI::tencentAI($app_id, $app_key);
+$ai = TencentAI::tencentAI(APP_ID, APP_KEY, false);
 
 $image = __DIR__.'/path/name.jpg';
+
+// must try-catch
 
 try {
     $output = $ai->face()->detect($image);

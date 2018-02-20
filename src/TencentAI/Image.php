@@ -88,7 +88,36 @@ class Image
         ];
         $url = self::SCENER;
 
-        return TencentAI::exec($url, $data);
+        $scene_list_array = [];
+
+        $output = TencentAI::exec($url, $data);
+
+        if (is_array($output)) {
+            $format = false;
+            $scene_list = $output['data']['scene_list'];
+        } else {
+            $format = true;
+            $output = json_decode($output, true);
+            $scene_list = $output['data']['scene_list'];
+        }
+
+        foreach ($scene_list as $k) {
+            $label_id = $k['label_id'];
+            $label_id = self::$scene_array[$label_id];
+            $scene_list_array[] = [
+                'label_id' => $label_id,
+                'label_confd' => $k['label_confd']
+            ];
+        }
+        $output['data']['scene_list'] = $scene_list_array;
+
+        // 判断返回格式
+
+        if ($format) {
+            return json_encode($output, JSON_UNESCAPED_UNICODE);
+        }
+
+        return $output;
     }
 
     /**

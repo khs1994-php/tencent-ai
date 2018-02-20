@@ -58,6 +58,10 @@ class Translate
      */
     public function text(string $text, string $source = 'auto', string $target = 'auto')
     {
+        if (!($source === 'auto' && $target === 'auto')) {
+            $this->checkTextTarget($source, $target);
+        }
+
         $data = [
             'text' => $text,
             'source' => $source,
@@ -92,6 +96,11 @@ class Translate
         if ($scene !== 'word' and $scene !== 'doc') {
             throw new TencentAIError(90701);
         }
+
+        if (!($source === 'auto' && $target === 'auto')) {
+            $this->checkImageTarget($source, $target);
+        }
+
         $data = [
             'image' => base64_encode(file_get_contents($image)),
             'session_id' => $session_id,
@@ -130,6 +139,9 @@ class Translate
                           string $target = 'auto')
     {
         $this->checkTranslateFormat($format);
+        if (!($source === 'auto' && $target === 'auto')) {
+            $this->checkImageTarget($source, $target);
+        }
         $data = [
             'format' => $format,
             'seq' => $seq,
@@ -160,7 +172,13 @@ class Translate
     public function detect(string $text, array $languages = null, bool $force = false)
     {
         if ($languages) {
-            $languages = implode('"', $languages);
+            foreach ($languages as $k) {
+                $this->checkDetectType($k);
+            }
+            // 多类型分隔符错误
+            // TODO
+            $languages = implode('”', $languages);
+            var_dump($languages);
         }
         $data = [
             'text' => $text,

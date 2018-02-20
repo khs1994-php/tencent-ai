@@ -15,7 +15,6 @@ use TencentAI\Error\TencentAIError;
  * @method OCR                        ocr();
  * @method Photo                      photo();
  * @method Translate                  translate();
- *
  */
 class TencentAI
 {
@@ -174,8 +173,8 @@ class TencentAI
                 break;
             default:
                 $service = '\\TencentAI\\'.ucfirst($name);
-                return new $service;
         }
+
         return new $service;
     }
 }
