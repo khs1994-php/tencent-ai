@@ -8,10 +8,10 @@ trait Translate
 {
     private $text_array = [
         'en' => [
-            'zh', 'fr', 'es', 'it', 'de', 'tr', 'ru', 'pt', 'vi', 'id', 'ms', 'th'
+            'zh', 'fr', 'es', 'it', 'de', 'tr', 'ru', 'pt', 'vi', 'id', 'ms', 'th',
         ],
         'zh' => [
-            'en', 'fr', 'es', 'it', 'de', 'tr', 'ru', 'pt', 'vi', 'id', 'ms', 'th', 'jp', 'kr'
+            'en', 'fr', 'es', 'it', 'de', 'tr', 'ru', 'pt', 'vi', 'id', 'ms', 'th', 'jp', 'kr',
         ],
         'fr' => ['en', 'zh', 'es', 'it', 'de', 'tr', 'ru', 'pt'],
         'es' => ['en', 'zh', 'fr', 'it', 'de', 'tr', 'ru', 'pt'],
@@ -59,6 +59,7 @@ trait Translate
      *
      * @param $source
      * @param $target
+     *
      * @throws TencentAIError
      */
     private function checkTextTarget($source, $target)
@@ -77,6 +78,7 @@ trait Translate
      *
      * @param $source
      * @param $target
+     *
      * @throws TencentAIError
      */
     private function checkImageTarget($source, $target)
@@ -91,9 +93,10 @@ trait Translate
     }
 
     /**
-     * 语种识别待选类型检查
+     * 语种识别待选类型检查.
      *
      * @param $language
+     *
      * @throws TencentAIError
      */
     private function checkDetectType($language)
