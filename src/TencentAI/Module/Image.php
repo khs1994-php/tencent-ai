@@ -345,6 +345,8 @@ trait Image
      */
     private static function encode(string $image)
     {
+        // 网址
+
         if (@is_file($image)) {
             return base64_encode(file_get_contents($image));
         } else {
