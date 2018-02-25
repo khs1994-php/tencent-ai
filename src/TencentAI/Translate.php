@@ -9,11 +9,18 @@ class Translate
     use Module\Translate;
     use Module\Audio;
 
-    const BASE_URL = 'https://api.ai.qq.com/fcgi-bin/nlp/';
+    /**
+    *
+    * PHP 7.1 新特性
+    *
+    * 类常量可设置可见性
+    *
+    */
+    public const BASE_URL = 'https://api.ai.qq.com/fcgi-bin/nlp/';
 
-    const AILAB_TEXT = self::BASE_URL.'nlp_texttrans';
+    private const AILAB_TEXT = self::BASE_URL.'nlp_texttrans';
 
-    const TEXT = self::BASE_URL.'nlp_texttranslate';
+    protected const TEXT = self::BASE_URL.'nlp_texttranslate';
 
     const IMAGE = self::BASE_URL.'nlp_imagetranslate';
 

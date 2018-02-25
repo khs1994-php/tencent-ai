@@ -132,6 +132,10 @@ class Audio
     /**
      * 长语音识别.
      *
+     * PHP 7.1 新特性
+     *
+     * 参数类型前加 ？表示参数要么为 null 要么为指定的类型
+     *
      * @param  string $speech
      * @param  string $callback_url 异步识别，结果会 post 到回调地址.
      * @param  int    $format       文件格式 pcm-1 wav-2 amr-3 silk-4
@@ -143,7 +147,7 @@ class Audio
      *
      * @link   https://ai.qq.com/doc/wxasrlong.shtml
      */
-    public function wxasrlong(string $speech = null, string $callback_url, int $format = 3, string $speech_url = null)
+    public function wxasrlong(?string $speech, string $callback_url, int $format = 3, string $speech_url = null)
     {
         $url = self::LONG;
         $data = [

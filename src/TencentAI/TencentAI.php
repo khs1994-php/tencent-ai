@@ -146,11 +146,16 @@ class TencentAI
     /**
      * 检查返回值，不为 0 抛出错误.
      *
+     * PHP 7.1 新特性
+     *
+     * 返回值声明为 void 类型的方法要么干脆省去 return 语句，要么使用一个空的 return 语句
+     * 注意 NULL 不是一个合法的返回值
+     *
      * @param  int $ret
      *
      * @throws TencentAIError
      */
-    private static function checkReturn(int $ret)
+    private static function checkReturn(int $ret) : void
     {
         if ($ret !== 0) {
             throw new TencentAIError($ret);

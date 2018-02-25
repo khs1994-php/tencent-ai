@@ -6,6 +6,10 @@
 
 - [Official Documents](https://ai.qq.com/doc/index.shtml)
 
+# Require
+
+* **PHP 7.1+**
+
 # Installation
 
 Exec `composer` command

@@ -3,7 +3,10 @@ language: php
 #   directories:
 #   - vendor
 php:
-  - 7.2.1
+  # Not Support 7.0
+  # - 7.0
+  - 7.1
+  - 7.2
 script:
 - composer self-update
 - composer install -q
