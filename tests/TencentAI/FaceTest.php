@@ -18,6 +18,10 @@ class FaceTest extends AI
 
     const IMAGE5 = self::IMAGE.'wxc5.jpg';
 
+    const DETECT_CROSS_IMAGE_1 = self::IMAGE.'peterye1.jpg';
+
+    const DETECT_CROSS_IMAGE_2 = self::IMAGE.'peterye2.jpg';
+
     const PERSON_ID = 'testPersonId';
 
     const PERSON_NAME = 'testPersonName';
@@ -258,6 +262,18 @@ class FaceTest extends AI
         $this->name = __FUNCTION__;
 
         $this->array = $this->face()->identify('test1', self::IMAGE3, 9);
+    }
+
+    /**
+     * 跨年龄人脸识别
+     *
+     * @throws TencentAIError
+     */
+    public function testDetectCrossAge()
+    {
+        $this->name = __FUNCTION__;
+
+        $this->array = $this->face()->detectCrossAge(self::DETECT_CROSS_IMAGE_1, self::DETECT_CROSS_IMAGE_2);
     }
 
     /**

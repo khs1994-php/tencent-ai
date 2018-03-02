@@ -16,6 +16,8 @@ class Face
 
     const COMPARE = self::BASE_URL.'face_facecompare';
 
+    const DETECT_CROSS_AGE = self::BASE_URL.'face_detectcrossageface';
+
     const SHAPE = self::BASE_URL.'face_faceshape';
 
     const IDENTIFY = self::BASE_URL.'face_faceidentify';
@@ -114,6 +116,31 @@ class Face
 
         return TencentAI::exec($url, $data);
     }
+
+    /**
+     * 跨年龄人脸识别
+     *
+     * 对比两张图片，并找出相似度最高的两张人脸；支持多人合照、两张图片中的人处于不同年龄段的情况
+     *
+     * @param  string $source
+     * @param  string $target
+     * @return array
+     * @throws TencentAIError
+     *
+     * @link   https://ai.qq.com/doc/detectcrossageface.shtml
+     */
+    public function detectCrossAge(string $source, string $target)
+    {
+        $url = self::DETECT_CROSS_AGE;
+
+        $data = [
+            'source_image' => self::encode($source),
+            'target_image' => self::encode($target)
+        ];
+
+        return TencentAI::exec($url, $data);
+    }
+
 
     /**
      * 五官检测：对请求图片进行五官定位.
