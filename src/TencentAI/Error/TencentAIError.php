@@ -140,12 +140,12 @@ class TencentAIError extends \Error
         return json_encode(['ret' => $this->code, 'msg' => $this->message]);
     }
 
-    public function getArray()
+    public function getErrorAsArray()
     {
         return ['ret' => $this->code, 'msg' => $this->message];
     }
 
-    public function getJson()
+    public function getErrorAsJson()
     {
         return json_encode(['ret' => $this->code, 'msg' => $this->message]);
     }

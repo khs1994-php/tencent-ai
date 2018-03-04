@@ -44,7 +44,7 @@ $image = __DIR__.'/path/name.jpg';
 try {
     $output = $ai->face()->detect($image);
 } catch (TencentAIError $e) {
-    $output = $e->getArray();
+    $output = $e->getErrorAsArray();
 }
 
 // default return array
