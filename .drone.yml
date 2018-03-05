@@ -1,3 +1,19 @@
+#
+# khs1994.com Drone CI/CD PHP 项目最佳实践
+#
+
+clone:
+  git:
+    image: plugins/git
+    recursive: true
+    submodule_override:
+      #
+      # 重写 git 子模块地址
+      #
+      # @link http://plugins.drone.io/drone-plugins/drone-git/
+      #
+      tests/resource: http://192.168.199.100:3000/khs1994/image.git
+
 workspace:
   base: /src
   path: .
@@ -11,5 +27,12 @@ pipeline:
       - composer update -q
       - vendor/bin/phpunit
     volumes:
+      #
+      # 这里可以将 composer 缓存路径挂载到本地（需要在 Drone 仓库配置中启用 Trusted），加快构建速度，其他软件 npm 等同理
+      #
+      # @link http://docs.drone.io/docker-volumes/
+      #
       # - /Users/khs1994/khs1994/khs1994-lnmp/tmp/cache:/tmp/cache
-      - /data/lnmp/tmp/cache:/tmp/cache
+      #
+      #
+      # 问题: Drone + gogs + macos 我实际测试开启不了，Linux 可以
