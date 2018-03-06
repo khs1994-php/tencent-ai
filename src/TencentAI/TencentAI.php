@@ -86,9 +86,8 @@ class TencentAI
         $app_id = self::$app_id;
         $format = strtolower(self::$format);
         /**
-        *
-        * @since 7.1
-        */
+         * @since 7.1
+         */
         $nonce_str = session_create_id();
         $data = [
             'app_id' => $app_id,
