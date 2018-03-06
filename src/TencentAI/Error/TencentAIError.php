@@ -137,7 +137,7 @@ class TencentAIError extends \Error
 
     public function __toString()
     {
-        return json_encode($this->getErrorAsArray());
+        return json_encode($this->getErrorAsArray(), JSON_UNESCAPED_UNICODE);
     }
 
     public function getErrorAsArray()
@@ -147,6 +147,6 @@ class TencentAIError extends \Error
 
     public function getErrorAsJson()
     {
-        return json_encode($this->getErrorAsArray());
+        return json_encode($this->getErrorAsArray(), JSON_UNESCAPED_UNICODE);
     }
 }
