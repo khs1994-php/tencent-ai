@@ -137,7 +137,7 @@ class TencentAIError extends \Error
 
     public function __toString()
     {
-        return json_encode(['ret' => $this->code, 'msg' => $this->message]);
+        return json_encode($this->getErrorAsArray());
     }
 
     public function getErrorAsArray()
@@ -147,6 +147,6 @@ class TencentAIError extends \Error
 
     public function getErrorAsJson()
     {
-        return json_encode(['ret' => $this->code, 'msg' => $this->message]);
+        return json_encode($this->getErrorAsArray());
     }
 }

@@ -265,7 +265,7 @@ class FaceTest extends AI
     }
 
     /**
-     * 跨年龄人脸识别
+     * 跨年龄人脸识别.
      *
      * @throws TencentAIError
      */

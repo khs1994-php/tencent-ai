@@ -10,11 +10,10 @@ class Translate
     use Module\Audio;
 
     /**
-    *
-    * 类常量可设置可见性
-    *
-    * @since 7.1
-    */
+     * 类常量可设置可见性.
+     *
+     * @since 7.1
+     */
     public const BASE_URL = 'https://api.ai.qq.com/fcgi-bin/nlp/';
 
     private const AILAB_TEXT = self::BASE_URL.'nlp_texttrans';
