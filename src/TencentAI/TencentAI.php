@@ -85,7 +85,11 @@ class TencentAI
     {
         $app_id = self::$app_id;
         $format = strtolower(self::$format);
-        $nonce_str = 'fa577ce340859f95b';
+        /**
+        *
+        * @since 7.1
+        */
+        $nonce_str = session_create_id();
         $data = [
             'app_id' => $app_id,
             'time_stamp' => time(),
@@ -146,10 +150,10 @@ class TencentAI
     /**
      * 检查返回值，不为 0 抛出错误.
      *
-     * PHP 7.1 新特性
-     *
      * 返回值声明为 void 类型的方法要么干脆省去 return 语句，要么使用一个空的 return 语句
      * 注意 NULL 不是一个合法的返回值
+     *
+     * @since 7.1
      *
      * @param  int $ret
      *

@@ -11,10 +11,9 @@ class Translate
 
     /**
     *
-    * PHP 7.1 新特性
-    *
     * 类常量可设置可见性
     *
+    * @since 7.1
     */
     public const BASE_URL = 'https://api.ai.qq.com/fcgi-bin/nlp/';
 

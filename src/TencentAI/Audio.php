@@ -132,9 +132,9 @@ class Audio
     /**
      * 长语音识别.
      *
-     * PHP 7.1 新特性
-     *
      * 参数类型前加 ？表示参数要么为 null 要么为指定的类型
+     *
+     * @since 7.1
      *
      * @param  string $speech
      * @param  string $callback_url 异步识别，结果会 post 到回调地址.
