@@ -56,6 +56,8 @@ class FaceTest extends AI
      */
     public function testCreatePerson()
     {
+        $this->testDeleteForce();
+
         $this->name = __FUNCTION__;
 
         // 单个组ID

@@ -11,7 +11,7 @@ script:
 - composer self-update
 - composer install -q
 - composer update -q
-- vendor/bin/phpunit --no-configuration --filter "/::testDeleteForce( .*)?$/" TencentAI\Tests\FaceTest $PWD/tests/TencentAI/FaceTest.php
+# - vendor/bin/phpunit --no-configuration --filter "/::testDeleteForce( .*)?$/" TencentAI\Tests\FaceTest $PWD/tests/TencentAI/FaceTest.php
 - vendor/bin/phpunit
 branches:
   only:
