@@ -3,6 +3,7 @@
 namespace TencentAI;
 
 use Curl\Curl;
+use Curl\Error\CurlError;
 use TencentAI\Error\TencentAIError;
 
 /**
@@ -44,9 +45,14 @@ class TencentAI
         self::$curl = new Curl();
     }
 
+    private function __clone()
+    {
+
+    }
+
     public static function tencentAI(int $appId, string $appKey, bool $jsonFormat = false)
     {
-        if (!self::$tencentAI instanceof self) {
+        if (!(self::$tencentAI instanceof self)) {
             self::$tencentAI = new self($appId, $appKey, $jsonFormat);
         }
 
@@ -107,8 +113,11 @@ class TencentAI
         $data = $request_body."&sign=$sign";
 
         // 发起请求
-
-        $json = self::$curl->post($url, $data);
+        try {
+            $json = self::$curl->post($url, $data);
+        } catch (CurlError $e) {
+            throw new TencentAIError(20000 + $e->getCode(), $e->getMessage());
+        }
 
         if ($charSetUTF8) {
             $array = json_decode($json, true);
@@ -141,7 +150,7 @@ class TencentAI
      *
      * @throws TencentAIError
      */
-    public static function returnStr($str)
+    public static function returnStr($str): void
     {
         throw new TencentAIError(90000, $str);
     }
@@ -158,7 +167,7 @@ class TencentAI
      *
      * @throws TencentAIError
      */
-    private static function checkReturn(int $ret) : void
+    private static function checkReturn(int $ret): void
     {
         if ($ret !== 0) {
             throw new TencentAIError($ret);
