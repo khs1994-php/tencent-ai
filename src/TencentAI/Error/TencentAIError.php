@@ -12,7 +12,7 @@ use Throwable;
 
 class TencentAIError extends \Error
 {
-    public static $array = [
+    private static $array = [
         4096 => '参数非法',
         /**
          * 20000 + Curl 错误
@@ -115,9 +115,9 @@ class TencentAIError extends \Error
         90707 => '语种识别待选类型错误',
     ];
 
-    public $code;
+    protected $code;
 
-    public $message;
+    protected $message;
 
     public function __construct(int $code = 0, string $message = null, Throwable $previous = null)
     {
