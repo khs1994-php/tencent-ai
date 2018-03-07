@@ -2,8 +2,9 @@
   "name": "khs1994/tencent-ai",
   "description": "Tencent AI SDK",
   "keywords": [
-    "tencent-ai",
-    "ai"
+    "tencent",
+    "ai",
+    "sdk"
   ],
   "homepage": "https://github.com/khs1994-php/tencent-ai",
   "type": "library",
@@ -17,6 +18,8 @@
   ],
   "require": {
     "php": ">=7.1",
+    "ext-curl": "*",
+    "ext-json": "*",
     "khs1994/curl": "@dev"
   },
   "require-dev": {
