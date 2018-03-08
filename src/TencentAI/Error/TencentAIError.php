@@ -14,7 +14,7 @@ class TencentAIError extends \Error
 {
     private static $array = [
         4096 => '参数非法',
-        /**
+        /*
          * 20000 + Curl 错误
          */
         12289 => '应用不存在，请检查app_id是否有效的应用标识',

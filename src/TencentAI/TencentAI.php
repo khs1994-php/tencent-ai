@@ -47,7 +47,6 @@ class TencentAI
 
     private function __clone()
     {
-
     }
 
     public static function tencentAI(int $appId, string $appKey, bool $jsonFormat = false)

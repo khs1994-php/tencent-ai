@@ -10,7 +10,7 @@
 .travis.yml export-ignore
 .scrutinizer.yml export-ignore
 /docker-compose.yml export-ignore
-/Dockerfile
+/Dockerfile export-ignore
 /phpunit.xml export-ignore
 /CHANGELOG.md export-ignore
 /CONTRIBUTING.md export-ignore
