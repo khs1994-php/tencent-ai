@@ -12,15 +12,16 @@
 
 # Installation
 
-Exec `composer` command
+To Use Tencent AI SDK, simply:
 
 ```bash
-# For latest commit version:
+$ composer require khs1994/tencent-ai
+```
+
+For latest commit version:
+
+```bash
 $ composer require khs1994/tencent-ai @dev
-
-# TODO Don't exec this command
-
-# $ composer require khs1994/tencent-ai
 ```
 
 ## Usage
