@@ -19,7 +19,7 @@ use TencentAI\Error\TencentAIError;
  */
 class TencentAI
 {
-    public const VERSION = "18.05.0";
+    public const VERSION = '18.05.0';
 
     private static $tencentAI;
 
@@ -49,7 +49,7 @@ class TencentAI
 
     private function __clone()
     {
-        /**
+        /*
          * Private clone
          */
     }
@@ -203,7 +203,7 @@ class TencentAI
     }
 
     /**
-     * 查看版本号
+     * 查看版本号.
      *
      * @return string
      */
