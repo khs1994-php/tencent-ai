@@ -19,6 +19,8 @@ use TencentAI\Error\TencentAIError;
  */
 class TencentAI
 {
+    public const VERSION = "18.05.0";
+
     private static $tencentAI;
 
     private static $app_id;
@@ -47,6 +49,9 @@ class TencentAI
 
     private function __clone()
     {
+        /**
+         * Private clone
+         */
     }
 
     public static function tencentAI(int $appId, string $appKey, bool $jsonFormat = false)
@@ -195,5 +200,15 @@ class TencentAI
         }
 
         return new $service;
+    }
+
+    /**
+     * 查看版本号
+     *
+     * @return string
+     */
+    public function getVersion()
+    {
+        return self::VERSION;
     }
 }
