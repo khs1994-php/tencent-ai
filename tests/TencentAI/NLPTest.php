@@ -4,7 +4,7 @@ namespace TencentAI\Tests;
 
 use TencentAI\Error\TencentAIError;
 
-class NLPTest extends AI
+class NLPTest extends TencentAITests
 {
     const OUTPUT = __DIR__.'/../output/nlp/';
     private $name;

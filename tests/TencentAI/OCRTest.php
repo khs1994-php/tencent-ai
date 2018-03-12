@@ -4,7 +4,7 @@ namespace TencentAI\Tests;
 
 use TencentAI\Error\TencentAIError;
 
-class OCRTest extends AI
+class OCRTest extends TencentAITests
 {
     const IMAGE = __DIR__.'/../resource/ocr/';
 

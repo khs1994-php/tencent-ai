@@ -4,7 +4,7 @@ namespace TencentAI\Tests;
 
 use TencentAI\Error\TencentAIError;
 
-class ImageTest extends AI
+class ImageTest extends TencentAITests
 {
     const IMAGE = __DIR__.'/../resource/vision/';
 

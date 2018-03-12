@@ -4,7 +4,7 @@ namespace TencentAI\Tests;
 
 use TencentAI\Error\TencentAIError;
 
-class TranslateTest extends AI
+class TranslateTest extends TencentAITests
 {
     const IMAGE = __DIR__.'/../resource/translate/english.jpg';
 
