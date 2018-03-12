@@ -19,7 +19,7 @@ use TencentAI\Error\TencentAIError;
  */
 class TencentAI
 {
-    public const VERSION = '18.05.0';
+    private const VERSION = '18.05.0';
 
     private static $tencentAI;
 

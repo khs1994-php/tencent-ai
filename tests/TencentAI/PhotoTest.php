@@ -102,9 +102,6 @@ class PhotoTest extends TencentAITests
         $this->array = $this->photo()->age(self::IMAGE);
     }
 
-    /**
-     * @throws \Exception
-     */
     public function tearDown()
     {
         $this->assertEquals(0, $this->array['ret']);

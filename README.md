@@ -30,8 +30,10 @@ $ composer require khs1994/tencent-ai @dev
 <?php
 require __DIR__.'/vendor/autoload.php';
 
-use TencentAI\TencentAI;
-use TencentAI\Error\TencentAIError;
+use TencentAI\{
+    TencentAI,
+    Error\TencentAIError
+};
 
 const APP_ID = 1106560031;
 const APP_KEY = 'ZbRY9cf72TbDO0xb';

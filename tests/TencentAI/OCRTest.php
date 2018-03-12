@@ -120,9 +120,6 @@ class OCRTest extends TencentAITests
         $this->array = $this->ocr()->general($image);
     }
 
-    /**
-     * @throws \Exception
-     */
     public function tearDown()
     {
         $this->assertEquals(0, $this->array['ret']);

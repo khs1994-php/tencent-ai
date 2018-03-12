@@ -80,9 +80,6 @@ class TranslateTest extends TencentAITests
         $this->array = $this->translate()->detect('中国');
     }
 
-    /**
-     * @throws \Exception
-     */
     public function tearDown()
     {
         $this->assertEquals(0, $this->array['ret']);

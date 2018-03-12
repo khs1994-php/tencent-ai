@@ -306,11 +306,6 @@ class FaceTest extends TencentAITests
         $this->array = $this->face()->deletePerson(self::PERSON_ID);
     }
 
-    /**
-     * 在测试函数执行完毕之后调用 tearDown 函数.
-     *
-     * @throws \Exception
-     */
     public function tearDown()
     {
         $this->assertEquals(0, $this->array['ret']);

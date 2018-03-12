@@ -153,9 +153,6 @@ class ImageTest extends TencentAITests
         $this->array = $this->image()->food(self::FOOD);
     }
 
-    /**
-     * @throws \Exception
-     */
     public function tearDown()
     {
         $this->assertEquals(0, $this->array['ret']);

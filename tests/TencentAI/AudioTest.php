@@ -103,9 +103,6 @@ class AudioTest extends TencentAITests
         file_put_contents(self::OUTPUT.$name, base64_decode($content));
     }
 
-    /**
-     * @throws \Exception
-     */
     public function tearDown()
     {
         $this->assertEquals(0, $this->array['ret']);
