@@ -4,7 +4,7 @@ namespace TencentAI\Tests;
 
 use TencentAI\Error\TencentAIError;
 
-class AudioTest extends TencentAITests
+class AudioTest extends TencentAITestCase
 {
     const AUDIO = __DIR__.'/../resource/audio/';
 

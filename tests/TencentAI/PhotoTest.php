@@ -4,7 +4,7 @@ namespace TencentAI\Tests;
 
 use TencentAI\Error\TencentAIError;
 
-class PhotoTest extends TencentAITests
+class PhotoTest extends TencentAITestCase
 {
     const IMAGE = __DIR__.'/../resource/face/wxc.jpg';
 

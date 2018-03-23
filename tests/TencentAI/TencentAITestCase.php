@@ -5,7 +5,7 @@ namespace TencentAI\Tests;
 use TencentAI\TencentAI;
 use PHPUnit\Framework\TestCase;
 
-class TencentAITests extends TestCase
+class TencentAITestCase extends TestCase
 {
     private static $ai;
 
