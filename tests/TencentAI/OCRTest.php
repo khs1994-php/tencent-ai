@@ -22,8 +22,6 @@ class OCRTest extends TencentAITestCase
     /**
      * 身份证识别.
      *
-     * @group DON'TTEST
-     *
      * @throws TencentAIError
      * @throws \Exception
      */
@@ -31,13 +29,26 @@ class OCRTest extends TencentAITestCase
     {
         $this->name = __FUNCTION__;
 
-        $image = self::IMAGE.'idcardz.jpg';
-        $array = $this->ocr()->idCard($image);
+        // 本地文件
+
+        $array = $this->ocr()->idCard(self::IMAGE.'idcardz.jpg');
         $this->assertEquals(0, $array['ret']);
         file_put_contents(self::OUTPUT.'testIdCardz.json', json_encode($array, JSON_UNESCAPED_UNICODE));
 
-        $image = self::IMAGE.'idcardf.jpg';
-        $this->array = $this->ocr()->idCard($image, false);
+        // url
+
+        $array = $this->ocr()->idCard('https://raw.githubusercontent.com/khs1994-php/image/master/ocr/idcardz.jpg');
+        $this->assertEquals(0, $array['ret']);
+        file_put_contents(self::OUTPUT.'testIdCardzfromurl.json', json_encode($array, JSON_UNESCAPED_UNICODE));
+
+        // 文件内容
+
+        $array = $this->ocr()->idCard(file_get_contents(self::IMAGE.'idcardz.jpg'));
+        $this->assertEquals(0, $array['ret']);
+        file_put_contents(self::OUTPUT.'testIdCardzfromcontent.json', json_encode($array, JSON_UNESCAPED_UNICODE));
+
+//        $image = self::IMAGE . 'idcardf.jpg';
+//        $this->array = $this->ocr()->idCard($image, false);
     }
 
     /**

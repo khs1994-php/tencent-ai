@@ -93,6 +93,9 @@ class TencentAI
      */
     public static function exec(string $url, array $arg, bool $charSetUTF8 = true)
     {
+        if (PHP_OS === 'WINNT') {
+            self::$curl->setOpt(CURLOPT_SSL_VERIFYPEER, false);
+        }
         $app_id = self::$app_id;
         $format = strtolower(self::$format);
         /**

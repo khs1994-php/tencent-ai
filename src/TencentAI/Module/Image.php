@@ -2,6 +2,7 @@
 
 namespace TencentAI\Module;
 
+use Is\Is;
 use TencentAI\TencentAI;
 use TencentAI\Error\TencentAIError;
 
@@ -347,7 +348,13 @@ trait Image
     {
         // 网址
 
-        if (@is_file($image)) {
+        // 本地路径
+
+        // base64 编码
+
+        // 文件内容
+
+        if (@Is::is_image($image)) {
             return base64_encode(file_get_contents($image));
         } else {
             return base64_encode($image);

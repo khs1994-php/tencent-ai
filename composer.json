@@ -20,7 +20,8 @@
     "php": ">=7.1",
     "ext-curl": "*",
     "ext-json": "*",
-    "khs1994/curl": "@dev"
+    "khs1994/curl": "@dev",
+    "khs1994/is":"@dev"
   },
   "require-dev": {
     "phpunit/phpunit": "~7.0"
