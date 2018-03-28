@@ -31,7 +31,7 @@ class Image
     /**
      * 智能鉴黄.
      *
-     * @param  string $image 支持 JPG PNG BMP 格式
+     * @param  mixed $image 支持 JPG PNG BMP 格式
      *
      * @throws TencentAIError
      *
@@ -39,7 +39,7 @@ class Image
      *
      * @link   https://ai.qq.com/doc/jianhuang.shtml
      */
-    public function porn(string $image)
+    public function porn($image)
     {
         $url = self::PORN;
 
@@ -49,7 +49,7 @@ class Image
     /**
      * 暴恐识别.
      *
-     * @param  string $image 支持 JPG PNG BMP 格式
+     * @param  mixed $image 支持 JPG PNG BMP 格式
      *
      * @throws TencentAIError
      *
@@ -57,7 +57,7 @@ class Image
      *
      * @link   https://ai.qq.com/doc/imageterrorism.shtml
      */
-    public function terrorism(string $image)
+    public function terrorism($image)
     {
         $url = self::TERRORISM;
 
@@ -69,9 +69,9 @@ class Image
      *
      * 快速找出图片中包含的场景信息.
      *
-     * @param  string $image
-     * @param  int    $format 图片格式，只支持 JPG 格式
-     * @param  int    $topk   返回结果个数（已按置信度倒排）[1,5]
+     * @param  mixed $image
+     * @param  int   $format 图片格式，只支持 JPG 格式
+     * @param  int   $topk   返回结果个数（已按置信度倒排）[1,5]
      *
      * @throws TencentAIError
      *
@@ -79,7 +79,7 @@ class Image
      *
      * @link   https://ai.qq.com/doc/visionimgidy.shtml
      */
-    public function scener(string $image, int $format = 1, int $topk = 5)
+    public function scener($image, int $format = 1, int $topk = 5)
     {
         $data = [
             'image' => self::encode($image),
@@ -125,15 +125,15 @@ class Image
      *
      * 快速找出图片中包含的物体信息.
      *
-     * @param string $image
-     * @param int    $format 图片格式，只支持 JPG 格式
-     * @param int    $topk   返回结果个数（已按置信度倒排）[1,5]
+     * @param mixed $image
+     * @param int   $format 图片格式，只支持 JPG 格式
+     * @param int   $topk   返回结果个数（已按置信度倒排）[1,5]
      *
      * @throws TencentAIError
      *
      * @return mixed
      */
-    public function object(string $image, int $format = 1, int $topk = 5)
+    public function object($image, int $format = 1, int $topk = 5)
     {
         $data = [
             'image' => self::encode($image),
@@ -150,7 +150,7 @@ class Image
      *
      * 识别一个图像的标签信息,对图像分类.
      *
-     * @param  string $image 支持 JPG PNG BMP 格式
+     * @param  mixed $image 支持 JPG PNG BMP 格式
      *
      * @throws TencentAIError
      *
@@ -158,7 +158,7 @@ class Image
      *
      * @link   https://ai.qq.com/doc/imagetag.shtml
      */
-    public function tag(string $image)
+    public function tag($image)
     {
         $url = self::TAG;
 
@@ -168,8 +168,8 @@ class Image
     /**
      * 花草/车辆识别.
      *
-     * @param  string $image 支持 JPG PNG BMP 格式
-     * @param  int    $scene 识别场景，1-车辆识别，2-花草识别
+     * @param  mixed $image 支持 JPG PNG BMP 格式
+     * @param  int   $scene 识别场景，1-车辆识别，2-花草识别
      *
      * @throws TencentAIError
      *
@@ -177,7 +177,7 @@ class Image
      *
      * @link   https://ai.qq.com/doc/imgidentify.shtml
      */
-    private function identify(string $image, int $scene)
+    private function identify($image, int $scene)
     {
         $data = [
             'image' => self::encode($image),
@@ -191,13 +191,13 @@ class Image
     /**
      * 花草识别.
      *
-     * @param string $image 支持 JPG PNG BMP 格式
+     * @param mixed $image 支持 JPG PNG BMP 格式
      *
      * @throws TencentAIError
      *
      * @return mixed
      */
-    public function identifyFlower(string $image)
+    public function identifyFlower($image)
     {
         return $this->identify($image, 2);
     }
@@ -205,13 +205,13 @@ class Image
     /**
      * 车辆识别.
      *
-     * @param string $image 支持 JPG PNG BMP 格式
+     * @param mixed $image 支持 JPG PNG BMP 格式
      *
      * @throws TencentAIError
      *
      * @return mixed
      */
-    public function identifyVehicle(string $image)
+    public function identifyVehicle($image)
     {
         return $this->identify($image, 1);
     }
@@ -219,7 +219,7 @@ class Image
     /**
      * 看图说话：用一句话文字描述图片.
      *
-     * @param  string $image 支持 JPG PNG BMP 格式
+     * @param  mixed  $image 支持 JPG PNG BMP 格式
      * @param  string $session_id
      *
      * @throws TencentAIError
@@ -228,7 +228,7 @@ class Image
      *
      * @link   https://ai.qq.com/doc/imgtotext.shtml
      */
-    public function imageToText(string $image, string $session_id)
+    public function imageToText($image, string $session_id)
     {
         $data = [
             'image' => self::encode($image),
@@ -243,7 +243,7 @@ class Image
     /**
      * 模糊图片检测：判断一个图像的模糊程度.
      *
-     * @param  string $image 支持 JPG PNG BMP 格式
+     * @param  mixed $image 支持 JPG PNG BMP 格式
      *
      * @throws TencentAIError
      *
@@ -251,7 +251,7 @@ class Image
      *
      * @link   https://ai.qq.com/doc/imagefuzzy.shtml
      */
-    public function fuzzy(string $image)
+    public function fuzzy($image)
     {
         $url = self::FUZZY;
 
@@ -261,7 +261,7 @@ class Image
     /**
      * 美食图片识别：识别一个图像是否为美食图像.
      *
-     * @param  string $image 支持 JPG PNG BMP 格式
+     * @param  mixed $image 支持 JPG PNG BMP 格式
      *
      * @throws TencentAIError
      *
@@ -269,7 +269,7 @@ class Image
      *
      * @link   https://ai.qq.com/doc/imagefood.shtml
      */
-    public function food(string $image)
+    public function food($image)
     {
         $url = self::FOOD;
 

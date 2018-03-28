@@ -37,7 +37,7 @@ class OCRTest extends TencentAITestCase
 
         // url
 
-        $array = $this->ocr()->idCard('https://raw.githubusercontent.com/khs1994-php/image/master/ocr/idcardz.jpg');
+        $array = $this->ocr()->idCard('https://raw.githubusercontent.com/khs1994-php/resource/master/ocr/idcardz.jpg');
         $this->assertEquals(0, $array['ret']);
         file_put_contents(self::OUTPUT.'testIdCardzfromurl.json', json_encode($array, JSON_UNESCAPED_UNICODE));
 
@@ -46,6 +46,18 @@ class OCRTest extends TencentAITestCase
         $array = $this->ocr()->idCard(file_get_contents(self::IMAGE.'idcardz.jpg'));
         $this->assertEquals(0, $array['ret']);
         file_put_contents(self::OUTPUT.'testIdCardzfromcontent.json', json_encode($array, JSON_UNESCAPED_UNICODE));
+
+        // SplFileInfo
+
+        $array = $this->ocr()->idCard(new \SplFileInfo(self::IMAGE.'idcardz.jpg'));
+        $this->assertEquals(0, $array['ret']);
+        file_put_contents(self::OUTPUT.'testIdCardzfromsplfileinfo.json', json_encode($array, JSON_UNESCAPED_UNICODE));
+
+        // resource
+
+        $array = $this->ocr()->idCard(fopen(self::IMAGE.'idcardz.jpg', 'r'));
+        $this->assertEquals(0, $array['ret']);
+        file_put_contents(self::OUTPUT.'testIdCardzfromresource.json', json_encode($array, JSON_UNESCAPED_UNICODE));
 
 //        $image = self::IMAGE . 'idcardf.jpg';
 //        $this->array = $this->ocr()->idCard($image, false);

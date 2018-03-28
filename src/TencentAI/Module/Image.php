@@ -338,26 +338,33 @@ trait Image
      *
      * 传入本地路径或文件内容
      *
-     * @param string $image
+     * @param mixed $image
      *
      * @throws TencentAIError
      *
      * @return string
      */
-    private static function encode(string $image)
+    private static function encode($image)
     {
-        // 网址
+        // 网址 ?
 
-        // 本地路径
+        // 本地路径 ? is_file file_exists()
 
-        // base64 编码
+        // base64 编码 ? not support
 
-        // 文件内容
+        // 文件内容 ?
 
-        if (@Is::is_image($image)) {
-            return base64_encode(file_get_contents($image));
+        // 资源 ? is_resource
+
+        // SplFileInfo ? instanceof SplFileInfo
+
+        $content=Is::is_image($image, null, true);
+
+        if ($content) {
+
+            return $content;
         } else {
-            return base64_encode($image);
+            throw new TencentAIError(90301);
         }
     }
 }

@@ -50,7 +50,7 @@ class Face
      * 检测给定图片中的所有人脸的位置 (x, y, w, h) 和相应的面部属性
      * 包括性别 (gender),年龄, 表情 (expression), 魅力 (beauty), 眼镜 (glass) 和姿态 (pitch，roll，yaw).
      *
-     * @param  string $image 支持 JPG PNG BMP 格式
+     * @param  mixed $image 支持 JPG PNG BMP 格式
      * @param  bool   $big   检测模式，false-正常，true-大脸模式(默认).
      *
      * @throws TencentAIError
@@ -59,7 +59,7 @@ class Face
      *
      * @link   https://ai.qq.com/doc/detectface.shtml
      */
-    public function detect(string $image, bool $big = true)
+    public function detect($image, bool $big = true)
     {
         $data = [
             'image' => self::encode($image),
@@ -75,7 +75,7 @@ class Face
      *
      * 检测图片中的人脸位置，可以识别出一张图片上的多个人脸.
      *
-     * @param  string $image 支持 JPG PNG BMP 格式
+     * @param  mixed $image 支持 JPG PNG BMP 格式
      *
      * @throws TencentAIError
      *
@@ -83,7 +83,7 @@ class Face
      *
      * @link   https://ai.qq.com/doc/detectmultiface.shtml
      */
-    public function multiDetect(string $image)
+    public function multiDetect($image)
     {
         $url = self::MULTI_DETECT;
 
@@ -122,8 +122,8 @@ class Face
      *
      * 对比两张图片，并找出相似度最高的两张人脸；支持多人合照、两张图片中的人处于不同年龄段的情况
      *
-     * @param  string $source
-     * @param  string $target
+     * @param  mixed $source
+     * @param  mixed $target
      *
      * @throws TencentAIError
      *
@@ -131,7 +131,7 @@ class Face
      *
      * @link   https://ai.qq.com/doc/detectcrossageface.shtml
      */
-    public function detectCrossAge(string $source, string $target)
+    public function detectCrossAge($source, $target)
     {
         $url = self::DETECT_CROSS_AGE;
 
@@ -148,7 +148,7 @@ class Face
      *
      * 计算构成人脸轮廓的 88 个点，包括眉毛（左右各 8 点）、眼睛（左右各 8 点）、鼻子（13 点）、嘴巴（22 点）、脸型轮廓（21 点）.
      *
-     * @param  string $image 支持 JPG PNG BMP 格式
+     * @param  mixed $image 支持 JPG PNG BMP 格式
      * @param  bool   $big   检测模式，false-正常，true-大脸模式(默认).
      *
      * @throws TencentAIError
@@ -157,7 +157,7 @@ class Face
      *
      * @link   https://ai.qq.com/doc/faceshape.shtml
      */
-    public function shape(string $image, bool $big = true)
+    public function shape($image, bool $big = true)
     {
         $data = [
             'image' => self::encode($image),
@@ -174,7 +174,7 @@ class Face
      * 对于一个待识别的人脸图片，在一个组中识别出最相似的 N 个个体作为候选人返回，返回的 N 个个体按照相似度从大到小排列，N 由参数 topn 指定.
      *
      * @param  string $group_id
-     * @param  string $image 支持 JPG PNG BMP 格式
+     * @param  mixed $image 支持 JPG PNG BMP 格式
      * @param  int    $topon 返回的候选人个数 默认 9
      *
      * @throws TencentAIError
@@ -183,7 +183,7 @@ class Face
      *
      * @link   https://ai.qq.com/doc/faceidentify.shtml
      */
-    public function identify(string $group_id, string $image, int $topon = 9)
+    public function identify(string $group_id, $image, int $topon = 9)
     {
         $data = [
             'image' => self::encode($image),
@@ -201,7 +201,7 @@ class Face
      * 根据提供的图片和个体 ID，返回图片和个体是否是同一个人的判断以及置信度.
      *
      * @param  string $person_id
-     * @param  string $image 支持 JPG PNG BMP 格式
+     * @param  mixed $image 支持 JPG PNG BMP 格式
      *
      * @throws TencentAIError
      *
@@ -209,7 +209,7 @@ class Face
      *
      * @link   https://ai.qq.com/doc/faceverify.shtml
      */
-    public function verify(string $person_id, string $image)
+    public function verify(string $person_id, $image)
     {
         $data = [
             'person_id' => $person_id,
@@ -335,7 +335,7 @@ class Face
      * @param  array  $group_ids
      * @param  string $person_id
      * @param  string $person_name
-     * @param  string $image 支持 JPG PNG BMP 格式
+     * @param  mixed $image 支持 JPG PNG BMP 格式
      * @param  string $tag
      *
      * @throws TencentAIError
@@ -347,7 +347,7 @@ class Face
     public function createPerson(array $group_ids,
                                  string $person_id,
                                  string $person_name,
-                                 string $image,
+                                 $image,
                                  string $tag)
     {
         $group_ids = implode('|', $group_ids);

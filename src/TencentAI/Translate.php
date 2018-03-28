@@ -80,7 +80,7 @@ class Translate
     /**
      * 图片翻译.
      *
-     * @param  string $image      支持 JPG PNG BMP 格式
+     * @param  mixed $image      支持 JPG PNG BMP 格式
      * @param  string $session_id 一次请求ID
      * @param  string $scene      识别类型 word-单词识别，doc-文档识别
      * @param  string $source     源语言缩写
@@ -92,7 +92,7 @@ class Translate
      *
      * @link   https://ai.qq.com/doc/imagetranslate.shtml
      */
-    public function image(string $image,
+    public function image($image,
                           string $session_id,
                           string $scene = 'word',
                           string $source = 'auto',

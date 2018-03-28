@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## 18.05.0
+
+* 图片支持 `url` `本地文件` `图片内容` `SplFileInfo` `Resource`,不支持经过 `base64` 编码过的内容
+
 ## 18.03.0
 
 * 只支持 `PHP 7.1+`，推荐使用 `PHP 7.2`
