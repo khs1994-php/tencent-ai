@@ -39,7 +39,7 @@ class OCR
     {
         $data = [
             'image' => self::encode($image),
-            'card_type' => (int)!$front,
+            'card_type' => (int) !$front,
         ];
         $url = self::ID_CARD;
 

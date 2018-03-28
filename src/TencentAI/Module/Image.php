@@ -358,10 +358,9 @@ trait Image
 
         // SplFileInfo ? instanceof SplFileInfo
 
-        $content=Is::is_image($image, null, true);
+        $content = Is::is_image($image, null, true);
 
         if ($content) {
-
             return $content;
         } else {
             throw new TencentAIError(90301);
