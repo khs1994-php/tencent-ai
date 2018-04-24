@@ -2,8 +2,8 @@
 
 namespace TencentAI\Module;
 
-use TencentAI\TencentAI;
 use TencentAI\Error\TencentAIError;
+use TencentAI\TencentAI;
 
 trait NLP
 {

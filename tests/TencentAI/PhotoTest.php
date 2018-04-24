@@ -108,6 +108,6 @@ class PhotoTest extends TencentAITestCase
 
         file_put_contents(self::OUTPUT.$this->name.'.json', json_encode($this->array, JSON_UNESCAPED_UNICODE));
 
-        file_put_contents(self::OUTPUT.$this->name.'.jpg', base64_decode($this->array['data']['image']));
+        file_put_contents(self::OUTPUT.$this->name.'.jpg', base64_decode($this->array['data']['image'], true));
     }
 }

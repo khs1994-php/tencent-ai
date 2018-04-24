@@ -2,8 +2,8 @@
 
 namespace TencentAI\Tests;
 
-use TencentAI\TencentAI;
 use PHPUnit\Framework\TestCase;
+use TencentAI\TencentAI;
 
 class TencentAITestCase extends TestCase
 {

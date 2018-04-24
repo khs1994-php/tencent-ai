@@ -3,8 +3,8 @@
 namespace TencentAI\Module;
 
 use Is\Is;
-use TencentAI\TencentAI;
 use TencentAI\Error\TencentAIError;
+use TencentAI\TencentAI;
 
 trait Image
 {

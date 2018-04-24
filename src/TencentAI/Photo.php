@@ -29,14 +29,14 @@ class Photo
      *
      * 提供人脸美妆特效功能，可以帮您快速实现原始图片的人脸美妆特效处理
      *
-     * @param  mixed $image    仅支持 JPG、PNG 类型图片，尺寸长宽不超过 1080，返回格式 JPG
-     * @param  int    $cosmetic 美妆编码 1-23
+     * @param mixed $image    仅支持 JPG、PNG 类型图片，尺寸长宽不超过 1080，返回格式 JPG
+     * @param int   $cosmetic 美妆编码 1-23
      *
      * @throws TencentAIError
      *
      * @return array
      *
-     * @link   https://ai.qq.com/doc/facecosmetic.shtml
+     * @see   https://ai.qq.com/doc/facecosmetic.shtml
      */
     public function cosmetic($image, int $cosmetic = 23)
     {
@@ -54,14 +54,14 @@ class Photo
      *
      * 提供人脸变妆特效功能，可以帮您快速实现原始图片的人脸变妆特效处理.
      *
-     * @param  mixed $image      仅支持 JPG、PNG 类型图片，尺寸长宽不超过 1080，返回格式 JPG
-     * @param  int    $decoration 变妆编码 1-22
+     * @param mixed $image      仅支持 JPG、PNG 类型图片，尺寸长宽不超过 1080，返回格式 JPG
+     * @param int   $decoration 变妆编码 1-22
      *
      * @throws TencentAIError
      *
      * @return array
      *
-     * @link   https://ai.qq.com/doc/facedecoration.shtml
+     * @see   https://ai.qq.com/doc/facedecoration.shtml
      */
     public function decoration($image, int $decoration = 22)
     {
@@ -77,14 +77,14 @@ class Photo
     /**
      * 图片滤镜（天天P图）.
      *
-     * @param  mixed $image  仅支持 JPG、PNG 类型图片，尺寸长宽不超过 1080，返回格式 JPG
-     * @param  int    $filter 滤镜效果编码 1-32
+     * @param mixed $image  仅支持 JPG、PNG 类型图片，尺寸长宽不超过 1080，返回格式 JPG
+     * @param int   $filter 滤镜效果编码 1-32
      *
      * @throws TencentAIError
      *
      * @return array
      *
-     * @link   https://ai.qq.com/doc/ptuimgfilter.shtml
+     * @see   https://ai.qq.com/doc/ptuimgfilter.shtml
      */
     public function filter($image, int $filter = 32)
     {
@@ -100,9 +100,9 @@ class Photo
     /**
      * 图片滤镜（AI Lab）.
      *
-     * @param  mixed $image  仅支持 JPG、PNG 类型图片，尺寸长宽不超过 1080，返回格式 JPG
-     * @param  string $session_id
-     * @param  int    $filter 滤镜效果编码 1-65
+     * @param mixed  $image      仅支持 JPG、PNG 类型图片，尺寸长宽不超过 1080，返回格式 JPG
+     * @param string $session_id
+     * @param int    $filter     滤镜效果编码 1-65
      *
      * @throws TencentAIError
      *
@@ -124,13 +124,13 @@ class Photo
      * 人脸融合.
      *
      * @param mixed $image 仅支持 JPG、PNG 类型图片，尺寸长宽不超过 1080，返回格式 JPG
-     * @param int    $model 素材模板编码 1-50
+     * @param int   $model 素材模板编码 1-50
      *
      * @throws TencentAIError
      *
      * @return array
      *
-     * @link https://ai.qq.com/doc/facemerge.shtml
+     * @see https://ai.qq.com/doc/facemerge.shtml
      */
     public function merge($image, int $model = 50)
     {
@@ -146,14 +146,14 @@ class Photo
     /**
      * 大头贴.
      *
-     * @param  mixed $image   仅支持 JPG、PNG 类型图片，尺寸长宽不超过 1080，返回格式 JPG
-     * @param  int    $sticker 大头贴编码 1-30
+     * @param mixed $image   仅支持 JPG、PNG 类型图片，尺寸长宽不超过 1080，返回格式 JPG
+     * @param int   $sticker 大头贴编码 1-30
      *
      * @throws TencentAIError
      *
      * @return array
      *
-     * @link   https://ai.qq.com/doc/facesticker.shtml
+     * @see   https://ai.qq.com/doc/facesticker.shtml
      */
     public function sticker($image, int $sticker = 30)
     {
@@ -175,7 +175,7 @@ class Photo
      *
      * @return mixed
      *
-     * @link https://ai.qq.com/doc/faceage.shtml
+     * @see https://ai.qq.com/doc/faceage.shtml
      */
     public function age($image)
     {

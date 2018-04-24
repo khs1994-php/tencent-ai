@@ -66,11 +66,11 @@ class TencentAI
     /**
      * 生成签名.
      *
-     * @param  string $request_body
+     * @param string $request_body
      *
      * @return string
      *
-     * @link   https://ai.qq.com/doc/auth.shtml
+     * @see   https://ai.qq.com/doc/auth.shtml
      */
     private static function sign(string $request_body)
     {
@@ -143,7 +143,7 @@ class TencentAI
 
         self::checkReturn($array['ret']);
 
-        if ($format === 'json') {
+        if ('json' === $format) {
             return json_encode($array);
         } else {
             return $array;
@@ -170,13 +170,13 @@ class TencentAI
      *
      * @since 7.1
      *
-     * @param  int $ret
+     * @param int $ret
      *
      * @throws TencentAIError
      */
     private static function checkReturn(int $ret): void
     {
-        if ($ret !== 0) {
+        if (0 !== $ret) {
             throw new TencentAIError($ret);
         }
     }
@@ -184,8 +184,8 @@ class TencentAI
     /**
      * 返回对象
      *
-     * @param  string $name
-     * @param  array  $arguments
+     * @param string $name
+     * @param array  $arguments
      *
      * @return mixed
      */
@@ -194,15 +194,17 @@ class TencentAI
         switch ($name) {
             case 'nlp':
                 $service = '\\TencentAI\\NaturalLanguageProcessing';
+
                 break;
             case 'ocr':
                 $service = '\\TencentAI\\OCR';
+
                 break;
             default:
                 $service = '\\TencentAI\\'.ucfirst($name);
         }
 
-        return new $service;
+        return new $service();
     }
 
     /**

@@ -29,14 +29,14 @@ class Translate
     /**
      * 文本翻译（AI Lab）.
      *
-     * @param  string $text
-     * @param  int    $type 翻译类型 0-16
+     * @param string $text
+     * @param int    $type 翻译类型 0-16
      *
      * @throws TencentAIError
      *
      * @return array
      *
-     * @link   https://ai.qq.com/doc/nlptrans.shtml
+     * @see   https://ai.qq.com/doc/nlptrans.shtml
      */
     public function aILabText(string $text, int $type = 0)
     {
@@ -63,7 +63,7 @@ class Translate
      */
     public function text(string $text, string $source = 'auto', string $target = 'auto')
     {
-        if (!($source === 'auto' && $target === 'auto')) {
+        if (!('auto' === $source && 'auto' === $target)) {
             $this->checkTextTarget($source, $target);
         }
 
@@ -80,17 +80,17 @@ class Translate
     /**
      * 图片翻译.
      *
-     * @param  mixed $image      支持 JPG PNG BMP 格式
-     * @param  string $session_id 一次请求ID
-     * @param  string $scene      识别类型 word-单词识别，doc-文档识别
-     * @param  string $source     源语言缩写
-     * @param  string $target     目标语言缩写
+     * @param mixed  $image      支持 JPG PNG BMP 格式
+     * @param string $session_id 一次请求ID
+     * @param string $scene      识别类型 word-单词识别，doc-文档识别
+     * @param string $source     源语言缩写
+     * @param string $target     目标语言缩写
      *
      * @throws TencentAIError
      *
      * @return array
      *
-     * @link   https://ai.qq.com/doc/imagetranslate.shtml
+     * @see   https://ai.qq.com/doc/imagetranslate.shtml
      */
     public function image($image,
                           string $session_id,
@@ -98,11 +98,11 @@ class Translate
                           string $source = 'auto',
                           string $target = 'auto')
     {
-        if ($scene !== 'word' and $scene !== 'doc') {
+        if ('word' !== $scene and 'doc' !== $scene) {
             throw new TencentAIError(90701);
         }
 
-        if (!($source === 'auto' && $target === 'auto')) {
+        if (!('auto' === $source && 'auto' === $target)) {
             $this->checkImageTarget($source, $target);
         }
 
@@ -121,19 +121,19 @@ class Translate
     /**
      * 语音翻译.
      *
-     * @param  string $speech_chunk 待识别语音分片
-     * @param  string $session_id   语音唯一标识（同一应用内）
-     * @param  int    $format       amr-3 silk-4 pcm-6 mp3-8 aac-9
-     * @param  int    $seq          语音分片所在语音流的偏移量（字节）
-     * @param  bool   $end          是否结束分片 true
-     * @param  string $source       源语言缩写
-     * @param  string $target       目标语言缩写
+     * @param string $speech_chunk 待识别语音分片
+     * @param string $session_id   语音唯一标识（同一应用内）
+     * @param int    $format       amr-3 silk-4 pcm-6 mp3-8 aac-9
+     * @param int    $seq          语音分片所在语音流的偏移量（字节）
+     * @param bool   $end          是否结束分片 true
+     * @param string $source       源语言缩写
+     * @param string $target       目标语言缩写
      *
      * @throws TencentAIError
      *
      * @return array
      *
-     * @link   https://ai.qq.com/doc/speechtranslate.shtml
+     * @see   https://ai.qq.com/doc/speechtranslate.shtml
      */
     public function audio(string $speech_chunk,
                           string $session_id,
@@ -144,7 +144,7 @@ class Translate
                           string $target = 'auto')
     {
         $this->checkTranslateFormat($format);
-        if (!($source === 'auto' && $target === 'auto')) {
+        if (!('auto' === $source && 'auto' === $target)) {
             $this->checkImageTarget($source, $target);
         }
         $data = [
@@ -164,15 +164,15 @@ class Translate
     /**
      * 语种识别.
      *
-     * @param  string $text
-     * @param  array  $languages
-     * @param  bool   $force 强制从待选择语言中选择
+     * @param string $text
+     * @param array  $languages
+     * @param bool   $force     强制从待选择语言中选择
      *
      * @throws TencentAIError
      *
      * @return array
      *
-     * @link   https://ai.qq.com/doc/textdetect.shtml
+     * @see   https://ai.qq.com/doc/textdetect.shtml
      */
     public function detect(string $text, array $languages = null, bool $force = false)
     {

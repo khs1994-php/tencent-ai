@@ -31,13 +31,13 @@ class Image
     /**
      * 智能鉴黄.
      *
-     * @param  mixed $image 支持 JPG PNG BMP 格式
+     * @param mixed $image 支持 JPG PNG BMP 格式
      *
      * @throws TencentAIError
      *
      * @return mixed
      *
-     * @link   https://ai.qq.com/doc/jianhuang.shtml
+     * @see   https://ai.qq.com/doc/jianhuang.shtml
      */
     public function porn($image)
     {
@@ -49,13 +49,13 @@ class Image
     /**
      * 暴恐识别.
      *
-     * @param  mixed $image 支持 JPG PNG BMP 格式
+     * @param mixed $image 支持 JPG PNG BMP 格式
      *
      * @throws TencentAIError
      *
      * @return mixed
      *
-     * @link   https://ai.qq.com/doc/imageterrorism.shtml
+     * @see   https://ai.qq.com/doc/imageterrorism.shtml
      */
     public function terrorism($image)
     {
@@ -69,15 +69,15 @@ class Image
      *
      * 快速找出图片中包含的场景信息.
      *
-     * @param  mixed $image
-     * @param  int   $format 图片格式，只支持 JPG 格式
-     * @param  int   $topk   返回结果个数（已按置信度倒排）[1,5]
+     * @param mixed $image
+     * @param int   $format 图片格式，只支持 JPG 格式
+     * @param int   $topk   返回结果个数（已按置信度倒排）[1,5]
      *
      * @throws TencentAIError
      *
      * @return mixed
      *
-     * @link   https://ai.qq.com/doc/visionimgidy.shtml
+     * @see   https://ai.qq.com/doc/visionimgidy.shtml
      */
     public function scener($image, int $format = 1, int $topk = 5)
     {
@@ -150,13 +150,13 @@ class Image
      *
      * 识别一个图像的标签信息,对图像分类.
      *
-     * @param  mixed $image 支持 JPG PNG BMP 格式
+     * @param mixed $image 支持 JPG PNG BMP 格式
      *
      * @throws TencentAIError
      *
      * @return mixed
      *
-     * @link   https://ai.qq.com/doc/imagetag.shtml
+     * @see   https://ai.qq.com/doc/imagetag.shtml
      */
     public function tag($image)
     {
@@ -168,14 +168,14 @@ class Image
     /**
      * 花草/车辆识别.
      *
-     * @param  mixed $image 支持 JPG PNG BMP 格式
-     * @param  int   $scene 识别场景，1-车辆识别，2-花草识别
+     * @param mixed $image 支持 JPG PNG BMP 格式
+     * @param int   $scene 识别场景，1-车辆识别，2-花草识别
      *
      * @throws TencentAIError
      *
      * @return mixed
      *
-     * @link   https://ai.qq.com/doc/imgidentify.shtml
+     * @see   https://ai.qq.com/doc/imgidentify.shtml
      */
     private function identify($image, int $scene)
     {
@@ -219,14 +219,14 @@ class Image
     /**
      * 看图说话：用一句话文字描述图片.
      *
-     * @param  mixed  $image 支持 JPG PNG BMP 格式
-     * @param  string $session_id
+     * @param mixed  $image      支持 JPG PNG BMP 格式
+     * @param string $session_id
      *
      * @throws TencentAIError
      *
      * @return mixed
      *
-     * @link   https://ai.qq.com/doc/imgtotext.shtml
+     * @see   https://ai.qq.com/doc/imgtotext.shtml
      */
     public function imageToText($image, string $session_id)
     {
@@ -243,13 +243,13 @@ class Image
     /**
      * 模糊图片检测：判断一个图像的模糊程度.
      *
-     * @param  mixed $image 支持 JPG PNG BMP 格式
+     * @param mixed $image 支持 JPG PNG BMP 格式
      *
      * @throws TencentAIError
      *
      * @return mixed
      *
-     * @link   https://ai.qq.com/doc/imagefuzzy.shtml
+     * @see   https://ai.qq.com/doc/imagefuzzy.shtml
      */
     public function fuzzy($image)
     {
@@ -261,13 +261,13 @@ class Image
     /**
      * 美食图片识别：识别一个图像是否为美食图像.
      *
-     * @param  mixed $image 支持 JPG PNG BMP 格式
+     * @param mixed $image 支持 JPG PNG BMP 格式
      *
      * @throws TencentAIError
      *
      * @return mixed
      *
-     * @link   https://ai.qq.com/doc/imagefood.shtml
+     * @see   https://ai.qq.com/doc/imagefood.shtml
      */
     public function food($image)
     {

@@ -100,7 +100,7 @@ class AudioTest extends TencentAITestCase
 
     public function put(string $name, string $content)
     {
-        file_put_contents(self::OUTPUT.$name, base64_decode($content));
+        file_put_contents(self::OUTPUT.$name, base64_decode($content, true));
     }
 
     public function tearDown()

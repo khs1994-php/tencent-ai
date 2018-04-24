@@ -7,6 +7,7 @@ use TencentAI\Error\TencentAIError;
 class NLPTest extends TencentAITestCase
 {
     const OUTPUT = __DIR__.'/../output/nlp/';
+
     private $name;
 
     private $array;

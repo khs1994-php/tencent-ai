@@ -25,7 +25,7 @@ trait Audio
      */
     private function check($check, string $array_name, int $code)
     {
-        if (!in_array($check, $this->$array_name)) {
+        if (!in_array($check, $this->$array_name, true)) {
             throw new TencentAIError($code);
         }
     }

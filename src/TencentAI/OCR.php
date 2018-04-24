@@ -26,14 +26,14 @@ class OCR
     /**
      * 身份证识别.
      *
-     * @param  string|\SplFileInfo $image 支持 JPG、PNG、BMP 格式
-     * @param  bool                $front 正面为 true
+     * @param string|\SplFileInfo $image 支持 JPG、PNG、BMP 格式
+     * @param bool                $front 正面为 true
      *
      * @throws TencentAIError
      *
      * @return array
      *
-     * @link   https://ai.qq.com/doc/ocridcardocr.shtml
+     * @see   https://ai.qq.com/doc/ocridcardocr.shtml
      */
     public function idCard($image, bool $front = true)
     {
@@ -49,13 +49,13 @@ class OCR
     /**
      * 名片识别.
      *
-     * @param  mixed $image 支持 JPG、PNG、BMP 格式
+     * @param mixed $image 支持 JPG、PNG、BMP 格式
      *
      * @throws TencentAIError
      *
      * @return mixed
      *
-     * @link   https://ai.qq.com/doc/ocrbcocr.shtml
+     * @see   https://ai.qq.com/doc/ocrbcocr.shtml
      */
     public function businessCard($image)
     {
@@ -67,14 +67,14 @@ class OCR
     /**
      * 行驶证驾驶证识别.
      *
-     * @param  mixed $image 支持 JPG PNG BMP 格式
-     * @param  int   $type  识别类型，0-行驶证识别，1-驾驶证识别
+     * @param mixed $image 支持 JPG PNG BMP 格式
+     * @param int   $type  识别类型，0-行驶证识别，1-驾驶证识别
      *
      * @throws TencentAIError
      *
      * @return array
      *
-     * @link   https://ai.qq.com/doc/ocrdriverlicenseocr.shtml
+     * @see   https://ai.qq.com/doc/ocrdriverlicenseocr.shtml
      */
     private function driver($image, int $type = 0)
     {
@@ -118,13 +118,13 @@ class OCR
     /**
      * 营业执照识别.
      *
-     * @param  mixed $image 支持 JPG PNG BMP 格式
+     * @param mixed $image 支持 JPG PNG BMP 格式
      *
      * @throws TencentAIError
      *
      * @return mixed
      *
-     * @link   https://ai.qq.com/doc/ocrbizlicenseocr.shtml
+     * @see   https://ai.qq.com/doc/ocrbizlicenseocr.shtml
      */
     public function bizLicense($image)
     {
@@ -136,13 +136,13 @@ class OCR
     /**
      * 银行卡识别.
      *
-     * @param  mixed $image 支持 JPG PNG BMP 格式
+     * @param mixed $image 支持 JPG PNG BMP 格式
      *
      * @throws TencentAIError
      *
      * @return mixed
      *
-     * @link   https://ai.qq.com/doc/ocrcreditcardocr.shtml
+     * @see   https://ai.qq.com/doc/ocrcreditcardocr.shtml
      */
     public function creditCard($image)
     {
@@ -154,13 +154,13 @@ class OCR
     /**
      * 通用识别.
      *
-     * @param  mixed $image 支持 JPG PNG BMP 格式
+     * @param mixed $image 支持 JPG PNG BMP 格式
      *
      * @throws TencentAIError
      *
      * @return mixed
      *
-     * @link   https://ai.qq.com/doc/ocrgeneralocr.shtml
+     * @see   https://ai.qq.com/doc/ocrgeneralocr.shtml
      */
     public function general($image)
     {
