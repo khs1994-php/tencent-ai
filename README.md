@@ -21,7 +21,7 @@ $ composer require khs1994/tencent-ai
 For latest commit version:
 
 ```bash
-$ composer require khs1994/tencent-ai @dev
+$ composer require khs1994/tencent-ai dev-master
 ```
 
 ## Usage

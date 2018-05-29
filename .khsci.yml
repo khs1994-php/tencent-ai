@@ -1,0 +1,12 @@
+workspace:
+  base: /src
+  path: .
+
+pipeline:
+  test:
+    image: khs1994/php-fpm:7.2.5-alpine3.7
+    commands:
+      - pwd
+      - composer install -q
+      - composer update -q
+      - vendor/bin/phpunit
