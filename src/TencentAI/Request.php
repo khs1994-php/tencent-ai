@@ -9,8 +9,6 @@ use TencentAI\Error\TencentAIError;
 
 /**
  * 发起网络请求
- *
- * @ignore
  */
 class Request
 {
@@ -26,15 +24,15 @@ class Request
     private static $curl;
 
     /**
-     * @param mixed $app_key
+     * @param string $app_key
      */
-    public static function setAppKey($app_key): void
+    public static function setAppKey(string $app_key): void
     {
         self::$app_key = $app_key;
     }
 
     /**
-     * @param mixed $app_id
+     * @param string $app_id
      */
     public static function setAppId($app_id): void
     {
@@ -44,7 +42,7 @@ class Request
     /**
      * @param mixed $format
      */
-    public static function setFormat($format): void
+    public static function setFormat(string $format): void
     {
         self::$format = $format;
     }
@@ -167,11 +165,6 @@ class Request
 
     /**
      * 检查返回值，不为 0 抛出错误.
-     *
-     * 返回值声明为 void 类型的方法要么干脆省去 return 语句，要么使用一个空的 return 语句
-     * 注意 NULL 不是一个合法的返回值
-     *
-     * @since 7.1
      *
      * @param int $ret
      *

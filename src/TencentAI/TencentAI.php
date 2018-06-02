@@ -9,8 +9,6 @@ use Curl\Curl;
 /**
  * Class TencentAI.
  *
- * @ignore
- *
  * @version v18.06
  *
  * @method Audio                     audio()
@@ -23,11 +21,11 @@ use Curl\Curl;
  */
 class TencentAI
 {
-    private const VERSION = '18.05.0';
+    private const VERSION = '18.06.0';
 
     private static $tencentAI;
 
-    private function __construct(int $appId, string $appKey, bool $jsonFormat = false, int $timeout = 100)
+    private function __construct($appId, string $appKey, bool $jsonFormat = false, int $timeout = 100)
     {
         Request::setAppId($appId);
         Request::setAppKey($appKey);
@@ -50,7 +48,7 @@ class TencentAI
          */
     }
 
-    public static function tencentAI(int $appId, string $appKey, bool $jsonFormat = false, int $timeout)
+    public static function tencentAI($appId, string $appKey, bool $jsonFormat = false, int $timeout)
     {
         if (!(self::$tencentAI instanceof self)) {
             self::$tencentAI = new self($appId, $appKey, $jsonFormat, $timeout);
