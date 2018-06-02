@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace TencentAI\Tests;
 
 use TencentAI\Error\TencentAIError;
@@ -38,7 +40,7 @@ class ImageTest extends TencentAITestCase
      *
      * @throws TencentAIError
      */
-    public function testPorn()
+    public function testPorn(): void
     {
         $this->name = __FUNCTION__;
 
@@ -50,7 +52,7 @@ class ImageTest extends TencentAITestCase
      *
      * @throws TencentAIError
      */
-    public function testTerrorism()
+    public function testTerrorism(): void
     {
         $this->name = __FUNCTION__;
 
@@ -62,7 +64,7 @@ class ImageTest extends TencentAITestCase
      *
      * @throws TencentAIError
      */
-    public function testScener()
+    public function testScener(): void
     {
         $this->name = __FUNCTION__;
 
@@ -74,7 +76,7 @@ class ImageTest extends TencentAITestCase
      *
      * @throws TencentAIError
      */
-    public function testObject()
+    public function testObject(): void
     {
         $this->name = __FUNCTION__;
 
@@ -86,7 +88,7 @@ class ImageTest extends TencentAITestCase
      *
      * @throws TencentAIError
      */
-    public function testTag()
+    public function testTag(): void
     {
         $this->name = __FUNCTION__;
 
@@ -98,7 +100,7 @@ class ImageTest extends TencentAITestCase
      *
      * @throws TencentAIError
      */
-    public function testIdentifyFlower()
+    public function testIdentifyFlower(): void
     {
         $this->name = __FUNCTION__;
 
@@ -110,7 +112,7 @@ class ImageTest extends TencentAITestCase
      *
      * @throws TencentAIError
      */
-    public function testIdentifyVehicle()
+    public function testIdentifyVehicle(): void
     {
         $this->name = __FUNCTION__;
 
@@ -122,11 +124,11 @@ class ImageTest extends TencentAITestCase
      *
      * @throws TencentAIError
      */
-    public function testImageToText()
+    public function testImageToText(): void
     {
         $this->name = __FUNCTION__;
 
-        $this->array = $this->image()->imageToText(self::IMAGE_FACE, 1);
+        $this->array = $this->image()->imageToText(self::IMAGE_FACE, '1');
     }
 
     /**
@@ -134,7 +136,7 @@ class ImageTest extends TencentAITestCase
      *
      * @throws TencentAIError
      */
-    public function testFuzzy()
+    public function testFuzzy(): void
     {
         $this->name = __FUNCTION__;
 
@@ -146,14 +148,14 @@ class ImageTest extends TencentAITestCase
      *
      * @throws TencentAIError
      */
-    public function testFood()
+    public function testFood(): void
     {
         $this->name = __FUNCTION__;
 
         $this->array = $this->image()->food(self::FOOD);
     }
 
-    public function tearDown()
+    public function tearDown(): void
     {
         $this->assertEquals(0, $this->array['ret']);
 

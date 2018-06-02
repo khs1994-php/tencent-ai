@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace TencentAI\Tests;
 
 use TencentAI\Error\TencentAIError;
@@ -25,7 +27,7 @@ class OCRTest extends TencentAITestCase
      * @throws TencentAIError
      * @throws \Exception
      */
-    public function testIdCard()
+    public function testIdCard(): void
     {
         $this->name = __FUNCTION__;
 
@@ -68,7 +70,7 @@ class OCRTest extends TencentAITestCase
      *
      * @throws TencentAIError
      */
-    public function testBusinessCard()
+    public function testBusinessCard(): void
     {
         $this->name = __FUNCTION__;
 
@@ -82,7 +84,7 @@ class OCRTest extends TencentAITestCase
      * @throws TencentAIError
      * @throws \Exception
      */
-    public function testDriverLicense()
+    public function testDriverLicense(): void
     {
         $this->name = __FUNCTION__;
 
@@ -96,7 +98,7 @@ class OCRTest extends TencentAITestCase
      * @throws TencentAIError
      * @throws \Exception
      */
-    public function testDrivingLicense()
+    public function testDrivingLicense(): void
     {
         $this->name = __FUNCTION__;
 
@@ -109,7 +111,7 @@ class OCRTest extends TencentAITestCase
      *
      * @throws TencentAIError
      */
-    public function testBizLicense()
+    public function testBizLicense(): void
     {
         $this->name = __FUNCTION__;
 
@@ -122,7 +124,7 @@ class OCRTest extends TencentAITestCase
      *
      * @throws TencentAIError
      */
-    public function testCreditCard()
+    public function testCreditCard(): void
     {
         $this->name = __FUNCTION__;
 
@@ -135,7 +137,7 @@ class OCRTest extends TencentAITestCase
      *
      * @throws TencentAIError
      */
-    public function testGeneral()
+    public function testGeneral(): void
     {
         $this->name = __FUNCTION__;
 
@@ -143,7 +145,7 @@ class OCRTest extends TencentAITestCase
         $this->array = $this->ocr()->general($image);
     }
 
-    public function tearDown()
+    public function tearDown(): void
     {
         $this->assertEquals(0, $this->array['ret']);
 

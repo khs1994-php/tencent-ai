@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace TencentAI\Tests;
 
 use TencentAI\Error\TencentAIError;
@@ -24,7 +26,7 @@ class TranslateTest extends TencentAITestCase
      *
      * @throws TencentAIError
      */
-    public function testAILabText()
+    public function testAILabText(): void
     {
         $this->name = __FUNCTION__;
 
@@ -36,7 +38,7 @@ class TranslateTest extends TencentAITestCase
      *
      * @throws TencentAIError
      */
-    public function testText()
+    public function testText(): void
     {
         $this->name = __FUNCTION__;
 
@@ -48,11 +50,17 @@ class TranslateTest extends TencentAITestCase
      *
      * @throws TencentAIError
      */
-    public function testImage()
+    public function testImage(): void
     {
         $this->name = __FUNCTION__;
 
-        $this->array = $this->translate()->image(self::IMAGE, 1, 'word', 'en', 'zh');
+        $this->array = $this->translate()->image(
+            self::IMAGE,
+            '1',
+            'word',
+            'en',
+            'zh'
+        );
     }
 
     /**
@@ -60,12 +68,12 @@ class TranslateTest extends TencentAITestCase
      *
      * @throws TencentAIError
      */
-    public function testAudio()
+    public function testAudio(): void
     {
         $this->name = __FUNCTION__;
 
         $voice = __DIR__.'/../resource/translate/t.pcm';
-        $this->array = $this->translate()->audio($voice, 1, 6);
+        $this->array = $this->translate()->audio($voice, '1', 6);
     }
 
     /**
@@ -73,14 +81,14 @@ class TranslateTest extends TencentAITestCase
      *
      * @throws TencentAIError
      */
-    public function testDetect()
+    public function testDetect(): void
     {
         $this->name = __FUNCTION__;
 
         $this->array = $this->translate()->detect('中国');
     }
 
-    public function tearDown()
+    public function tearDown(): void
     {
         $this->assertEquals(0, $this->array['ret']);
 

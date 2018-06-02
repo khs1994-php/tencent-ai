@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace TencentAI\Module;
 
 use TencentAI\Error\TencentAIError;
@@ -23,7 +25,7 @@ trait Audio
      *
      * @throws TencentAIError
      */
-    private function check($check, string $array_name, int $code)
+    private function check($check, string $array_name, int $code): void
     {
         if (!in_array($check, $this->$array_name, true)) {
             throw new TencentAIError($code);
@@ -37,7 +39,7 @@ trait Audio
      *
      * @throws TencentAIError
      */
-    private function checkAsrFormat(int $format)
+    private function checkAsrFormat(int $format): void
     {
         $this->check($format, 'asrFormat', 90100);
     }
@@ -49,7 +51,7 @@ trait Audio
      *
      * @throws TencentAIError
      */
-    private function checkAsrRate(int $rate)
+    private function checkAsrRate(int $rate): void
     {
         $this->check($rate, 'asrRate', 90101);
     }
@@ -57,11 +59,11 @@ trait Audio
     /**
      * 检查语音翻译文件格式.
      *
-     * @param string $format
+     * @param $format
      *
      * @throws TencentAIError
      */
-    private function checkTranslateFormat(string $format)
+    private function checkTranslateFormat($format): void
     {
         $this->check($format, 'translateFormat', 90702);
     }

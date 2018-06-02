@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace TencentAI;
 
 use TencentAI\Error\TencentAIError;
@@ -166,7 +168,7 @@ class Translate
      *
      * @param string $text
      * @param array  $languages
-     * @param bool   $force 强制从待选择语言中选择
+     * @param bool   $force     强制从待选择语言中选择
      *
      * @throws TencentAIError
      *

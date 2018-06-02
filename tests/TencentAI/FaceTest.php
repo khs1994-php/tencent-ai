@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace TencentAI\Tests;
 
 use TencentAI\Error\TencentAIError;
@@ -41,7 +43,7 @@ class FaceTest extends TencentAITestCase
      * @throws TencentAIError
      * @group  DON'TTEST
      */
-    public function testDeleteForce()
+    public function testDeleteForce(): void
     {
         $this->array = $this->face()->deletePerson(self::PERSON_ID);
     }
@@ -82,7 +84,7 @@ class FaceTest extends TencentAITestCase
      *
      * @throws TencentAIError
      */
-    public function testGetPersonList()
+    public function testGetPersonList(): void
     {
         $this->name = __FUNCTION__;
 
@@ -99,7 +101,7 @@ class FaceTest extends TencentAITestCase
      *
      * @throws TencentAIError
      */
-    public function testGetGroupList()
+    public function testGetGroupList(): void
     {
         $this->name = __FUNCTION__;
 
@@ -133,7 +135,7 @@ class FaceTest extends TencentAITestCase
      *
      * @throws TencentAIError
      */
-    public function testGetList()
+    public function testGetList(): void
     {
         $this->name = __FUNCTION__;
 
@@ -149,7 +151,7 @@ class FaceTest extends TencentAITestCase
      *
      * @throws TencentAIError
      */
-    public function testGetInfo(string $faceId)
+    public function testGetInfo(string $faceId): void
     {
         $this->name = __FUNCTION__;
 
@@ -165,7 +167,7 @@ class FaceTest extends TencentAITestCase
      *
      * @throws TencentAIError
      */
-    public function testDelete(array $faceIds)
+    public function testDelete(array $faceIds): void
     {
         $this->name = __FUNCTION__;
 
@@ -179,7 +181,7 @@ class FaceTest extends TencentAITestCase
      *
      * @throws TencentAIError
      */
-    public function testSetPersonInfo()
+    public function testSetPersonInfo(): void
     {
         $this->name = __FUNCTION__;
 
@@ -193,7 +195,7 @@ class FaceTest extends TencentAITestCase
      *
      * @throws TencentAIError
      */
-    public function testGetPersonInfo()
+    public function testGetPersonInfo(): void
     {
         $this->name = __FUNCTION__;
 
@@ -205,7 +207,7 @@ class FaceTest extends TencentAITestCase
      *
      * @throws TencentAIError
      */
-    public function testDetect()
+    public function testDetect(): void
     {
         $this->name = __FUNCTION__;
 
@@ -217,7 +219,7 @@ class FaceTest extends TencentAITestCase
      *
      * @throws TencentAIError
      */
-    public function testMultiDetect()
+    public function testMultiDetect(): void
     {
         $this->name = __FUNCTION__;
 
@@ -229,11 +231,11 @@ class FaceTest extends TencentAITestCase
      *
      * @throws TencentAIError
      */
-    public function testShape()
+    public function testShape(): void
     {
         $this->name = __FUNCTION__;
 
-        $this->array = $this->face()->shape(self::IMAGE1, 0);
+        $this->array = $this->face()->shape(self::IMAGE1, false);
     }
 
     /**
@@ -245,7 +247,7 @@ class FaceTest extends TencentAITestCase
      *
      * @throws TencentAIError
      */
-    public function compare()
+    public function compare(): void
     {
         $this->name = __FUNCTION__;
 
@@ -259,7 +261,7 @@ class FaceTest extends TencentAITestCase
      *
      * @throws TencentAIError
      */
-    public function testIdentify()
+    public function testIdentify(): void
     {
         $this->name = __FUNCTION__;
 
@@ -271,7 +273,7 @@ class FaceTest extends TencentAITestCase
      *
      * @throws TencentAIError
      */
-    public function testDetectCrossAge()
+    public function testDetectCrossAge(): void
     {
         $this->name = __FUNCTION__;
 
@@ -285,7 +287,7 @@ class FaceTest extends TencentAITestCase
      *
      * @throws TencentAIError
      */
-    public function testVerify()
+    public function testVerify(): void
     {
         $this->name = __FUNCTION__;
 
@@ -299,14 +301,14 @@ class FaceTest extends TencentAITestCase
      *
      * @throws TencentAIError
      */
-    public function testDeletePerson()
+    public function testDeletePerson(): void
     {
         $this->name = __FUNCTION__;
 
         $this->array = $this->face()->deletePerson(self::PERSON_ID);
     }
 
-    public function tearDown()
+    public function tearDown(): void
     {
         $this->assertEquals(0, $this->array['ret']);
 

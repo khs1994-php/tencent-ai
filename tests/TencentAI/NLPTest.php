@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace TencentAI\Tests;
 
 use TencentAI\Error\TencentAIError;
@@ -22,7 +24,7 @@ class NLPTest extends TencentAITestCase
      *
      * @throws TencentAIError
      */
-    public function testWordseg()
+    public function testWordseg(): void
     {
         $this->name = __FUNCTION__;
 
@@ -34,7 +36,7 @@ class NLPTest extends TencentAITestCase
      *
      * @throws TencentAIError
      */
-    public function testWordpos()
+    public function testWordpos(): void
     {
         $this->name = __FUNCTION__;
 
@@ -46,7 +48,7 @@ class NLPTest extends TencentAITestCase
      *
      * @throws TencentAIError
      */
-    public function testWordner()
+    public function testWordner(): void
     {
         $this->name = __FUNCTION__;
 
@@ -58,7 +60,7 @@ class NLPTest extends TencentAITestCase
      *
      * @throws TencentAIError
      */
-    public function testWordsyn()
+    public function testWordsyn(): void
     {
         $this->name = __FUNCTION__;
 
@@ -70,7 +72,7 @@ class NLPTest extends TencentAITestCase
      *
      * @throws TencentAIError
      */
-    public function testWordcom()
+    public function testWordcom(): void
     {
         $this->name = __FUNCTION__;
 
@@ -82,7 +84,7 @@ class NLPTest extends TencentAITestCase
      *
      * @throws TencentAIError
      */
-    public function testTextPolar()
+    public function testTextPolar(): void
     {
         $this->name = __FUNCTION__;
 
@@ -94,14 +96,14 @@ class NLPTest extends TencentAITestCase
      *
      * @throws TencentAIError
      */
-    public function testChat()
+    public function testChat(): void
     {
         $this->name = __FUNCTION__;
 
-        $this->array = $this->nlp()->chat('中国女演员王晓晨', 1);
+        $this->array = $this->nlp()->chat('中国女演员王晓晨', '1');
     }
 
-    public function tearDown()
+    public function tearDown(): void
     {
         $this->assertEquals(0, $this->array['ret']);
 

@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace TencentAI;
 
 use Curl\Curl;
@@ -44,10 +46,10 @@ class TencentAI
          */
     }
 
-    public static function tencentAI(int $appId, string $appKey, bool $jsonFormat = false)
+    public static function tencentAI(int $appId, string $appKey, bool $jsonFormat = false, int $timeout)
     {
         if (!(self::$tencentAI instanceof self)) {
-            self::$tencentAI = new self($appId, $appKey, $jsonFormat);
+            self::$tencentAI = new self($appId, $appKey, $jsonFormat, $timeout);
         }
 
         return self::$tencentAI;
@@ -89,7 +91,7 @@ class TencentAI
         return self::VERSION;
     }
 
-    public static function close()
+    public static function close(): void
     {
         Request::close();
     }

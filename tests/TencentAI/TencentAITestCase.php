@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace TencentAI\Tests;
 
 use PHPUnit\Framework\TestCase;
@@ -14,7 +16,7 @@ class TencentAITestCase extends TestCase
         if (!(self::$ai instanceof TencentAI)) {
             $app_id = 1106560031;
             $app_key = 'ZbRY9cf72TbDO0xb';
-            self::$ai = TencentAI::tencentAI($app_id, $app_key);
+            self::$ai = TencentAI::tencentAI($app_id, $app_key, false, 10);
         }
 
         return self::$ai;

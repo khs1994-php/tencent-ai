@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace TencentAI;
 
 use TencentAI\Error\TencentAIError;
@@ -100,9 +102,9 @@ class Photo
     /**
      * 图片滤镜（AI Lab）.
      *
-     * @param mixed  $image  仅支持 JPG、PNG 类型图片，尺寸长宽不超过 1080，返回格式 JPG
+     * @param mixed  $image      仅支持 JPG、PNG 类型图片，尺寸长宽不超过 1080，返回格式 JPG
      * @param string $session_id
-     * @param int    $filter 滤镜效果编码 1-65
+     * @param int    $filter     滤镜效果编码 1-65
      *
      * @throws TencentAIError
      *

@@ -38,7 +38,9 @@ use TencentAI\{
 const APP_ID = 1106560031;
 const APP_KEY = 'ZbRY9cf72TbDO0xb';
 
-$ai = TencentAI::tencentAI(APP_ID, APP_KEY, false);
+# you can set return format and request timeout
+
+$ai = TencentAI::tencentAI(APP_ID, APP_KEY, false, 10);
 
 $image = __DIR__.'/path/name.jpg';
 

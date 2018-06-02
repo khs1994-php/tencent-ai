@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace TencentAI\Tests;
 
 use TencentAI\Error\TencentAIError;
@@ -24,7 +26,7 @@ class AudioTest extends TencentAITestCase
      *
      * @throws TencentAIError
      */
-    public function testAsr()
+    public function testAsr(): void
     {
         $this->name = __FUNCTION__;
 
@@ -37,12 +39,12 @@ class AudioTest extends TencentAITestCase
      *
      * @throws TencentAIError
      */
-    public function testasrs()
+    public function testasrs(): void
     {
         $this->name = __FUNCTION__;
 
         $voice = self::AUDIO.'/2.wav';
-        $this->array = $this->audio()->asrs($voice, 1, 0, 2);
+        $this->array = $this->audio()->asrs($voice, '1', 0, 2);
     }
 
     /**
@@ -50,12 +52,12 @@ class AudioTest extends TencentAITestCase
      *
      * @throws TencentAIError
      */
-    public function testWxasrs()
+    public function testWxasrs(): void
     {
         $this->name = __FUNCTION__;
 
         $voice = self::AUDIO.'/2.wav';
-        $this->array = $this->audio()->wxasrs($voice, 1, 0, 2);
+        $this->array = $this->audio()->wxasrs($voice, '1', 0, 2);
     }
 
     /**
@@ -63,7 +65,7 @@ class AudioTest extends TencentAITestCase
      *
      * @throws TencentAIError
      */
-    public function testWxAsrLong()
+    public function testWxAsrLong(): void
     {
         $this->name = __FUNCTION__;
 
@@ -77,7 +79,7 @@ class AudioTest extends TencentAITestCase
      *
      * @throws TencentAIError
      */
-    public function testTts()
+    public function testTts(): void
     {
         $this->name = __FUNCTION__;
 
@@ -90,7 +92,7 @@ class AudioTest extends TencentAITestCase
      *
      * @throws TencentAIError
      */
-    public function testTta()
+    public function testTta(): void
     {
         $this->name = __FUNCTION__;
 
@@ -98,12 +100,12 @@ class AudioTest extends TencentAITestCase
         $this->put(__FUNCTION__.'.mp3', $array['data']['voice']);
     }
 
-    public function put(string $name, string $content)
+    public function put(string $name, string $content): void
     {
         file_put_contents(self::OUTPUT.$name, base64_decode($content, true));
     }
 
-    public function tearDown()
+    public function tearDown(): void
     {
         $this->assertEquals(0, $this->array['ret']);
 

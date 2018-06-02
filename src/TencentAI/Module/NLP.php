@@ -1,10 +1,11 @@
 <?php
 
+declare(strict_types=1);
+
 namespace TencentAI\Module;
 
 use TencentAI\Error\TencentAIError;
 use TencentAI\Request;
-use TencentAI\TencentAI;
 
 trait NLP
 {

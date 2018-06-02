@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace TencentAI\Tests;
 
 use TencentAI\Error\TencentAIError;
@@ -24,7 +26,7 @@ class PhotoTest extends TencentAITestCase
      *
      * @throws TencentAIError
      */
-    public function testCosmetic()
+    public function testCosmetic(): void
     {
         $this->name = __FUNCTION__;
         $this->array = $this->photo()->cosmetic(self::IMAGE, 11);
@@ -35,7 +37,7 @@ class PhotoTest extends TencentAITestCase
      *
      * @throws TencentAIError
      */
-    public function testDecoration()
+    public function testDecoration(): void
     {
         $this->name = __FUNCTION__;
 
@@ -47,7 +49,7 @@ class PhotoTest extends TencentAITestCase
      *
      * @throws TencentAIError
      */
-    public function testFilter()
+    public function testFilter(): void
     {
         $this->name = __FUNCTION__;
 
@@ -59,11 +61,11 @@ class PhotoTest extends TencentAITestCase
      *
      * @throws TencentAIError
      */
-    public function testAiLabFilter()
+    public function testAiLabFilter(): void
     {
         $this->name = __FUNCTION__;
 
-        $this->array = $this->photo()->aiLabFilter(self::IMAGE, 65, 1);
+        $this->array = $this->photo()->aiLabFilter(self::IMAGE, '65', 1);
     }
 
     /**
@@ -71,7 +73,7 @@ class PhotoTest extends TencentAITestCase
      *
      * @throws TencentAIError
      */
-    public function testMerge()
+    public function testMerge(): void
     {
         $this->name = __FUNCTION__;
 
@@ -83,7 +85,7 @@ class PhotoTest extends TencentAITestCase
      *
      * @throws TencentAIError
      */
-    public function testSticker()
+    public function testSticker(): void
     {
         $this->name = __FUNCTION__;
 
@@ -95,14 +97,14 @@ class PhotoTest extends TencentAITestCase
      *
      * @throws TencentAIError
      */
-    public function testAge()
+    public function testAge(): void
     {
         $this->name = __FUNCTION__;
 
         $this->array = $this->photo()->age(self::IMAGE);
     }
 
-    public function tearDown()
+    public function tearDown(): void
     {
         $this->assertEquals(0, $this->array['ret']);
 

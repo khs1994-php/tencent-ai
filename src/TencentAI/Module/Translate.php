@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace TencentAI\Module;
 
 use TencentAI\Error\TencentAIError;
@@ -47,7 +49,7 @@ trait Translate
      *
      * @throws TencentAIError
      */
-    private function checkAILabTextType(int $type)
+    private function checkAILabTextType(int $type): void
     {
         if ($type > 16 or $type < 0) {
             throw new TencentAIError(90700);
@@ -62,7 +64,7 @@ trait Translate
      *
      * @throws TencentAIError
      */
-    private function checkTextTarget($source, $target)
+    private function checkTextTarget($source, $target): void
     {
         $text_array = $this->text_array;
         if (!(array_key_exists($source, $text_array))) {
@@ -81,7 +83,7 @@ trait Translate
      *
      * @throws TencentAIError
      */
-    private function checkImageTarget($source, $target)
+    private function checkImageTarget($source, $target): void
     {
         $image_array = $this->image_array;
         if (!(array_key_exists($source, $image_array))) {
@@ -99,7 +101,7 @@ trait Translate
      *
      * @throws TencentAIError
      */
-    private function checkDetectType($language)
+    private function checkDetectType($language): void
     {
         if (!(in_array($language, $this->detect_array, true))) {
             throw new TencentAIError(90705);

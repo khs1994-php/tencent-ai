@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace TencentAI;
 
 use Curl\Curl;
@@ -42,14 +44,14 @@ class Request
         self::$format = $format;
     }
 
-    public static function setCurl(Curl $curl, int $timeout)
+    public static function setCurl(Curl $curl, int $timeout): void
     {
         self::$curl = $curl;
 
         self::$curl->setTimeout($timeout);
     }
 
-    public static function close()
+    public static function close(): void
     {
         self::$curl = null;
         self::$app_id = null;
