@@ -161,6 +161,6 @@ class NaturalLanguageProcessing
         ];
         $url = self::CHAT;
 
-        return TencentAI::exec($url, $data);
+        return Request::exec($url, $data);
     }
 }

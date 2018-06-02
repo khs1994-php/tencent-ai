@@ -3,6 +3,7 @@
 namespace TencentAI\Module;
 
 use TencentAI\Error\TencentAIError;
+use TencentAI\Request;
 use TencentAI\TencentAI;
 
 trait NLP
@@ -25,13 +26,13 @@ trait NLP
                 'text' => mb_convert_encoding($text, 'gbk', 'utf8'),
             ];
 
-            return TencentAI::exec($url, $data, false);
+            return Request::exec($url, $data, false);
         }
 
         $data = [
             'text' => $text,
         ];
 
-        return TencentAI::exec($url, $data);
+        return Request::exec($url, $data);
     }
 }

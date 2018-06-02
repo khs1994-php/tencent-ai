@@ -43,7 +43,7 @@ class OCR
         ];
         $url = self::ID_CARD;
 
-        return TencentAI::exec($url, $data);
+        return Request::exec($url, $data);
     }
 
     /**
@@ -84,7 +84,7 @@ class OCR
         ];
         $url = self::DRIVE;
 
-        return TencentAI::exec($url, $data);
+        return Request::exec($url, $data);
     }
 
     /**

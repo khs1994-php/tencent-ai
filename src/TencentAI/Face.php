@@ -67,7 +67,7 @@ class Face
         ];
         $url = self::DETECT;
 
-        return TencentAI::exec($url, $data);
+        return Request::exec($url, $data);
     }
 
     /**
@@ -114,7 +114,7 @@ class Face
         ];
         $url = self::COMPARE;
 
-        return TencentAI::exec($url, $data);
+        return Request::exec($url, $data);
     }
 
     /**
@@ -140,7 +140,7 @@ class Face
             'target_image' => self::encode($target),
         ];
 
-        return TencentAI::exec($url, $data);
+        return Request::exec($url, $data);
     }
 
     /**
@@ -165,7 +165,7 @@ class Face
         ];
         $url = self::SHAPE;
 
-        return TencentAI::exec($url, $data);
+        return Request::exec($url, $data);
     }
 
     /**
@@ -174,8 +174,8 @@ class Face
      * 对于一个待识别的人脸图片，在一个组中识别出最相似的 N 个个体作为候选人返回，返回的 N 个个体按照相似度从大到小排列，N 由参数 topn 指定.
      *
      * @param string $group_id
-     * @param mixed  $image    支持 JPG PNG BMP 格式
-     * @param int    $topon    返回的候选人个数 默认 9
+     * @param mixed  $image 支持 JPG PNG BMP 格式
+     * @param int    $topon 返回的候选人个数 默认 9
      *
      * @throws TencentAIError
      *
@@ -192,7 +192,7 @@ class Face
         ];
         $url = self::IDENTIFY;
 
-        return TencentAI::exec($url, $data);
+        return Request::exec($url, $data);
     }
 
     /**
@@ -201,7 +201,7 @@ class Face
      * 根据提供的图片和个体 ID，返回图片和个体是否是同一个人的判断以及置信度.
      *
      * @param string $person_id
-     * @param mixed  $image     支持 JPG PNG BMP 格式
+     * @param mixed  $image 支持 JPG PNG BMP 格式
      *
      * @throws TencentAIError
      *
@@ -217,7 +217,7 @@ class Face
         ];
         $url = self::VERIFY;
 
-        return TencentAI::exec($url, $data);
+        return Request::exec($url, $data);
     }
 
     /**
@@ -226,8 +226,8 @@ class Face
      * 一个人脸只能被加入到一个个体中.一个个体最多允许包含 20 个人脸；加入几乎相同的人脸会返回错误.
      *
      * @param string $person_id
-     * @param array  $images    支持 JPG PNG BMP 格式
-     * @param string $tag       备注信息
+     * @param array  $images 支持 JPG PNG BMP 格式
+     * @param string $tag    备注信息
      *
      * @throws TencentAIError
      *
@@ -256,7 +256,7 @@ class Face
         ];
         $url = self::ADD;
 
-        return TencentAI::exec($url, $data);
+        return Request::exec($url, $data);
     }
 
     /**
@@ -280,7 +280,7 @@ class Face
         ];
         $url = self::DELETE;
 
-        return TencentAI::exec($url, $data);
+        return Request::exec($url, $data);
     }
 
     /**
@@ -303,7 +303,7 @@ class Face
         ];
         $url = self::GET_LIST;
 
-        return TencentAI::exec($url, $data);
+        return Request::exec($url, $data);
     }
 
     /**
@@ -324,7 +324,7 @@ class Face
         ];
         $url = self::GET_INFO;
 
-        return TencentAI::exec($url, $data);
+        return Request::exec($url, $data);
     }
 
     /**
@@ -335,7 +335,7 @@ class Face
      * @param array  $group_ids
      * @param string $person_id
      * @param string $person_name
-     * @param mixed  $image       支持 JPG PNG BMP 格式
+     * @param mixed  $image 支持 JPG PNG BMP 格式
      * @param string $tag
      *
      * @throws TencentAIError
@@ -360,7 +360,7 @@ class Face
         ];
         $url = self::CREATE_PERSON;
 
-        return TencentAI::exec($url, $data);
+        return Request::exec($url, $data);
     }
 
     /**
@@ -381,7 +381,7 @@ class Face
         ];
         $url = self::DELETE_PERSON;
 
-        return TencentAI::exec($url, $data);
+        return Request::exec($url, $data);
     }
 
     /**
@@ -406,7 +406,7 @@ class Face
         ];
         $url = self::SET_PERSON_INFO;
 
-        return TencentAI::exec($url, $data);
+        return Request::exec($url, $data);
     }
 
     /**
@@ -429,7 +429,7 @@ class Face
         ];
         $url = self::GET_PERSON_INFO;
 
-        return TencentAI::exec($url, $data);
+        return Request::exec($url, $data);
     }
 
     /**
@@ -447,7 +447,7 @@ class Face
     {
         $url = self::GET_GROUP_LIST;
 
-        return TencentAI::exec($url, []);
+        return Request::exec($url, []);
     }
 
     /**
@@ -470,6 +470,6 @@ class Face
         ];
         $url = self::GET_PERSON_LIST;
 
-        return TencentAI::exec($url, $data);
+        return Request::exec($url, $data);
     }
 }

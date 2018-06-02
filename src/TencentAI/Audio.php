@@ -46,7 +46,7 @@ class Audio
         ];
         $url = self::ASR;
 
-        return TencentAI::exec($url, $data);
+        return Request::exec($url, $data);
     }
 
     /**
@@ -83,7 +83,7 @@ class Audio
             'speech_chunk' => $speech_chunk,
         ];
 
-        return TencentAI::exec($url, $data);
+        return Request::exec($url, $data);
     }
 
     /**
@@ -126,7 +126,7 @@ class Audio
             'cont_res' => (int) $cont_res,
         ];
 
-        return TencentAI::exec($url, $data);
+        return Request::exec($url, $data);
     }
 
     /**
@@ -157,7 +157,7 @@ class Audio
             'speech_url' => $speech_url,
         ];
 
-        return TencentAI::exec($url, $data);
+        return Request::exec($url, $data);
     }
 
     /**
@@ -198,7 +198,7 @@ class Audio
             'apc' => $apc,
         ];
 
-        return TencentAI::exec($url, $data);
+        return Request::exec($url, $data);
     }
 
     /**
@@ -221,6 +221,6 @@ class Audio
             'speed' => $speed,
         ];
 
-        return TencentAI::exec($url, $data);
+        return Request::exec($url, $data);
     }
 }

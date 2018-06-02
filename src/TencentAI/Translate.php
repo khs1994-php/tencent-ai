@@ -47,7 +47,7 @@ class Translate
         ];
         $url = self::AILAB_TEXT;
 
-        return TencentAI::exec($url, $data);
+        return Request::exec($url, $data);
     }
 
     /**
@@ -74,7 +74,7 @@ class Translate
         ];
         $url = self::TEXT;
 
-        return TencentAI::exec($url, $data);
+        return Request::exec($url, $data);
     }
 
     /**
@@ -115,7 +115,7 @@ class Translate
         ];
         $url = self::IMAGE;
 
-        return TencentAI::exec($url, $data);
+        return Request::exec($url, $data);
     }
 
     /**
@@ -158,7 +158,7 @@ class Translate
         ];
         $url = self::AUDIO;
 
-        return TencentAI::exec($url, $data);
+        return Request::exec($url, $data);
     }
 
     /**
@@ -166,7 +166,7 @@ class Translate
      *
      * @param string $text
      * @param array  $languages
-     * @param bool   $force     强制从待选择语言中选择
+     * @param bool   $force 强制从待选择语言中选择
      *
      * @throws TencentAIError
      *
@@ -192,6 +192,6 @@ class Translate
         ];
         $url = self::DETECT;
 
-        return TencentAI::exec($url, $data);
+        return Request::exec($url, $data);
     }
 }

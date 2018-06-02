@@ -4,7 +4,7 @@ namespace TencentAI\Module;
 
 use Is\Is;
 use TencentAI\Error\TencentAIError;
-use TencentAI\TencentAI;
+use TencentAI\Request;
 
 trait Image
 {
@@ -330,7 +330,7 @@ trait Image
             'image' => self::encode($image),
         ];
 
-        return TencentAI::exec($url, $data);
+        return Request::exec($url, $data);
     }
 
     /**

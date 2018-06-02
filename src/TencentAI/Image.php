@@ -90,7 +90,7 @@ class Image
 
         $scene_list_array = [];
 
-        $output = TencentAI::exec($url, $data);
+        $output = Request::exec($url, $data);
 
         if (is_array($output)) {
             $format = false;
@@ -142,7 +142,7 @@ class Image
         ];
         $url = self::OBJECT;
 
-        return TencentAI::exec($url, $data);
+        return Request::exec($url, $data);
     }
 
     /**
@@ -185,7 +185,7 @@ class Image
         ];
         $url = self::IDENTIFY;
 
-        return TencentAI::exec($url, $data);
+        return Request::exec($url, $data);
     }
 
     /**
@@ -219,7 +219,7 @@ class Image
     /**
      * 看图说话：用一句话文字描述图片.
      *
-     * @param mixed  $image      支持 JPG PNG BMP 格式
+     * @param mixed  $image 支持 JPG PNG BMP 格式
      * @param string $session_id
      *
      * @throws TencentAIError
@@ -237,7 +237,7 @@ class Image
 
         $url = self::IMAGE_TO_TEXT;
 
-        return TencentAI::exec($url, $data);
+        return Request::exec($url, $data);
     }
 
     /**
