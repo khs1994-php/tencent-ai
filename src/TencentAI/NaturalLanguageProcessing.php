@@ -7,9 +7,12 @@ namespace TencentAI;
 use TencentAI\Error\TencentAIError;
 use TencentAI\Module\NLP;
 
+/**
+ * Tencent AI 自然语言相关能力.
+ */
 class NaturalLanguageProcessing
 {
-    const BASE_URL = 'https://api.ai.qq.com/fcgi-bin/nlp/';
+    const BASE_URL = 'nlp/';
 
     const SEG = self::BASE_URL.'nlp_wordseg';
 

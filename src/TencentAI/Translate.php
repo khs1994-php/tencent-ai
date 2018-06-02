@@ -6,17 +6,16 @@ namespace TencentAI;
 
 use TencentAI\Error\TencentAIError;
 
+/**
+ * TencentAI 翻译相关能力.
+ */
 class Translate
 {
     use Module\Translate;
+
     use Module\Audio;
 
-    /**
-     * 类常量可设置可见性.
-     *
-     * @since 7.1
-     */
-    public const BASE_URL = 'https://api.ai.qq.com/fcgi-bin/nlp/';
+    public const BASE_URL = 'nlp/';
 
     private const AILAB_TEXT = self::BASE_URL.'nlp_texttrans';
 

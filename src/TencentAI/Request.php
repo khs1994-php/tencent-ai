@@ -7,6 +7,11 @@ namespace TencentAI;
 use Curl\Curl;
 use TencentAI\Error\TencentAIError;
 
+/**
+ * 发起网络请求
+ *
+ * @ignore
+ */
 class Request
 {
     private static $app_key;
@@ -114,6 +119,8 @@ class Request
         // 最终请求体
 
         $data = $request_body."&sign=$sign";
+
+        $url = 'https://api.ai.qq.com/fcgi-bin/'.$url;
 
         // 发起请求
         try {

@@ -6,12 +6,15 @@ namespace TencentAI;
 
 use TencentAI\Error\TencentAIError;
 
+/**
+ * Tencent AI OCR 能力.
+ */
 class OCR
 {
     use Module\Image;
     use Module\OCR;
 
-    const  BASE_URL = 'https://api.ai.qq.com/fcgi-bin/ocr/';
+    const  BASE_URL = 'ocr/';
 
     const ID_CARD = self::BASE_URL.'ocr_idcardocr';
 

@@ -21,11 +21,15 @@ $iterator = Finder::create()
     ->name('*.php')
     ->exclude('resource')
     ->exclude('tests')
+    ->exclude('Module')
+    ->exclude('Error')
     ->in($dir = __DIR__.'/src');
 
 $versions = GitVersionCollection::create($dir)
-    ->addFromTags('18.*.*')// add tag
+    ->addFromTags('18.06.0')// add tag
     ->add('master', 'master branch'); // add branch
+
+return new Sami($iterator);
 
 return new Sami($iterator, [
         'versions' => $versions,

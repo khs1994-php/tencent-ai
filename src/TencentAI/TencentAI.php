@@ -9,13 +9,17 @@ use Curl\Curl;
 /**
  * Class TencentAI.
  *
- * @method Audio                      audio();
- * @method Face                       face();
- * @method Image                      image();
- * @method NaturalLanguageProcessing  nlp();
- * @method OCR                        ocr();
- * @method Photo                      photo();
- * @method Translate                  translate();
+ * @ignore
+ *
+ * @version v18.06
+ *
+ * @method Audio                     audio()
+ * @method Face                      face()
+ * @method Image                     image()
+ * @method NaturalLanguageProcessing nlp()
+ * @method OCR                       ocr()
+ * @method Photo                     photo()
+ * @method Translate                 translate()
  */
 class TencentAI
 {

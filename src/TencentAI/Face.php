@@ -6,11 +6,14 @@ namespace TencentAI;
 
 use TencentAI\Error\TencentAIError;
 
+/**
+ * Tencent AI 人脸相关能力.
+ */
 class Face
 {
     use Module\Image;
 
-    const BASE_URL = 'https://api.ai.qq.com/fcgi-bin/face/';
+    const BASE_URL = 'face/';
 
     const DETECT = self::BASE_URL.'face_detectface';
 

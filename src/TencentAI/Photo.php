@@ -6,9 +6,12 @@ namespace TencentAI;
 
 use TencentAI\Error\TencentAIError;
 
+/**
+ * Tencent AI 照片相关能力.
+ */
 class Photo
 {
-    const BASE_URL = 'https://api.ai.qq.com/fcgi-bin/ptu/';
+    const BASE_URL = 'ptu/';
 
     const COSMETIC = self::BASE_URL.'ptu_facecosmetic';
 
@@ -16,7 +19,7 @@ class Photo
 
     const FILTER = self::BASE_URL.'ptu_imgfilter';
 
-    const AILAB_FILTER = 'https://api.ai.qq.com/fcgi-bin/vision/vision_imgfilter';
+    const AILAB_FILTER = 'vision/vision_imgfilter';
 
     const MERGE = self::BASE_URL.'ptu_facemerge';
 

@@ -6,29 +6,30 @@ namespace TencentAI;
 
 use TencentAI\Error\TencentAIError;
 
+/**
+ * Tencent AI 图像相关能力.
+ */
 class Image
 {
     use Module\Image;
 
-    const BASE_URL = 'https://api.ai.qq.com/fcgi-bin/';
+    const PORN = 'vision/vision_porn';
 
-    const PORN = self::BASE_URL.'vision/vision_porn';
+    const TERRORISM = 'image/image_terrorism';
 
-    const TERRORISM = self::BASE_URL.'image/image_terrorism';
+    const SCENER = 'vision/vision_scener';
 
-    const SCENER = self::BASE_URL.'vision/vision_scener';
+    const OBJECT = 'vision/vision_objectr';
 
-    const OBJECT = self::BASE_URL.'vision/vision_objectr';
+    const TAG = 'image/image_tag';
 
-    const TAG = self::BASE_URL.'image/image_tag';
+    const IDENTIFY = 'vision/vision_imgidentify';
 
-    const IDENTIFY = self::BASE_URL.'vision/vision_imgidentify';
+    const IMAGE_TO_TEXT = 'vision/vision_imgtotext';
 
-    const IMAGE_TO_TEXT = self::BASE_URL.'vision/vision_imgtotext';
+    const FUZZY = 'image/image_fuzzy';
 
-    const FUZZY = self::BASE_URL.'image/image_fuzzy';
-
-    const FOOD = self::BASE_URL.'image/image_food';
+    const FOOD = 'image/image_food';
 
     /**
      * 智能鉴黄.
