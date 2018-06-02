@@ -1,3 +1,8 @@
+clone:
+  git:
+    submodule_override:
+      tests/resource: https://gitee.com/khs1994-php/resource.git
+
 workspace:
   base: /src
   path: .
