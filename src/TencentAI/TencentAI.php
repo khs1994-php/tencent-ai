@@ -48,7 +48,15 @@ class TencentAI
          */
     }
 
-    public static function tencentAI($appId, string $appKey, bool $jsonFormat = false, int $timeout)
+    /**
+     * @param        $appId
+     * @param string $appKey
+     * @param bool   $jsonFormat
+     * @param int    $timeout
+     *
+     * @return TencentAI
+     */
+    public static function tencentAI($appId, string $appKey, bool $jsonFormat = false, int $timeout = 100)
     {
         if (!(self::$tencentAI instanceof self)) {
             self::$tencentAI = new self($appId, $appKey, $jsonFormat, $timeout);
