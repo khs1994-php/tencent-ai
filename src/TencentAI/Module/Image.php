@@ -319,18 +319,25 @@ trait Image
     /**
      * 图片公共方法.
      *
-     * @param $url
+     * @param string $url
      * @param $image
+     * @param bool $isUrl
      *
      * @throws TencentAIError
      *
      * @return mixed
      */
-    private static function image($url, $image)
+    private static function image(string $url, $image, bool $isUrl = false)
     {
-        $data = [
-            'image' => self::encode($image),
-        ];
+        if ($isUrl) {
+            $data = [
+                'image_url' => $image,
+            ];
+        } else {
+            $data = [
+                'image' => self::encode($image),
+            ];
+        }
 
         return Request::exec($url, $data);
     }

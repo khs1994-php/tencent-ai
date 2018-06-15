@@ -145,6 +145,36 @@ class OCRTest extends TencentAITestCase
         $this->array = $this->ocr()->general($image);
     }
 
+    public function testPlateFromUrl(): void
+    {
+        $this->name = __FUNCTION__;
+
+        $this->array = $this->ocr()->plate('https://yyb.gtimg.com/ai/assets/ai-demo/large/plate-1-lg.jpg', true);
+    }
+
+    public function testPlate(): void
+    {
+        $this->name = __FUNCTION__;
+
+        $image = self::IMAGE.'plate.jpg';
+        $this->array = $this->ocr()->plate($image);
+    }
+
+    public function testHandWritingFromUrl(): void
+    {
+        $this->name = __FUNCTION__;
+
+        $this->array = $this->ocr()->handwriting('https://yyb.gtimg.com/ai/assets/ai-demo/large/hd-1-lg.jpg', true);
+    }
+
+    public function testHandWriting(): void
+    {
+        $this->name = __FUNCTION__;
+
+        $image = self::IMAGE.'hd.jpg';
+        $this->array = $this->ocr()->handwriting($image);
+    }
+
     public function tearDown(): void
     {
         $this->assertEquals(0, $this->array['ret']);

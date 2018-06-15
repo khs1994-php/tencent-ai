@@ -28,6 +28,10 @@ class OCR
 
     const GENERAL = self::BASE_URL.'ocr_generalocr';
 
+    const PLATE = self::BASE_URL.'ocr_plateocr';
+
+    const HAND_WRITING = self::BASE_URL.'ocr_handwritingocr';
+
     /**
      * 身份证识别.
      *
@@ -172,5 +176,39 @@ class OCR
         $url = self::GENERAL;
 
         return $this->image($url, $image);
+    }
+
+    /**
+     * 车牌 OCR.
+     *
+     * @param      $image
+     * @param bool $isUrl 图片是否为网络地址 url
+     *
+     * @return mixed
+     *
+     * @see https://ai.qq.com/doc/plateocr.shtml
+     */
+    public function plate($image, bool $isUrl = false)
+    {
+        $url = self::PLATE;
+
+        return $this->image($url, $image, $isUrl);
+    }
+
+    /**
+     * 手写体 OCR.
+     *
+     * @param      $image
+     * @param bool $isUrl 图片是否为网络地址 url
+     *
+     * @return mixed
+     *
+     * @see https://ai.qq.com/doc/handwritingocr.shtml
+     */
+    public function handwriting($image, bool $isUrl = false)
+    {
+        $url = self::HAND_WRITING;
+
+        return $this->image($url, $image, $isUrl);
     }
 }
