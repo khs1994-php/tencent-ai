@@ -23,17 +23,11 @@ class Request
      */
     private static $curl;
 
-    /**
-     * @param string $app_key
-     */
     public static function setAppKey(string $app_key): void
     {
         self::$app_key = $app_key;
     }
 
-    /**
-     * @param string $app_id
-     */
     public static function setAppId($app_id): void
     {
         self::$app_id = $app_id;
@@ -145,7 +139,7 @@ class Request
         self::checkReturn($array['ret']);
 
         if ('json' === $format) {
-            return json_encode($array);
+            return json_encode($array, JSON_UNESCAPED_UNICODE);
         } else {
             return $array;
         }

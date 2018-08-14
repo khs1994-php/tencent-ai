@@ -25,7 +25,7 @@ class TencentAI
 
     private static $tencentAI;
 
-    private function __construct($appId, string $appKey, bool $jsonFormat = false, int $timeout = 100)
+    private function __construct($appId, string $appKey, bool $jsonFormat = false, $timeout = 100)
     {
         Request::setAppId($appId);
         Request::setAppKey($appKey);
@@ -38,7 +38,7 @@ class TencentAI
             Request::setFormat('array');
         }
 
-        Request::setCurl(new Curl(), $timeout);
+        Request::setCurl(new Curl(), (int) $timeout);
     }
 
     private function __clone()
@@ -56,7 +56,7 @@ class TencentAI
      *
      * @return TencentAI
      */
-    public static function tencentAI($appId, string $appKey, bool $jsonFormat = false, int $timeout = 100)
+    public static function getInstance($appId, string $appKey, bool $jsonFormat = false, $timeout = 100)
     {
         if (!(self::$tencentAI instanceof self)) {
             self::$tencentAI = new self($appId, $appKey, $jsonFormat, $timeout);

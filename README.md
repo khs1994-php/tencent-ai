@@ -6,6 +6,8 @@
 
 - [Official Documents](https://ai.qq.com/doc/index.shtml)
 
+> 本项目为本人 PHP 练手项目，仅供参考！
+
 ## Require
 
 * **PHP 7.1+**
@@ -32,17 +34,15 @@ $ composer require khs1994/tencent-ai dev-master
 <?php
 require __DIR__.'/vendor/autoload.php';
 
-use TencentAI\{
-    TencentAI,
-    Error\TencentAIError
-};
+use TencentAI\TencentAI;
+use TencentAI\Error\TencentAIError;
 
 const APP_ID = 1106560031;
 const APP_KEY = 'ZbRY9cf72TbDO0xb';
 
 # you can set return format and request timeout
 
-$ai = TencentAI::tencentAI(APP_ID, APP_KEY, false, 10);
+$ai = TencentAI::getInstance(APP_ID, APP_KEY, false, 10);
 
 $image = __DIR__.'/path/name.jpg';
 
@@ -57,6 +57,54 @@ try {
 // default return array
 
 var_dump($output);
+```
+
+## Laravel
+
+```bash
+$ php artisan vendor:publish --tag=config
+```
+
+Then edit config in `config/tencent-ai.php`
+
+```php
+use TencentAI;
+
+$image = __DIR__.'/path/name.jpg';
+
+try {
+    // call by facade
+    $output = TencentAI::face()->detect($image);
+    
+    // call by helper function
+    // tencent_ai()->face()->detect($image);
+} catch (TencentAIError $e) {
+    $output = $e->getErrorAsArray();
+}
+
+// default return array
+
+var_dump($output);
+
+// use DI
+
+class AI
+{
+    public $tencent_ai;
+
+    public function __construct(\TencentAI\TencentAI $tencent_ai)
+    {
+        $this->tencent_ai=$tencent_ai;
+    }
+
+    public function demo()
+    {
+        $image = __DIR__.'/path/name.jpg';
+        
+        return $this->tencent_ai->face()->detect($image);
+    }
+}
+
 ```
 
 ## PHP CaaS

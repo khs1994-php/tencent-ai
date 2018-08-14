@@ -9,6 +9,9 @@ use TencentAI\TencentAI;
 
 class TencentAITestCase extends TestCase
 {
+    /**
+     * @var TencentAI
+     */
     private static $ai;
 
     public static function ai()
@@ -16,7 +19,7 @@ class TencentAITestCase extends TestCase
         if (!(self::$ai instanceof TencentAI)) {
             $app_id = 1106560031;
             $app_key = 'ZbRY9cf72TbDO0xb';
-            self::$ai = TencentAI::tencentAI($app_id, $app_key, false, 10);
+            self::$ai = TencentAI::getInstance($app_id, $app_key, false, 10);
         }
 
         return self::$ai;
