@@ -27,13 +27,17 @@ class ServiceProvider extends \Illuminate\Support\ServiceProvider
         // $this->loadTranslationsFrom(__DIR__.'/path/to/translations', 'courier');
 
         $this->app->singleton(TencentAI::class, function () {
+            $app_name = config('tencent-ai.default', 'default');
+
             return TencentAI::getInstance(
-                config('tencent-ai.appId'),
-                config('tencent-ai.appKey'),
-                config('tencent-ai.jsonFormat'),
-                config('tencent-ai.timeout')
+                config('tencent-ai.app.'.$app_name.'.app_id'),
+                config('tencent-ai.app.'.$app_name.'.app_key'),
+                config('tencent-ai.app.'.$app_name.'.json_format', false),
+                config('tencent-ai.app.'.$app_name.'.timeout', 100)
             );
         });
+
+        $this->app->alias(TencentAI::class, 'tencent-ai');
 
         //        $this->app->bind(TencentAI::class, function () {
         //            return Application::getInstance(

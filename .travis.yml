@@ -10,6 +10,7 @@ php:
 script:
   - composer self-update
   - composer install -q
+  - composer require illuminate/console
   # - composer update -q
   # - vendor/bin/phpunit --no-configuration --filter "/::testDeleteForce( .*)?$/" TencentAI\Tests\FaceTest $PWD/tests/TencentAI/FaceTest.php
   - vendor/bin/phpunit --coverage-clover=coverage.xml
