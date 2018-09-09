@@ -30,7 +30,7 @@ class AudioTest extends TencentAITestCase
     {
         $this->name = __FUNCTION__;
 
-        $voice = self::AUDIO.'/2.wav';
+        $voice = self::AUDIO.'2.wav';
         $this->array = $this->audio()->asr($voice, 2, 16000);
     }
 
@@ -43,7 +43,7 @@ class AudioTest extends TencentAITestCase
     {
         $this->name = __FUNCTION__;
 
-        $voice = self::AUDIO.'/2.wav';
+        $voice = self::AUDIO.'2.wav';
         $this->array = $this->audio()->asrs($voice, '1', 0, 2);
     }
 
@@ -56,7 +56,7 @@ class AudioTest extends TencentAITestCase
     {
         $this->name = __FUNCTION__;
 
-        $voice = self::AUDIO.'/2.wav';
+        $voice = self::AUDIO.'2.wav';
         $this->array = $this->audio()->wxasrs($voice, '1', 0, 2);
     }
 
@@ -71,7 +71,18 @@ class AudioTest extends TencentAITestCase
 
         $speech = self::AUDIO.'15s.wav';
 
-        $this->array = $this->audio()->wxasrlong($speech, 'http://118.72.91.54:8081/callback.php', 2);
+        $this->array = $this->audio()->wxasrlong($speech, 'http://www.baidu.com/callback.php', 2);
+    }
+
+    public function testDetectKeyword(): void
+    {
+        $this->name = __FUNCTION__;
+
+        $speech = self::AUDIO.'15s.wav';
+
+        $this->array = $this->audio()->detectKeyword($speech,
+            'http://www.baidu.com/callback.php',
+            ['竞争', '商业'], 2);
     }
 
     /**

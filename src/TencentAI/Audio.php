@@ -149,6 +149,36 @@ class Audio
     }
 
     /**
+     *  关键词检索 : 上传长音频，提供回调接口，异步获取识别结果.
+     *
+     * @param null|string $speech
+     * @param string      $callback_url
+     * @param array       $key_words
+     * @param int         $format
+     * @param string|null $speech_url
+     *
+     * @see https://ai.qq.com/doc/detectword.shtml
+     *
+     * @return array
+     */
+    public function detectKeyword(?string $speech,
+                                  string $callback_url,
+                                  array $key_words,
+                                  int $format = 2,
+                                  string $speech_url = null
+    ) {
+        $url = 'aai/aai_detectkeyword';
+
+        $speech = self::encode($speech);
+
+        $key_words = implode('|', $key_words);
+
+        $data = array_filter(compact('format', 'callback_url', 'key_words', 'speech', 'speech_url'));
+
+        return Request::exec($url, $data);
+    }
+
+    /**
      * 语音合成 AILab：将文字转换为语音，返回文字的语音数据.
      *
      * @param string $text    UTF-8 编码，非空且长度上限 150 字节

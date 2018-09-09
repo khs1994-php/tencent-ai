@@ -70,7 +70,8 @@ class TencentAI
                                        string $appKey,
                                        bool $jsonFormat = false,
                                        $timeout = 100,
-                                       $retry = 1, bool $debug = false)
+                                       $retry = 1,
+                                       bool $debug = false)
     {
         if (!(self::$tencentAI instanceof self)) {
             self::$tencentAI = new self($appId, $appKey, $jsonFormat, $timeout, $retry, $debug);
