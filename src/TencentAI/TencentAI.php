@@ -30,11 +30,13 @@ class TencentAI
                                  string $appKey,
                                  bool $jsonFormat = false,
                                  $timeout = 100,
-                                 $retry = 1)
+                                 $retry = 1,
+                                 bool $debug = false)
     {
         Request::setAppId($appId);
         Request::setAppKey($appKey);
         Request::setRetry($retry);
+        Request::$debug = $debug;
 
         // default format is array
 
@@ -60,6 +62,7 @@ class TencentAI
      * @param bool   $jsonFormat
      * @param int    $timeout
      * @param int    $retry
+     * @param bool   $debug
      *
      * @return TencentAI
      */
@@ -67,10 +70,10 @@ class TencentAI
                                        string $appKey,
                                        bool $jsonFormat = false,
                                        $timeout = 100,
-                                       $retry = 1)
+                                       $retry = 1, bool $debug = false)
     {
         if (!(self::$tencentAI instanceof self)) {
-            self::$tencentAI = new self($appId, $appKey, $jsonFormat, $timeout, $retry);
+            self::$tencentAI = new self($appId, $appKey, $jsonFormat, $timeout, $retry, $debug);
         }
 
         return self::$tencentAI;

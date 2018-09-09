@@ -20,6 +20,8 @@ class Request
 
     private static $retry;
 
+    public static $debug;
+
     /**
      * @var Curl
      */
@@ -153,6 +155,18 @@ class Request
         } catch (TencentAIError $e) {
             if (false === $retry) {
                 for ($i = $retry_settings; $i > 0; --$i) {
+                    self::$debug &&
+                    file_put_contents(
+                        sys_get_temp_dir().'/tencent_ai.log',
+                        json_encode([
+                            'url' => $url,
+                            'retry' => $i,
+                            'request_url' => $request_url,
+                            'message' => $e->getMessage(),
+                            'code' => $e->getCode(),
+                        ], JSON_UNESCAPED_UNICODE)."\n", FILE_APPEND
+                    );
+
                     try {
                         $result = self::exec($url, $arg, $charSetUTF8, true);
 

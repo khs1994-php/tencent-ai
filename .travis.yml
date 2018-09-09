@@ -16,6 +16,8 @@ script:
   - vendor/bin/phpunit --coverage-clover=coverage.xml
   # set env CODECOV_TOKEN=XXX
   - bash <(curl -s https://codecov.io/bash)
+  - php -r 'echo file_put_contents(sys_get_temp_dir()."/tencent_ai.log","test end",FILE_APPEND);'
+  - php -r 'echo file_get_contents(sys_get_temp_dir()."/tencent_ai.log");'
 branches:
   only:
     - master
