@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace TencentAI;
+namespace TencentAI\Kernel;
 
 use Curl\Curl;
 use TencentAI\Error\TencentAIError;
@@ -18,6 +18,8 @@ class Request
 
     private static $format;
 
+    private static $retry;
+
     /**
      * @var Curl
      */
@@ -31,6 +33,11 @@ class Request
     public static function setAppId($app_id): void
     {
         self::$app_id = $app_id;
+    }
+
+    public static function setRetry($retry): void
+    {
+        self::$retry = $retry;
     }
 
     /**
@@ -79,13 +86,18 @@ class Request
      * @param string $url
      * @param array  $arg
      * @param bool   $charSetUTF8
-     *
-     * @throws TencentAIError
+     * @param bool   $retry
      *
      * @return array
      */
-    public static function exec(string $url, array $arg, bool $charSetUTF8 = true)
+    public static function exec(string $url, array $arg, bool $charSetUTF8 = true, bool $retry = false)
     {
+        $retry_settings = 0;
+
+        if (!$retry) {
+            $retry_settings = self::$retry;
+        }
+
         if (PHP_OS === 'WINNT') {
             self::$curl->setOpt(CURLOPT_SSL_VERIFYPEER, false);
         }
@@ -112,11 +124,11 @@ class Request
 
         $data = $request_body."&sign=$sign";
 
-        $url = 'https://api.ai.qq.com/fcgi-bin/'.$url;
+        $request_url = 'https://api.ai.qq.com/fcgi-bin/'.$url;
 
         // 发起请求
         try {
-            $json = self::$curl->post($url, $data);
+            $json = self::$curl->post($request_url, $data);
         } catch (\Throwable $e) {
             throw new TencentAIError(20000 + $e->getCode(), $e->getMessage());
         }
@@ -130,13 +142,35 @@ class Request
 
         // 检查是否返回数组
 
-        if (!is_array($array)) {
+        if (!\is_array($array)) {
             self::returnStr($json);
         }
 
         // 检查返回值
 
-        self::checkReturn($array['ret']);
+        try {
+            self::checkReturn($array['ret']);
+        } catch (TencentAIError $e) {
+            if (false === $retry) {
+                for ($i = $retry_settings; $i > 0; --$i) {
+                    try {
+                        $result = self::exec($url, $arg, $charSetUTF8, true);
+
+                        return $result;
+                    } catch (TencentAIError $e) {
+                        if (1 === $i) {
+                            throw new TencentAIError($e->getCode());
+                        }
+
+                        continue;
+                    }
+                }
+
+                throw new TencentAIError($e->getCode());
+            } else {
+                throw new TencentAIError($e->getCode());
+            }
+        }
 
         if ('json' === $format) {
             return json_encode($array, JSON_UNESCAPED_UNICODE);

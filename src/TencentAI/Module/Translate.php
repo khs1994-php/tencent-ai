@@ -70,7 +70,7 @@ trait Translate
         if (!(array_key_exists($source, $text_array))) {
             throw new TencentAIError(90701);
         }
-        if (!(in_array($target, $text_array[$source], true))) {
+        if (!(\in_array($target, $text_array[$source], true))) {
             throw new TencentAIError(90702);
         }
     }
@@ -89,7 +89,7 @@ trait Translate
         if (!(array_key_exists($source, $image_array))) {
             throw new TencentAIError(90703);
         }
-        if (!(in_array($target, $image_array[$source], true))) {
+        if (!(\in_array($target, $image_array[$source], true))) {
             throw new TencentAIError(90704);
         }
     }
@@ -103,7 +103,7 @@ trait Translate
      */
     private function checkDetectType($language): void
     {
-        if (!(in_array($language, $this->detect_array, true))) {
+        if (!(\in_array($language, $this->detect_array, true))) {
             throw new TencentAIError(90705);
         }
     }

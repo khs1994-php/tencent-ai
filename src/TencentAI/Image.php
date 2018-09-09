@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace TencentAI;
 
 use TencentAI\Error\TencentAIError;
+use TencentAI\Kernel\Request;
 
 /**
  * Tencent AI 图像相关能力.
@@ -95,7 +96,7 @@ class Image
 
         $output = Request::exec($url, $data);
 
-        if (is_array($output)) {
+        if (\is_array($output)) {
             $format = false;
             $scene_list = $output['data']['scene_list'];
         } else {

@@ -21,8 +21,8 @@
     "ext-curl": "*",
     "ext-json": "*",
     "ext-mbstring": "*",
-    "khs1994/curl": "18.06.0",
-    "khs1994/is": "18.06.0"
+    "khs1994/curl": "~18.06.0",
+    "khs1994/is": "~18.06.0"
   },
   "require-dev": {
     "phpunit/phpunit": "^7.2"
@@ -32,7 +32,7 @@
       "TencentAI\\": "src/TencentAI/"
     },
     "files": [
-      "src/TencentAI/Support/helpers.php"
+      "src/TencentAI/Kernel/Support/helpers.php"
     ]
   },
   "autoload-dev": {

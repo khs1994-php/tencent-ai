@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace TencentAI;
 
 use TencentAI\Error\TencentAIError;
+use TencentAI\Kernel\Request;
 
 /**
  * Tencent AI OCR 能力.

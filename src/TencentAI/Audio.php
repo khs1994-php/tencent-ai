@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace TencentAI;
 
 use TencentAI\Error\TencentAIError;
+use TencentAI\Kernel\Request;
 
 /**
  * Tencent AI 语音识别能力.
@@ -62,7 +63,7 @@ class Audio
                          bool $end = true)
     {
         $speech_chunk = self::encode($speech_chunk);
-        $length = strlen($speech_chunk);
+        $length = \strlen($speech_chunk);
         $data = [
             'format' => $format,
             'rate' => $rate,
@@ -103,7 +104,7 @@ class Audio
                            bool $end = true)
     {
         $speech_chunk = self::encode($speech_chunk);
-        $length = strlen($speech_chunk);
+        $length = \strlen($speech_chunk);
         $url = 'aai/aai_wxasrs';
         $data = [
             'format' => $format,

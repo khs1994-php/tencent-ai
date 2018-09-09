@@ -6,7 +6,7 @@ namespace TencentAI\Module;
 
 use Is\Is;
 use TencentAI\Error\TencentAIError;
-use TencentAI\Request;
+use TencentAI\Kernel\Request;
 
 trait Image
 {

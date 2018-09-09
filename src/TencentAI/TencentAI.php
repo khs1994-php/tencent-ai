@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace TencentAI;
 
 use Curl\Curl;
+use TencentAI\Kernel\Request;
 
 /**
  * Class TencentAI.
@@ -25,10 +26,15 @@ class TencentAI
 
     private static $tencentAI;
 
-    private function __construct($appId, string $appKey, bool $jsonFormat = false, $timeout = 100)
+    private function __construct($appId,
+                                 string $appKey,
+                                 bool $jsonFormat = false,
+                                 $timeout = 100,
+                                 $retry = 1)
     {
         Request::setAppId($appId);
         Request::setAppKey($appKey);
+        Request::setRetry($retry);
 
         // default format is array
 
@@ -53,13 +59,18 @@ class TencentAI
      * @param string $appKey
      * @param bool   $jsonFormat
      * @param int    $timeout
+     * @param int    $retry
      *
      * @return TencentAI
      */
-    public static function getInstance($appId, string $appKey, bool $jsonFormat = false, $timeout = 100)
+    public static function getInstance($appId,
+                                       string $appKey,
+                                       bool $jsonFormat = false,
+                                       $timeout = 100,
+                                       $retry = 1)
     {
         if (!(self::$tencentAI instanceof self)) {
-            self::$tencentAI = new self($appId, $appKey, $jsonFormat, $timeout);
+            self::$tencentAI = new self($appId, $appKey, $jsonFormat, $timeout, $retry);
         }
 
         return self::$tencentAI;

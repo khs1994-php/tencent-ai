@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace TencentAI;
 
 use TencentAI\Error\TencentAIError;
+use TencentAI\Kernel\Request;
 
 /**
  * Tencent AI 人脸相关能力.
@@ -110,7 +111,7 @@ class Face
      */
     public function compare(array $images)
     {
-        if (2 !== count($images)) {
+        if (2 !== \count($images)) {
             throw new TencentAIError(90200);
         }
         $data = [
