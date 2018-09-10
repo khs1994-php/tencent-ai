@@ -1,0 +1,722 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="robots" content="index, follow, all" />
+    <title>TencentAI\Audio | API</title>
+
+            <link rel="stylesheet" type="text/css" href="../css/bootstrap.min.css">
+        <link rel="stylesheet" type="text/css" href="../css/bootstrap-theme.min.css">
+        <link rel="stylesheet" type="text/css" href="../css/sami.css">
+        <script src="../js/jquery-1.11.1.min.js"></script>
+        <script src="../js/bootstrap.min.js"></script>
+        <script src="../js/typeahead.min.js"></script>
+        <script src="../sami.js"></script>
+        <meta name="MobileOptimized" content="width">
+        <meta name="HandheldFriendly" content="true">
+        <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
+    
+    
+    </head>
+
+    <body id="class" data-name="class:TencentAI_Audio" data-root-path="../">
+            <div id="content">
+        <div id="left-column">
+                <div id="control-panel">
+                <script>
+            $('option[data-version="'+window.projectVersion+'"]').prop('selected', true);
+        </script>
+        <form id="search-form" action="../search.html" method="GET">
+            <span class="glyphicon glyphicon-search"></span>
+            <input name="search"
+                   class="typeahead form-control"
+                   type="search"
+                   placeholder="Search">
+        </form>
+    </div>
+
+                <div id="api-tree"></div>
+
+        </div>
+        <div id="right-column">
+                <nav id="site-nav" class="navbar navbar-default" role="navigation">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-elements">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="../index.html">API</a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar-elements">
+                <ul class="nav navbar-nav">
+                    <li><a href="../classes.html">Classes</a></li>
+                                            <li><a href="../namespaces.html">Namespaces</a></li>
+                                        <li><a href="../interfaces.html">Interfaces</a></li>
+                    <li><a href="../traits.html">Traits</a></li>
+                    <li><a href="../doc-index.html">Index</a></li>
+                    <li><a href="../search.html">Search</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+                        <div class="namespace-breadcrumbs">
+            <ol class="breadcrumb">
+                <li><span class="label label-default">class</span></li>
+                        <li><a href="../TencentAI.html">TencentAI</a></li><li class="backslash">\</li><li>Audio</li>
+            </ol>
+        </div>
+                <div id="page-content">
+                
+    <div class="page-header">
+        <h1>
+            Audio
+                
+        </h1>
+    </div>
+
+    <p>    class
+    <strong>Audio</strong>
+</p>
+
+        
+    
+
+            <div class="description">
+            <p>Tencent AI 语音识别能力.</p>                                </div>
+    
+            <h2>Traits</h2>
+
+        
+    <div class="container-fluid underlined">
+                    <div class="row">
+                <div class="col-md-6">
+                                            <abbr title="TencentAI\Module\Audio">Audio</abbr>
+                                            
+                </div>
+                <div class="col-md-6">
+                    
+                </div>
+            </div>
+            </div>
+    
+    
+    
+            <h2>Methods</h2>
+
+            <div class="container-fluid underlined">
+                    <div class="row">
+                <div class="col-md-2 type">
+                    array
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_asr">asr</a>(string $speech, int $format = 1, int $rate = 8000)
+        
+                                            <p>语音识别 echo 版：提供在线识别语音的能力，对整段音频进行识别，识别完成后，将返回语音的文字内容.</p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    array
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_asrs">asrs</a>(string $speech_chunk, string $speech_id, int $seq = 0, int $format = 1, int $rate = 16000, bool $end = true)
+        
+                                            <p>语音识别 流式版 AILab：提供流式识别语音的能力，可以轻松实现边录音边识别.</p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    array
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_wxasrs">wxasrs</a>(string $speech_chunk, string $speech_id, int $seq = 0, int $format = 1, int $rate = 16000, int $bits = 16, bool $cont_res = true, bool $end = true)
+        
+                                            <p>语音识别 流式版 WeChatAI：提供流式识别语音的能力，可以轻松实现边录音边识别.</p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    array
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_wxasrlong">wxasrlong</a>(string|null $speech, string $callback_url, int $format = 3, string $speech_url = null)
+        
+                                            <p>长语音识别：上传长音频，提供回调接口，异步获取识别结果.</p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    array
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_detectKeyword">detectKeyword</a>(string|null $speech, string $callback_url, array $key_words, int $format = 2, string $speech_url = null)
+        
+                                            <p>关键词检索 : 上传长音频，提供回调接口，异步获取识别结果.</p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    array
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_tts">tts</a>(string $text, int $speaker = 1, int $format = 3, int $volume = 0, int $speed = 100, int $aht = 0, int $apc = 58)
+        
+                                            <p>语音合成 AILab：将文字转换为语音，返回文字的语音数据.</p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    array
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_tta">tta</a>(string $text, int $model = 0, int $speed = -2)
+        
+                                            <p>语音合成 优图：将文字转换为语音，返回文字的语音数据.</p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+            </div>
+
+
+        <h2>Details</h2>
+
+            <div id="method-details">
+                    <div class="method-item">
+                    <h3 id="method_asr">
+        <div class="location">at         line 30</div>
+        <code>                    array
+    <strong>asr</strong>(string $speech, int $format = 1, int $rate = 8000)
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>语音识别 echo 版：提供在线识别语音的能力，对整段音频进行识别，识别完成后，将返回语音的文字内容.</p>                                                </div>
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$speech</td>
+                <td>待识别语音（时长上限 30s）语音数据的 Base64 编码，非空且长度上限 8MB</td>
+            </tr>
+                    <tr>
+                <td>int</td>
+                <td>$format</td>
+                <td>语音压缩格式编码，定义见下文描述 pcm-1 wav-2 amr-3 silk-4</td>
+            </tr>
+                    <tr>
+                <td>int</td>
+                <td>$rate</td>
+                <td>语音采样率编码，默认 16KHz，可选 8000 16000</td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>array</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+                            <h4>Exceptions</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><abbr title="TencentAI\Error\TencentAIError">TencentAIError</abbr></td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>See also</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>
+                                            <a href="https://ai.qq.com/doc/aaiasr.shtml">https://ai.qq.com/doc/aaiasr.shtml</a>
+                                    </td>
+                <td></td>
+            </tr>
+            </table>
+
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_asrs">
+        <div class="location">at         line 58</div>
+        <code>                    array
+    <strong>asrs</strong>(string $speech_chunk, string $speech_id, int $seq = 0, int $format = 1, int $rate = 16000, bool $end = true)
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>语音识别 流式版 AILab：提供流式识别语音的能力，可以轻松实现边录音边识别.</p>                                                </div>
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$speech_chunk</td>
+                <td>语音数据</td>
+            </tr>
+                    <tr>
+                <td>string</td>
+                <td>$speech_id</td>
+                <td>语音唯一标识（同一应用内）</td>
+            </tr>
+                    <tr>
+                <td>int</td>
+                <td>$seq</td>
+                <td>语音分片所在语音流的偏移量，单位：字节。上一个分片的 seq + 上一个分片的 length</td>
+            </tr>
+                    <tr>
+                <td>int</td>
+                <td>$format</td>
+                <td>音频压缩格式编码 pcm-1 wav-2 amr-3 silk-4</td>
+            </tr>
+                    <tr>
+                <td>int</td>
+                <td>$rate</td>
+                <td>音频采样率编码，默认 16000。8000 16000</td>
+            </tr>
+                    <tr>
+                <td>bool</td>
+                <td>$end</td>
+                <td>是否结束分片标识 默认 true</td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>array</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+                            <h4>Exceptions</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><abbr title="TencentAI\Error\TencentAIError">TencentAIError</abbr></td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_wxasrs">
+        <div class="location">at         line 97</div>
+        <code>                    array
+    <strong>wxasrs</strong>(string $speech_chunk, string $speech_id, int $seq = 0, int $format = 1, int $rate = 16000, int $bits = 16, bool $cont_res = true, bool $end = true)
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>语音识别 流式版 WeChatAI：提供流式识别语音的能力，可以轻松实现边录音边识别.</p>                                                </div>
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$speech_chunk</td>
+                <td>语音数据</td>
+            </tr>
+                    <tr>
+                <td>string</td>
+                <td>$speech_id</td>
+                <td>语音唯一标识（同一应用内）</td>
+            </tr>
+                    <tr>
+                <td>int</td>
+                <td>$seq</td>
+                <td>语音分片所在语音流的偏移量，单位：字节。上一个分片的 seq + 上一个分片的 length</td>
+            </tr>
+                    <tr>
+                <td>int</td>
+                <td>$format</td>
+                <td>音频压缩格式编码 pcm-1 wav-2 amr-3 silk-4 speex-5</td>
+            </tr>
+                    <tr>
+                <td>int</td>
+                <td>$rate</td>
+                <td>音频采样率编码，默认 16000</td>
+            </tr>
+                    <tr>
+                <td>int</td>
+                <td>$bits</td>
+                <td>音频采样位数，默认 16 位</td>
+            </tr>
+                    <tr>
+                <td>bool</td>
+                <td>$cont_res</td>
+                <td>是否获取中间识别结果 默认 true</td>
+            </tr>
+                    <tr>
+                <td>bool</td>
+                <td>$end</td>
+                <td>是否结束分片标识 默认 true</td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>array</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+                            <h4>Exceptions</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><abbr title="TencentAI\Error\TencentAIError">TencentAIError</abbr></td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_wxasrlong">
+        <div class="location">at         line 138</div>
+        <code>                    array
+    <strong>wxasrlong</strong>(string|null $speech, string $callback_url, int $format = 3, string $speech_url = null)
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>长语音识别：上传长音频，提供回调接口，异步获取识别结果.</p>                                                </div>
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string|null</td>
+                <td>$speech</td>
+                <td>语音数据的 Base64 编码，原始音频大小上限 5MB</td>
+            </tr>
+                    <tr>
+                <td>string</td>
+                <td>$callback_url</td>
+                <td>用户回调 url，需用户提供，用于平台向用户通知识别结果</td>
+            </tr>
+                    <tr>
+                <td>int</td>
+                <td>$format</td>
+                <td>语音压缩格式编码 pcm-1 wav-2 amr-3 silk-4</td>
+            </tr>
+                    <tr>
+                <td>string</td>
+                <td>$speech_url</td>
+                <td>待识别语音下载地址</td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>array</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+                            <h4>Exceptions</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><abbr title="TencentAI\Error\TencentAIError">TencentAIError</abbr></td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>See also</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>
+                                            <a href="https://ai.qq.com/doc/wxasrlong.shtml">https://ai.qq.com/doc/wxasrlong.shtml</a>
+                                    </td>
+                <td></td>
+            </tr>
+            </table>
+
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_detectKeyword">
+        <div class="location">at         line 164</div>
+        <code>                    array
+    <strong>detectKeyword</strong>(string|null $speech, string $callback_url, array $key_words, int $format = 2, string $speech_url = null)
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>关键词检索 : 上传长音频，提供回调接口，异步获取识别结果.</p>                                                </div>
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string|null</td>
+                <td>$speech</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>string</td>
+                <td>$callback_url</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>array</td>
+                <td>$key_words</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>int</td>
+                <td>$format</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>string</td>
+                <td>$speech_url</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>array</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+                            <h4>See also</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>
+                                            <a href="https://ai.qq.com/doc/detectword.shtml">https://ai.qq.com/doc/detectword.shtml</a>
+                                    </td>
+                <td></td>
+            </tr>
+            </table>
+
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_tts">
+        <div class="location">at         line 198</div>
+        <code>                    array
+    <strong>tts</strong>(string $text, int $speaker = 1, int $format = 3, int $volume = 0, int $speed = 100, int $aht = 0, int $apc = 58)
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>语音合成 AILab：将文字转换为语音，返回文字的语音数据.</p>                                                </div>
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$text</td>
+                <td>UTF-8 编码，非空且长度上限 150 字节</td>
+            </tr>
+                    <tr>
+                <td>int</td>
+                <td>$speaker</td>
+                <td>语音发音人编码 男普-1 女静琪-5 女欢馨-6 女碧萱-7</td>
+            </tr>
+                    <tr>
+                <td>int</td>
+                <td>$format</td>
+                <td>合成语音格式 pcm-1 wav-2 mp3-3</td>
+            </tr>
+                    <tr>
+                <td>int</td>
+                <td>$volume</td>
+                <td>合成语音音量 [-10,10]</td>
+            </tr>
+                    <tr>
+                <td>int</td>
+                <td>$speed</td>
+                <td>合成语音语速，默认 100</td>
+            </tr>
+                    <tr>
+                <td>int</td>
+                <td>$aht</td>
+                <td>合成语音降低/升高半音个数，即改变音高，默认 0</td>
+            </tr>
+                    <tr>
+                <td>int</td>
+                <td>$apc</td>
+                <td>控制频谱翘曲的程度，改变说话人的音色，默认 58</td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>array</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+                            <h4>Exceptions</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><abbr title="TencentAI\Error\TencentAIError">TencentAIError</abbr></td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>See also</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>
+                                            <a href="https://ai.qq.com/doc/aaitts.shtml">https://ai.qq.com/doc/aaitts.shtml</a>
+                                    </td>
+                <td></td>
+            </tr>
+            </table>
+
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_tta">
+        <div class="location">at         line 231</div>
+        <code>                    array
+    <strong>tta</strong>(string $text, int $model = 0, int $speed = -2)
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>语音合成 优图：将文字转换为语音，返回文字的语音数据.</p>                                                </div>
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$text</td>
+                <td>utf8 格式，最大 300 字节</td>
+            </tr>
+                    <tr>
+                <td>int</td>
+                <td>$model</td>
+                <td>发音模型 女-0 女英-1 男-2 喜道公子-6</td>
+            </tr>
+                    <tr>
+                <td>int</td>
+                <td>$speed</td>
+                <td>语速，默认为 0 , 0.6x -2 , 0.8x -1 , 1.2x 1 , 1.5x 2</td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>array</td>
+            <td>返回 MP3 格式</td>
+        </tr>
+    </table>
+
+            
+                            <h4>Exceptions</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><abbr title="TencentAI\Error\TencentAIError">TencentAIError</abbr></td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                    </div>
+    </div>
+
+            </div>
+            </div>
+
+    
+            </div>
+                <div id="footer">
+        Generated by <a href="http://sami.sensiolabs.org/">Sami, the API Documentation Generator</a>.
+    </div>
+
+        </div>
+    </div>
+    </body>
+
+</html>
