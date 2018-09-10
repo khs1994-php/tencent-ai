@@ -41,7 +41,7 @@ class FaceTest extends TencentAITestCase
 
     /**
      * @throws TencentAIError
-     * @group  DON'TTEST
+     * @group  dont-test
      */
     public function testDeleteForce(): void
     {

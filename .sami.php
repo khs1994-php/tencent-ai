@@ -3,8 +3,8 @@
 /**
  * @see https://github.com/FriendsOfPHP/Sami
  *
- *  $ curl -fsSL http://get.sensiolabs.org/sami.phar /usr/local/bin/sami
- *  $ chmod +x /usr/local/bin/sami
+ *  $ sudo curl -fsSL http://get.sensiolabs.org/sami.phar -o /usr/local/bin/sami
+ *  $ sudo chmod +x /usr/local/bin/sami
  *
  *  $ sami update .sami.php
  *  $ cd build ; php -S 0.0.0.0:8080

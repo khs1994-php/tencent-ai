@@ -23,8 +23,6 @@ $ composer require khs1994/tencent-ai
 For latest commit version:
 
 ```bash
-$ composer config minimum-stability dev
-
 $ composer require khs1994/tencent-ai dev-master
 ```
 
@@ -110,21 +108,3 @@ class AI
 ## PHP CaaS
 
 **Powered By [khs1994-docker/lnmp](https://github.com/khs1994-docker/lnmp)**
-
-## CI/CD
-
-* [Drone](https://www.khs1994.com/categories/CI/Drone/)
-
-* [Travis CI](https://travis-ci.org/khs1994-php/tencent-ai)
-
-* [Style CI](https://styleci.io/repos/115306597)
-
-* [Aliyun CodePipeline](https://www.aliyun.com/product/codepipeline)
-
-* [Tencent Cloud Continuous Integration](https://cloud.tencent.com/product/cci)
-
-* [Docker Build Powered By Tencent Cloud Container Service](https://cloud.tencent.com/product/ccs)
-
-* [Docker Build Powered By Docker Cloud](https://cloud.docker.com)
-
-* [Docker Build Powered By Aliyun Container Service](https://www.aliyun.com/product/containerservice)

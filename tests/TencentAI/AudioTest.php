@@ -24,13 +24,15 @@ class AudioTest extends TencentAITestCase
     /**
      * 语音识别.
      *
+     * @group dont-test
+     *
      * @throws TencentAIError
      */
     public function testAsr(): void
     {
         $this->name = __FUNCTION__;
 
-        $voice = self::AUDIO.'2.wav';
+        $voice = self::AUDIO.'1.wav';
         $this->array = $this->audio()->asr($voice, 2, 16000);
     }
 
