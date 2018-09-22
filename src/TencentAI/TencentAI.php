@@ -12,13 +12,33 @@ use TencentAI\Kernel\Request;
  *
  * @version v18.06.07
  *
- * @method Audio                     audio()
- * @method Face                      face()
- * @method Image                     image()
+ * @method Audio audio()
+ *
+ * @property Audio                   audio
+ *
+ * @method Face face()
+ *
+ * @property Face                    face
+ *
+ * @method Image image()
+ *
+ * @property Image                   image
+ *
  * @method NaturalLanguageProcessing nlp()
- * @method OCR                       ocr()
- * @method Photo                     photo()
- * @method Translate                 translate()
+ *
+ * @property NaturalLanguageProcessing nlp
+ *
+ * @method OCR ocr()
+ *
+ * @property OCR                     ocr
+ *
+ * @method Photo photo()
+ *
+ * @property Photo                   photo
+ *
+ * @method Translate translate()
+ *
+ * @property Translate               translate
  */
 class TencentAI
 {
@@ -97,6 +117,11 @@ class TencentAI
         }
 
         return new $service();
+    }
+
+    public function __get($name)
+    {
+        return $this->$name();
     }
 
     /**

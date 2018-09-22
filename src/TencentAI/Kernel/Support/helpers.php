@@ -7,9 +7,12 @@ if (!class_exists(\Illuminate\Support\Facades\Facade::class)) {
 }
 
 if (!(function_exists('tencent_ai'))) {
+    /**
+     * @return TencentAI\TencentAI
+     */
     function tencent_ai()
     {
-        return app('tencent-ai');
+        return app(TencentAI\TencentAI::class);
     }
 }
 
