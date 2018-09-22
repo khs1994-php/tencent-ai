@@ -173,7 +173,7 @@
                     array
                 </div>
                 <div class="col-md-8 type">
-                    <a href="#method_tta">tta</a>(string $text, int $model_type = 0, int $speed = -2)
+                    <a href="#method_tta">tta</a>(string $text, int $model = 0, int $speed = -2)
         
                                             <p>语音合成 优图：将文字转换为语音，返回文字的语音数据.</p>                </div>
                 <div class="col-md-2"></div>
@@ -233,7 +233,7 @@
 
                     <table class="table table-condensed">
                     <tr>
-                <td><a href="../TencentAI/Exception/TencentAIException.html"><abbr title="TencentAI\Exception\TencentAIException">TencentAIException</abbr></a></td>
+                <td><abbr title="TencentAI\Error\TencentAIError">TencentAIError</abbr></td>
                 <td></td>
             </tr>
             </table>
@@ -256,7 +256,7 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_asrs">
-        <div class="location">at         line 53</div>
+        <div class="location">at         line 58</div>
         <code>                    array
     <strong>asrs</strong>(string $speech_chunk, string $speech_id, int $seq = 0, int $format = 1, int $rate = 16000, bool $end = true)
         </code>
@@ -318,7 +318,7 @@
 
                     <table class="table table-condensed">
                     <tr>
-                <td><a href="../TencentAI/Exception/TencentAIException.html"><abbr title="TencentAI\Exception\TencentAIException">TencentAIException</abbr></a></td>
+                <td><abbr title="TencentAI\Error\TencentAIError">TencentAIError</abbr></td>
                 <td></td>
             </tr>
             </table>
@@ -330,7 +330,7 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_wxasrs">
-        <div class="location">at         line 85</div>
+        <div class="location">at         line 97</div>
         <code>                    array
     <strong>wxasrs</strong>(string $speech_chunk, string $speech_id, int $seq = 0, int $format = 1, int $rate = 16000, int $bits = 16, bool $cont_res = true, bool $end = true)
         </code>
@@ -402,7 +402,7 @@
 
                     <table class="table table-condensed">
                     <tr>
-                <td><a href="../TencentAI/Exception/TencentAIException.html"><abbr title="TencentAI\Exception\TencentAIException">TencentAIException</abbr></a></td>
+                <td><abbr title="TencentAI\Error\TencentAIError">TencentAIError</abbr></td>
                 <td></td>
             </tr>
             </table>
@@ -414,7 +414,7 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_wxasrlong">
-        <div class="location">at         line 119</div>
+        <div class="location">at         line 138</div>
         <code>                    array
     <strong>wxasrlong</strong>(string|null $speech, string $callback_url, int $format = 3, string $speech_url = null)
         </code>
@@ -466,7 +466,7 @@
 
                     <table class="table table-condensed">
                     <tr>
-                <td><a href="../TencentAI/Exception/TencentAIException.html"><abbr title="TencentAI\Exception\TencentAIException">TencentAIException</abbr></a></td>
+                <td><abbr title="TencentAI\Error\TencentAIError">TencentAIError</abbr></td>
                 <td></td>
             </tr>
             </table>
@@ -489,7 +489,7 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_detectKeyword">
-        <div class="location">at         line 139</div>
+        <div class="location">at         line 164</div>
         <code>                    array
     <strong>detectKeyword</strong>(string|null $speech, string $callback_url, array $key_words, int $format = 2, string $speech_url = null)
         </code>
@@ -560,7 +560,7 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_tts">
-        <div class="location">at         line 169</div>
+        <div class="location">at         line 198</div>
         <code>                    array
     <strong>tts</strong>(string $text, int $speaker = 1, int $format = 3, int $volume = 0, int $speed = 100, int $aht = 0, int $apc = 58)
         </code>
@@ -627,7 +627,7 @@
 
                     <table class="table table-condensed">
                     <tr>
-                <td><a href="../TencentAI/Exception/TencentAIException.html"><abbr title="TencentAI\Exception\TencentAIException">TencentAIException</abbr></a></td>
+                <td><abbr title="TencentAI\Error\TencentAIError">TencentAIError</abbr></td>
                 <td></td>
             </tr>
             </table>
@@ -650,9 +650,9 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_tta">
-        <div class="location">at         line 191</div>
+        <div class="location">at         line 231</div>
         <code>                    array
-    <strong>tta</strong>(string $text, int $model_type = 0, int $speed = -2)
+    <strong>tta</strong>(string $text, int $model = 0, int $speed = -2)
         </code>
     </h3>
     <div class="details">
@@ -672,7 +672,7 @@
             </tr>
                     <tr>
                 <td>int</td>
-                <td>$model_type</td>
+                <td>$model</td>
                 <td>发音模型 女-0 女英-1 男-2 喜道公子-6</td>
             </tr>
                     <tr>
@@ -697,7 +697,7 @@
 
                     <table class="table table-condensed">
                     <tr>
-                <td><a href="../TencentAI/Exception/TencentAIException.html"><abbr title="TencentAI\Exception\TencentAIException">TencentAIException</abbr></a></td>
+                <td><abbr title="TencentAI\Error\TencentAIError">TencentAIError</abbr></td>
                 <td></td>
             </tr>
             </table>
