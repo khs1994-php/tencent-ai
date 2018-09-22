@@ -41,13 +41,10 @@
     }
   },
   "config": {
-    "platform": {
-      "php": "7.1.0"
-    },
     "optimize-autoloader": true,
     "sort-packages": true
   },
-  "minimum-stability": "stable",
+  "minimum-stability": "dev",
   "prefer-stable": true,
   "extra": {
     "branch-alias": {
@@ -55,10 +52,10 @@
     },
     "laravel": {
       "providers": [
-        "TencentAI\\ServiceProvider"
+        "TencentAI\\Kernel\\ServiceProvider"
       ],
       "aliases": {
-        "TencentAI": "TencentAI\\Facade"
+        "TencentAI": "TencentAI\\Kernel\\Facade"
       }
     }
   }

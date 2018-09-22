@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace TencentAI;
 
-use TencentAI\Error\TencentAIError;
+use TencentAI\Exception\TencentAIException;
 use TencentAI\Kernel\Request;
 
 /**
@@ -39,7 +39,7 @@ class OCR
      * @param string|\SplFileInfo $image 支持 JPG、PNG、BMP 格式
      * @param bool                $front 正面为 true
      *
-     * @throws TencentAIError
+     * @throws TencentAIException
      *
      * @return array
      *
@@ -47,13 +47,11 @@ class OCR
      */
     public function idCard($image, bool $front = true)
     {
-        $data = [
-            'image' => self::encode($image),
-            'card_type' => (int) !$front,
-        ];
-        $url = self::ID_CARD;
+        $image = self::encode($image);
 
-        return Request::exec($url, $data);
+        $card_type = (int) !$front;
+
+        return Request::exec(self::ID_CARD, compact('image', 'card_type'));
     }
 
     /**
@@ -61,7 +59,7 @@ class OCR
      *
      * @param mixed $image 支持 JPG、PNG、BMP 格式
      *
-     * @throws TencentAIError
+     * @throws TencentAIException
      *
      * @return mixed
      *
@@ -69,9 +67,7 @@ class OCR
      */
     public function businessCard($image)
     {
-        $url = self::BUSINESS_CARD;
-
-        return $this->image($url, $image);
+        return $this->image(self::BUSINESS_CARD, $image);
     }
 
     /**
@@ -80,7 +76,7 @@ class OCR
      * @param mixed $image 支持 JPG PNG BMP 格式
      * @param int   $type  识别类型，0-行驶证识别，1-驾驶证识别
      *
-     * @throws TencentAIError
+     * @throws TencentAIException
      *
      * @return array
      *
@@ -88,13 +84,9 @@ class OCR
      */
     private function driver($image, int $type = 0)
     {
-        $data = [
-            'image' => self::encode($image),
-            'type' => $type,
-        ];
-        $url = self::DRIVE;
+        $image = self::encode($image);
 
-        return Request::exec($url, $data);
+        return Request::exec(self::DRIVE, compact('type', 'image'));
     }
 
     /**
@@ -102,7 +94,7 @@ class OCR
      *
      * @param mixed $image 支持 JPG PNG BMP 格式
      *
-     * @throws TencentAIError
+     * @throws TencentAIException
      *
      * @return array
      */
@@ -116,7 +108,7 @@ class OCR
      *
      * @param mixed $image 支持 JPG PNG BMP 格式
      *
-     * @throws TencentAIError
+     * @throws TencentAIException
      *
      * @return array
      */
@@ -130,7 +122,7 @@ class OCR
      *
      * @param mixed $image 支持 JPG PNG BMP 格式
      *
-     * @throws TencentAIError
+     * @throws TencentAIException
      *
      * @return mixed
      *
@@ -138,9 +130,7 @@ class OCR
      */
     public function bizLicense($image)
     {
-        $url = self::BIZ;
-
-        return $this->image($url, $image);
+        return $this->image(self::BIZ, $image);
     }
 
     /**
@@ -148,7 +138,7 @@ class OCR
      *
      * @param mixed $image 支持 JPG PNG BMP 格式
      *
-     * @throws TencentAIError
+     * @throws TencentAIException
      *
      * @return mixed
      *
@@ -156,9 +146,7 @@ class OCR
      */
     public function creditCard($image)
     {
-        $url = self::CREDIT_CARD;
-
-        return $this->image($url, $image);
+        return $this->image(self::CREDIT_CARD, $image);
     }
 
     /**
@@ -166,7 +154,7 @@ class OCR
      *
      * @param mixed $image 支持 JPG PNG BMP 格式
      *
-     * @throws TencentAIError
+     * @throws TencentAIException
      *
      * @return mixed
      *
@@ -174,9 +162,7 @@ class OCR
      */
     public function general($image)
     {
-        $url = self::GENERAL;
-
-        return $this->image($url, $image);
+        return $this->image(self::GENERAL, $image);
     }
 
     /**
@@ -191,9 +177,7 @@ class OCR
      */
     public function plate($image, bool $isUrl = false)
     {
-        $url = self::PLATE;
-
-        return $this->image($url, $image, $isUrl);
+        return $this->image(self::PLATE, $image, $isUrl);
     }
 
     /**
@@ -208,8 +192,6 @@ class OCR
      */
     public function handwriting($image, bool $isUrl = false)
     {
-        $url = self::HAND_WRITING;
-
-        return $this->image($url, $image, $isUrl);
+        return $this->image(self::HAND_WRITING, $image, $isUrl);
     }
 }

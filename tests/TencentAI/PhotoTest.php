@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace TencentAI\Tests;
 
-use TencentAI\Error\TencentAIError;
+use TencentAI\Exception\TencentAIException;
 
 class PhotoTest extends TencentAITestCase
 {
@@ -24,7 +24,7 @@ class PhotoTest extends TencentAITestCase
     /**
      * 人脸美妆.
      *
-     * @throws TencentAIError
+     * @throws TencentAIException
      */
     public function testCosmetic(): void
     {
@@ -35,7 +35,7 @@ class PhotoTest extends TencentAITestCase
     /**
      * 人脸变妆.
      *
-     * @throws TencentAIError
+     * @throws TencentAIException
      */
     public function testDecoration(): void
     {
@@ -47,7 +47,7 @@ class PhotoTest extends TencentAITestCase
     /**
      * 滤镜 天天 P 图.
      *
-     * @throws TencentAIError
+     * @throws TencentAIException
      */
     public function testFilter(): void
     {
@@ -59,7 +59,7 @@ class PhotoTest extends TencentAITestCase
     /**
      * 滤镜 AILAB.
      *
-     * @throws TencentAIError
+     * @throws TencentAIException
      */
     public function testAiLabFilter(): void
     {
@@ -71,7 +71,7 @@ class PhotoTest extends TencentAITestCase
     /**
      * 人脸融合.
      *
-     * @throws TencentAIError
+     * @throws TencentAIException
      */
     public function testMerge(): void
     {
@@ -83,7 +83,7 @@ class PhotoTest extends TencentAITestCase
     /**
      * 大头贴.
      *
-     * @throws TencentAIError
+     * @throws TencentAIException
      */
     public function testSticker(): void
     {
@@ -95,7 +95,7 @@ class PhotoTest extends TencentAITestCase
     /**
      * 颜龄检测.
      *
-     * @throws TencentAIError
+     * @throws TencentAIException
      */
     public function testAge(): void
     {

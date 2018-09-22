@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace TencentAI\Module;
 
-use TencentAI\Error\TencentAIError;
+use TencentAI\Exception\TencentAIException;
 
 trait Translate
 {
@@ -47,12 +47,12 @@ trait Translate
     /**
      * @param int $type
      *
-     * @throws TencentAIError
+     * @throws TencentAIException
      */
     private function checkAILabTextType(int $type): void
     {
         if ($type > 16 or $type < 0) {
-            throw new TencentAIError(90700);
+            throw new TencentAIException(90700);
         }
     }
 
@@ -62,16 +62,16 @@ trait Translate
      * @param $source
      * @param $target
      *
-     * @throws TencentAIError
+     * @throws TencentAIException
      */
     private function checkTextTarget($source, $target): void
     {
         $text_array = $this->text_array;
         if (!(array_key_exists($source, $text_array))) {
-            throw new TencentAIError(90701);
+            throw new TencentAIException(90701);
         }
         if (!(\in_array($target, $text_array[$source], true))) {
-            throw new TencentAIError(90702);
+            throw new TencentAIException(90702);
         }
     }
 
@@ -81,16 +81,16 @@ trait Translate
      * @param $source
      * @param $target
      *
-     * @throws TencentAIError
+     * @throws TencentAIException
      */
     private function checkImageTarget($source, $target): void
     {
         $image_array = $this->image_array;
         if (!(array_key_exists($source, $image_array))) {
-            throw new TencentAIError(90703);
+            throw new TencentAIException(90703);
         }
         if (!(\in_array($target, $image_array[$source], true))) {
-            throw new TencentAIError(90704);
+            throw new TencentAIException(90704);
         }
     }
 
@@ -99,12 +99,12 @@ trait Translate
      *
      * @param $language
      *
-     * @throws TencentAIError
+     * @throws TencentAIException
      */
     private function checkDetectType($language): void
     {
         if (!(\in_array($language, $this->detect_array, true))) {
-            throw new TencentAIError(90705);
+            throw new TencentAIException(90705);
         }
     }
 }

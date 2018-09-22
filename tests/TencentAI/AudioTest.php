@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace TencentAI\Tests;
 
-use TencentAI\Error\TencentAIError;
+use TencentAI\Exception\TencentAIException;
 
 class AudioTest extends TencentAITestCase
 {
@@ -24,9 +24,7 @@ class AudioTest extends TencentAITestCase
     /**
      * 语音识别.
      *
-     * @group dont-test
-     *
-     * @throws TencentAIError
+     * @throws TencentAIException
      */
     public function testAsr(): void
     {
@@ -39,7 +37,7 @@ class AudioTest extends TencentAITestCase
     /**
      * 语音识别 流式版 AILAB.
      *
-     * @throws TencentAIError
+     * @throws TencentAIException
      */
     public function testasrs(): void
     {
@@ -52,7 +50,7 @@ class AudioTest extends TencentAITestCase
     /**
      * 语音识别 流式版 微信
      *
-     * @throws TencentAIError
+     * @throws TencentAIException
      */
     public function testWxasrs(): void
     {
@@ -65,7 +63,7 @@ class AudioTest extends TencentAITestCase
     /**
      * 长语音识别.
      *
-     * @throws TencentAIError
+     * @throws TencentAIException
      */
     public function testWxAsrLong(): void
     {
@@ -90,7 +88,7 @@ class AudioTest extends TencentAITestCase
     /**
      * 语音合成 AILAB.
      *
-     * @throws TencentAIError
+     * @throws TencentAIException
      */
     public function testTts(): void
     {
@@ -103,7 +101,7 @@ class AudioTest extends TencentAITestCase
     /**
      * 语音合成 优图.
      *
-     * @throws TencentAIError
+     * @throws TencentAIException
      */
     public function testTta(): void
     {

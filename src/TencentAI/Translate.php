@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace TencentAI;
 
-use TencentAI\Error\TencentAIError;
+use TencentAI\Exception\TencentAIException;
 use TencentAI\Kernel\Request;
 
 /**
@@ -34,7 +34,7 @@ class Translate
      * @param string $text
      * @param int    $type 翻译类型 0-16
      *
-     * @throws TencentAIError
+     * @throws TencentAIException
      *
      * @return array
      *
@@ -43,13 +43,8 @@ class Translate
     public function aILabText(string $text, int $type = 0)
     {
         $this->checkAILabTextType($type);
-        $data = [
-            'text' => $text,
-            'type' => $type,
-        ];
-        $url = self::AILAB_TEXT;
 
-        return Request::exec($url, $data);
+        return Request::exec(self::AILAB_TEXT, compact('text', 'type'));
     }
 
     /**
@@ -59,7 +54,7 @@ class Translate
      * @param string $source 源语言缩写
      * @param string $target 目标语言缩写
      *
-     * @throws TencentAIError
+     * @throws TencentAIException
      *
      * @return array
      */
@@ -69,14 +64,7 @@ class Translate
             $this->checkTextTarget($source, $target);
         }
 
-        $data = [
-            'text' => $text,
-            'source' => $source,
-            'target' => $target,
-        ];
-        $url = self::TEXT;
-
-        return Request::exec($url, $data);
+        return Request::exec(self::TEXT, compact('text', 'source', 'target'));
     }
 
     /**
@@ -88,7 +76,7 @@ class Translate
      * @param string $source     源语言缩写
      * @param string $target     目标语言缩写
      *
-     * @throws TencentAIError
+     * @throws TencentAIException
      *
      * @return array
      *
@@ -101,23 +89,16 @@ class Translate
                           string $target = 'auto')
     {
         if ('word' !== $scene and 'doc' !== $scene) {
-            throw new TencentAIError(90701);
+            throw new TencentAIException(90704);
         }
 
         if (!('auto' === $source && 'auto' === $target)) {
             $this->checkImageTarget($source, $target);
         }
 
-        $data = [
-            'image' => base64_encode(file_get_contents($image)),
-            'session_id' => $session_id,
-            'scene' => $scene,
-            'source' => $source,
-            'target' => $target,
-        ];
-        $url = self::IMAGE;
+        $image = base64_encode(file_get_contents($image));
 
-        return Request::exec($url, $data);
+        return Request::exec(self::IMAGE, compact('image', 'session_id', 'scene', 'source', 'target'));
     }
 
     /**
@@ -131,7 +112,7 @@ class Translate
      * @param string $source       源语言缩写
      * @param string $target       目标语言缩写
      *
-     * @throws TencentAIError
+     * @throws TencentAIException
      *
      * @return array
      *
@@ -146,31 +127,25 @@ class Translate
                           string $target = 'auto')
     {
         $this->checkTranslateFormat($format);
+
         if (!('auto' === $source && 'auto' === $target)) {
             $this->checkImageTarget($source, $target);
         }
-        $data = [
-            'format' => $format,
-            'seq' => $seq,
-            'end' => (int) $end,
-            'session_id' => $session_id,
-            'speech_chunk' => self::encode($speech_chunk),
-            'source' => $source,
-            'target' => $target,
-        ];
-        $url = self::AUDIO;
 
-        return Request::exec($url, $data);
+        $end = (int) $end;
+        $speech_chunk = self::encode($speech_chunk);
+
+        return Request::exec(self::AUDIO, compact('format', 'seq', 'end', 'session_id', 'speech_chunk', 'source', 'target'));
     }
 
     /**
      * 语种识别.
      *
      * @param string $text
-     * @param array  $languages
+     * @param array  $languages zh en jp kr
      * @param bool   $force     强制从待选择语言中选择
      *
-     * @throws TencentAIError
+     * @throws TencentAIException
      *
      * @return array
      *
@@ -182,18 +157,12 @@ class Translate
             foreach ($languages as $k) {
                 $this->checkDetectType($k);
             }
-            // 多类型分隔符错误
-            // TODO
-            $languages = implode('”', $languages);
-            var_dump($languages);
+            $languages = implode('|', $languages);
         }
-        $data = [
-            'text' => $text,
-            'candidate_langs' => $languages,
-            'force' => (int) $force,
-        ];
-        $url = self::DETECT;
 
-        return Request::exec($url, $data);
+        $candidate_langs = $languages;
+        $force = (int) $force;
+
+        return Request::exec(self::DETECT, compact('text', 'candidate_langs', 'force'));
     }
 }

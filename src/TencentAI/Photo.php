@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace TencentAI;
 
-use TencentAI\Error\TencentAIError;
+use TencentAI\Exception\TencentAIException;
 use TencentAI\Kernel\Request;
 
 /**
@@ -38,7 +38,7 @@ class Photo
      * @param mixed $image    仅支持 JPG、PNG 类型图片，尺寸长宽不超过 1080，返回格式 JPG
      * @param int   $cosmetic 美妆编码 1-23
      *
-     * @throws TencentAIError
+     * @throws TencentAIException
      *
      * @return array
      *
@@ -46,13 +46,9 @@ class Photo
      */
     public function cosmetic($image, int $cosmetic = 23)
     {
-        $url = self::COSMETIC;
-        $data = [
-            'cosmetic' => $cosmetic,
-            'image' => self::encode($image),
-        ];
+        $image = self::encode($image);
 
-        return Request::exec($url, $data);
+        return Request::exec(self::COSMETIC, compact('cosmetic', 'image'));
     }
 
     /**
@@ -63,7 +59,7 @@ class Photo
      * @param mixed $image      仅支持 JPG、PNG 类型图片，尺寸长宽不超过 1080，返回格式 JPG
      * @param int   $decoration 变妆编码 1-22
      *
-     * @throws TencentAIError
+     * @throws TencentAIException
      *
      * @return array
      *
@@ -71,13 +67,9 @@ class Photo
      */
     public function decoration($image, int $decoration = 22)
     {
-        $url = self::DECORATION;
-        $data = [
-            'decoration' => $decoration,
-            'image' => self::encode($image),
-        ];
+        $image = self::encode($image);
 
-        return Request::exec($url, $data);
+        return Request::exec(self::DECORATION, compact('decoration', 'image'));
     }
 
     /**
@@ -86,7 +78,7 @@ class Photo
      * @param mixed $image  仅支持 JPG、PNG 类型图片，尺寸长宽不超过 1080，返回格式 JPG
      * @param int   $filter 滤镜效果编码 1-32
      *
-     * @throws TencentAIError
+     * @throws TencentAIException
      *
      * @return array
      *
@@ -94,13 +86,9 @@ class Photo
      */
     public function filter($image, int $filter = 32)
     {
-        $url = self::FILTER;
-        $data = [
-            'filter' => $filter,
-            'image' => self::encode($image),
-        ];
+        $image = self::encode($image);
 
-        return Request::exec($url, $data);
+        return Request::exec(self::FILTER, compact('filter', 'image'));
     }
 
     /**
@@ -110,20 +98,15 @@ class Photo
      * @param string $session_id
      * @param int    $filter     滤镜效果编码 1-65
      *
-     * @throws TencentAIError
+     * @throws TencentAIException
      *
      * @return array
      */
     public function aiLabFilter($image, string $session_id, int $filter)
     {
-        $url = self::AILAB_FILTER;
-        $data = [
-            'filter' => $filter,
-            'image' => self::encode($image),
-            'session_id' => $session_id,
-        ];
+        $image = self::encode($image);
 
-        return Request::exec($url, $data);
+        return Request::exec(self::AILAB_FILTER, compact('filter', 'image', 'session_id'));
     }
 
     /**
@@ -132,7 +115,7 @@ class Photo
      * @param mixed $image 仅支持 JPG、PNG 类型图片，尺寸长宽不超过 1080，返回格式 JPG
      * @param int   $model 素材模板编码 1-50
      *
-     * @throws TencentAIError
+     * @throws TencentAIException
      *
      * @return array
      *
@@ -140,13 +123,9 @@ class Photo
      */
     public function merge($image, int $model = 50)
     {
-        $url = self::MERGE;
-        $data = [
-            'model' => $model,
-            'image' => self::encode($image),
-        ];
+        $image = self::encode($image);
 
-        return Request::exec($url, $data);
+        return Request::exec(self::MERGE, compact('model', 'image'));
     }
 
     /**
@@ -155,7 +134,7 @@ class Photo
      * @param mixed $image   仅支持 JPG、PNG 类型图片，尺寸长宽不超过 1080，返回格式 JPG
      * @param int   $sticker 大头贴编码 1-30
      *
-     * @throws TencentAIError
+     * @throws TencentAIException
      *
      * @return array
      *
@@ -163,13 +142,9 @@ class Photo
      */
     public function sticker($image, int $sticker = 30)
     {
-        $url = self::STICKER;
-        $data = [
-            'sticker' => $sticker,
-            'image' => self::encode($image),
-        ];
+        $image = self::encode($image);
 
-        return Request::exec($url, $data);
+        return Request::exec(self::STICKER, compact('sticker', 'image'));
     }
 
     /**
@@ -177,7 +152,7 @@ class Photo
      *
      * @param mixed $image 仅支持 JPG、PNG 类型图片，尺寸长宽不超过 1080，返回格式 JPG
      *
-     * @throws TencentAIError
+     * @throws TencentAIException
      *
      * @return mixed
      *
@@ -185,8 +160,6 @@ class Photo
      */
     public function age($image)
     {
-        $url = self::AGE;
-
-        return self::image($url, $image);
+        return self::image(self::AGE, $image);
     }
 }

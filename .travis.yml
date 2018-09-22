@@ -2,43 +2,42 @@ language: php
 
 cache:
   directories:
-  - cache
+    - cache
 
 php:
-# - 5.6
-# - 7.0
-- 7.1
-- 7.2
-- nightly
+  # - 5.6
+  # - 7.0
+  - 7.1
+  - 7.2
+  # - 7.3
+  - nightly
 
 matrix:
   fast_finish: true
   allow_failures:
-  - php: nightly
+    - php: nightly
 
 install:
-- composer self-update
-- composer install -q
-- composer require illuminate/console
-# - composer update -q
-- curl -fsSL http://get.sensiolabs.org/sami.phar -o sami
-- chmod +x sami
+  - composer self-update
+  - composer install -q
+  # - composer update -q
+  - curl -fsSL http://get.sensiolabs.org/sami.phar -o sami
+  - chmod +x sami
 
 script:
-# - vendor/bin/phpunit --no-configuration --filter "/::testDeleteForce( .*)?$/" TencentAI\Tests\FaceTest $PWD/tests/TencentAI/FaceTest.php
-- vendor/bin/phpunit --coverage-clover=coverage.xml
-- php -r 'echo file_put_contents(sys_get_temp_dir()."/tencent_ai.log","test end",FILE_APPEND);'
-- php -r 'echo file_get_contents(sys_get_temp_dir()."/tencent_ai.log");'
+  # - vendor/bin/phpunit --no-configuration --filter "/::testDeleteForce( .*)?$/" TencentAI\Tests\FaceTest $PWD/tests/TencentAI/FaceTest.php
+  - vendor/bin/phpunit --coverage-clover=coverage.xml
+  - php -r 'echo file_put_contents(sys_get_temp_dir()."/tencent_ai.log","test end",FILE_APPEND);'
+  - php -r 'echo file_get_contents(sys_get_temp_dir()."/tencent_ai.log");'
 
 after_success:
-# set env CODECOV_TOKEN=XXX
-- bash <(curl -s https://codecov.io/bash)
-- ./sami update .sami.php
+  - bash <(curl -s https://codecov.io/bash)
+  - ./sami update .sami.php
 
 branches:
   only:
-  - master
-  - dev
+    - master
+    - dev
 
 deploy:
   provider: pages

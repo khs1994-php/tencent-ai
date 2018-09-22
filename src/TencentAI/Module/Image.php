@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace TencentAI\Module;
 
 use Is\Is;
-use TencentAI\Error\TencentAIError;
+use TencentAI\Exception\TencentAIException;
 use TencentAI\Kernel\Request;
 
 trait Image
@@ -323,7 +323,7 @@ trait Image
      * @param $image
      * @param bool $isUrl
      *
-     * @throws TencentAIError
+     * @throws TencentAIException
      *
      * @return mixed
      */
@@ -349,7 +349,7 @@ trait Image
      *
      * @param mixed $image
      *
-     * @throws TencentAIError
+     * @throws TencentAIException
      *
      * @return string
      */
@@ -372,7 +372,7 @@ trait Image
         if ($content) {
             return $content;
         } else {
-            throw new TencentAIError(90301);
+            throw new TencentAIException(90301);
         }
     }
 }

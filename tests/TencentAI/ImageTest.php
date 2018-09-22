@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace TencentAI\Tests;
 
-use TencentAI\Error\TencentAIError;
+use TencentAI\Exception\TencentAIException;
 
 class ImageTest extends TencentAITestCase
 {
@@ -38,7 +38,7 @@ class ImageTest extends TencentAITestCase
     /**
      * 智能鉴黄.
      *
-     * @throws TencentAIError
+     * @throws TencentAIException
      */
     public function testPorn(): void
     {
@@ -50,7 +50,7 @@ class ImageTest extends TencentAITestCase
     /**
      * 暴恐识别.
      *
-     * @throws TencentAIError
+     * @throws TencentAIException
      */
     public function testTerrorism(): void
     {
@@ -62,7 +62,7 @@ class ImageTest extends TencentAITestCase
     /**
      * 物体场景识别 => 场景识别.
      *
-     * @throws TencentAIError
+     * @throws TencentAIException
      */
     public function testScener(): void
     {
@@ -74,7 +74,7 @@ class ImageTest extends TencentAITestCase
     /**
      * 物体场景识别 => 物体识别.
      *
-     * @throws TencentAIError
+     * @throws TencentAIException
      */
     public function testObject(): void
     {
@@ -86,7 +86,7 @@ class ImageTest extends TencentAITestCase
     /**
      * 标签识别.
      *
-     * @throws TencentAIError
+     * @throws TencentAIException
      */
     public function testTag(): void
     {
@@ -98,7 +98,7 @@ class ImageTest extends TencentAITestCase
     /**
      * 花草识别.
      *
-     * @throws TencentAIError
+     * @throws TencentAIException
      */
     public function testIdentifyFlower(): void
     {
@@ -110,7 +110,7 @@ class ImageTest extends TencentAITestCase
     /**
      * 车辆识别.
      *
-     * @throws TencentAIError
+     * @throws TencentAIException
      */
     public function testIdentifyVehicle(): void
     {
@@ -122,7 +122,7 @@ class ImageTest extends TencentAITestCase
     /**
      * 看图说话.
      *
-     * @throws TencentAIError
+     * @throws TencentAIException
      */
     public function testImageToText(): void
     {
@@ -134,7 +134,7 @@ class ImageTest extends TencentAITestCase
     /**
      * 模糊图片检测.
      *
-     * @throws TencentAIError
+     * @throws TencentAIException
      */
     public function testFuzzy(): void
     {
@@ -146,7 +146,7 @@ class ImageTest extends TencentAITestCase
     /**
      * 美食图片.
      *
-     * @throws TencentAIError
+     * @throws TencentAIException
      */
     public function testFood(): void
     {

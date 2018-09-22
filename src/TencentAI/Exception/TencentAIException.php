@@ -1,18 +1,12 @@
 <?php
 
 declare(strict_types=1);
-/**
- * Created by PhpStorm.
- * User: khs1994
- * Date: 04/02/2018
- * Time: 12:08 PM.
- */
 
-namespace TencentAI\Error;
+namespace TencentAI\Exception;
 
 use Throwable;
 
-class TencentAIError extends \Error
+class TencentAIException extends \Exception
 {
     private static $array = [
         9 => 'qps超过限制',
@@ -146,16 +140,16 @@ class TencentAIError extends \Error
 
     public function __toString()
     {
-        return json_encode($this->getErrorAsArray(), JSON_UNESCAPED_UNICODE);
+        return json_encode($this->getExceptionAsArray(), JSON_UNESCAPED_UNICODE);
     }
 
-    public function getErrorAsArray()
+    public function getExceptionAsArray()
     {
         return ['ret' => $this->code, 'msg' => $this->message];
     }
 
-    public function getErrorAsJson()
+    public function getExceptionAsJson()
     {
-        return json_encode($this->getErrorAsArray(), JSON_UNESCAPED_UNICODE);
+        return json_encode($this->getExceptionAsArray(), JSON_UNESCAPED_UNICODE);
     }
 }

@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace TencentAI\Tests;
 
-use TencentAI\Error\TencentAIError;
+use TencentAI\Exception\TencentAIException;
 
 class FaceTest extends TencentAITestCase
 {
@@ -40,7 +40,7 @@ class FaceTest extends TencentAITestCase
     }
 
     /**
-     * @throws TencentAIError
+     * @throws TencentAIException
      * @group  dont-test
      */
     public function testDeleteForce(): void
@@ -51,7 +51,7 @@ class FaceTest extends TencentAITestCase
     /**
      * 人体创建.
      *
-     * @throws TencentAIError
+     * @throws TencentAIException
      * @throws \Exception
      *
      * @return mixed
@@ -82,7 +82,7 @@ class FaceTest extends TencentAITestCase
      *
      * @depends testCreatePerson
      *
-     * @throws TencentAIError
+     * @throws TencentAIException
      */
     public function testGetPersonList(): void
     {
@@ -99,7 +99,7 @@ class FaceTest extends TencentAITestCase
      *
      * @depends testCreatePerson
      *
-     * @throws TencentAIError
+     * @throws TencentAIException
      */
     public function testGetGroupList(): void
     {
@@ -113,7 +113,7 @@ class FaceTest extends TencentAITestCase
      *
      * @depends testCreatePerson
      *
-     * @throws TencentAIError
+     * @throws TencentAIException
      * @throws \Exception
      */
     public function testAdd()
@@ -133,7 +133,7 @@ class FaceTest extends TencentAITestCase
      *
      * @depends testCreatePerson
      *
-     * @throws TencentAIError
+     * @throws TencentAIException
      */
     public function testGetList(): void
     {
@@ -149,7 +149,7 @@ class FaceTest extends TencentAITestCase
      *
      * @depends testCreatePerson
      *
-     * @throws TencentAIError
+     * @throws TencentAIException
      */
     public function testGetInfo(string $faceId): void
     {
@@ -165,7 +165,7 @@ class FaceTest extends TencentAITestCase
      *
      * @depends testAdd
      *
-     * @throws TencentAIError
+     * @throws TencentAIException
      */
     public function testDelete(array $faceIds): void
     {
@@ -179,7 +179,7 @@ class FaceTest extends TencentAITestCase
      *
      * @depends testCreatePerson
      *
-     * @throws TencentAIError
+     * @throws TencentAIException
      */
     public function testSetPersonInfo(): void
     {
@@ -193,7 +193,7 @@ class FaceTest extends TencentAITestCase
      *
      * @depends testCreatePerson
      *
-     * @throws TencentAIError
+     * @throws TencentAIException
      */
     public function testGetPersonInfo(): void
     {
@@ -205,7 +205,7 @@ class FaceTest extends TencentAITestCase
     /**
      * 人脸分析.
      *
-     * @throws TencentAIError
+     * @throws TencentAIException
      */
     public function testDetect(): void
     {
@@ -217,7 +217,7 @@ class FaceTest extends TencentAITestCase
     /**
      * 多人脸识别.
      *
-     * @throws TencentAIError
+     * @throws TencentAIException
      */
     public function testMultiDetect(): void
     {
@@ -229,7 +229,7 @@ class FaceTest extends TencentAITestCase
     /**
      *五官检测.
      *
-     * @throws TencentAIError
+     * @throws TencentAIException
      */
     public function testShape(): void
     {
@@ -245,7 +245,7 @@ class FaceTest extends TencentAITestCase
      *
      * @test
      *
-     * @throws TencentAIError
+     * @throws TencentAIException
      */
     public function compare(): void
     {
@@ -259,7 +259,7 @@ class FaceTest extends TencentAITestCase
      *
      * @depends testCreatePerson
      *
-     * @throws TencentAIError
+     * @throws TencentAIException
      */
     public function testIdentify(): void
     {
@@ -271,7 +271,7 @@ class FaceTest extends TencentAITestCase
     /**
      * 跨年龄人脸识别.
      *
-     * @throws TencentAIError
+     * @throws TencentAIException
      */
     public function testDetectCrossAge(): void
     {
@@ -285,7 +285,7 @@ class FaceTest extends TencentAITestCase
      *
      * @depends testCreatePerson
      *
-     * @throws TencentAIError
+     * @throws TencentAIException
      */
     public function testVerify(): void
     {
@@ -299,7 +299,7 @@ class FaceTest extends TencentAITestCase
      *
      * @depends testCreatePerson
      *
-     * @throws TencentAIError
+     * @throws TencentAIException
      */
     public function testDeletePerson(): void
     {

@@ -2,7 +2,9 @@
 
 declare(strict_types=1);
 
-namespace TencentAI;
+namespace TencentAI\Kernel;
+
+use TencentAI\TencentAI;
 
 class ServiceProvider extends \Illuminate\Support\ServiceProvider
 {
@@ -18,7 +20,7 @@ class ServiceProvider extends \Illuminate\Support\ServiceProvider
      */
     public function register(): void
     {
-        $configPath = __DIR__.'/../../config/tencent-ai.php';
+        $configPath = __DIR__.'/../../../config/tencent-ai.php';
 
         $this->mergeConfigFrom($configPath, 'tencent-ai');
 
@@ -54,7 +56,7 @@ class ServiceProvider extends \Illuminate\Support\ServiceProvider
      */
     public function boot(): void
     {
-        $configPath = __DIR__.'/../../config/tencent-ai.php';
+        $configPath = __DIR__.'/../../../config/tencent-ai.php';
 
         $this->publishes([$configPath => $this->getConfigPath()], 'config');
 
@@ -72,7 +74,7 @@ class ServiceProvider extends \Illuminate\Support\ServiceProvider
 
         if ($this->app->runningInConsole()) {
             $this->commands([
-                Console\OCRCommand::class,
+                \TencentAI\Console\OCRCommand::class,
             ]);
         }
         // $this->publishes([

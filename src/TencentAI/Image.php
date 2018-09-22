@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace TencentAI;
 
-use TencentAI\Error\TencentAIError;
+use TencentAI\Exception\TencentAIException;
 use TencentAI\Kernel\Request;
 
 /**
@@ -37,7 +37,7 @@ class Image
      *
      * @param mixed $image 支持 JPG PNG BMP 格式
      *
-     * @throws TencentAIError
+     * @throws TencentAIException
      *
      * @return mixed
      *
@@ -45,9 +45,7 @@ class Image
      */
     public function porn($image)
     {
-        $url = self::PORN;
-
-        return self::image($url, $image);
+        return self::image(self::PORN, $image);
     }
 
     /**
@@ -55,7 +53,7 @@ class Image
      *
      * @param mixed $image 支持 JPG PNG BMP 格式
      *
-     * @throws TencentAIError
+     * @throws TencentAIException
      *
      * @return mixed
      *
@@ -63,9 +61,7 @@ class Image
      */
     public function terrorism($image)
     {
-        $url = self::TERRORISM;
-
-        return $this->image($url, $image);
+        return $this->image(self::TERRORISM, $image);
     }
 
     /**
@@ -77,7 +73,7 @@ class Image
      * @param int   $format 图片格式，只支持 JPG 格式
      * @param int   $topk   返回结果个数（已按置信度倒排）[1,5]
      *
-     * @throws TencentAIError
+     * @throws TencentAIException
      *
      * @return mixed
      *
@@ -94,15 +90,15 @@ class Image
 
         $scene_list_array = [];
 
-        $output = Request::exec($url, $data);
+        $result = Request::exec($url, $data);
 
-        if (\is_array($output)) {
+        if (\is_array($result)) {
             $format = false;
-            $scene_list = $output['data']['scene_list'];
+            $scene_list = $result['data']['scene_list'];
         } else {
             $format = true;
-            $output = json_decode($output, true);
-            $scene_list = $output['data']['scene_list'];
+            $result = json_decode($result, true);
+            $scene_list = $result['data']['scene_list'];
         }
 
         foreach ($scene_list as $k) {
@@ -113,15 +109,14 @@ class Image
                 'label_confd' => $k['label_confd'],
             ];
         }
-        $output['data']['scene_list'] = $scene_list_array;
+        $result['data']['scene_list'] = $scene_list_array;
 
         // 判断返回格式
-
         if ($format) {
-            return json_encode($output, JSON_UNESCAPED_UNICODE);
+            return json_encode($result, JSON_UNESCAPED_UNICODE);
         }
 
-        return $output;
+        return $result;
     }
 
     /**
@@ -133,20 +128,15 @@ class Image
      * @param int   $format 图片格式，只支持 JPG 格式
      * @param int   $topk   返回结果个数（已按置信度倒排）[1,5]
      *
-     * @throws TencentAIError
+     * @throws TencentAIException
      *
      * @return mixed
      */
     public function object($image, int $format = 1, int $topk = 5)
     {
-        $data = [
-            'image' => self::encode($image),
-            'format' => $format,
-            'topk' => $topk,
-        ];
-        $url = self::OBJECT;
+        $image = self::encode($image);
 
-        return Request::exec($url, $data);
+        return Request::exec(self::OBJECT, compact('image', 'format', 'topk'));
     }
 
     /**
@@ -156,7 +146,7 @@ class Image
      *
      * @param mixed $image 支持 JPG PNG BMP 格式
      *
-     * @throws TencentAIError
+     * @throws TencentAIException
      *
      * @return mixed
      *
@@ -164,9 +154,7 @@ class Image
      */
     public function tag($image)
     {
-        $url = self::TAG;
-
-        return self::image($url, $image);
+        return self::image(self::TAG, $image);
     }
 
     /**
@@ -175,7 +163,7 @@ class Image
      * @param mixed $image 支持 JPG PNG BMP 格式
      * @param int   $scene 识别场景，1-车辆识别，2-花草识别
      *
-     * @throws TencentAIError
+     * @throws TencentAIException
      *
      * @return mixed
      *
@@ -183,13 +171,9 @@ class Image
      */
     private function identify($image, int $scene)
     {
-        $data = [
-            'image' => self::encode($image),
-            'scene' => $scene,
-        ];
-        $url = self::IDENTIFY;
+        $image = self::encode($image);
 
-        return Request::exec($url, $data);
+        return Request::exec(self::IDENTIFY, compact('image', 'scene'));
     }
 
     /**
@@ -197,7 +181,7 @@ class Image
      *
      * @param mixed $image 支持 JPG PNG BMP 格式
      *
-     * @throws TencentAIError
+     * @throws TencentAIException
      *
      * @return mixed
      */
@@ -211,7 +195,7 @@ class Image
      *
      * @param mixed $image 支持 JPG PNG BMP 格式
      *
-     * @throws TencentAIError
+     * @throws TencentAIException
      *
      * @return mixed
      */
@@ -226,7 +210,7 @@ class Image
      * @param mixed  $image      支持 JPG PNG BMP 格式
      * @param string $session_id
      *
-     * @throws TencentAIError
+     * @throws TencentAIException
      *
      * @return mixed
      *
@@ -234,14 +218,9 @@ class Image
      */
     public function imageToText($image, string $session_id)
     {
-        $data = [
-            'image' => self::encode($image),
-            'session_id' => $session_id,
-        ];
+        $image = self::encode($image);
 
-        $url = self::IMAGE_TO_TEXT;
-
-        return Request::exec($url, $data);
+        return Request::exec(self::IMAGE_TO_TEXT, compact('image', 'session_id'));
     }
 
     /**
@@ -249,7 +228,7 @@ class Image
      *
      * @param mixed $image 支持 JPG PNG BMP 格式
      *
-     * @throws TencentAIError
+     * @throws TencentAIException
      *
      * @return mixed
      *
@@ -257,9 +236,7 @@ class Image
      */
     public function fuzzy($image)
     {
-        $url = self::FUZZY;
-
-        return $this->image($url, $image);
+        return $this->image(self::FUZZY, $image);
     }
 
     /**
@@ -267,7 +244,7 @@ class Image
      *
      * @param mixed $image 支持 JPG PNG BMP 格式
      *
-     * @throws TencentAIError
+     * @throws TencentAIException
      *
      * @return mixed
      *
@@ -275,8 +252,6 @@ class Image
      */
     public function food($image)
     {
-        $url = self::FOOD;
-
-        return $this->image($url, $image);
+        return $this->image(self::FOOD, $image);
     }
 }

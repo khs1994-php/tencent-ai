@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace TencentAI\Tests;
 
-use TencentAI\Error\TencentAIError;
+use TencentAI\Exception\TencentAIException;
 
 class OCRTest extends TencentAITestCase
 {
@@ -24,7 +24,7 @@ class OCRTest extends TencentAITestCase
     /**
      * 身份证识别.
      *
-     * @throws TencentAIError
+     * @throws TencentAIException
      * @throws \Exception
      */
     public function testIdCard(): void
@@ -68,7 +68,7 @@ class OCRTest extends TencentAITestCase
     /**
      * 名片识别.
      *
-     * @throws TencentAIError
+     * @throws TencentAIException
      */
     public function testBusinessCard(): void
     {
@@ -81,7 +81,7 @@ class OCRTest extends TencentAITestCase
     /**
      * 驾驶证识别.
      *
-     * @throws TencentAIError
+     * @throws TencentAIException
      * @throws \Exception
      */
     public function testDriverLicense(): void
@@ -95,7 +95,7 @@ class OCRTest extends TencentAITestCase
     /**
      * 行驶证识别.
      *
-     * @throws TencentAIError
+     * @throws TencentAIException
      * @throws \Exception
      */
     public function testDrivingLicense(): void
@@ -109,7 +109,7 @@ class OCRTest extends TencentAITestCase
     /**
      * 营业执照识别.
      *
-     * @throws TencentAIError
+     * @throws TencentAIException
      */
     public function testBizLicense(): void
     {
@@ -122,7 +122,7 @@ class OCRTest extends TencentAITestCase
     /**
      * 银行卡识别.
      *
-     * @throws TencentAIError
+     * @throws TencentAIException
      */
     public function testCreditCard(): void
     {
@@ -135,7 +135,7 @@ class OCRTest extends TencentAITestCase
     /**
      * 通用识别.
      *
-     * @throws TencentAIError
+     * @throws TencentAIException
      */
     public function testGeneral(): void
     {

@@ -19,8 +19,6 @@ use Symfony\Component\Finder\Finder;
 $iterator = Finder::create()
     ->files()
     ->name('*.php')
-    ->exclude('resource')
-    ->exclude('tests')
     ->exclude('Module')
     ->exclude('Error')
     ->in($dir = __DIR__.'/src');

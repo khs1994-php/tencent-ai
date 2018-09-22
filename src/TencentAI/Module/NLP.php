@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace TencentAI\Module;
 
-use TencentAI\Error\TencentAIError;
+use TencentAI\Exception\TencentAIException;
 use TencentAI\Kernel\Request;
 
 trait NLP
@@ -16,7 +16,7 @@ trait NLP
      * @param      $text
      * @param bool $charSetGBK
      *
-     * @throws TencentAIError
+     * @throws TencentAIException
      *
      * @return array
      */

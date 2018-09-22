@@ -10,7 +10,7 @@ use TencentAI\Kernel\Request;
 /**
  * Class TencentAI.
  *
- * @version v18.06
+ * @version v18.06.03
  *
  * @method Audio                     audio()
  * @method Face                      face()
@@ -22,7 +22,7 @@ use TencentAI\Kernel\Request;
  */
 class TencentAI
 {
-    private const VERSION = '18.06.0';
+    private const VERSION = '18.06.03';
 
     private static $tencentAI;
 
@@ -39,21 +39,14 @@ class TencentAI
         Request::$debug = $debug;
 
         // default format is array
-
-        if ($jsonFormat) {
-            Request::setFormat('json');
-        } else {
-            Request::setFormat('array');
-        }
+        $jsonFormat ? Request::setFormat('json') : Request::setFormat('array');
 
         Request::setCurl(new Curl(), (int) $timeout);
     }
 
     private function __clone()
     {
-        /*
-         * Private clone
-         */
+        // Private clone
     }
 
     /**

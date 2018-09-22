@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace TencentAI\Kernel;
 
 use Curl\Curl;
-use TencentAI\Error\TencentAIError;
+use TencentAI\Exception\TencentAIException;
 
 /**
  * 发起网络请求
@@ -105,9 +105,8 @@ class Request
         }
         $app_id = self::$app_id;
         $format = strtolower(self::$format);
-        /**
-         * @since 7.1
-         */
+
+        // @since 7.1
         $nonce_str = session_create_id();
         $data = [
             'app_id' => $app_id,
@@ -119,11 +118,9 @@ class Request
         $request_body = http_build_query($array);
 
         // 签名
-
         $sign = self::sign($request_body);
 
         // 最终请求体
-
         $data = $request_body."&sign=$sign";
 
         $request_url = 'https://api.ai.qq.com/fcgi-bin/'.$url;
@@ -131,28 +128,22 @@ class Request
         // 发起请求
         try {
             $json = self::$curl->post($request_url, $data);
-        } catch (\Throwable $e) {
-            throw new TencentAIError(20000 + $e->getCode(), $e->getMessage());
-        }
 
-        if ($charSetUTF8) {
-            $array = json_decode($json, true);
-        } else {
-            $json = mb_convert_encoding($json, 'utf8', 'gbk');
-            $array = json_decode($json, true);
-        }
+            if ($charSetUTF8) {
+                $array = json_decode($json, true);
+            } else {
+                $json = mb_convert_encoding($json, 'utf8', 'gbk');
+                $array = json_decode($json, true);
+            }
 
-        // 检查是否返回数组
+            // 检查是否返回数组
+            if (!\is_array($array)) {
+                self::returnStr($json);
+            }
 
-        if (!\is_array($array)) {
-            self::returnStr($json);
-        }
-
-        // 检查返回值
-
-        try {
+            // 检查返回值
             self::checkReturn($array['ret']);
-        } catch (TencentAIError $e) {
+        } catch (\Throwable $e) {
             if (false === $retry) {
                 for ($i = $retry_settings; $i > 0; --$i) {
                     self::$debug &&
@@ -171,18 +162,18 @@ class Request
                         $result = self::exec($url, $arg, $charSetUTF8, true);
 
                         return $result;
-                    } catch (TencentAIError $e) {
+                    } catch (TencentAIException $e) {
                         if (1 === $i) {
-                            throw new TencentAIError($e->getCode());
+                            throw new TencentAIException($e->getCode(), $e->getMessage());
                         }
 
                         continue;
                     }
                 }
 
-                throw new TencentAIError($e->getCode());
+                throw new TencentAIException($e->getCode(), $e->getMessage());
             } else {
-                throw new TencentAIError($e->getCode());
+                throw new TencentAIException($e->getCode(), $e->getMessage());
             }
         }
 
@@ -198,11 +189,11 @@ class Request
      *
      * @param $str
      *
-     * @throws TencentAIError
+     * @throws TencentAIException
      */
     public static function returnStr($str): void
     {
-        throw new TencentAIError(90000, $str);
+        throw new TencentAIException(90000, $str);
     }
 
     /**
@@ -210,12 +201,12 @@ class Request
      *
      * @param int $ret
      *
-     * @throws TencentAIError
+     * @throws TencentAIException
      */
     private static function checkReturn(int $ret): void
     {
         if (0 !== $ret) {
-            throw new TencentAIError($ret);
+            throw new TencentAIException($ret);
         }
     }
 }

@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace TencentAI\Tests;
 
-use TencentAI\Error\TencentAIError;
+use TencentAI\Exception\TencentAIException;
 
 class NLPTest extends TencentAITestCase
 {
@@ -22,7 +22,7 @@ class NLPTest extends TencentAITestCase
     /**
      * 分词.
      *
-     * @throws TencentAIError
+     * @throws TencentAIException
      */
     public function testWordseg(): void
     {
@@ -34,7 +34,7 @@ class NLPTest extends TencentAITestCase
     /**
      * 词性标注.
      *
-     * @throws TencentAIError
+     * @throws TencentAIException
      */
     public function testWordpos(): void
     {
@@ -46,7 +46,7 @@ class NLPTest extends TencentAITestCase
     /**
      * 专有名词识别.
      *
-     * @throws TencentAIError
+     * @throws TencentAIException
      */
     public function testWordner(): void
     {
@@ -58,7 +58,7 @@ class NLPTest extends TencentAITestCase
     /**
      * 同义词识别.
      *
-     * @throws TencentAIError
+     * @throws TencentAIException
      */
     public function testWordsyn(): void
     {
@@ -70,7 +70,7 @@ class NLPTest extends TencentAITestCase
     /**
      * 语义解析 => 意图成分识别.
      *
-     * @throws TencentAIError
+     * @throws TencentAIException
      */
     public function testWordcom(): void
     {
@@ -82,7 +82,7 @@ class NLPTest extends TencentAITestCase
     /**
      * 情感分析.
      *
-     * @throws TencentAIError
+     * @throws TencentAIException
      */
     public function testTextPolar(): void
     {
@@ -94,7 +94,7 @@ class NLPTest extends TencentAITestCase
     /**
      * 智能闲聊.
      *
-     * @throws TencentAIError
+     * @throws TencentAIException
      */
     public function testChat(): void
     {

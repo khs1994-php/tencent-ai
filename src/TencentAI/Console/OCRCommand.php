@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace TencentAI\Console;
 
 use Illuminate\Console\Command;
-use TencentAI\Error\TencentAIError;
+use TencentAI\Exception\TencentAIException;
 
 class OCRCommand extends Command
 {
@@ -58,7 +58,7 @@ class OCRCommand extends Command
             // $this->callSilent('email:send', [
             //    'user' => 1, '--queue' => 'default'
             // ]);
-        } catch (TencentAIError $e) {
+        } catch (TencentAIException $e) {
             $this->error($e->getMessage());
         }
     }

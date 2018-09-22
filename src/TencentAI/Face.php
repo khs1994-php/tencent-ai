@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace TencentAI;
 
-use TencentAI\Error\TencentAIError;
+use TencentAI\Exception\TencentAIException;
 use TencentAI\Kernel\Request;
 
 /**
@@ -59,7 +59,7 @@ class Face
      * @param mixed $image 支持 JPG PNG BMP 格式
      * @param bool  $big   检测模式，false-正常，true-大脸模式(默认)
      *
-     * @throws TencentAIError
+     * @throws TencentAIException
      *
      * @return mixed
      *
@@ -67,13 +67,10 @@ class Face
      */
     public function detect($image, bool $big = true)
     {
-        $data = [
-            'image' => self::encode($image),
-            'mode' => (int) $big,
-        ];
-        $url = self::DETECT;
+        $mode = (int) $big;
+        $image = self::encode($image);
 
-        return Request::exec($url, $data);
+        return Request::exec(self::DETECT, compact('image', 'mode'));
     }
 
     /**
@@ -83,7 +80,7 @@ class Face
      *
      * @param mixed $image 支持 JPG PNG BMP 格式
      *
-     * @throws TencentAIError
+     * @throws TencentAIException
      *
      * @return mixed
      *
@@ -91,9 +88,7 @@ class Face
      */
     public function multiDetect($image)
     {
-        $url = self::MULTI_DETECT;
-
-        return $this->image($url, $image);
+        return $this->image(self::MULTI_DETECT, $image);
     }
 
     /**
@@ -103,7 +98,7 @@ class Face
      *
      * @param array $images 支持 JPG PNG BMP 格式
      *
-     * @throws TencentAIError
+     * @throws TencentAIException
      *
      * @return mixed
      *
@@ -112,15 +107,13 @@ class Face
     public function compare(array $images)
     {
         if (2 !== \count($images)) {
-            throw new TencentAIError(90200);
+            throw new TencentAIException(90200);
         }
-        $data = [
-            'image_a' => self::encode($images[0]),
-            'image_b' => self::encode($images[1]),
-        ];
-        $url = self::COMPARE;
 
-        return Request::exec($url, $data);
+        $image_a = self::encode($images[0]);
+        $image_b = self::encode($images[1]);
+
+        return Request::exec(self::COMPARE, compact('image_a', 'image_b'));
     }
 
     /**
@@ -131,7 +124,7 @@ class Face
      * @param mixed $source
      * @param mixed $target
      *
-     * @throws TencentAIError
+     * @throws TencentAIException
      *
      * @return array
      *
@@ -139,14 +132,10 @@ class Face
      */
     public function detectCrossAge($source, $target)
     {
-        $url = self::DETECT_CROSS_AGE;
+        $source_image = self::encode($source);
+        $target_image = self::encode($target);
 
-        $data = [
-            'source_image' => self::encode($source),
-            'target_image' => self::encode($target),
-        ];
-
-        return Request::exec($url, $data);
+        return Request::exec(self::DETECT_CROSS_AGE, compact('source_image', 'target_image'));
     }
 
     /**
@@ -157,7 +146,7 @@ class Face
      * @param mixed $image 支持 JPG PNG BMP 格式
      * @param bool  $big   检测模式，false-正常，true-大脸模式(默认)
      *
-     * @throws TencentAIError
+     * @throws TencentAIException
      *
      * @return mixed
      *
@@ -165,13 +154,10 @@ class Face
      */
     public function shape($image, bool $big = true)
     {
-        $data = [
-            'image' => self::encode($image),
-            'mode' => (int) $big,
-        ];
-        $url = self::SHAPE;
+        $image = self::encode($image);
+        $mode = (int) $big;
 
-        return Request::exec($url, $data);
+        return Request::exec(self::SHAPE, compact('image', 'mode'));
     }
 
     /**
@@ -181,24 +167,19 @@ class Face
      *
      * @param string $group_id
      * @param mixed  $image    支持 JPG PNG BMP 格式
-     * @param int    $topon    返回的候选人个数 默认 9
+     * @param int    $topn     返回的候选人个数 默认 9
      *
-     * @throws TencentAIError
+     * @throws TencentAIException
      *
      * @return mixed
      *
      * @see   https://ai.qq.com/doc/faceidentify.shtml
      */
-    public function identify(string $group_id, $image, int $topon = 9)
+    public function identify(string $group_id, $image, int $topn = 9)
     {
-        $data = [
-            'image' => self::encode($image),
-            'group_id' => $group_id,
-            'topn' => $topon,
-        ];
-        $url = self::IDENTIFY;
+        $image = self::encode($image);
 
-        return Request::exec($url, $data);
+        return Request::exec(self::IDENTIFY, compact('image', 'group_id', 'topn'));
     }
 
     /**
@@ -209,7 +190,7 @@ class Face
      * @param string $person_id
      * @param mixed  $image     支持 JPG PNG BMP 格式
      *
-     * @throws TencentAIError
+     * @throws TencentAIException
      *
      * @return mixed
      *
@@ -217,13 +198,9 @@ class Face
      */
     public function verify(string $person_id, $image)
     {
-        $data = [
-            'person_id' => $person_id,
-            'image' => self::encode($image),
-        ];
-        $url = self::VERIFY;
+        $image = self::encode($image);
 
-        return Request::exec($url, $data);
+        return Request::exec(self::VERIFY, compact('person_id', 'image'));
     }
 
     /**
@@ -235,7 +212,7 @@ class Face
      * @param array  $images    支持 JPG PNG BMP 格式
      * @param string $tag       备注信息
      *
-     * @throws TencentAIError
+     * @throws TencentAIException
      *
      * @return mixed
      *
@@ -255,14 +232,8 @@ class Face
             $images_array[] = self::encode($k);
             $images = implode('|', $images_array);
         }
-        $data = [
-            'person_id' => $person_id,
-            'images' => $images,
-            'tag' => $tag,
-        ];
-        $url = self::ADD;
 
-        return Request::exec($url, $data);
+        return Request::exec(self::ADD, compact('person_id', 'images', 'tag'));
     }
 
     /**
@@ -271,7 +242,7 @@ class Face
      * @param string $person_id
      * @param array  $face_ids
      *
-     * @throws TencentAIError
+     * @throws TencentAIException
      *
      * @return mixed
      *
@@ -280,13 +251,8 @@ class Face
     public function delete(string $person_id, array $face_ids)
     {
         $face_ids = implode('|', $face_ids);
-        $data = [
-            'person_id' => $person_id,
-            'face_ids' => $face_ids,
-        ];
-        $url = self::DELETE;
 
-        return Request::exec($url, $data);
+        return Request::exec(self::DELETE, compact('person_id', 'face_ids'));
     }
 
     /**
@@ -296,7 +262,7 @@ class Face
      *
      * @param string $person_id
      *
-     * @throws TencentAIError
+     * @throws TencentAIException
      *
      * @return mixed
      *
@@ -304,12 +270,7 @@ class Face
      */
     public function getList(string $person_id)
     {
-        $data = [
-            'person_id' => $person_id,
-        ];
-        $url = self::GET_LIST;
-
-        return Request::exec($url, $data);
+        return Request::exec(self::GET_LIST, compact('person_id'));
     }
 
     /**
@@ -317,7 +278,7 @@ class Face
      *
      * @param string $face_id
      *
-     * @throws TencentAIError
+     * @throws TencentAIException
      *
      * @return mixed
      *
@@ -325,12 +286,7 @@ class Face
      */
     public function getInfo(string $face_id)
     {
-        $data = [
-            'face_id' => $face_id,
-        ];
-        $url = self::GET_INFO;
-
-        return Request::exec($url, $data);
+        return Request::exec(self::GET_INFO, compact('face_id'));
     }
 
     /**
@@ -344,7 +300,7 @@ class Face
      * @param mixed  $image       支持 JPG PNG BMP 格式
      * @param string $tag
      *
-     * @throws TencentAIError
+     * @throws TencentAIException
      *
      * @return mixed
      *
@@ -357,16 +313,9 @@ class Face
                                  string $tag)
     {
         $group_ids = implode('|', $group_ids);
-        $data = [
-            'group_ids' => $group_ids,
-            'person_id' => $person_id,
-            'image' => self::encode($image),
-            'person_name' => $person_name,
-            'tag' => $tag,
-        ];
-        $url = self::CREATE_PERSON;
+        $image = self::encode($image);
 
-        return Request::exec($url, $data);
+        return Request::exec(self::CREATE_PERSON, compact('group_ids', 'person_id', 'image', 'person_name', 'tag'));
     }
 
     /**
@@ -374,7 +323,7 @@ class Face
      *
      * @param string $person_id
      *
-     * @throws TencentAIError
+     * @throws TencentAIException
      *
      * @return mixed
      *
@@ -382,12 +331,7 @@ class Face
      */
     public function deletePerson(string $person_id)
     {
-        $data = [
-            'person_id' => $person_id,
-        ];
-        $url = self::DELETE_PERSON;
-
-        return Request::exec($url, $data);
+        return Request::exec(self::DELETE_PERSON, compact('person_id'));
     }
 
     /**
@@ -397,7 +341,7 @@ class Face
      * @param string $person_name
      * @param string $tag
      *
-     * @throws TencentAIError
+     * @throws TencentAIException
      *
      * @return mixed
      *
@@ -405,14 +349,7 @@ class Face
      */
     public function setPersonInfo(string $person_id, string $person_name, string $tag)
     {
-        $data = [
-            'person_id' => $person_id,
-            'person_name' => $person_name,
-            'tag' => $tag,
-        ];
-        $url = self::SET_PERSON_INFO;
-
-        return Request::exec($url, $data);
+        return Request::exec(self::SET_PERSON_INFO, compact('person_id', 'person_name', 'tag'));
     }
 
     /**
@@ -422,7 +359,7 @@ class Face
      *
      * @param string $person_id
      *
-     * @throws TencentAIError
+     * @throws TencentAIException
      *
      * @return mixed
      *
@@ -430,12 +367,7 @@ class Face
      */
     public function getPersonInfo(string $person_id)
     {
-        $data = [
-            'person_id' => $person_id,
-        ];
-        $url = self::GET_PERSON_INFO;
-
-        return Request::exec($url, $data);
+        return Request::exec(self::GET_PERSON_INFO, compact('person_id'));
     }
 
     /**
@@ -443,7 +375,7 @@ class Face
      *
      * 获取一个 AppId 下所有组 ID.
      *
-     * @throws TencentAIError
+     * @throws TencentAIException
      *
      * @return mixed
      *
@@ -451,9 +383,7 @@ class Face
      */
     public function getGroupList()
     {
-        $url = self::GET_GROUP_LIST;
-
-        return Request::exec($url, []);
+        return Request::exec(self::GET_GROUP_LIST, []);
     }
 
     /**
@@ -463,7 +393,7 @@ class Face
      *
      * @param string $group_id
      *
-     * @throws TencentAIError
+     * @throws TencentAIException
      *
      * @return mixed
      *
@@ -471,11 +401,6 @@ class Face
      */
     public function getPersonList(string $group_id)
     {
-        $data = [
-            'group_id' => $group_id,
-        ];
-        $url = self::GET_PERSON_LIST;
-
-        return Request::exec($url, $data);
+        return Request::exec(self::GET_PERSON_LIST, compact('group_id'));
     }
 }

@@ -8,6 +8,12 @@
     <filter>
         <whitelist processUncoveredFilesFromWhitelist="true">
             <directory suffix=".php">./src</directory>
+        <exclude>
+            <directory suffix=".php">./src/TencentAI/Console</directory>
+            <file>./src/TencentAI/Kernel/ServiceProvider.php</file>
+            <file>./src/TencentAI/Kernel/Facade.php</file>
+            <file>./src/TencentAI/Kernel/Support/helpers.php</file>
+        </exclude>
         </whitelist>
     </filter>
     <groups>

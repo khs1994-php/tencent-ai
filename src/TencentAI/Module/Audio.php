@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace TencentAI\Module;
 
-use TencentAI\Error\TencentAIError;
+use TencentAI\Exception\TencentAIException;
 
 trait Audio
 {
@@ -23,12 +23,12 @@ trait Audio
      * @param string $array_name
      * @param int    $code
      *
-     * @throws TencentAIError
+     * @throws TencentAIException
      */
     private function check($check, string $array_name, int $code): void
     {
         if (!\in_array($check, $this->$array_name, true)) {
-            throw new TencentAIError($code);
+            throw new TencentAIException($code);
         }
     }
 
@@ -37,7 +37,7 @@ trait Audio
      *
      * @param $format
      *
-     * @throws TencentAIError
+     * @throws TencentAIException
      */
     private function checkAsrFormat(int $format): void
     {
@@ -49,7 +49,7 @@ trait Audio
      *
      * @param int $rate
      *
-     * @throws TencentAIError
+     * @throws TencentAIException
      */
     private function checkAsrRate(int $rate): void
     {
@@ -61,7 +61,7 @@ trait Audio
      *
      * @param $format
      *
-     * @throws TencentAIError
+     * @throws TencentAIException
      */
     private function checkTranslateFormat($format): void
     {

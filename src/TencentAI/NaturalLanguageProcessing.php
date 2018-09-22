@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace TencentAI;
 
-use TencentAI\Error\TencentAIError;
+use TencentAI\Exception\TencentAIException;
 use TencentAI\Kernel\Request;
 use TencentAI\Module\NLP;
 
@@ -38,7 +38,7 @@ class NaturalLanguageProcessing
      *
      * @param string $text
      *
-     * @throws TencentAIError
+     * @throws TencentAIException
      *
      * @return array
      *
@@ -46,9 +46,7 @@ class NaturalLanguageProcessing
      */
     public function wordseg(string $text)
     {
-        $url = self::SEG;
-
-        return $this->nlp($url, $text);
+        return $this->nlp(self::SEG, $text);
     }
 
     /**
@@ -58,15 +56,13 @@ class NaturalLanguageProcessing
      *
      * @param string $text
      *
-     * @throws TencentAIError
+     * @throws TencentAIException
      *
      * @return array
      */
     public function wordpos(string $text)
     {
-        $url = self::POS;
-
-        return $this->nlp($url, $text);
+        return $this->nlp(self::POS, $text);
     }
 
     /**
@@ -76,15 +72,13 @@ class NaturalLanguageProcessing
      *
      * @param string $text
      *
-     * @throws TencentAIError
+     * @throws TencentAIException
      *
      * @return array
      */
     public function wordner(string $text)
     {
-        $url = self::NER;
-
-        return $this->nlp($url, $text);
+        return $this->nlp(self::NER, $text);
     }
 
     /**
@@ -94,15 +88,13 @@ class NaturalLanguageProcessing
      *
      * @param string $text
      *
-     * @throws TencentAIError
+     * @throws TencentAIException
      *
      * @return array
      */
     public function wordsyn(string $text)
     {
-        $url = self::SYN;
-
-        return $this->nlp($url, $text);
+        return $this->nlp(self::SYN, $text);
     }
 
     /**
@@ -112,7 +104,7 @@ class NaturalLanguageProcessing
      *
      * @param string $text
      *
-     * @throws TencentAIError
+     * @throws TencentAIException
      *
      * @return array
      *
@@ -120,9 +112,7 @@ class NaturalLanguageProcessing
      */
     public function wordcom(string $text)
     {
-        $url = self::COM;
-
-        return $this->nlp($url, $text, false);
+        return $this->nlp(self::COM, $text, false);
     }
 
     /**
@@ -132,7 +122,7 @@ class NaturalLanguageProcessing
      *
      * @param string $text
      *
-     * @throws TencentAIError
+     * @throws TencentAIException
      *
      * @return array
      *
@@ -140,9 +130,7 @@ class NaturalLanguageProcessing
      */
     public function textPolar(string $text)
     {
-        $url = self::POLAR;
-
-        return $this->nlp($url, $text, false);
+        return $this->nlp(self::POLAR, $text, false);
     }
 
     /**
@@ -153,7 +141,7 @@ class NaturalLanguageProcessing
      * @param string $question 上限300字节
      * @param string $session  上限32字节
      *
-     * @throws TencentAIError
+     * @throws TencentAIException
      *
      * @return array
      *
@@ -161,12 +149,6 @@ class NaturalLanguageProcessing
      */
     public function chat(string $question, string $session)
     {
-        $data = [
-            'question' => $question,
-            'session' => $session,
-        ];
-        $url = self::CHAT;
-
-        return Request::exec($url, $data);
+        return Request::exec(self::CHAT, compact('question', 'session'));
     }
 }
