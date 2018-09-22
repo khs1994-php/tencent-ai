@@ -10,7 +10,7 @@ use TencentAI\Kernel\Request;
 /**
  * Class TencentAI.
  *
- * @version v18.06.03
+ * @version v18.06.07
  *
  * @method Audio                     audio()
  * @method Face                      face()
@@ -22,7 +22,7 @@ use TencentAI\Kernel\Request;
  */
 class TencentAI
 {
-    private const VERSION = '18.06.03';
+    private const VERSION = '18.06.07';
 
     private static $tencentAI;
 

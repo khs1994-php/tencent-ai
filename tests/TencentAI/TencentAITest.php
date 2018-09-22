@@ -8,6 +8,6 @@ class TencentAITest extends TencentAITestCase
 {
     public function test(): void
     {
-        $this->assertEquals('18.06.03', $this->ai()->getVersion());
+        $this->assertEquals('18.06.07', $this->ai()->getVersion());
     }
 }
