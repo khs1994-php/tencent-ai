@@ -320,14 +320,14 @@ trait Image
      * 图片公共方法.
      *
      * @param string $url
-     * @param $image
-     * @param bool $isUrl
+     * @param string $image image file path OR image file content OR image url
+     * @param bool   $isUrl image is url
      *
      * @throws TencentAIException
      *
      * @return mixed
      */
-    private static function image(string $url, $image, bool $isUrl = false)
+    private static function image(string $url, string $image, bool $isUrl = false)
     {
         if ($isUrl) {
             $data = [

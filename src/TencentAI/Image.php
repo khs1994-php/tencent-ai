@@ -35,32 +35,42 @@ class Image
     /**
      * 智能鉴黄.
      *
-     * @param mixed $image 支持 JPG PNG BMP 格式
-     *
-     * @throws TencentAIException
+     * @param mixed  $image     支持 JPG PNG BMP 格式
+     * @param string $image_url
      *
      * @return mixed
      *
+     * @throws TencentAIException
+     *
      * @see   https://ai.qq.com/doc/jianhuang.shtml
      */
-    public function porn($image)
+    public function porn($image, string $image_url = null)
     {
+        if ($image_url) {
+            return self::image(self::PORN, $image_url, true);
+        }
+
         return self::image(self::PORN, $image);
     }
 
     /**
      * 暴恐识别.
      *
-     * @param mixed $image 支持 JPG PNG BMP 格式
-     *
-     * @throws TencentAIException
+     * @param mixed  $image     支持 JPG PNG BMP 格式
+     * @param string $image_url
      *
      * @return mixed
      *
+     * @throws TencentAIException
+     *
      * @see   https://ai.qq.com/doc/imageterrorism.shtml
      */
-    public function terrorism($image)
+    public function terrorism($image, string $image_url = null)
     {
+        if ($image_url) {
+            return $this->image(self::TERRORISM, $image_url, true);
+        }
+
         return $this->image(self::TERRORISM, $image);
     }
 

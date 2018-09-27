@@ -48,6 +48,18 @@ class ImageTest extends TencentAITestCase
     }
 
     /**
+     * 智能鉴黄 图片 url.
+     *
+     * @throws TencentAIException
+     */
+    public function testPornWithUrl(): void
+    {
+        $this->name = __FUNCTION__;
+
+        $this->array = $this->image()->porn(null, 'https://yyb.gtimg.com/aiplat/static/ai-demo/large/y-3.jpg');
+    }
+
+    /**
      * 暴恐识别.
      *
      * @throws TencentAIException
@@ -57,6 +69,18 @@ class ImageTest extends TencentAITestCase
         $this->name = __FUNCTION__;
 
         $this->array = $this->image()->terrorism(self::TERRORISM);
+    }
+
+    /**
+     * 暴恐识别 图片 url.
+     *
+     * @throws TencentAIException
+     */
+    public function testTerrorismWithUrl(): void
+    {
+        $this->name = __FUNCTION__;
+
+        $this->array = $this->image()->terrorism(null, 'https://yyb.gtimg.com/ai/assets/ai-demo/large/terror-14-lg.jpg');
     }
 
     /**
