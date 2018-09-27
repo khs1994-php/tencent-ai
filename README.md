@@ -32,6 +32,7 @@ $ composer require khs1994/tencent-ai dev-master
 
 ```php
 <?php
+
 require __DIR__.'/vendor/autoload.php';
 
 use TencentAI\TencentAI;
@@ -68,6 +69,8 @@ $ php artisan vendor:publish --tag=config
 Then edit config in `config/tencent-ai.php`
 
 ```php
+<?php
+
 use TencentAI;
 use TencentAI\Exception\TencentAIException;
 
@@ -95,7 +98,7 @@ class AI
 
     public function __construct(\TencentAI\TencentAI $tencent_ai)
     {
-        $this->tencent_ai=$tencent_ai;
+        $this->tencent_ai = $tencent_ai;
     }
 
     public function demo()
@@ -105,7 +108,6 @@ class AI
         return $this->tencent_ai->face()->detect($image);
     }
 }
-
 ```
 
 ## Who use it?
