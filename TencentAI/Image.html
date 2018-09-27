@@ -181,7 +181,7 @@
                     mixed
                 </div>
                 <div class="col-md-8 type">
-                    <a href="#method_porn">porn</a>(mixed $image)
+                    <a href="#method_porn">porn</a>(mixed $image, string $image_url = null)
         
                                             <p>智能鉴黄.</p>                </div>
                 <div class="col-md-2"></div>
@@ -191,7 +191,7 @@
                     mixed
                 </div>
                 <div class="col-md-8 type">
-                    <a href="#method_terrorism">terrorism</a>(mixed $image)
+                    <a href="#method_terrorism">terrorism</a>(mixed $image, string $image_url = null)
         
                                             <p>暴恐识别.</p>                </div>
                 <div class="col-md-2"></div>
@@ -284,9 +284,9 @@
             <div id="method-details">
                     <div class="method-item">
                     <h3 id="method_porn">
-        <div class="location">at         line 46</div>
+        <div class="location">at         line 47</div>
         <code>                    mixed
-    <strong>porn</strong>(mixed $image)
+    <strong>porn</strong>(mixed $image, string $image_url = null)
         </code>
     </h3>
     <div class="details">
@@ -303,6 +303,11 @@
                 <td>mixed</td>
                 <td>$image</td>
                 <td>支持 JPG PNG BMP 格式</td>
+            </tr>
+                    <tr>
+                <td>string</td>
+                <td>$image_url</td>
+                <td></td>
             </tr>
             </table>
 
@@ -344,9 +349,9 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_terrorism">
-        <div class="location">at         line 62</div>
+        <div class="location">at         line 68</div>
         <code>                    mixed
-    <strong>terrorism</strong>(mixed $image)
+    <strong>terrorism</strong>(mixed $image, string $image_url = null)
         </code>
     </h3>
     <div class="details">
@@ -363,6 +368,11 @@
                 <td>mixed</td>
                 <td>$image</td>
                 <td>支持 JPG PNG BMP 格式</td>
+            </tr>
+                    <tr>
+                <td>string</td>
+                <td>$image_url</td>
+                <td></td>
             </tr>
             </table>
 
@@ -404,7 +414,7 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_scener">
-        <div class="location">at         line 82</div>
+        <div class="location">at         line 92</div>
         <code>                    mixed
     <strong>scener</strong>(mixed $image, int $format = 1, int $topk = 5)
         </code>
@@ -474,7 +484,7 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_object">
-        <div class="location">at         line 135</div>
+        <div class="location">at         line 145</div>
         <code>                    mixed
     <strong>object</strong>(mixed $image, int $format = 1, int $topk = 5)
         </code>
@@ -533,7 +543,7 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_tag">
-        <div class="location">at         line 155</div>
+        <div class="location">at         line 165</div>
         <code>                    mixed
     <strong>tag</strong>(mixed $image)
         </code>
@@ -593,7 +603,7 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_identifyFlower">
-        <div class="location">at         line 188</div>
+        <div class="location">at         line 198</div>
         <code>                    mixed
     <strong>identifyFlower</strong>(mixed $image)
         </code>
@@ -642,7 +652,7 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_identifyVehicle">
-        <div class="location">at         line 202</div>
+        <div class="location">at         line 212</div>
         <code>                    mixed
     <strong>identifyVehicle</strong>(mixed $image)
         </code>
@@ -691,7 +701,7 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_imageToText">
-        <div class="location">at         line 219</div>
+        <div class="location">at         line 229</div>
         <code>                    mixed
     <strong>imageToText</strong>(mixed $image, string $session_id)
         </code>
@@ -756,7 +766,7 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_fuzzy">
-        <div class="location">at         line 237</div>
+        <div class="location">at         line 247</div>
         <code>                    mixed
     <strong>fuzzy</strong>(mixed $image)
         </code>
@@ -816,7 +826,7 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_food">
-        <div class="location">at         line 253</div>
+        <div class="location">at         line 263</div>
         <code>                    mixed
     <strong>food</strong>(mixed $image)
         </code>
