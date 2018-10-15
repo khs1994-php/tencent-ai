@@ -113,7 +113,7 @@ class Photo
      * 人脸融合.
      *
      * @param mixed $image 仅支持 JPG、PNG 类型图片，尺寸长宽不超过 1080，返回格式 JPG
-     * @param int   $model 素材模板编码 1-50
+     * @param int   $model 内置素材模板编码 1-10，自定义素材除外
      *
      * @throws TencentAIException
      *
@@ -121,7 +121,7 @@ class Photo
      *
      * @see https://ai.qq.com/doc/facemerge.shtml
      */
-    public function merge($image, int $model = 50)
+    public function merge($image, int $model = 10)
     {
         $image = self::encode($image);
 
