@@ -39,7 +39,7 @@ class ServiceProvider extends \Illuminate\Support\ServiceProvider
             );
         });
 
-        $this->app->alias(TencentAI::class, 'tencent-ai');
+        $this->app->alias('tencent-ai', TencentAI::class);
 
         //        $this->app->bind(TencentAI::class, function () {
         //            return Application::getInstance(
@@ -99,6 +99,6 @@ class ServiceProvider extends \Illuminate\Support\ServiceProvider
      */
     public function provides()
     {
-        return [TencentAI::class];
+        return ['tencent-ai'];
     }
 }

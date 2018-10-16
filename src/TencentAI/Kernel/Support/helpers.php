@@ -12,7 +12,7 @@ if (!(function_exists('tencent_ai'))) {
      */
     function tencent_ai()
     {
-        return app(TencentAI\TencentAI::class);
+        return app('tencent-ai');
     }
 }
 

@@ -17,6 +17,6 @@ class Facade extends \Illuminate\Support\Facades\Facade
 {
     protected static function getFacadeAccessor()
     {
-        return \TencentAI\TencentAI::class;
+        return 'tencent-ai';
     }
 }

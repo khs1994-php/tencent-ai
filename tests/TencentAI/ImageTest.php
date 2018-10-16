@@ -74,6 +74,8 @@ class ImageTest extends TencentAITestCase
     /**
      * 暴恐识别 图片 url.
      *
+     * @group dont-test
+     *
      * @throws TencentAIException
      */
     public function testTerrorismWithUrl(): void
