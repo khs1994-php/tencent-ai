@@ -3,16 +3,16 @@
 [![GitHub stars](https://img.shields.io/github/stars/khs1994-php/tencent-ai.svg?style=social&label=Stars)](https://github.com/khs1994-php/tencent-ai) [![PHP from Packagist](https://img.shields.io/packagist/php-v/khs1994/tencent-ai.svg)](https://packagist.org/packages/khs1994/tencent-ai) [![GitHub (pre-)release](https://img.shields.io/github/release/khs1994-php/tencent-ai/all.svg)](https://github.com/khs1994-php/tencent-ai/releases) [![Build Status](https://travis-ci.org/khs1994-php/tencent-ai.svg?branch=master)](https://travis-ci.org/khs1994-php/tencent-ai) [![StyleCI](https://styleci.io/repos/115306597/shield?branch=master)](https://styleci.io/repos/115306597) [![codecov](https://codecov.io/gh/khs1994-php/tencent-ai/branch/master/graph/badge.svg)](https://codecov.io/gh/khs1994-php/tencent-ai)
 
 - [Tencent AI](https://ai.qq.com)
-
 - [Official Documents](https://ai.qq.com/doc/index.shtml)
-
 - [Documents](https://khs1994-php.github.io/tencent-ai/)
 
-> 本项目为本人 PHP 练手项目，仅供参考！
+## 微信订阅号
 
-## Require
+<p align="center">
+<img width="200" src="https://user-images.githubusercontent.com/16733187/46847944-84a96b80-ce19-11e8-9f0c-ec84b2ac463e.jpg">
+</p>
 
-* **PHP 7.1+**
+<p align="center"><strong>关注项目作者微信订阅号，接收项目最新动态</strong></p>
 
 # Installation
 
