@@ -178,7 +178,7 @@
                     static&nbsp;array
                 </div>
                 <div class="col-md-8 type">
-                    <a href="#method_exec">exec</a>(string $url, array $arg, bool $charSetUTF8 = true, bool $retry = false)
+                    <a href="#method_exec">exec</a>(string $url, array $arg, bool $charSetUTF8 = true, bool $retry = false, bool $post = true)
         
                                             <p>逻辑处理.</p>                </div>
                 <div class="col-md-2"></div>
@@ -424,9 +424,9 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_exec">
-        <div class="location">at         line 95</div>
+        <div class="location">at         line 98</div>
         <code>        static            array
-    <strong>exec</strong>(string $url, array $arg, bool $charSetUTF8 = true, bool $retry = false)
+    <strong>exec</strong>(string $url, array $arg, bool $charSetUTF8 = true, bool $retry = false, bool $post = true)
         </code>
     </h3>
     <div class="details">
@@ -459,6 +459,11 @@
                 <td>$retry</td>
                 <td></td>
             </tr>
+                    <tr>
+                <td>bool</td>
+                <td>$post</td>
+                <td></td>
+            </tr>
             </table>
 
             
@@ -472,6 +477,15 @@
     </table>
 
             
+                            <h4>Exceptions</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a href="../../TencentAI/Exception/TencentAIException.html"><abbr title="TencentAI\Exception\TencentAIException">TencentAIException</abbr></a></td>
+                <td></td>
+            </tr>
+            </table>
+
             
                     </div>
     </div>
@@ -479,7 +493,7 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_returnStr">
-        <div class="location">at         line 194</div>
+        <div class="location">at         line 203</div>
         <code>        static            void
     <strong>returnStr</strong>($str)
         </code>
