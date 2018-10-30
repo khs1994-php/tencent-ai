@@ -192,4 +192,21 @@ class Audio
     {
         return Request::exec('aai/aai_tta', compact('text', 'model_type', 'speed'));
     }
+
+    /**
+     * 音频鉴黄接口.
+     *
+     * 识别用户提供链接的音频，判断是否为色情音频。
+     *
+     * @param $speech_id
+     * @param $speech_url
+     *
+     * @return array
+     *
+     * @throws TencentAIException
+     */
+    public function aaievilaudio($speech_id, $speech_url)
+    {
+        return Request::exec('aai/aai_evilaudio', compact('speech_id', 'speech_url'), true, false, false);
+    }
 }

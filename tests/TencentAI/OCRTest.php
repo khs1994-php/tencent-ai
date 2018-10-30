@@ -145,6 +145,11 @@ class OCRTest extends TencentAITestCase
         $this->array = $this->ocr()->general($image);
     }
 
+    /**
+     * @group dont-test
+     *
+     * @throws TencentAIException
+     */
     public function testPlateFromUrl(): void
     {
         $this->name = __FUNCTION__;

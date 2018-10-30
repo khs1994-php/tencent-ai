@@ -111,6 +111,18 @@ class AudioTest extends TencentAITestCase
         $this->put(__FUNCTION__.'.mp3', $array['data']['voice']);
     }
 
+    /**
+     * @group dont-test
+     *
+     * @throws TencentAIException
+     */
+    public function testAaievilaudio(): void
+    {
+        $this->name = __FUNCTION__;
+
+        $this->array = $this->audio()->aaievilaudio('test', 'https://gitee.com/khs1994-php/resource/raw/master/audio/1.wav');
+    }
+
     public function put(string $name, string $content): void
     {
         file_put_contents(self::OUTPUT.$name, base64_decode($content, true));

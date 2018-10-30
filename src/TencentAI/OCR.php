@@ -173,6 +173,8 @@ class OCR
      *
      * @return mixed
      *
+     * @throws TencentAIException
+     *
      * @see https://ai.qq.com/doc/plateocr.shtml
      */
     public function plate($image, bool $isUrl = false)
@@ -187,6 +189,8 @@ class OCR
      * @param bool $isUrl 图片是否为网络地址 url
      *
      * @return mixed
+     *
+     * @throws TencentAIException
      *
      * @see https://ai.qq.com/doc/handwritingocr.shtml
      */

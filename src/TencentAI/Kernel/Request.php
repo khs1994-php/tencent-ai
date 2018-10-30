@@ -89,10 +89,17 @@ class Request
      * @param array  $arg
      * @param bool   $charSetUTF8
      * @param bool   $retry
+     * @param bool   $post
      *
      * @return array
+     *
+     * @throws TencentAIException
      */
-    public static function exec(string $url, array $arg, bool $charSetUTF8 = true, bool $retry = false)
+    public static function exec(string $url,
+                                array $arg,
+                                bool $charSetUTF8 = true,
+                                bool $retry = false,
+                                bool $post = true)
     {
         $retry_settings = 0;
 
@@ -126,8 +133,10 @@ class Request
         $request_url = 'https://api.ai.qq.com/fcgi-bin/'.$url;
 
         // 发起请求
+        $method = $post ? 'post' : 'get';
+
         try {
-            $json = self::$curl->post($request_url, $data);
+            $json = self::$curl->$method($request_url, $data);
 
             if ($charSetUTF8) {
                 $array = json_decode($json, true);
