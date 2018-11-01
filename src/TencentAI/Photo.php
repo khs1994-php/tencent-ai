@@ -119,6 +119,7 @@ class Photo
      *
      * @return array
      *
+     * @deprecated Not Available at 2018-11-30
      * @see https://ai.qq.com/doc/facemerge.shtml
      */
     public function merge($image, int $model = 10)

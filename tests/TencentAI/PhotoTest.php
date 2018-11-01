@@ -71,6 +71,10 @@ class PhotoTest extends TencentAITestCase
     /**
      * 人脸融合.
      *
+     * @group dont-test
+     *
+     * @deprecated Not Available at 2018-11-30
+     *
      * @throws TencentAIException
      */
     public function testMerge(): void
