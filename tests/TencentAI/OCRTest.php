@@ -157,6 +157,9 @@ class OCRTest extends TencentAITestCase
         $this->array = $this->ocr()->plate('https://yyb.gtimg.com/ai/assets/ai-demo/large/plate-1-lg.jpg', true);
     }
 
+    /**
+     * @throws TencentAIException
+     */
     public function testPlate(): void
     {
         $this->name = __FUNCTION__;
@@ -165,6 +168,9 @@ class OCRTest extends TencentAITestCase
         $this->array = $this->ocr()->plate($image);
     }
 
+    /**
+     * @throws TencentAIException
+     */
     public function testHandWritingFromUrl(): void
     {
         $this->name = __FUNCTION__;
@@ -172,6 +178,9 @@ class OCRTest extends TencentAITestCase
         $this->array = $this->ocr()->handwriting('https://yyb.gtimg.com/ai/assets/ai-demo/large/hd-1-lg.jpg', true);
     }
 
+    /**
+     * @throws TencentAIException
+     */
     public function testHandWriting(): void
     {
         $this->name = __FUNCTION__;

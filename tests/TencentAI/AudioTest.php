@@ -112,8 +112,6 @@ class AudioTest extends TencentAITestCase
     }
 
     /**
-     * @group dont-test
-     *
      * @throws TencentAIException
      */
     public function testAaievilaudio(): void
