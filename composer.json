@@ -59,6 +59,7 @@
   },
   "scripts": {
     "test": "phpunit",
+    "test:coverage": "phpunit --coverage-clover=coverage.xml",
     "fmt": "php-cs-fixer fix"
   }
 }

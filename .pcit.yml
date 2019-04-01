@@ -9,11 +9,11 @@ workspace:
 
 pipeline:
   test:
-    image: khs1994/php:7.2.10-fpm-alpine
+    image: khs1994/php:7.3.3-composer-alpine
     commands:
       - pwd
       - composer install -q
       # - composer update -q
-      - vendor/bin/phpunit --coverage-clover=coverage.xml
+      - composer test:coverage
       # set env CODECOV_TOKEN=XXX
       # - bash <(curl -s https://codecov.io/bash)

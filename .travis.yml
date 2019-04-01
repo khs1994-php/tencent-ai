@@ -15,7 +15,6 @@ php:
 matrix:
   fast_finish: true
   allow_failures:
-    - php: 7.3
     - php: nightly
 
 install:
@@ -27,7 +26,7 @@ install:
 
 script:
   # - vendor/bin/phpunit --no-configuration --filter "/::testDeleteForce( .*)?$/" TencentAI\Tests\FaceTest $PWD/tests/TencentAI/FaceTest.php
-  - vendor/bin/phpunit --coverage-clover=coverage.xml
+  - composer test:coverage || composer test
   - php -r 'echo file_put_contents(sys_get_temp_dir()."/tencent_ai.log","test end",FILE_APPEND);'
   - php -r 'echo file_get_contents(sys_get_temp_dir()."/tencent_ai.log");'
 
