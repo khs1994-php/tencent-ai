@@ -25,7 +25,6 @@ class TranslateTest extends TencentAITestCase
      * 文本翻译 AILAB.
      *
      * @throws TencentAIException
-     *
      */
     public function testAILabText(): void
     {
@@ -69,7 +68,6 @@ class TranslateTest extends TencentAITestCase
 
     /**
      * 图片翻译异常抛出.
-     *
      */
     public function testImageThrowException(): void
     {

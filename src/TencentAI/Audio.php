@@ -126,7 +126,7 @@ class Audio
     /**
      *  关键词检索 : 上传长音频，提供回调接口，异步获取识别结果.
      *
-     * @param null|string $speech
+     * @param string|null $speech
      * @param string      $callback_url
      * @param array       $key_words
      * @param int         $format

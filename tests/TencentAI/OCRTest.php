@@ -57,7 +57,7 @@ class OCRTest extends TencentAITestCase
 
         // resource
 
-        $array = $this->ocr()->idCard(fopen(self::IMAGE.'idcardz.jpg', 'rb'));
+        $array = $this->ocr()->idCard(fopen(self::IMAGE.'idcardz.jpg', 'r'));
         $this->assertEquals(0, $array['ret']);
         file_put_contents(self::OUTPUT.'testIdCardzfromresource.json', json_encode($array, JSON_UNESCAPED_UNICODE));
 
