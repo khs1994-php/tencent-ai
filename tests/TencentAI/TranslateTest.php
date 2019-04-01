@@ -25,10 +25,12 @@ class TranslateTest extends TencentAITestCase
      * 文本翻译 AILAB.
      *
      * @throws TencentAIException
-     * @expectedException  \TencentAI\Exception\TencentAIException
+     *
      */
     public function testAILabText(): void
     {
+        $this->expectException(\TencentAI\Exception\TencentAIException::class);
+
         $this->name = __FUNCTION__;
 
         $this->array = $this->translate()->aILabText('中华人民共和国', 0);
@@ -40,10 +42,11 @@ class TranslateTest extends TencentAITestCase
      * 文本翻译 翻译君.
      *
      * @throws TencentAIException
-     * @expectedException  \TencentAI\Exception\TencentAIException
      */
     public function testText(): void
     {
+        $this->expectException(\TencentAI\Exception\TencentAIException::class);
+
         $this->name = __FUNCTION__;
 
         $this->array = $this->translate()->text('中华人民共和国', 'zh', 'en');
@@ -67,10 +70,11 @@ class TranslateTest extends TencentAITestCase
     /**
      * 图片翻译异常抛出.
      *
-     * @expectedException \TencentAI\Exception\TencentAIException
      */
     public function testImageThrowException(): void
     {
+        $this->expectException(\TencentAI\Exception\TencentAIException::class);
+
         $this->name = __FUNCTION__;
 
         $this->array = $this->translate()->image(
@@ -135,11 +139,11 @@ class TranslateTest extends TencentAITestCase
 
     /**
      * 语种识别抛出异常.
-     *
-     * @expectedException \TencentAI\Exception\TencentAIException
      */
     public function testDetectWithArrayThrowException(): void
     {
+        $this->expectException(\TencentAI\Exception\TencentAIException::class);
+
         $this->name = __FUNCTION__;
 
         $this->array = $this->translate()->detect('chinese', ['en', 'mock']);

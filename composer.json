@@ -9,13 +9,11 @@
   "homepage": "https://github.com/khs1994-php/tencent-ai",
   "type": "library",
   "license": "MIT",
-  "authors": [
-    {
-      "name": "khs1994",
-      "email": "khs1994@khs1994.com",
-      "homepage": "https://khs1994.com"
-    }
-  ],
+  "authors": [{
+    "name": "khs1994",
+    "email": "khs1994@khs1994.com",
+    "homepage": "https://khs1994.com"
+  }],
   "require": {
     "php": ">=7.1.0",
     "ext-curl": "*",
@@ -25,7 +23,7 @@
     "khs1994/is": "~18.06.0"
   },
   "require-dev": {
-    "phpunit/phpunit": "^7.2"
+    "phpunit/phpunit": "^8.0"
   },
   "autoload": {
     "psr-4": {
@@ -58,5 +56,9 @@
         "TencentAI": "TencentAI\\Kernel\\Facade"
       }
     }
+  },
+  "scripts": {
+    "test": "phpunit",
+    "fmt": "php-cs-fixer fix"
   }
 }

@@ -28,3 +28,5 @@ coverage_report
 coverage.xml
 
 .env
+
+.phpunit.result.cache

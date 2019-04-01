@@ -5,8 +5,5 @@ services:
     build:
       context: .
       args:
-        - PHP_VERSION_7_2_X=7.2.0
-        - PHP_VERSION_7_1_X=7.1.0
-        - PHP_VERSION_7_0_X=7.0.0
-        - PHP_VERSION_5_6_X=5.6.0
+        - PHP_VERSION=${PHP_VERSION:-7.3.3}
     image: khs1994/tencent-ai

@@ -101,6 +101,7 @@ class ImageTest extends TencentAITestCase
      * 物体场景识别 => 物体识别.
      *
      * @throws TencentAIException
+     * @group dont-test
      */
     public function testObject(): void
     {
