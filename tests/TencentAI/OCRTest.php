@@ -146,12 +146,12 @@ class OCRTest extends TencentAITestCase
     }
 
     /**
-     * @group dont-test
-     *
      * @throws TencentAIException
      */
     public function testPlateFromUrl(): void
     {
+        $this->markTestSkipped();
+
         $this->name = __FUNCTION__;
 
         $this->array = $this->ocr()->plate('https://yyb.gtimg.com/ai/assets/ai-demo/large/plate-1-lg.jpg', true);

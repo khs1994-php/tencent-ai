@@ -20,7 +20,7 @@ class TencentAITestCase extends TestCase
             $app_id = 1106560031;
             $app_key = 'ZbRY9cf72TbDO0xb';
             self::$ai = TencentAI::getInstance($app_id,
-                $app_key, false, 10, 5, true);
+                $app_key, false, 10, 3, true);
         }
 
         return self::$ai;

@@ -15,7 +15,7 @@
     "homepage": "https://khs1994.com"
   }],
   "require": {
-    "php": ">=7.1.0",
+    "php": ">=7.2.0",
     "ext-curl": "*",
     "ext-json": "*",
     "ext-mbstring": "*",
@@ -23,7 +23,7 @@
     "khs1994/is": "~18.06.0"
   },
   "require-dev": {
-    "phpunit/phpunit": "^8.0"
+    "phpunit/phpunit": "^8.1"
   },
   "autoload": {
     "psr-4": {

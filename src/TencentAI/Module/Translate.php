@@ -67,7 +67,7 @@ trait Translate
     private function checkTextTarget($source, $target): void
     {
         $text_array = $this->text_array;
-        if (!(array_key_exists($source, $text_array))) {
+        if (!(\array_key_exists($source, $text_array))) {
             throw new TencentAIException(90701);
         }
         if (!(\in_array($target, $text_array[$source], true))) {
@@ -86,7 +86,7 @@ trait Translate
     private function checkImageTarget($source, $target): void
     {
         $image_array = $this->image_array;
-        if (!(array_key_exists($source, $image_array))) {
+        if (!(\array_key_exists($source, $image_array))) {
             throw new TencentAIException(90703);
         }
         if (!(\in_array($target, $image_array[$source], true))) {

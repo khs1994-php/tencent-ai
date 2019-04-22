@@ -74,12 +74,12 @@ class ImageTest extends TencentAITestCase
     /**
      * 暴恐识别 图片 url.
      *
-     * @group dont-test
-     *
      * @throws TencentAIException
      */
     public function testTerrorismWithUrl(): void
     {
+        $this->markTestSkipped();
+
         $this->name = __FUNCTION__;
 
         $this->array = $this->image()->terrorism(null, 'https://yyb.gtimg.com/ai/assets/ai-demo/large/terror-14-lg.jpg');
@@ -101,10 +101,11 @@ class ImageTest extends TencentAITestCase
      * 物体场景识别 => 物体识别.
      *
      * @throws TencentAIException
-     * @group dont-test
      */
     public function testObject(): void
     {
+        $this->markTestSkipped();
+
         $this->name = __FUNCTION__;
 
         $this->array = $this->image()->object(self::DOG);

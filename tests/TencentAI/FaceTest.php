@@ -41,9 +41,8 @@ class FaceTest extends TencentAITestCase
 
     /**
      * @throws TencentAIException
-     * @group  dont-test
      */
-    public function testDeleteForce(): void
+    public function DeleteForce(): void
     {
         $this->array = $this->face()->deletePerson(self::PERSON_ID);
     }
@@ -58,7 +57,7 @@ class FaceTest extends TencentAITestCase
      */
     public function testCreatePerson()
     {
-        $this->testDeleteForce();
+        $this->DeleteForce();
 
         $this->name = __FUNCTION__;
 

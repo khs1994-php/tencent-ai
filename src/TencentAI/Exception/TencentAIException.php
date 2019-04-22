@@ -130,7 +130,7 @@ class TencentAIException extends \Exception
 
         $this->message = $message;
 
-        if (array_key_exists($code, $array)) {
+        if (\array_key_exists($code, $array)) {
             $this->message = $array[$code];
         } else {
             if (!$message) {
