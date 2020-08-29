@@ -39,7 +39,7 @@ class ServiceProvider extends \Illuminate\Support\ServiceProvider
             );
         });
 
-        $this->app->alias('tencent-ai', TencentAI::class);
+        $this->app->alias(TencentAI::class, 'tencent-ai');
 
         //        $this->app->bind(TencentAI::class, function () {
         //            return Application::getInstance(
