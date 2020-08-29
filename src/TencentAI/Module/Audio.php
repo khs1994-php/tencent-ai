@@ -19,9 +19,7 @@ trait Audio
     /**
      * 抛出错误.
      *
-     * @param        $check
-     * @param string $array_name
-     * @param int    $code
+     * @param $check
      *
      * @throws TencentAIException
      */
@@ -47,8 +45,6 @@ trait Audio
     /**
      * 检查速率参数.
      *
-     * @param int $rate
-     *
      * @throws TencentAIException
      */
     private function checkAsrRate(int $rate): void
@@ -72,8 +68,6 @@ trait Audio
      * 编码文件.
      *
      * 传入本地路径或文件内容
-     *
-     * @param string $voice
      *
      * @return string
      */

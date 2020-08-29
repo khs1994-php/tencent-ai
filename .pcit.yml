@@ -7,13 +7,11 @@ workspace:
   base: /src
   path: .
 
-pipeline:
+steps:
   test:
-    image: khs1994/php:7.3.3-composer-alpine
-    commands:
+    image: khs1994/php:7.4.9-composer-alpine
+    run:
       - pwd
       - composer install -q
       # - composer update -q
       - composer test:coverage
-      # set env CODECOV_TOKEN=XXX
-      # - bash <(curl -s https://codecov.io/bash)

@@ -70,12 +70,9 @@ class TencentAI
     }
 
     /**
-     * @param        $appId
-     * @param string $appKey
-     * @param bool   $jsonFormat
-     * @param int    $timeout
-     * @param int    $retry
-     * @param bool   $debug
+     * @param     $appId
+     * @param int $timeout
+     * @param int $retry
      *
      * @return TencentAI
      */
@@ -95,9 +92,6 @@ class TencentAI
 
     /**
      * 返回对象
-     *
-     * @param string $name
-     * @param array  $arguments
      *
      * @return mixed
      */

@@ -319,7 +319,6 @@ trait Image
     /**
      * 图片公共方法.
      *
-     * @param string $url
      * @param string $image image file path OR image file content OR image url
      * @param bool   $isUrl image is url
      *

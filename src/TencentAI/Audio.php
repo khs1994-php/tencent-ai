@@ -126,12 +126,6 @@ class Audio
     /**
      *  关键词检索 : 上传长音频，提供回调接口，异步获取识别结果.
      *
-     * @param string|null $speech
-     * @param string      $callback_url
-     * @param array       $key_words
-     * @param int         $format
-     * @param string|null $speech_url
-     *
      * @see https://ai.qq.com/doc/detectword.shtml
      *
      * @return array

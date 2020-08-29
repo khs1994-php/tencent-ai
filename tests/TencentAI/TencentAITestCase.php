@@ -17,8 +17,8 @@ class TencentAITestCase extends TestCase
     public static function ai()
     {
         if (!(self::$ai instanceof TencentAI)) {
-            $app_id = 1106560031;
-            $app_key = 'ZbRY9cf72TbDO0xb';
+            $app_id = getenv('TENCENT_AI_APP_ID');
+            $app_key = getenv('TENCENT_AI_APP_KEY');
             self::$ai = TencentAI::getInstance($app_id,
                 $app_key, false, 10, 3, true);
         }

@@ -144,8 +144,6 @@ class FaceTest extends TencentAITestCase
     /**
      * 获取人脸信息.
      *
-     * @param string $faceId
-     *
      * @depends testCreatePerson
      *
      * @throws TencentAIException
@@ -159,8 +157,6 @@ class FaceTest extends TencentAITestCase
 
     /**
      * 个体 => 删除人脸.
-     *
-     * @param array $faceIds
      *
      * @depends testAdd
      *

@@ -45,8 +45,6 @@ trait Translate
     ];
 
     /**
-     * @param int $type
-     *
      * @throws TencentAIException
      */
     private function checkAILabTextType(int $type): void

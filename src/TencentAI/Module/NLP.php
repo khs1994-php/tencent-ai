@@ -12,9 +12,8 @@ trait NLP
     /**
      * 自然语言处理公共方法.
      *
-     * @param      $url
-     * @param      $text
-     * @param bool $charSetGBK
+     * @param $url
+     * @param $text
      *
      * @throws TencentAIException
      *

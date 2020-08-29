@@ -217,8 +217,7 @@ class Image
     /**
      * 看图说话：用一句话文字描述图片.
      *
-     * @param mixed  $image      支持 JPG PNG BMP 格式
-     * @param string $session_id
+     * @param mixed $image 支持 JPG PNG BMP 格式
      *
      * @throws TencentAIException
      *

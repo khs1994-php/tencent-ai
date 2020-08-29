@@ -165,9 +165,8 @@ class Face
      *
      * 对于一个待识别的人脸图片，在一个组中识别出最相似的 N 个个体作为候选人返回，返回的 N 个个体按照相似度从大到小排列，N 由参数 topn 指定.
      *
-     * @param string $group_id
-     * @param mixed  $image    支持 JPG PNG BMP 格式
-     * @param int    $topn     返回的候选人个数 默认 9
+     * @param mixed $image 支持 JPG PNG BMP 格式
+     * @param int   $topn  返回的候选人个数 默认 9
      *
      * @throws TencentAIException
      *
@@ -187,8 +186,7 @@ class Face
      *
      * 根据提供的图片和个体 ID，返回图片和个体是否是同一个人的判断以及置信度.
      *
-     * @param string $person_id
-     * @param mixed  $image     支持 JPG PNG BMP 格式
+     * @param mixed $image 支持 JPG PNG BMP 格式
      *
      * @throws TencentAIException
      *
@@ -208,9 +206,8 @@ class Face
      *
      * 一个人脸只能被加入到一个个体中.一个个体最多允许包含 20 个人脸；加入几乎相同的人脸会返回错误.
      *
-     * @param string $person_id
-     * @param array  $images    支持 JPG PNG BMP 格式
-     * @param string $tag       备注信息
+     * @param array  $images 支持 JPG PNG BMP 格式
+     * @param string $tag    备注信息
      *
      * @throws TencentAIException
      *
@@ -239,9 +236,6 @@ class Face
     /**
      * 个体管理 => 删除人脸：从一个个体中删除一个或一组人脸.
      *
-     * @param string $person_id
-     * @param array  $face_ids
-     *
      * @throws TencentAIException
      *
      * @return mixed
@@ -260,8 +254,6 @@ class Face
      *
      * 获取一个个体下所有人脸 ID.
      *
-     * @param string $person_id
-     *
      * @throws TencentAIException
      *
      * @return mixed
@@ -275,8 +267,6 @@ class Face
 
     /**
      * 获取人脸信息.
-     *
-     * @param string $face_id
      *
      * @throws TencentAIException
      *
@@ -294,11 +284,7 @@ class Face
      *
      * 创建一个个体，并将个体放置到指定的组当中。一个组里面的个体总数上限为 20000 个。如果 ID 指定的组不存在，则会新建组并创建个体。
      *
-     * @param array  $group_ids
-     * @param string $person_id
-     * @param string $person_name
-     * @param mixed  $image       支持 JPG PNG BMP 格式
-     * @param string $tag
+     * @param mixed $image 支持 JPG PNG BMP 格式
      *
      * @throws TencentAIException
      *
@@ -321,8 +307,6 @@ class Face
     /**
      * 删除个体.
      *
-     * @param string $person_id
-     *
      * @throws TencentAIException
      *
      * @return mixed
@@ -336,10 +320,6 @@ class Face
 
     /**
      * 设置个体信息：设置个体的名字或备注.
-     *
-     * @param string $person_id
-     * @param string $person_name
-     * @param string $tag
      *
      * @throws TencentAIException
      *
@@ -356,8 +336,6 @@ class Face
      * 获取个体信息.
      *
      * 获取一个个体的信息，包括 ID，名字，备注，相关的人脸 ID 列表，以及所属组 ID 列表.
-     *
-     * @param string $person_id
      *
      * @throws TencentAIException
      *
@@ -390,8 +368,6 @@ class Face
      * 获取人体列表.
      *
      * 获取一个组中的所有个体 ID.
-     *
-     * @param string $group_id
      *
      * @throws TencentAIException
      *

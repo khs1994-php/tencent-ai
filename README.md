@@ -110,9 +110,16 @@ class AI
 }
 ```
 
+## Tests
+
+```bash
+export TENCENT_AI_APP_ID
+export TENCENT_AI_APP_KEY
+```
+
 ## Who use it?
 
-* [PCIT](https://github.com/khs1994-php/pcit)
+* [PCIT](https://github.com/pcit-ce/pcit)
 
 ## PHP CaaS
 

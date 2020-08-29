@@ -31,8 +31,7 @@ class Translate
     /**
      * 文本翻译（AI Lab）.
      *
-     * @param string $text
-     * @param int    $type 翻译类型 0-16
+     * @param int $type 翻译类型 0-16
      *
      * @throws TencentAIException
      *
@@ -50,7 +49,6 @@ class Translate
     /**
      * 文本翻译（翻译君）.
      *
-     * @param string $text
      * @param string $source 源语言缩写
      * @param string $target 目标语言缩写
      *
@@ -141,9 +139,8 @@ class Translate
     /**
      * 语种识别.
      *
-     * @param string $text
-     * @param array  $languages zh en jp kr
-     * @param bool   $force     强制从待选择语言中选择
+     * @param array $languages zh en jp kr
+     * @param bool  $force     强制从待选择语言中选择
      *
      * @throws TencentAIException
      *

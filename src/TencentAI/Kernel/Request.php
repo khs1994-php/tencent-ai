@@ -68,8 +68,6 @@ class Request
     /**
      * 生成签名.
      *
-     * @param string $request_body
-     *
      * @return string
      *
      * @see   https://ai.qq.com/doc/auth.shtml
@@ -84,12 +82,6 @@ class Request
 
     /**
      * 逻辑处理.
-     *
-     * @param string $url
-     * @param array  $arg
-     * @param bool   $charSetUTF8
-     * @param bool   $retry
-     * @param bool   $post
      *
      * @return array
      *
@@ -207,8 +199,6 @@ class Request
 
     /**
      * 检查返回值，不为 0 抛出错误.
-     *
-     * @param int $ret
      *
      * @throws TencentAIException
      */
